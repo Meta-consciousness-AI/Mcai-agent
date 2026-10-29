@@ -12,7 +12,7 @@ from pathlib import Path
 from . import knowledge
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.4"}
+SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.5"}
 
 TOOLS = [
     {

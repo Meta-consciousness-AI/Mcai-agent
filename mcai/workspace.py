@@ -64,7 +64,7 @@ def resolve_home(explicit: str | None = None) -> Path:
     if env:
         candidates.append(Path(env).expanduser())
     candidates.append(Path.cwd())
-    candidates.append(Path(__file__).resolve().parent / "data" / "demo")
+    candidates.append(Path(__file__).resolve().parent / "data" / "default")
     candidates.append(DEV_ROOT)
     for cand in candidates:
         if (cand / "config" / "corpus.json").exists():

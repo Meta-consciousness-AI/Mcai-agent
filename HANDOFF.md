@@ -182,3 +182,6 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - 每次回复的末尾显示「待办」清单，来源：`docs/待办.md`。
 - 完成一项就更新该文件，保持「待完成 / 已暂停 / 最近完成」三段。
 - 被外部条件阻塞（如 GitHub 网络）的项标 `[!]`，不要反复重试。
+- **2026-10-29 16:51｜TDQS 提升到 4.5/5.0**
+  0.2.4 补齐工具分工、语料边界、参数示例与注解后，Glama TDQS 从 3.9 → **4.5/5.0**
+  （v0.1.2 release；mcai_answer 4.6、concept/list 4.5、search 4.4、related 4.3）。
