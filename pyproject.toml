@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcai-knowledge"
-version = "0.2.3"
+version = "0.2.4"
 description = "元意识知识资产引擎：把学说变成可被 AI / Agent 调用的结构化知识"
 readme = "README.md"
 requires-python = ">=3.10"
