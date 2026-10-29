@@ -16,7 +16,7 @@ data/tunnel-*.log
 data/tunnel-*.err
 data/tunnel-token.txt
 # 本机配置与运行数据（不入库）
-data/
+/data/
 config/corpus.json
 config/llm.json
 config/deepseek-key.txt

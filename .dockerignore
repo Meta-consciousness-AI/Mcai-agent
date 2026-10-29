@@ -1,0 +1,16 @@
+.git
+.gitignore
+data
+dist
+dist_pkg
+backups
+content
+reports
+docs
+tests
+tools
+deploy/bin
+deploy/mcp-home
+.build
+**/__pycache__
+*.pyc
