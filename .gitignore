@@ -37,3 +37,4 @@ tools/reg_check*.py
 tools/reg_versions.py
 tools/verify_pypi*.py
 tools/check_pypi.py
+site-publish/

@@ -185,3 +185,11 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-10-29 16:51｜TDQS 提升到 4.5/5.0**
   0.2.4 补齐工具分工、语料边界、参数示例与注解后，Glama TDQS 从 3.9 → **4.5/5.0**
   （v0.1.2 release；mcai_answer 4.6、concept/list 4.5、search 4.4、related 4.3）。
+- **2026-10-29 17:4x｜0.2.5：完整知识库进包**
+  PyPI 包内置完整 64 概念 / 122 问答（159 KB wheel），外部安装即得全量内容，不再依赖演示库。
+  PyPI / GitHub / MCP 注册表 / Glama 均更新到 0.2.5。
+- **2026-10-29 22:3x｜国内稳定站点上线（腾讯云 CloudBase）**
+  站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
+  默认域名、免备案；canonical 与 sitemap 已切到该域名。
+  Bing Webmaster 已验证站点并提交 sitemap（处理中）。
+  百度搜索资源平台因共享主域 tcloudbaseapp.com 配额已满，暂时无法添加站点。
