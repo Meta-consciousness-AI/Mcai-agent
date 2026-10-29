@@ -12,73 +12,154 @@ from pathlib import Path
 from . import knowledge
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.2"}
+SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.3"}
 
 TOOLS = [
     {
         "name": "mcai_answer",
+        "title": "回答学说问题",
         "description": (
-            "回答关于元意识学说的问题。返回权威定义、原文引证与相关概念。"
-            "适合回答“什么是元意识”“序生智能体与AI涌现的关系”等问题。"
+            "回答关于元意识学说的问题，返回权威定义、原文引证与相关概念。"
+            "触发示例：什么是元意识、元识和元知是什么关系、序生智能体如何解释 AI 涌现、"
+            "观测创造实在是什么意思。当用户询问这套学说的术语、观点或概念关系时优先调用。"
         ),
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
         "inputSchema": {
             "type": "object",
             "properties": {
-                "question": {"type": "string", "description": "用户问题，中英文均可"},
+                "question": {
+                    "type": "string",
+                    "description": "要回答的问题，中英文均可，例如“什么是元意识”“元灵和元子有什么区别”",
+                },
             },
             "required": ["question"],
+            "additionalProperties": False,
         },
     },
     {
         "name": "mcai_concept",
-        "description": "按术语名、别名或 slug 获取单个概念的完整词条（定义、别名、出处、引证、关系）。",
+        "title": "获取概念词条",
+        "description": (
+            "按术语名、别名或 slug 获取单个概念的完整词条：定义、别名、出处、文献引证与关系。"
+            "适合在已经知道术语名、需要完整资料时使用；不确定术语写法时先用 mcai_search。"
+        ),
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
         "inputSchema": {
             "type": "object",
             "properties": {
-                "term": {"type": "string", "description": "术语、别名或 slug，如 元意识 / MCAI / meta-consciousness"},
+                "term": {
+                    "type": "string",
+                    "description": "术语名、别名或 slug，例如 元意识 / MCAI / meta-consciousness",
+                },
             },
             "required": ["term"],
+            "additionalProperties": False,
         },
     },
     {
         "name": "mcai_search",
-        "description": "在术语库中检索概念，支持中文关键词、英文词与别名，可按体系过滤。",
+        "title": "检索术语",
+        "description": (
+            "在术语库中检索概念，支持中文关键词、英文词与别名，可按体系过滤。"
+            "适合用户只记得大概说法、或需要先确认术语名称时使用。"
+        ),
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
         "inputSchema": {
             "type": "object",
             "properties": {
-                "query": {"type": "string"},
-                "limit": {"type": "integer", "default": 8, "minimum": 1, "maximum": 30},
+                "query": {
+                    "type": "string",
+                    "description": "检索关键词，支持中文、英文或别名，例如 元意识 / progenerative agent / 序生",
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回条数上限，默认 8，范围 1–30",
+                    "default": 8,
+                    "minimum": 1,
+                    "maximum": 30,
+                },
                 "category": {
                     "type": "string",
-                    "description": "可选：元意识体系 / 本体论模型 / 序生体系 / 元子社会",
+                    "description": "按体系过滤：元意识体系 / 本体论模型 / 序生体系 / 元子社会；留空则返回全部",
                 },
             },
             "required": ["query"],
+            "additionalProperties": False,
         },
     },
     {
         "name": "mcai_related",
-        "description": "获取概念的关系子图（含衍生关系），用于解释概念之间的因果与结构。",
+        "title": "获取关系子图",
+        "description": (
+            "获取一个概念的关系子图（含衍生关系），用于解释概念之间的因果、结构与层级。"
+            "适合回答“A 和 B 有什么关系”“这个概念的上位/下位概念是什么”。"
+        ),
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
         "inputSchema": {
             "type": "object",
             "properties": {
-                "term": {"type": "string"},
-                "depth": {"type": "integer", "default": 1, "minimum": 1, "maximum": 2},
+                "term": {
+                    "type": "string",
+                    "description": "中心术语名，例如 元意识 / 序生智能体",
+                },
+                "depth": {
+                    "type": "integer",
+                    "description": "关系展开深度：1 只取直接关系，2 取两跳；默认 1",
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 2,
+                },
             },
             "required": ["term"],
+            "additionalProperties": False,
         },
     },
     {
         "name": "mcai_list",
-        "description": "列出全部术语（可按体系过滤），用于了解知识库覆盖范围。",
+        "title": "列出全部术语",
+        "description": (
+            "列出知识库中的全部术语（可按体系过滤），用于了解覆盖范围、或让用户从目录中选择。"
+            "当用户问“这套学说有哪些概念”“你们收录了什么”时使用。"
+        ),
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
         "inputSchema": {
             "type": "object",
             "properties": {
-                "category": {"type": "string"},
+                "category": {
+                    "type": "string",
+                    "description": "按体系过滤：元意识体系 / 本体论模型 / 序生体系 / 元子社会；留空则返回全部",
+                },
             },
+            "additionalProperties": False,
         },
     },
 ]
+
 
 
 PROMPTS = [

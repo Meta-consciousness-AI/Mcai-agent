@@ -1,0 +1,22 @@
+{
+  "manifest_version": "0.1",
+  "name": "mcai-knowledge",
+  "version": "0.2.2",
+  "description": "元意识学说知识库：术语定义、概念关系与原文出处，供 AI / Agent 通过 MCP 调用",
+  "author": "元意识（重庆）人工智能科技有限公司",
+  "license": "MIT",
+  "server": {
+    "type": "python",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcai-knowledge==0.2.2",
+        "--",
+        "server.py"
+      ]
+    }
+  }
+}
