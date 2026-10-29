@@ -23,3 +23,17 @@ config/deepseek-key.txt
 tests/tmp*
 
 deploy/mcp-home/
+
+.venv*/
+tools/_test*/
+tools/_pypi_test/
+tools/_tmp*/
+tools/dl_pypi.py
+tools/full_check.py
+tools/glama_check.py
+tools/head_check.py
+tools/full_sha.py
+tools/reg_check*.py
+tools/reg_versions.py
+tools/verify_pypi*.py
+tools/check_pypi.py

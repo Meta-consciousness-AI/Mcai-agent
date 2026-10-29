@@ -173,3 +173,7 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   包类型 pypi，identifier `mcai-knowledge`。
   查询：https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Meta-consciousness-AI/mcai-knowledge
   三件套完成：PyPI 可安装、GitHub 仓库、MCP 注册表可检索。
+- **2026-10-29 14:16｜Glama 收录并通过自动检查**
+  构建 success（7.6s），5 个工具被识别：mcai_answer / mcai_concept / mcai_list / mcai_related / mcai_search。
+  页面：https://glama.ai/mcp/servers/Meta-consciousness-AI/Mcai-agent
+  说明：Glama 用仓库内 Dockerfile/配置构建，pip 不可用时改用 uv；Pinned commit 需与 GitHub 同步。
