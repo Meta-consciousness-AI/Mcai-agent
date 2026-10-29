@@ -1,31 +1,31 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.Meta-consciousness-AI/mcai-knowledge",
-  "title": "元意识知识库",
-  "description": "元意识学说知识库：术语定义、概念关系与原文出处，供 AI / Agent 通过 MCP 调用",
-  "status": "active",
-  "repository": {
-    "url": "https://github.com/Meta-consciousness-AI/mcai-agent",
-    "source": "github"
-  },
-  "version": "0.2.1",
-  "packages": [
-    {
-      "registryType": "pypi",
-      "registryBaseUrl": "https://pypi.org",
-      "identifier": "mcai-knowledge",
-      "version": "0.2.1",
-      "runtimeHint": "uvx",
-      "transport": {
-        "type": "stdio"
-      },
-      "environmentVariables": [
-        {
-          "name": "MCAI_HOME",
-          "description": "知识库项目目录（包含 data/kb.json），由 mcai init / mcai build 生成",
-          "isRequired": true
-        }
-      ]
-    }
-  ]
+    "$schema":  "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "name":  "io.github.Meta-consciousness-AI/mcai-knowledge",
+    "title":  "元意识知识库",
+    "description":  "元意识学说知识库：术语定义、概念关系与原文出处，供 AI / Agent 通过 MCP 调用",
+    "status":  "active",
+    "repository":  {
+                       "url":  "https://github.com/Meta-consciousness-AI/mcai-agent",
+                       "source":  "github"
+                   },
+    "version":  "0.2.2",
+    "packages":  [
+                     {
+                         "registryType":  "pypi",
+                         "registryBaseUrl":  "https://pypi.org",
+                         "identifier":  "mcai-knowledge",
+                         "version":  "0.2.2",
+                         "runtimeHint":  "uvx",
+                         "transport":  {
+                                           "type":  "stdio"
+                                       },
+                         "environmentVariables":  [
+                                                      {
+                                                          "name":  "MCAI_HOME",
+                                                          "description":  "知识库项目目录（包含 data/kb.json），由 mcai init / mcai build 生成",
+                                                          "isRequired":  true
+                                                      }
+                                                  ]
+                     }
+                 ]
 }
