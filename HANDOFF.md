@@ -168,3 +168,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   （3a0b3589…ed189），License MIT，依赖 python-docx/lxml。
   GitHub：https://github.com/Meta-consciousness-AI/mcai-agent
   PyPI：https://pypi.org/project/mcai-knowledge/0.2.0/
+- **2026-10-29 12:4x｜MCP 官方注册表收录**
+  `io.github.Meta-consciousness-AI/mcai-knowledge` 0.2.1 已发布，status=active，
+  包类型 pypi，identifier `mcai-knowledge`。
+  查询：https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Meta-consciousness-AI/mcai-knowledge
+  三件套完成：PyPI 可安装、GitHub 仓库、MCP 注册表可检索。

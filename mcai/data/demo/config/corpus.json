@@ -1,0 +1,12 @@
+{
+  "project": {
+    "name": "MCAI Demo",
+    "brand": "元意识",
+    "site_url": "http://127.0.0.1:8787",
+    "license": "CC BY-NC-SA 4.0"
+  },
+  "corpus": [],
+  "keywords": [],
+  "term_blacklist": [],
+  "slugs": {}
+}
