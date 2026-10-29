@@ -177,3 +177,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   构建 success（7.6s），5 个工具被识别：mcai_answer / mcai_concept / mcai_list / mcai_related / mcai_search。
   页面：https://glama.ai/mcp/servers/Meta-consciousness-AI/Mcai-agent
   说明：Glama 用仓库内 Dockerfile/配置构建，pip 不可用时改用 uv；Pinned commit 需与 GitHub 同步。
+## 工作约定
+
+- 每次回复的末尾显示「待办」清单，来源：`docs/待办.md`。
+- 完成一项就更新该文件，保持「待完成 / 已暂停 / 最近完成」三段。
+- 被外部条件阻塞（如 GitHub 网络）的项标 `[!]`，不要反复重试。
