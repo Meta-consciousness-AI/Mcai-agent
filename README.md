@@ -246,21 +246,25 @@ curl "http://127.0.0.1:8788/api/v1/answer?q=%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83
 ### MCP 服务器
 
 ```bash
-python run.py mcp     # stdio + JSON-RPC 2.0
+pip install mcai-knowledge
+mcai-mcp                # 或 mcai mcp；stdio + JSON-RPC 2.0
 ```
 
-在 Claude Desktop / Cursor 的 MCP 配置里加：
+在 Claude Desktop / Cursor / 魔搭等 MCP 客户端里加：
 
 ```json
 {
   "mcpServers": {
     "mcai-knowledge": {
-      "command": "python",
-      "args": ["C:/path/to/mcai-agent/run.py", "mcp"]
+      "command": "uvx",
+      "args": ["--from", "mcai-knowledge", "mcai-knowledge"],
+      "env": {}
     }
   }
 }
 ```
+
+本地源码运行也可以：`python run.py mcp`。
 
 提供 5 个工具与 64 个资源：
 
