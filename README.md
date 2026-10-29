@@ -1,5 +1,7 @@
 # 元意识知识资产引擎（MCAI Engine）
 
+<!-- mcp-name: io.github.Meta-consciousness-AI/mcai-knowledge -->
+
 把《知识资产通过 AI 分发实现数字永生操作手册》里的**「进阶落地层」**真正做出来：
 一套学说的文本 → 可被 AI 抓取、引用、调用、继承的结构化知识资产。
 

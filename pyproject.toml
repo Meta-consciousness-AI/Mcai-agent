@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcai-knowledge"
-version = "0.2.0"
+version = "0.2.1"
 description = "元意识知识资产引擎：把学说变成可被 AI / Agent 调用的结构化知识"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,6 +24,7 @@ dependencies = [
 [project.scripts]
 mcai = "mcai.cli:main"
 mcai-mcp = "mcai.mcp_server:main_entry"
+mcai-knowledge = "mcai.mcp_server:main_entry"
 
 [tool.setuptools.packages.find]
 include = ["mcai*"]

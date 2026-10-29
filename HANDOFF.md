@@ -163,3 +163,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   元数据：License MIT、依赖 python-docx/lxml、README 长描述 14,671 字符。
   地址：https://pypi.org/project/mcai-knowledge/0.1.0/
   许可：代码 MIT，知识内容 CC BY-NC-SA 4.0。
+- **2026-10-29 12:10｜mcai-knowledge 0.2.0 发布**
+  统一命名（mca → mcai）后重新发布；PyPI wheel sha256 与本地一致
+  （3a0b3589…ed189），License MIT，依赖 python-docx/lxml。
+  GitHub：https://github.com/Meta-consciousness-AI/mcai-agent
+  PyPI：https://pypi.org/project/mcai-knowledge/0.2.0/

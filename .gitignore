@@ -21,3 +21,5 @@ config/corpus.json
 config/llm.json
 config/deepseek-key.txt
 tests/tmp*
+
+deploy/mcp-home/
