@@ -10,7 +10,7 @@ import os
 import sys
 from pathlib import Path
 
-from . import pipeline, workspace
+from . import __version__, pipeline, workspace
 from .corpus import load_config
 
 ROOT = workspace.DEV_ROOT
@@ -431,7 +431,7 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--home", default=None, help="工作区目录（默认：MCAI_HOME 或当前目录）")
 
     parser = argparse.ArgumentParser(prog="mcai", description="元意识知识资产引擎")
-    parser.add_argument("--version", action="version", version="mcai-knowledge 0.1.0")
+    parser.add_argument("--version", action="version", version=f"mcai-knowledge {__version__}")
     sub = parser.add_subparsers(dest="command")
 
     p_init = sub.add_parser("init", parents=[common], help="初始化一个工作区（复制配置模板）")
