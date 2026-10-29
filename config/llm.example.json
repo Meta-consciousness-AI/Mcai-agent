@@ -1,0 +1,8 @@
+{
+  "provider": "deepseek",
+  "base_url": "https://api.deepseek.com",
+  "model": "deepseek-chat",
+  "key_path": "config/deepseek-key.txt",
+  "timeout": 60,
+  "retries": 2
+}

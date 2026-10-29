@@ -1,0 +1,9 @@
+{
+  "_说明": "模型配置。key_path 指向保存 API 密钥的文件；也可以改用环境变量 DEEPSEEK_API_KEY。留空则不启用抽检器与内容工厂。",
+  "provider": "deepseek",
+  "base_url": "https://api.deepseek.com",
+  "model": "deepseek-chat",
+  "key_path": "",
+  "timeout": 60,
+  "retries": 2
+}

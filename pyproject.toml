@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcai-knowledge"
+version = "0.2.0"
+description = "元意识知识资产引擎：把学说变成可被 AI / Agent 调用的结构化知识"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "元意识（重庆）人工智能科技有限公司" }]
+keywords = ["meta-consciousness", "knowledge-base", "mcp", "rag", "schema.org"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "python-docx>=1.1.0",
+    "lxml>=5.0.0",
+]
+
+[project.scripts]
+mcai = "mcai.cli:main"
+mcai-mcp = "mcai.mcp_server:main_entry"
+
+[tool.setuptools.packages.find]
+include = ["mcai*"]
+
+[tool.setuptools.package-data]
+mcai = ["templates/config/*.json"]

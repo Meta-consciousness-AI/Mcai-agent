@@ -1,0 +1,19 @@
+{
+  "_说明": "人工审校层。以术语名为键，可覆盖 definition / en / category / aliases。构建时优先级最高（300），用于裁定冲突、补英文名、修正措辞。留空则完全沿用原文定义。",
+  "_示例": {
+    "某个术语": {
+      "definition": "人工确认后的定义文本（会替代所有自动抽取结果）",
+      "en": "English term",
+      "category": "元意识体系",
+      "aliases": ["别名一", "别名二"]
+    }
+  },
+  "元知产权": { "en": "Meta-knowledge property" },
+  "元子社会宪章": { "en": "Meta-being charter" },
+  "元子社会的人机共生": { "en": "Human-AI symbiosis in meta-being society" },
+  "元子社会的分配设计": { "en": "Distribution design of meta-being society" },
+  "元子社会的刚性底线": { "en": "Hard red lines of meta-being society" },
+  "元子社会的风险清单": { "en": "Risk register of meta-being society" },
+  "元子身份与法权": { "en": "Meta-being identity and rights" },
+  "元子社会多中心序生协议治理设计": { "en": "Polycentric progenerative governance" }
+}

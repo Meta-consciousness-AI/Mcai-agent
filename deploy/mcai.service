@@ -1,0 +1,19 @@
+[Unit]
+Description=MCAI Knowledge Engine (元意识知识库)
+After=network.target
+
+[Service]
+Type=simple
+# 改成实际路径与用户
+WorkingDirectory=/opt/mcai-knowledge
+User=mcai
+Environment=MCAI_HOME=/opt/mcai-knowledge
+Environment=MCAI_TOKEN=请替换为你的令牌
+ExecStart=/usr/bin/python3 -m mcai serve --host 0.0.0.0 --port 8787
+Restart=always
+RestartSec=3
+# 限制写入范围
+ReadWritePaths=/opt/mcai-knowledge/data /opt/mcai-knowledge/dist
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+tests/_work*/
+dist/
+data/kb.json
+content/
+reports/
+.build/
+export/
+backups/
+
+# 构建产物与隧道二进制
+dist_pkg/
+deploy/bin/
+data/tunnel-*.log
+data/tunnel-*.err
+data/tunnel-token.txt
+# 本机配置与运行数据（不入库）
+data/
+config/corpus.json
+config/llm.json
+config/deepseek-key.txt
+tests/tmp*

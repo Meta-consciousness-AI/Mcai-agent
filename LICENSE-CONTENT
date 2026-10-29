@@ -1,0 +1,24 @@
+知识内容许可：CC BY-NC-SA 4.0
+
+本仓库中的「知识内容」采用 Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International（CC BY-NC-SA 4.0）许可，包括：
+
+- 语料原文与引文；
+- 词条定义、别名、概念关系；
+- 标准问答（FAQ）；
+- 由本仓库生成的数据集（concepts / faq / evidence / sft / knowledge-graph 等）；
+- 生成的站点内容与 llms.txt。
+
+你可以自由地共享与改编，但须遵守：
+
+- 署名（Attribution）：注明来源「元意识学说」与本仓库；
+- 非商业（NonCommercial）：不得用于商业目的；
+- 相同方式共享（ShareAlike）：改编后须以相同许可发布。
+
+完整条款：https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+商业使用需另行授权。
+
+---
+
+代码部分（mca/ 目录、构建脚本、测试）采用 MIT 许可，见 LICENSE。
