@@ -26,8 +26,8 @@ for name in ("LICENSE", "LICENSE-CONTENT"):
 metadata = f"""Metadata-Version: 2.1
 Name: mcai-knowledge
 Version: {version}
-Summary: 元意识知识资产引擎：把学说变成可被 AI / Agent 调用的结构化知识
-Author: 元意识（重庆）人工智能科技有限公司
+Summary: {meta['description']}
+Author: Meta-consciousness-AI
 License: {license_text}
 License-File: LICENSE
 License-File: LICENSE-CONTENT

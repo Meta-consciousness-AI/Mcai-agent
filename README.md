@@ -2,6 +2,17 @@
 
 <!-- mcp-name: io.github.Meta-consciousness-AI/mcai-knowledge -->
 
+**English summary**: MCAI Engine turns a body of doctrine into structured knowledge assets that AI agents can call — term definitions, curated Q&A, concept relations, and source citations — published as a Python package, an MCP server, a static site, and open datasets.
+
+- Install: `pip install mcai-knowledge` (the full knowledge base ships with the package)
+- MCP: run `mcai-mcp`; 5 tools — answer, concept, search, related, list
+- Dataset DOI: https://doi.org/10.5281/zenodo.23789330
+- Site: https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
+- License: code MIT, content CC BY-NC-SA 4.0
+
+---
+
+
 把《知识资产通过 AI 分发实现数字永生操作手册》里的**「进阶落地层」**真正做出来：
 一套学说的文本 → 可被 AI 抓取、引用、调用、继承的结构化知识资产。
 

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcai-knowledge"
-version = "0.2.5"
-description = "元意识知识资产引擎：把学说变成可被 AI / Agent 调用的结构化知识"
+version = "0.2.6"
+description = "MCAI Engine: structured, citable knowledge assets callable by AI agents via MCP"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
