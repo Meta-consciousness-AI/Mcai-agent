@@ -88,17 +88,18 @@ def _docx_blocks(doc: Document, path: Path) -> list[Block]:
     def push(text: str, style: str, location: str) -> None:
         nonlocal order
         # Word 常把多条定义用「手动换行符」塞进同一段落，这里按换行拆开
-        for part in re.split(r"[\r\n\u000b\u2028\u2029]", text or ""):
-            part = clean(part)
-            if not part:
-                continue
+        parts = [clean(p) for p in re.split(r"[\r\n\u000b\u2028\u2029]", text or "")]
+        parts = [p for p in parts if p]
+        for idx, part in enumerate(parts, 1):
             m = _HEADING_STYLE.match(style or "")
             if m and style != "Table":
                 level = int(m.group(2) or 1)
                 del section[level - 1:]
                 section.append(part)
+            # 拆分块加序号，保证 (doc_id, location) 唯一
+            loc = location if len(parts) == 1 else f"{location}#{idx}"
             blocks.append(
-                Block(doc.doc_id, doc.title, order, part, style or "Normal", tuple(section), location)
+                Block(doc.doc_id, doc.title, order, part, style or "Normal", tuple(section), loc)
             )
             order += 1
 

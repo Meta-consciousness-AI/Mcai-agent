@@ -62,6 +62,27 @@ def export(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     ]
     _write_jsonl(out / "evidence.jsonl", evidence_rows)
 
+    def _src(item):
+        return item if isinstance(item, dict) else getattr(item, "__dict__", {})
+
+    provenance_rows = [
+        {
+            "term": c.term,
+            "slug": c.slug,
+            "doc_id": s.get("doc_id", ""),
+            "doc_title": s.get("doc_title", ""),
+            "section": s.get("section", ""),
+            "location": s.get("location", ""),
+            "char_start": s.get("char_start", -1),
+            "char_end": s.get("char_end", -1),
+            "origin": s.get("origin", "corpus"),
+            "quote": s.get("quote", ""),
+        }
+        for c in kb.concepts
+        for s in (_src(x) for x in c.sources)
+    ]
+    _write_jsonl(out / "provenance.jsonl", provenance_rows)
+
     faqs = [
         {
             "id": f.id,

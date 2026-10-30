@@ -29,6 +29,9 @@ class Source:
     location: str
     quote: str
     priority: int
+    char_start: int = -1
+    char_end: int = -1
+    origin: str = "corpus"
 
 
 @dataclass
@@ -318,6 +321,9 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
         )
 
         for definition, block in entries:
+            idx = block.text.find(definition)
+            if idx < 0:
+                idx = block.text.find(definition.strip())
             concept.sources.append(
                 Source(
                     doc_id=block.doc_id,
@@ -326,6 +332,9 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
                     location=block.location,
                     quote=definition,
                     priority=_priority(block),
+                    char_start=idx,
+                    char_end=(idx + len(definition)) if idx >= 0 else -1,
+                    origin=("curated" if block.location == "curated" else "corpus"),
                 )
             )
 
