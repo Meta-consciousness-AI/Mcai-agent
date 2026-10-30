@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcai-knowledge"
-version = "0.2.7"
+version = "0.2.8"
 description = "MCAI Engine: structured, citable knowledge assets callable by AI agents via MCP"
 readme = "README.md"
 requires-python = ">=3.10"
