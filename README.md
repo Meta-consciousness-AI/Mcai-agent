@@ -11,6 +11,7 @@
 
 - 站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
 - 数据集：https://modelscope.cn/datasets/Metaconsciousness/mcai-knowledge
+- DOI：https://doi.org/10.5281/zenodo.23789330
 - Gitee 镜像：https://gitee.com/Meta-consciousness-AI/Mcai-agent
 
 ---

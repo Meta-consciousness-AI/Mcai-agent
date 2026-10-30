@@ -50,5 +50,6 @@ tags:
 ## 相关
 
 - 站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
+- DOI：https://doi.org/10.5281/zenodo.23789330
 - MCP 包：https://pypi.org/project/mcai-knowledge/
 - 代码：https://github.com/Meta-consciousness-AI/Mcai-agent
