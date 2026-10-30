@@ -200,3 +200,7 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   - 文心智能体平台：创建入口已于 8 月 31 日下线
   - 腾讯元器：首页公告「平台停止服务」
   - 国内智能体平台路线暂停，转向协议层渠道（MCP / 数据集 / 站点）
+- **2026-10-30 12:0x｜国际/国内渠道补齐**
+  - 0.2.6：PyPI / MCP 注册表英文元数据；Glama 同步构建
+  - Zenodo DOI：10.5281/zenodo.23789330
+  - 扣子智能体：https://www.coze.cn/store/agent/7702301472461242409?bot_id=true
