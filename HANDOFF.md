@@ -193,3 +193,10 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   默认域名、免备案；canonical 与 sitemap 已切到该域名。
   Bing Webmaster 已验证站点并提交 sitemap（处理中）。
   百度搜索资源平台因共享主域 tcloudbaseapp.com 配额已满，暂时无法添加站点。
+- **2026-10-30 00:0x｜国内平台状态**
+  - 魔搭 MCP 广场：已收录（mcai-knowledge-mcp，uvx 配置）
+  - ModelScope 数据集：已公开（Metaconsciousness/mcai-knowledge）
+  - Gitee 镜像：已导入（Meta-consciousness-AI/Mcai-agent）
+  - 文心智能体平台：创建入口已于 8 月 31 日下线
+  - 腾讯元器：首页公告「平台停止服务」
+  - 国内智能体平台路线暂停，转向协议层渠道（MCP / 数据集 / 站点）
