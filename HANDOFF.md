@@ -204,3 +204,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   - 0.2.6：PyPI / MCP 注册表英文元数据；Glama 同步构建
   - Zenodo DOI：10.5281/zenodo.23789330
   - 扣子智能体：https://www.coze.cn/store/agent/7702301472461242409?bot_id=true
+## 协作约定（2026-10-30 起）
+
+- 每天 12:00、00:00 定时提醒休息（已创建 schedule）。
+- 连续工作约 2 小时，主动提醒休息 15–30 分钟。
+- 用户说「休息一下」时，视为重新计时。
