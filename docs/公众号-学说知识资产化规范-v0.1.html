@@ -1,0 +1,126 @@
+<div style="max-width:677px;margin:0 auto;padding:0 4px;font-size:16px;line-height:1.85;color:#333;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;letter-spacing:0.5px;">
+
+<h1 style="font-size:22px;font-weight:700;line-height:1.5;margin:8px 0 18px;color:#1a1a1a;">把一套学说，做成 AI 能调用的知识资产</h1>
+
+<p style="margin:0 0 14px;color:#888;font-size:14px;">一份工程规范（v0.1 草案）</p>
+
+<p style="margin:0 0 16px;">如果你有一套自己的理论、术语体系或学说，直接去问大模型，通常会遇到三种情况：</p>
+
+<p style="margin:0 0 16px;">一是它没听过，按字面意思猜；二是它听过，但理解成别人的版本；三是答得似是而非，你分不清哪句来自原文，哪句是它补的。</p>
+
+<p style="margin:0 0 16px;">第三种最麻烦。它看起来像懂，实际上在做「语义占位」——用一个相近的概念，替换掉你的概念。</p>
+
+<p style="margin:0 0 16px;">这不是模型笨，而是缺一个机器可读、可调用、可追溯的入口。下面这套规范，就是为这个入口写的。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">一、先划边界</h2>
+
+<p style="margin:0 0 16px;">做知识资产，第一件事不是收集，而是决定「不收什么」。</p>
+
+<p style="margin:0 0 10px;">• <strong>只收学说术语，不收人物、机构、商业信息。</strong></p>
+<p style="margin:0 0 10px;">• <strong>不自动生成问答。</strong>问答涉及语境与共情，必须人工撰写。</p>
+<p style="margin:0 0 10px;">• <strong>不做观点生成。</strong>系统只做检索、引用、组织，不做新主张。</p>
+<p style="margin:0 0 16px;">• <strong>目标是被调用，不是被阅读。</strong>站点只是可视化，接口才是产品。</p>
+
+<p style="margin:0 0 16px;">这几条看似保守，实际是在保护学说：一旦允许系统替你发挥，术语边界就会在一次次「合理补充」里被磨掉。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">二、最小数据模型</h2>
+
+<p style="margin:0 0 16px;">一套可调用的知识库，最小由四类对象组成：</p>
+
+<p style="margin:0 0 10px;">• <strong>概念</strong>：术语、英文名、别名、定义、出处、关系。</p>
+<p style="margin:0 0 10px;">• <strong>问答</strong>：问题、答案、出处、类型。</p>
+<p style="margin:0 0 10px;">• <strong>引证</strong>：文档、章节、原句。</p>
+<p style="margin:0 0 16px;">• <strong>关系</strong>：从哪个概念到哪个概念、什么关系。</p>
+
+<p style="margin:0 0 16px;">其中只有一条是硬要求：<strong>每个定义必须有出处，且出处能回查。</strong>没有出处的定义，不入库。</p>
+
+<p style="margin:0 0 16px;">派生产物可以是 JSONL、CSV、知识图谱和微调数据，但源头都是这四类对象。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">三、抽取与裁定</h2>
+
+<p style="margin:0 0 16px;">同一术语在不同文档里有不同说法，是常态。规范要求走四步：</p>
+
+<p style="margin:0 0 10px;"><strong>1. 多源比对。</strong>相似度低于阈值就记为冲突，进入人工裁定，不自动合并。</p>
+
+<p style="margin:0 0 10px;"><strong>2. 裁定有优先级。</strong>标准词表优先于正文定义，正文定义优先于举例说明。裁定结果必须保留至少一条出处。</p>
+
+<p style="margin:0 0 10px;"><strong>3. 别名有规则。</strong>正名不能当别名，否则会出现「别名反过来吞掉正名」。别名必须有原文依据，不能凭语义联想添加。</p>
+
+<p style="margin:0 0 16px;"><strong>4. 术语有边界。</strong>和通用语义冲突的词，必须在定义或问答里显式区分。比如「元意识」在心理学里指 meta-awareness，和学说里的用法不是一回事。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">四、问答要人工写</h2>
+
+<p style="margin:0 0 16px;">这是整套规范里最不「自动化」的一条，也是最重要的一条。</p>
+
+<p style="margin:0 0 16px;">问答分五类：定义、辨析、关系、引证、边界。每个核心术语至少一条定义型问答；易混术语必须有辨析型问答；复合问题在接口层拆分，而不是在问答库里堆砌。</p>
+
+<p style="margin:0 0 16px;">自动生成的问答看起来很多，但会把术语的细微差别抹平。知识库的价值在于准确，不在于数量。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">五、质量门槛</h2>
+
+<p style="margin:0 0 16px;">发布前至少过四关：</p>
+
+<p style="margin:0 0 10px;">• <strong>结构</strong>：必填字段齐全，出处可解析，关系两端都存在。</p>
+<p style="margin:0 0 10px;">• <strong>一致性</strong>：同一术语多定义、别名与正名冲突、循环依赖，都要报出来。</p>
+<p style="margin:0 0 10px;">• <strong>政策</strong>：禁止项泄露，直接阻断发布。</p>
+<p style="margin:0 0 16px;">• <strong>抽检</strong>：人工按比例抽查定义与问答，记录留档。</p>
+
+<p style="margin:0 0 16px;">指标里最值得盯的是「出处覆盖率」，目标 100%。冲突数应为 0。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">六、分发：五种形态，一个源头</h2>
+
+<p style="margin:0 0 10px;"><strong>1. 包与接口。</strong>发布为可安装包，提供 MCP 接口，最小工具集是：回答、取词条、检索、查关系、列目录。包内自带完整知识库，安装即用，不依赖作者服务器。</p>
+
+<p style="margin:0 0 10px;"><strong>2. 数据集。</strong>以 JSONL、CSV、图结构发布，申请 DOI，保证可引用。</p>
+
+<p style="margin:0 0 10px;"><strong>3. 站点。</strong>每个概念一个独立 URL，带结构化数据、llms.txt、sitemap。临时隧道不算稳定站点。</p>
+
+<p style="margin:0 0 10px;"><strong>4. 目录与注册表。</strong>提交 MCP 官方注册表和至少一个第三方目录；国内平台单独维护。</p>
+
+<p style="margin:0 0 16px;"><strong>5. 版本与 DOI。</strong>包版本语义化，数据集区分「版本 DOI」和「总 DOI」，每次内容变更记录说明。</p>
+
+<p style="margin:0 0 16px;">五种形态共用同一份源头数据，避免各渠道口径不一致。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">七、许可要分层</h2>
+
+<p style="margin:0 0 16px;">代码用 MIT，内容用 CC BY-NC-SA 4.0：署名、非商业、相同方式共享。商业使用另行授权。</p>
+
+<p style="margin:0 0 16px;">分层的好处是：工具可以自由使用，学说本身保持边界。这两件事不应该用同一个许可证。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">八、复现清单</h2>
+
+<p style="margin:0 0 10px;">□ 选定源文档，确认版权与许可</p>
+<p style="margin:0 0 10px;">□ 抽取术语与定义，记录出处</p>
+<p style="margin:0 0 10px;">□ 多源比对，冲突裁定</p>
+<p style="margin:0 0 10px;">□ 别名归一，禁止正名作别名</p>
+<p style="margin:0 0 10px;">□ 禁止项过滤</p>
+<p style="margin:0 0 10px;">□ 人工撰写问答</p>
+<p style="margin:0 0 10px;">□ 结构、一致性、政策检查通过</p>
+<p style="margin:0 0 10px;">□ 生成派生数据集</p>
+<p style="margin:0 0 10px;">□ 构建站点与结构化数据</p>
+<p style="margin:0 0 10px;">□ 打包发布，接口自测通过</p>
+<p style="margin:0 0 10px;">□ 申请 DOI</p>
+<p style="margin:0 0 10px;">□ 提交注册表与目录</p>
+<p style="margin:0 0 16px;">□ 记录版本与变更</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">九、还差什么</h2>
+
+<p style="margin:0 0 16px;">这份规范目前只是 v0.1，还有五个缺口：</p>
+
+<p style="margin:0 0 10px;">• 还没有第二个语料验证，不能证明它不依赖特定内容；</p>
+<p style="margin:0 0 10px;">• 远程 MCP 是否纳入最小标准，尚未确定；</p>
+<p style="margin:0 0 10px;">• 问答质量还缺客观评估指标；</p>
+<p style="margin:0 0 10px;">• 多人协作时，术语裁定如何留痕、如何合并；</p>
+<p style="margin:0 0 16px;">• 中英术语的映射与检索一致性。</p>
+
+<p style="margin:0 0 16px;">等第二个案例跑通，再谈「可复制的教程」。在那之前，它只是一份基于单个实践的方法说明。</p>
+
+<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;padding-left:10px;border-left:4px solid #07c160;line-height:1.5;">写在最后</h2>
+
+<p style="margin:0 0 16px;">这件事的核心，不是让 AI 记住一套学说，而是让它每次都能查到准确版本。</p>
+
+<p style="margin:0 0 16px;">从「被阅读」到「被调用」，中间隔着的不是技术，而是愿不愿意把学说拆成一条条可核对的术语。</p>
+
+<p style="margin:0 0 8px;color:#999;font-size:14px;">—— 元意识 Meta-consciousness</p>
+
+</div>
