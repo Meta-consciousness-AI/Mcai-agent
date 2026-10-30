@@ -7,6 +7,12 @@
 
 不需要 API Key，不联网，全部在你本机运行。输入是 Word/PDF，输出是**词条库 + 标准问答 + 知识图谱 + JSON-LD 标记站 + 训练数据集**。
 
+在线入口：
+
+- 站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
+- 数据集：https://modelscope.cn/datasets/Metaconsciousness/mcai-knowledge
+- Gitee 镜像：https://gitee.com/Meta-consciousness-AI/Mcai-agent
+
 ---
 
 ## 定位：只服务一件事——被其他 AI / Agent 调用
