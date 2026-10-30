@@ -12,13 +12,13 @@ from pathlib import Path
 from . import knowledge
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.6"}
+SERVER_INFO = {"name": "mcai-knowledge", "version": "0.2.7"}
 
 TOOLS = [
     {
         "name": "mcai_answer",
-        "title": "回答学说问题",
-        "description": "回答关于元意识学说的整句问题，返回权威定义、原文引证与相关概念。适合：用户用自然语言提问、且没有明确指定只要某一条词条时，例如“什么是元意识”“元识和元知是什么关系”“序生智能体如何解释 AI 涌现”。分工：若已知确切术语、想拿完整词条（别名、出处、引证、关系），用 mcai_concept；若不确定术语写法，先用 mcai_search；只看目录用 mcai_list；只看关系用 mcai_related。边界：只基于本知识库语料回答，未收录的概念会返回 type=none；不要据此推断、补写或引入库外语义。",
+        "title": "Answer doctrine questions",
+        "description": "Answer full-sentence questions about the Meta-Consciousness Theory, returning authoritative definitions, source quotations, and related concepts. Use when the user asks in natural language and does not need one specific entry, e.g. \"What is meta-consciousness?\", \"How are meta-recognition and meta-knowledge related?\", \"How does the progenerative agent explain AI emergence?\". Routing: for a known term and its full entry (aliases, sources, citations, relations) use mcai_concept; if unsure of the exact term use mcai_search; for a catalog use mcai_list; for relations only use mcai_related. Boundary: answers come only from this knowledge base; unlisted concepts return type=none. Do not extrapolate, complete, or introduce meanings outside the corpus.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -30,7 +30,7 @@ TOOLS = [
             "properties": {
                 "question": {
                     "type": "string",
-                    "description": "一个完整的自然语言问题，建议 5–120 字，一次只问一个问题；中英文均可。建议包含明确的术语，例如“什么是元意识”“元灵和元子有什么区别”。",
+                    "description": "A complete natural-language question, ideally 5–120 characters, one question per call; Chinese or English is fine. Include the exact term when possible, e.g. \"什么是元意识\" or \"元灵和元子有什么区别\".",
                     "examples": [
                         "什么是元意识",
                         "元灵和元子有什么区别"
@@ -45,8 +45,8 @@ TOOLS = [
     },
     {
         "name": "mcai_concept",
-        "title": "获取概念词条",
-        "description": "按术语名、别名或 slug 获取单个概念的完整词条：定义、别名、出处、文献引证与关系。适合在已经知道术语名、需要完整资料时使用。分工：不确定术语写法时先用 mcai_search；整句问题用 mcai_answer；只看关系用 mcai_related。边界：只返回本知识库已收录的词条，查不到时返回明确错误。",
+        "title": "Get a concept entry",
+        "description": "Get the complete entry for a single concept by term, alias, or slug: definition, aliases, sources, source quotations, and relations. Use when the exact term is known and full detail is needed. Routing: if the spelling is uncertain use mcai_search first; for full-sentence questions use mcai_answer; for relations only use mcai_related. Boundary: returns only entries in this knowledge base, with an explicit error when not found.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -58,7 +58,7 @@ TOOLS = [
             "properties": {
                 "term": {
                     "type": "string",
-                    "description": "精确的术语名、别名或 slug，例如 元意识 / MCAI / meta-consciousness；不确定写法时先用 mcai_search。",
+                    "description": "Exact term, alias, or slug, e.g. 元意识 / MCAI / meta-consciousness; use mcai_search first if unsure.",
                     "examples": [
                         "元意识",
                         "meta-consciousness"
@@ -73,8 +73,8 @@ TOOLS = [
     },
     {
         "name": "mcai_search",
-        "title": "检索术语",
-        "description": "在术语库中检索概念，支持中文关键词、英文词与别名，可按体系过滤。适合用户只记得大概说法、或需要先确认术语名称时使用。分工：拿到术语名后用 mcai_concept 取完整词条；整句问题用 mcai_answer；看全目录用 mcai_list。边界：只做词条匹配，不做语义推理。",
+        "title": "Search terms",
+        "description": "Search concepts in the term base. Supports Chinese keywords, English terms, and aliases; results can be filtered by category. Use when the user remembers only an approximate name or needs to confirm a term. Routing: with a term in hand use mcai_concept for the full entry; for full-sentence questions use mcai_answer; for the whole catalog use mcai_list. Boundary: term matching only, no semantic reasoning.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -86,7 +86,7 @@ TOOLS = [
             "properties": {
                 "query": {
                     "type": "string",
-                    "description": "检索关键词（建议 2–20 字，不要传整句），支持中文、英文或别名，例如 元意识 / progenerative agent / 序生。",
+                    "description": "Search keywords (2–20 characters recommended; do not pass a full sentence). Supports Chinese, English, or aliases, e.g. 元意识 / progenerative agent / 序生.",
                     "examples": [
                         "元意识",
                         "序生"
@@ -94,14 +94,14 @@ TOOLS = [
                 },
                 "limit": {
                     "type": "integer",
-                    "description": "返回条数上限，默认 8，范围 1–30。",
+                    "description": "Maximum number of results, default 8, range 1–30.",
                     "default": 8,
                     "minimum": 1,
                     "maximum": 30
                 },
                 "category": {
                     "type": "string",
-                    "description": "按体系过滤，取值必须是：元意识体系 / 本体论模型 / 序生体系 / 元子社会；留空则返回全部"
+                    "description": "Filter by category; must be one of: 元意识体系 / 本体论模型 / 序生体系 / 元子社会; leave empty for all categories."
                 }
             },
             "required": [
@@ -112,8 +112,8 @@ TOOLS = [
     },
     {
         "name": "mcai_related",
-        "title": "获取关系子图",
-        "description": "获取一个概念的关系子图（含衍生关系），用于解释概念之间的因果、结构与层级。适合回答“A 和 B 有什么关系”“这个概念的上位/下位概念是什么”。分工：需要完整词条用 mcai_concept；需要整句解释用 mcai_answer；需要找词用 mcai_search。边界：只返回库内已登记的关系，没有关系时明确说明。",
+        "title": "Get relation subgraph",
+        "description": "Get the relation subgraph around a concept (including derived relations) to explain causal, structural, or hierarchical links. Use for questions such as \"How are A and B related?\" or \"What are this concept's parents and children?\". Routing: full entry -> mcai_concept; full-sentence explanation -> mcai_answer; finding a term -> mcai_search. Boundary: returns only relations registered in the base and states explicitly when none exist.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -125,7 +125,7 @@ TOOLS = [
             "properties": {
                 "term": {
                     "type": "string",
-                    "description": "中心术语名，必须是库内已收录的术语，例如 元意识 / 序生智能体；不确定时先用 mcai_search。",
+                    "description": "Central term; must be a term in the base, e.g. 元意识 / 序生智能体; use mcai_search first if unsure.",
                     "examples": [
                         "元意识",
                         "序生智能体"
@@ -133,7 +133,7 @@ TOOLS = [
                 },
                 "depth": {
                     "type": "integer",
-                    "description": "关系展开深度：1 只取直接关系，2 取两跳；默认 1。",
+                    "description": "Relation depth: 1 for direct relations, 2 for two hops; default 1.",
                     "default": 1,
                     "minimum": 1,
                     "maximum": 2
@@ -147,8 +147,8 @@ TOOLS = [
     },
     {
         "name": "mcai_list",
-        "title": "列出全部术语",
-        "description": "列出知识库中的全部术语（可按体系过滤），用于了解覆盖范围、或让用户从目录中选择。当用户问“这套学说有哪些概念”“你们收录了什么”时使用。分工：按关键词找词用 mcai_search；要某条完整词条用 mcai_concept。边界：只返回术语名与分类，不返回定义全文。",
+        "title": "List all terms",
+        "description": "List all terms in the knowledge base, optionally filtered by category, to show coverage or let the user choose from a catalog. Use when the user asks \"What concepts does this theory have?\" or \"What do you cover?\". Routing: keyword lookup -> mcai_search; full entry -> mcai_concept. Boundary: returns term names and categories only, not full definitions.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -160,7 +160,7 @@ TOOLS = [
             "properties": {
                 "category": {
                     "type": "string",
-                    "description": "按体系过滤，取值必须是：元意识体系 / 本体论模型 / 序生体系 / 元子社会；留空则返回全部"
+                    "description": "Filter by category; must be one of: 元意识体系 / 本体论模型 / 序生体系 / 元子社会; leave empty for all categories."
                 }
             },
             "additionalProperties": False
@@ -172,20 +172,20 @@ TOOLS = [
 PROMPTS = [
     {
         "name": "explain_concept",
-        "description": "用元意识学说的定义解释一个术语，要求区分同名概念。",
-        "arguments": [{"name": "term", "description": "术语名", "required": True}],
+        "description": "Explain a term using the Meta-Consciousness Theory definition, distinguishing homonyms.",
+        "arguments": [{"name": "term", "description": "Term name", "required": True}],
     },
     {
         "name": "analyze_phenomenon",
-        "description": "用元意识学说的框架分析一个现象，先取定义再推理。",
-        "arguments": [{"name": "phenomenon", "description": "现象或问题", "required": True}],
+        "description": "Analyze a phenomenon with the Meta-Consciousness Theory framework: retrieve definitions first, then reason.",
+        "arguments": [{"name": "phenomenon", "description": "Phenomenon or question", "required": True}],
     },
     {
         "name": "compare_terms",
-        "description": "比较两个术语，先取两者定义与关系再作答。",
+        "description": "Compare two terms: retrieve both definitions and their relations before answering.",
         "arguments": [
-            {"name": "a", "description": "术语 A", "required": True},
-            {"name": "b", "description": "术语 B", "required": True},
+            {"name": "a", "description": "Term A", "required": True},
+            {"name": "b", "description": "Term B", "required": True},
         ],
     },
 ]
