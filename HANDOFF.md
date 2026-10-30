@@ -224,3 +224,25 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   暂不做英文版知识库（术语层/全文）。理由：翻译是二次创作，术语偏差会沿英文材料扩散，纠正成本高；当前内容仍在演进，双库维护负担大；海外调用需求未验证。
   国际渠道维持现状：元数据英文，内容中文。
   重新评估的前提：先决条件是「元意识学说在中文语境已形成可观测影响力」（被引用、被讨论、被采用），在此之后才考虑；届时仍需 1) 官方英文术语表经作者逐条裁定，或 2) 出现明确的海外调用需求。
+- **2026-10-30 18:1x｜预印本发布（Zenodo Preprint）**
+  标题：面向 AI 调用的学说知识资产化：方法与单案例研究 / Knowledge Assetization of a Doctrine for AI Invocation: Method and a Single-Case Study
+  DOI：10.5281/zenodo.23801176（总 DOI 10.5281/zenodo.23801175）
+  类型：Preprint；许可 CC BY-NC-SA 4.0；语言 Mandarin Chinese；关联数据集 DOI 10.5281/zenodo.23789330。
+  ChinaXiv 因仅接受 cas.edu / 科研机构邮箱，未能提交。
+- **2026-10-30 19:1x｜PhilArchive / PhilPapers 提交（待审核）**
+  以个人账号（Hai Tan）提交，作者署名 Tan, Hai，摘要注明 MCAI Research Group 与公司。
+  分类：Philosophy of Computing and Information；状态 Unpublished；附 PDF 与 Zenodo DOI 外链。
+  平台提示：非学术邮箱投稿需人工审核，最长 1 个工作日。若被拒，保留 Zenodo 版本即可。
+
+- **2026-10-31 07:2x｜评测基准暂缓**
+  可核对评测（检索题/缺失题/一致性题）只做了样例，暂不推进。
+  原因：评分口径、题目权威性、争议标注等未想清楚；避免制造「第二层解释」。
+  主线仍为结构化检索语料；若日后重启，需先定：答案键规则、disputed 机制、与知识库的版本隔离。
+
+
+- **2026-10-31 07:5x｜P0 完成（检索语料主线）**
+  P0-1 出处精确化：修复拆分块 location 冲突（加 #序号），source 增加 char_start/char_end/origin；
+    新增 provenance.jsonl 与 tools/verify_citations.py，语料来源 55/55 逐字命中、字符区间 100% 一致。
+  P0-2 检索召回：归一化（全半角/繁简/标点/大小写）+ 错字容忍（difflib）；新增 6 条召回测试。
+  P0-3 引用模式：HTTP `format=citations` 与 MCP `mcai_answer(format="citations")`，只返回出处。
+  测试 90 条全通过。提交 bc3c44a / 560ff10。
