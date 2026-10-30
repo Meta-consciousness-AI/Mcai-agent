@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Meta-consciousness-AI/mcai-knowledge",
   "title": "MCAI Knowledge Base",
-  "description": "Structured knowledge base for the Meta-Consciousness Theory: term definitions, concept relations, and source citations, callable by AI agents via MCP.",
+  "description": "Meta-Consciousness Theory knowledge base: definitions, relations and citations for AI agents.",
   "status": "active",
   "repository": {
     "url": "https://github.com/Meta-consciousness-AI/mcai-agent",
