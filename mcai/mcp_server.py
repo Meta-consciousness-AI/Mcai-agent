@@ -35,6 +35,12 @@ TOOLS = [
                         "什么是元意识",
                         "元灵和元子有什么区别"
                     ]
+                },
+                "format": {
+                    "type": "string",
+                    "enum": ["full", "citations"],
+                    "default": "full",
+                    "description": "full returns the answer with citations; citations returns only the source citations for the answer, for RAG or audit use."
                 }
             },
             "required": [
@@ -201,7 +207,14 @@ def _error(message: str) -> dict:
 
 def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
     if name == "mcai_answer":
-        return _text(kb.answer(str(args.get("question", ""))))
+        result = kb.answer(str(args.get("question", "")))
+        if str(args.get("format", "full")).lower() in ("citations", "cite"):
+            return _text({
+                "question": result.get("question", ""),
+                "type": result.get("type"),
+                "citations": result.get("citations", []),
+            })
+        return _text(result)
     if name == "mcai_concept":
         concept = kb.resolve(str(args.get("term", "")))
         if not concept:

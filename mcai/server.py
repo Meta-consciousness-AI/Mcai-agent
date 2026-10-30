@@ -277,6 +277,9 @@ class Handler(BaseHTTPRequestHandler):
             elif fmt == "text":
                 payload = {"ok": True, "format": "text", "type": result.get("type"),
                            "text": result.get("answer", "")}
+            elif fmt in ("citations", "cite"):
+                payload = {"ok": True, "format": "citations", "type": result.get("type"),
+                           "citations": result.get("citations", [])}
             else:
                 payload = result
             self._tele(payload, "answer", q)

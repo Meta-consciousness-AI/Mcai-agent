@@ -5,11 +5,33 @@
 """
 from __future__ import annotations
 
+import difflib
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 from .text import clean, normalize
+
+
+# 常见繁体字 → 简体字（覆盖术语与常见查询用字）
+_TRAD_TO_SIMP = str.maketrans({
+    "識": "识", "靈": "灵", "體": "体", "觀": "观", "測": "测", "創": "创",
+    "實": "实", "現": "现", "態": "态", "時": "时", "間": "间", "網": "网",
+    "場": "场", "際": "际", "學": "学", "說": "说", "義": "义", "認": "认",
+    "覺": "觉", "層": "层", "級": "级", "關": "关", "係": "系", "轉": "转",
+    "變": "变", "數": "数", "據": "据", "資": "资", "產": "产", "權": "权",
+    "證": "证", "書": "书", "讀": "读", "語": "语", "詞": "词", "彙": "汇",
+    "標": "标", "準": "准", "規": "规", "範": "范", "構": "构", "設": "设",
+    "計": "计", "應": "应", "場": "场", "質": "质", "量": "量", "問": "问",
+    "題": "题", "點": "点", "線": "线", "圖": "图", "譜": "谱", "鏈": "链",
+})
+
+
+def _norm(text: str) -> str:
+    """归一化：全半角、大小写、繁简、空白与标点。"""
+    t = unicodedata.normalize("NFKC", text or "").lower().translate(_TRAD_TO_SIMP)
+    return re.sub(r"[\s\W_]+", "", t, flags=re.UNICODE)
 
 
 def _bigrams(text: str) -> set[str]:
@@ -45,7 +67,7 @@ class Knowledge:
                 self._alias.setdefault(a, c)
         self._faq_grams = [(f, _bigrams(f["question"])) for f in self.faqs]
         self._concept_grams = {
-            c["slug"]: (_bigrams(c["term"]), _bigrams(c.get("definition", "")))
+            c["slug"]: (_bigrams(_norm(c["term"])), _bigrams(_norm(c.get("definition", ""))))
             for c in self.concepts
         }
 
@@ -65,28 +87,39 @@ class Knowledge:
 
     def search(self, query: str, limit: int = 10, category: str | None = None) -> list[dict]:
         q = clean(query)
-        if not q:
+        qn = _norm(q)
+        if not qn:
             return []
-        ql = q.lower()
-        qg = _bigrams(q)
+        qg = _bigrams(qn)
         scored: list[tuple[float, dict]] = []
         for c in self.concepts:
             if category and c.get("category") != category:
                 continue
+            term = _norm(c["term"])
+            en = _norm(c.get("en") or "")
+            aliases = [_norm(a) for a in (c.get("aliases") or []) if a]
             score = 0.0
-            if ql == c["term"].lower():
+            if qn == term:
                 score += 100
-            elif ql == (c.get("en") or "").lower() and c.get("en"):
+            elif en and qn == en:
                 score += 95
-            elif any(ql == a.lower() for a in c.get("aliases") or []):
+            elif qn in aliases:
                 score += 90
-            elif ql in c["term"].lower():
+            elif qn in term:
                 score += 60
-            elif any(ql in a.lower() for a in c.get("aliases") or []):
+            elif any(qn in a for a in aliases):
                 score += 55
-            body = c.get("definition", "")
-            if ql in body:
+            body = _norm(c.get("definition", ""))
+            if qn in body:
                 score += 30
+            # 错字容忍：与术语或别名相近时给部分分
+            if len(qn) >= 2:
+                ratio = max(
+                    [difflib.SequenceMatcher(None, qn, term).ratio()]
+                    + [difflib.SequenceMatcher(None, qn, a).ratio() for a in aliases]
+                )
+                if ratio >= 0.66:
+                    score += 45 * ratio
             term_grams, def_grams = self._concept_grams[c["slug"]]
             overlap = _jaccard(qg, term_grams)
             if overlap:
