@@ -264,3 +264,10 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   站点：每页 canonical + OG 标签；新增 llms-full.txt（全部定义/出处/核心关系/问答）。
   数据集：新增 relations.jsonl（270 条，core 18 / derived 6 / mention 246）。
   线上验证：首页、概念页、FAQ 页 canonical 正确；llms-full 200；relations.jsonl 200。
+
+
+- **2026-10-31 13:4x｜第二语料复现完成（孙子兵法）**
+  工作区 workspaces/sunzi：13 概念 / 17 问答 / 6 关系 / 9 引证；引文核验 13/13 逐字命中、字符区间一致。
+  复现暴露并修复：中文数字开头术语被误杀（五事/九地）、txt 文档无唯一位置号、过短定义未识别。
+  结论：方法可迁移；词表与核心关系仍需人工；规范 V1.1 需补「术语—原句对照表」与「数字开头术语」两条。
+  详见 docs/复现案例-孙子兵法.md，提交 6defae0。
