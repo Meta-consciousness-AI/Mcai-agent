@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 from .extract import KnowledgeBase
+from . import __version__ as _PKG_VERSION
 
 
 def _base(project: dict) -> str:
@@ -64,7 +65,7 @@ def agent_card(kb: KnowledgeBase, project: dict) -> dict:
             "不臆造理论，资料未涉及时会明确说明。"
         ),
         "url": base,
-        "version": project.get("version", "0.1.0"),
+        "version": project.get("version") or _PKG_VERSION,
         "provider": {"organization": project.get("org", ""), "url": base},
         "capabilities": {"streaming": False, "pushNotifications": False, "stateTransitionHistory": False},
         "defaultInputModes": ["text/plain"],
@@ -108,7 +109,7 @@ def openapi(kb: KnowledgeBase, project: dict) -> dict:
         "openapi": "3.1.0",
         "info": {
             "title": f"{project['brand']}知识库 API",
-            "version": project.get("version", "0.1.0"),
+            "version": project.get("version") or _PKG_VERSION,
             "description": f"术语、问答与概念关系查询。共 {kb.stats['concepts']} 个术语。",
         },
         "servers": [{"url": f"{base}/api/v1"}],

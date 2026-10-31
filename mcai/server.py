@@ -267,7 +267,8 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/api/v1/health":
             stats = kb.meta.get("stats", {})
             payload = {
-                "ok": True, "name": "mcai-knowledge", "version": "0.1.0",
+                "ok": True, "name": "mcai-knowledge",
+                "version": (kb.get("meta", {}).get("project", {}) or {}).get("version", ""),
                 "built_at": kb.meta.get("built_at"),
                 "concepts": stats.get("concepts"), "faqs": stats.get("faqs"),
                 "relations": stats.get("relations"), "evidence": stats.get("evidence"),
