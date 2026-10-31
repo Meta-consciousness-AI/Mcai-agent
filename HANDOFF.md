@@ -309,3 +309,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   引用、MCP 词条、数据集 provenance、站点「定义来源」均显示版本；64/64 词条页带版本标注。
   修复：站点证据区块复用 quotes 变量导致定义引文的版本被覆盖。
   测试 107 通过；规范 V1.2 md/docx/pdf 已生成（8 页）。提交 16dcc8b、d07d2d5。发布待定。
+
+
+- **2026-10-31 20:2x｜规范 V1.2 发布（Zenodo）**
+  DOI 10.5281/zenodo.23836301，版本 1.2，文件 `规范-学说知识资产化-v1.2.pdf`，8 页；许可 CC BY-NC-SA 4.0，语言中文。
+  描述含中英双段与 edition 说明；关键词新增「版本管理」「edition」。
+  README 的 Spec DOI 已指向 1.2；V1.1 记录 23831131 保留。
