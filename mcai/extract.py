@@ -10,7 +10,7 @@ from pathlib import Path
 from . import text as T
 from .corpus import Block, Corpus
 
-TERM_RE = re.compile(r"^\s*([^：:，。；、！？()（）《》\"']{2,16})\s*(?:[：:]|——|—|＝|=)\s*(.+)$")
+TERM_RE = re.compile(r"^\s*([^：:，。；、！？()（）《》\"']{1,16})\s*(?:[：:]|——|—|＝|=)\s*(.+)$")
 _BAD_TERM = re.compile(r"^(\d+[、.．)]?|[A-Za-z]{1,2}[.)、]?|[一二三四五六七八九十]+[、.．)])")
 _ALIAS_PATTERNS = [
     re.compile(r"[，,]\s*(?:又称|也称|亦称|简称|俗称|又名)([\u4e00-\u9fa5A-Za-z]{2,12})"),
@@ -167,7 +167,11 @@ class KnowledgeBase:
 
 def _reject_term(term: str, blacklist: list[str], curated: dict) -> bool:
     term = term.strip().strip("—-－ ")
-    if not (2 <= len(term) <= 16):
+    allowed = {t for members in curated.get("categories", {}).values() for t in members}
+    if not (1 <= len(term) <= 16):
+        return True
+    # 先秦文本常见单字术语（性、情、名），只接受人工分类中明确列出的
+    if len(term) == 1 and term not in allowed:
         return True
     if term in blacklist or term in curated.get("drop_terms", []):
         return True

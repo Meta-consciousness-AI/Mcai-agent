@@ -11,7 +11,7 @@ from . import pdftext
 from .text import clean
 
 TERM_LINE = re.compile(
-    r"^\s*([^\s：:，。；、！？()（）《》\"']{2,16})\s*(?:[：:]|——|—|＝|=)\s*(.{8,})$"
+    r"^\s*([^\s：:，。；、！？()（）《》\"']{1,16})\s*(?:[：:]|——|—|＝|=)\s*(.{8,})$"
 )
 _HEADING_STYLE = re.compile(r"^(Heading|标题)\s*(\d)?", re.I)
 _HEADING_NOISE = re.compile(r"[。！？；，,;]$")

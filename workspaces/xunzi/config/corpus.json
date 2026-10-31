@@ -1,0 +1,33 @@
+{
+  "project": {
+    "name": "荀子·正名（复现案例）",
+    "brand": "荀子正名",
+    "org": "公共领域 · 复现案例",
+    "version": "0.1.0",
+    "site_url": "http://127.0.0.1:8787",
+    "license": "Public Domain"
+  },
+  "corpus": [
+    {
+      "id": "xunzi-glossary",
+      "path": "corpus/glossary.txt",
+      "title": "荀子·正名·核心术语",
+      "kind": "glossary",
+      "priority": 100
+    },
+    {
+      "id": "xunzi-text",
+      "path": "corpus/xunzi.txt",
+      "title": "荀子·正名·原文",
+      "kind": "evidence",
+      "priority": 80
+    }
+  ],
+  "keywords": [
+    "荀子",
+    "正名",
+    "名实"
+  ],
+  "term_blacklist": [],
+  "slugs": {}
+}
