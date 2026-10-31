@@ -285,3 +285,11 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   代码同步：Concept 增加 definition_type/editor_note；MCP 词条返回两字段；站点在 editor_note 存在时显示「编者释义（非原文）」。
   验证状态：三语料复现 + 远程 MCP 已列入「已验证」；定义分层留待道德经类文本验证（V1.2）。
   提交 7b9f6d7。
+
+
+- **2026-10-31 14:2x｜第四语料复现完成（道德经，定义分层验证）**
+  工作区 workspaces/daodejing：10 概念 / 8 问答 / 7 关系 / 10 引证；引文 10/10；全部 definition_type=editor。
+  验证：answer 返回 definition_type 与独立 editor_note；词条页显示「编者释义（非原文）」；MCP 词条含两字段。
+  新发现：同一经典版本差异（见素抱扑 vs 抱朴、水利 vs 水善利），引文必须按所据版本逐字保留，不能按通行本「更正」。
+  规范 V1.2 待补：语料与引证记录 edition（版本/来源/校勘），多版本引证并存不合并不改字。
+  提交 3c6983e。
