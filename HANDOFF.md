@@ -251,3 +251,10 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-10-31 08:0x｜0.2.8 发布完成**
   PyPI / MCP 注册表 0.2.8；GitHub 4137e579；Glama 同步并构建成功（08:00）。
   内容：出处精确化（55/55 核验）、检索归一化与错字容忍、`format=citations` 引用模式。
+
+
+- **2026-10-31 12:0x｜远程 MCP 上线（CloudBase 云托管）**
+  服务：mcai-mcp-gitee；地址：https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
+  规格：1 核 2G，最小实例 0、最大 5；端口 8080；令牌由环境变量 MCAI_TOKEN 注入。
+  已验证：GET / 200、initialize 200、tools/list 5、tools/call 正常、无令牌 401。
+  旧的失败服务 mcai-mcp 已删除；新增 deploy/push-gitee.ps1 与 推送Gitee.cmd（Gitee 令牌经剪贴板读取）。

@@ -286,8 +286,16 @@ mcai-mcp                # 或 mcai mcp；stdio + JSON-RPC 2.0
 
 #### 远程 MCP（Streamable HTTP）
 
+自托管：
+
 ```bash
 mcai serve --host 0.0.0.0 --port 8787 --token <令牌>
+```
+
+公共实例（需向维护者申请令牌）：
+
+```
+https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
 ```
 
 客户端配置：
