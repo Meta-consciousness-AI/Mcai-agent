@@ -402,7 +402,8 @@ def render_dataset(kb: KnowledgeBase) -> str:
     project = kb.project
     cats = "".join(f"<tr><td>{_esc(k)}</td><td>{v}</td></tr>" for k, v in kb.stats["categories"].items())
     docs = "".join(
-        f"<tr><td>《{_esc(d['title'])}》</td><td>{_esc(d['kind'])}</td><td>{d['blocks']}</td></tr>"
+        f"<tr><td>《{_esc(d['title'])}》</td><td>{_esc(d['kind'])}</td><td>{d['blocks']}</td>"
+        f"<td>{_esc(d.get('edition', ''))}</td></tr>"
         for d in kb.documents
     )
     body = f"""<main><div class="wrap" style="max-width:820px">
@@ -412,6 +413,8 @@ def render_dataset(kb: KnowledgeBase) -> str:
   每次重建都会更新。</p>
   <p><a class="btn" href="/dataset/concepts.jsonl" download>下载 concepts.jsonl</a>
      <a class="btn ghost" href="/dataset/faq.jsonl" download>下载 faq.jsonl</a>
+     <a class="btn ghost" href="/dataset/relations.jsonl" download>概念关系</a>
+     <a class="btn ghost" href="/dataset/provenance.jsonl" download>逐条出处</a>
      <a class="btn ghost" href="/dataset/evidence.jsonl" download>文献引证</a>
      <a class="btn ghost" href="/dataset/knowledge-graph.json" download>知识图谱</a></p>
 </section>
@@ -420,6 +423,8 @@ def render_dataset(kb: KnowledgeBase) -> str:
   <tr><td>concepts.jsonl</td><td>概念定义，一行一条，含别名、英文、分类与来源</td></tr>
   <tr><td>faq.jsonl</td><td>标准问答，含置信度与关联概念</td></tr>
   <tr><td>evidence.jsonl</td><td>文献引证：{kb.stats.get('evidence', 0)} 条概念论述原句，标注出处与语种</td></tr>
+  <tr><td>relations.jsonl</td><td>概念关系：from / to / type / tier（core · derived · mention）</td></tr>
+  <tr><td>provenance.jsonl</td><td>逐条出处：文档、章节、位置、字符区间、来源类型与 <code>edition</code> 版本</td></tr>
   <tr><td>sft.jsonl</td><td>对话微调格式（system / user / assistant）</td></tr>
   <tr><td>concepts.csv</td><td>表格版，供运营审阅与录入 CMS</td></tr>
   <tr><td>knowledge-graph.json</td><td>节点 {len(kb.concepts)} · 边 {kb.stats['relations']}</td></tr>
@@ -484,7 +489,8 @@ def render_llms_full(kb: KnowledgeBase) -> str:
         lines += [c.definition, ""]
         if c.sources:
             s = c.sources[0]
-            lines += [f"出处：{s.doc_title} · {s.section}（{s.location}）", ""]
+            edition = f"〔版本：{s.edition}〕" if getattr(s, "edition", "") else ""
+            lines += [f"出处：{s.doc_title} · {s.section}（{s.location}）{edition}", ""]
         rel = [r for r in c.relations if r.get("tier") != "mention"][:6]
         if rel:
             lines += ["关系：" + "；".join(f"{r['type']} {r['target']}" for r in rel), ""]

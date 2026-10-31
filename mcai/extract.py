@@ -422,7 +422,8 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
 
     documents = [
         {"id": d.doc_id, "title": d.title, "path": d.path, "kind": d.kind,
-         "priority": d.priority, "blocks": len(d.blocks), "sections": len(d.sections())}
+         "priority": d.priority, "edition": d.edition,
+         "blocks": len(d.blocks), "sections": len(d.sections())}
         for d in corpus.documents
     ]
     stats = _stats(concepts, faqs, curated, corpus, evidence_count, disambig)
