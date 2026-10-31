@@ -315,3 +315,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   DOI 10.5281/zenodo.23836301，版本 1.2，文件 `规范-学说知识资产化-v1.2.pdf`，8 页；许可 CC BY-NC-SA 4.0，语言中文。
   描述含中英双段与 edition 说明；关键词新增「版本管理」「edition」。
   README 的 Spec DOI 已指向 1.2；V1.1 记录 23831131 保留。
+
+
+- **2026-10-31 20:3x｜0.3.0 发布**
+  PyPI 0.3.0（wheel 165 KB，包内 KB 含 edition/definition_type）；GitHub `184dcee`；MCP 注册表 0.3.0 已提交；Glama 已触发同步与构建（邮件已到）。
+  打包脚本修正：构建 wheel 前把 data/kb.json 同步进 mcai/data/default，避免包内旧数据。
+  人工裁定来源补 edition=「人工裁定」；测试 107 通过。
