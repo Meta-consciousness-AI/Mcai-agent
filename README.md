@@ -7,6 +7,8 @@
 - Install: `pip install mcai-knowledge` (the full knowledge base ships with the package)
 - MCP: run `mcai-mcp`; 5 tools — answer, concept, search, related, list
 - Dataset DOI: https://doi.org/10.5281/zenodo.23789330
+- Spec DOI: https://doi.org/10.5281/zenodo.23831131
+- Preprint DOI: https://doi.org/10.5281/zenodo.23830600
 - Site: https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
 - License: code MIT, content CC BY-NC-SA 4.0
 
@@ -23,6 +25,8 @@
 - 站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
 - 数据集：https://modelscope.cn/datasets/Metaconsciousness/mcai-knowledge
 - DOI：https://doi.org/10.5281/zenodo.23789330
+- 规范 V1.1：https://doi.org/10.5281/zenodo.23831131
+- 预印本 v1.1：https://doi.org/10.5281/zenodo.23830600
 - Gitee 镜像：https://gitee.com/Meta-consciousness-AI/Mcai-agent
 
 ---
