@@ -83,6 +83,19 @@ def export(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     ]
     _write_jsonl(out / "provenance.jsonl", provenance_rows)
 
+    relation_rows = [
+        {
+            "from": c.term,
+            "to": r.get("target", ""),
+            "type": r.get("type", ""),
+            "tier": r.get("tier", "core"),
+            "evidence": r.get("evidence", ""),
+        }
+        for c in kb.concepts
+        for r in c.relations
+    ]
+    _write_jsonl(out / "relations.jsonl", relation_rows)
+
     faqs = [
         {
             "id": f.id,

@@ -138,7 +138,11 @@ def _jsonld(data: dict | list) -> str:
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
 
-def _page(project: dict, title: str, body: str, head_extra: str = "", active: str = "") -> str:
+def _page(project: dict, title: str, body: str, head_extra: str = "", active: str = "",
+          path: str = "index.html", description: str = "") -> str:
+    base = project["site_url"].rstrip("/")
+    canonical = f"{base}/{path.lstrip('/')}"
+    desc = description or f"{project['brand']}学说的结构化知识资产：术语定义、标准问答、知识图谱与开放数据集。"
     nav = [
         ("index.html", "概念", "concepts"),
         ("faq/index.html", "问答", "faq"),
@@ -155,7 +159,13 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{_esc(title)}</title>
-<meta name="description" content="{_esc(project['brand'])}学说的结构化知识资产：术语定义、标准问答、知识图谱与开放数据集。">
+<meta name="description" content="{_esc(desc)}">
+<link rel="canonical" href="{_esc(canonical)}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{_esc(title)}">
+<meta property="og:description" content="{_esc(desc)}">
+<meta property="og:url" content="{_esc(canonical)}">
+<meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="/assets/style.css">
 {head_extra}
 </head>
@@ -225,7 +235,8 @@ def render_index(kb: KnowledgeBase) -> str:
 </section>
 </main>"""
     head = _jsonld(schema.defined_term_set(kb, project))
-    return _page(project, f"{project['brand']}学说 · 结构化知识库", body, head, "concepts")
+    return _page(project, f"{project['brand']}学说 · 结构化知识库", body, head, "concepts",
+                 path="index.html")
 
 
 def render_concept(kb: KnowledgeBase, c: Concept) -> str:
@@ -346,7 +357,8 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
     )
     if faqs:
         head += _jsonld(schema.faq_page(faqs, project, f"{c.term} · 相关问答"))
-    return _page(project, f"{c.term} · {project['brand']}术语", body, head, "concepts")
+    return _page(project, f"{c.term} · {project['brand']}术语", body, head, "concepts",
+                 path=f"concepts/{c.slug}.html", description=c.short_definition)
 
 
 def render_faq(kb: KnowledgeBase) -> str:
@@ -379,7 +391,8 @@ def render_faq(kb: KnowledgeBase) -> str:
 {''.join(sections)}
 <div style="height:64px"></div>
 </div></main>"""
-    return _page(project, f"问答 · {project['brand']}学说", body, _jsonld(schema.faq_page(kb.faqs, project)), "faq")
+    return _page(project, f"问答 · {project['brand']}学说", body, _jsonld(schema.faq_page(kb.faqs, project)), "faq",
+                 path="faq/index.html")
 
 
 def render_dataset(kb: KnowledgeBase) -> str:
@@ -415,7 +428,8 @@ def render_dataset(kb: KnowledgeBase) -> str:
 <table class="kv">{docs}</table>
 <div style="height:48px"></div>
 </div></main>"""
-    return _page(project, f"数据集 · {project['brand']}学说", body, _jsonld(schema.dataset(kb, project)), "dataset")
+    return _page(project, f"数据集 · {project['brand']}学说", body, _jsonld(schema.dataset(kb, project)), "dataset",
+                 path="dataset/index.html")
 
 
 def render_llms_txt(kb: KnowledgeBase) -> str:
@@ -439,7 +453,8 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
     lines += ["", "## 问答", ""]
     for f in kb.faqs[:40]:
         lines.append(f"- {f.question} → {base}/faq/index.html#{f.id}")
-    lines += ["", "## 数据集", "", f"- {base}/dataset/concepts.jsonl", f"- {base}/dataset/faq.jsonl"]
+    lines += ["", "## 数据集", "", f"- {base}/dataset/concepts.jsonl", f"- {base}/dataset/faq.jsonl",
+              f"- {base}/llms-full.txt（全文索引：全部定义、出处、核心关系与问答）"]
     lines += ["", "## 接入", "",
               f"- HTTP API: {base}/api/v1",
               f"- MCP 清单: {base}/.well-known/mcp.json",
@@ -447,6 +462,33 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
               f"- OpenAPI: {base}/openapi.json",
               f"- 接入指南: {base}/guide.md"]
     return "\n".join(lines) + "\n"
+
+
+def render_llms_full(kb: KnowledgeBase) -> str:
+    """面向 LLM 的全文版索引：全部定义、出处、核心关系与问答。"""
+    project = kb.project
+    lines = [
+        f"# {project['brand']}学说知识库（全文）",
+        "",
+        f"> 共 {len(kb.concepts)} 个概念、{len(kb.faqs)} 组问答。每条定义带出处；关系仅列 core/derived，不含「提及」。",
+        "",
+    ]
+    for c in kb.concepts:
+        head = f"## {c.term}" + (f"（{c.en}）" if c.en else "")
+        lines += [head, ""]
+        if c.aliases:
+            lines += ["别名：" + "、".join(c.aliases), ""]
+        lines += [c.definition, ""]
+        if c.sources:
+            s = c.sources[0]
+            lines += [f"出处：{s.doc_title} · {s.section}（{s.location}）", ""]
+        rel = [r for r in c.relations if r.get("tier") != "mention"][:6]
+        if rel:
+            lines += ["关系：" + "；".join(f"{r['type']} {r['target']}" for r in rel), ""]
+    lines += ["## 问答", ""]
+    for f in kb.faqs:
+        lines += [f"### {f.question}", f.answer, ""]
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
@@ -467,6 +509,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
         (out / "concepts" / f"{c.slug}.html").write_text(render_concept(kb, c), encoding="utf-8")
 
     (out / "llms.txt").write_text(render_llms_txt(kb), encoding="utf-8")
+    (out / "llms-full.txt").write_text(render_llms_full(kb), encoding="utf-8")
     (out / "robots.txt").write_text(
         "User-agent: *\nAllow: /\nSitemap: {}/sitemap.xml\n".format(kb.project["site_url"].rstrip("/")),
         encoding="utf-8",
