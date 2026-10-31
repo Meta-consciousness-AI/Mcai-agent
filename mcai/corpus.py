@@ -172,9 +172,9 @@ def _text_blocks(doc: Document, path: Path, style: str) -> list[Block]:
             title = text.lstrip("#").strip()
             del section[level - 1:]
             section.append(title)
-            blocks.append(Block(doc.doc_id, doc.title, len(blocks), title, style, tuple(section), ""))
+            blocks.append(Block(doc.doc_id, doc.title, len(blocks), title, style, tuple(section), f"l{len(blocks) + 1}"))
         else:
-            blocks.append(Block(doc.doc_id, doc.title, len(blocks), text, style, tuple(section), ""))
+            blocks.append(Block(doc.doc_id, doc.title, len(blocks), text, style, tuple(section), f"l{len(blocks) + 1}"))
     return blocks
 
 

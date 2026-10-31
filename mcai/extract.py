@@ -11,7 +11,7 @@ from . import text as T
 from .corpus import Block, Corpus
 
 TERM_RE = re.compile(r"^\s*([^：:，。；、！？()（）《》\"']{2,16})\s*(?:[：:]|——|—|＝|=)\s*(.+)$")
-_BAD_TERM = re.compile(r"^(\d+|[A-Za-z]{1,2}|[一二三四五六七八九十]+[、.．]?)")
+_BAD_TERM = re.compile(r"^(\d+[、.．)]?|[A-Za-z]{1,2}[.)、]?|[一二三四五六七八九十]+[、.．)])")
 _ALIAS_PATTERNS = [
     re.compile(r"[，,]\s*(?:又称|也称|亦称|简称|俗称|又名)([\u4e00-\u9fa5A-Za-z]{2,12})"),
     re.compile(r"(?:也就是|即|即所谓)([\u4e00-\u9fa5]{2,10})"),

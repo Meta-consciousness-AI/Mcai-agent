@@ -1,0 +1,79 @@
+{
+  "english": {
+    "五事": "Five Factors",
+    "诡道": "Deception",
+    "庙算": "Temple Calculations",
+    "全胜": "Complete Victory",
+    "奇正": "Extraordinary and Normal",
+    "虚实": "Empty and Solid",
+    "分数": "Organization",
+    "形名": "Signals",
+    "九地": "Nine Terrains",
+    "用间": "Espionage",
+    "知彼知己": "Knowing Enemy and Self",
+    "先胜": "Victory First",
+    "任势": "Leveraging Momentum"
+  },
+  "categories": {
+    "战略": [
+      "五事",
+      "庙算",
+      "全胜",
+      "先胜"
+    ],
+    "战术": [
+      "诡道",
+      "奇正",
+      "虚实",
+      "任势"
+    ],
+    "组织与指挥": [
+      "分数",
+      "形名"
+    ],
+    "地形": [
+      "九地"
+    ],
+    "情报": [
+      "用间"
+    ],
+    "认识论": [
+      "知彼知己"
+    ]
+  },
+  "term_aliases": {},
+  "core_loop": [
+    [
+      "庙算",
+      "先胜",
+      "前提"
+    ],
+    [
+      "先胜",
+      "全胜",
+      "目标"
+    ],
+    [
+      "奇正",
+      "虚实",
+      "互补"
+    ],
+    [
+      "虚实",
+      "任势",
+      "支撑"
+    ],
+    [
+      "知彼知己",
+      "用间",
+      "依赖"
+    ],
+    [
+      "九地",
+      "虚实",
+      "情境"
+    ]
+  ],
+  "seed_faqs": [],
+  "extra_concepts": []
+}

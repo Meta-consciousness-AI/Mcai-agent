@@ -1,0 +1,33 @@
+{
+  "project": {
+    "name": "孙子兵法（复现案例）",
+    "brand": "孙子兵法",
+    "site_url": "http://127.0.0.1:8787",
+    "license": "Public Domain",
+    "org": "公共领域 · 复现案例",
+    "version": "0.1.0"
+  },
+  "corpus": [
+    {
+      "id": "sunzi-glossary",
+      "path": "corpus/glossary.txt",
+      "title": "孙子兵法·核心术语",
+      "kind": "glossary",
+      "priority": 100
+    },
+    {
+      "id": "sunzi-text",
+      "path": "corpus/sunzi.txt",
+      "title": "孙子兵法·原文",
+      "kind": "evidence",
+      "priority": 80
+    }
+  ],
+  "keywords": [
+    "孙子兵法",
+    "战略",
+    "战术"
+  ],
+  "term_blacklist": [],
+  "slugs": {}
+}
