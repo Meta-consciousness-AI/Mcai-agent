@@ -1,0 +1,116 @@
+{
+  "english": {
+    "道": "Dao",
+    "德": "De",
+    "无": "Non-being",
+    "有": "Being",
+    "自然": "Naturalness",
+    "无为": "Non-action",
+    "反": "Return",
+    "朴": "Uncarved Block",
+    "玄同": "Mysterious Unity",
+    "上善": "Highest Good"
+  },
+  "categories": {
+    "本体论": [
+      "道",
+      "无",
+      "有"
+    ],
+    "德性论": [
+      "德",
+      "上善"
+    ],
+    "实践论": [
+      "自然",
+      "无为",
+      "反"
+    ],
+    "境界论": [
+      "朴",
+      "玄同"
+    ]
+  },
+  "term_aliases": {},
+  "core_loop": [
+    [
+      "道",
+      "德",
+      "显化"
+    ],
+    [
+      "无",
+      "有",
+      "生成"
+    ],
+    [
+      "道",
+      "自然",
+      "法则"
+    ],
+    [
+      "自然",
+      "无为",
+      "实践"
+    ],
+    [
+      "反",
+      "道",
+      "运动"
+    ],
+    [
+      "德",
+      "上善",
+      "体现"
+    ],
+    [
+      "朴",
+      "玄同",
+      "境界"
+    ]
+  ],
+  "concept_meta": {
+    "道": {
+      "definition_type": "editor",
+      "editor_note": "编者注：宇宙的本源与总规律，不可言说。"
+    },
+    "德": {
+      "definition_type": "editor",
+      "editor_note": "编者注：道在具体事物中的体现。"
+    },
+    "无": {
+      "definition_type": "editor",
+      "editor_note": "编者注：未分化的本源状态。"
+    },
+    "有": {
+      "definition_type": "editor",
+      "editor_note": "编者注：万物得以生成的根据。"
+    },
+    "自然": {
+      "definition_type": "editor",
+      "editor_note": "编者注：自己如此，非外力使然。"
+    },
+    "无为": {
+      "definition_type": "editor",
+      "editor_note": "编者注：不妄为，顺自然而行。"
+    },
+    "反": {
+      "definition_type": "editor",
+      "editor_note": "编者注：循环往复、对立转化。"
+    },
+    "朴": {
+      "definition_type": "editor",
+      "editor_note": "编者注：未雕饰的本真状态。"
+    },
+    "玄同": {
+      "definition_type": "editor",
+      "editor_note": "编者注：消解差别、与道合一。"
+    },
+    "上善": {
+      "definition_type": "editor",
+      "editor_note": "编者注：最高的善，像水一样利万物而不争。"
+    }
+  },
+  "seed_faqs": [],
+  "extra_concepts": []
+}

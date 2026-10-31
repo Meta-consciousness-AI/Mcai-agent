@@ -91,6 +91,8 @@ class Concept:
             "en": self.en,
             "category": self.category,
             "definition": self.definition,
+            "definition_type": self.definition_type,
+            "editor_note": self.editor_note,
             "short_definition": self.short_definition,
             "aliases": self.aliases,
             "tags": self.tags,
@@ -400,6 +402,12 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
             concept.parent_id = by_term_final[concept.parent].id
 
     _link_relations(concepts, curated)
+    concept_meta = curated.get("concept_meta") or {}
+    for concept in concepts:
+        patch = concept_meta.get(concept.term)
+        if patch:
+            concept.definition_type = patch.get("definition_type", "editor")
+            concept.editor_note = patch.get("editor_note", "")
     evidence_count = _attach_evidence(concepts, corpus, curated)
     if disambig is not None and getattr(disambig, "active", False):
         for concept in concepts:

@@ -448,6 +448,8 @@ class Knowledge:
             "question": question,
             "term": concept["term"],
             "answer": concept["definition"],
+            "definition_type": concept.get("definition_type", "quote"),
+            "editor_note": concept.get("editor_note", ""),
             "short_answer": concept.get("short_definition", ""),
             "context": self._context_block(
                 concept["definition"], citations,

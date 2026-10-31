@@ -1,0 +1,33 @@
+{
+  "project": {
+    "name": "道德经（复现案例）",
+    "brand": "道德经",
+    "org": "公共领域 · 复现案例",
+    "version": "0.1.0",
+    "site_url": "http://127.0.0.1:8787",
+    "license": "Public Domain"
+  },
+  "corpus": [
+    {
+      "id": "ddj-glossary",
+      "path": "corpus/glossary.txt",
+      "title": "道德经·核心术语",
+      "kind": "glossary",
+      "priority": 100
+    },
+    {
+      "id": "ddj-text",
+      "path": "corpus/daodejing.txt",
+      "title": "道德经·原文",
+      "kind": "evidence",
+      "priority": 80
+    }
+  ],
+  "keywords": [
+    "道德经",
+    "老子",
+    "道"
+  ],
+  "term_blacklist": [],
+  "slugs": {}
+}
