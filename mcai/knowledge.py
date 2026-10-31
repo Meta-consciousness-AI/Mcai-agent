@@ -209,7 +209,7 @@ class Knowledge:
             if c.get("sources"):
                 s0 = c["sources"][0]
                 citations.append({"doc": s0["doc_title"], "section": s0.get("section", ""),
-                                  "quote": s0.get("quote", "")})
+                                  "quote": s0.get("quote", ""), "edition": s0.get("edition", "")})
         answer = "\n\n".join(lines)
         related = [{"term": c["term"], "slug": c["slug"],
                     "summary": c.get("short_definition", "")} for c in concepts]
@@ -341,7 +341,8 @@ class Knowledge:
         for concept in (a, b):
             if concept.get("sources"):
                 s = concept["sources"][0]
-                citations.append({"doc": s["doc_title"], "section": s.get("section", ""), "quote": s.get("quote", "")})
+                citations.append({"doc": s["doc_title"], "section": s.get("section", ""),
+                                  "quote": s.get("quote", ""), "edition": s.get("edition", "")})
 
         answer = (
             f"{about}\n\n"
@@ -431,7 +432,8 @@ class Knowledge:
 
     def _from_concept(self, concept: dict, question: str) -> dict:
         citations = [
-            {"doc": s["doc_title"], "section": s.get("section", ""), "quote": s.get("quote", "")}
+            {"doc": s["doc_title"], "section": s.get("section", ""),
+             "quote": s.get("quote", ""), "edition": s.get("edition", "")}
             for s in (concept.get("sources") or [])[:2]
         ]
         evidence = sorted(concept.get("evidence") or [], key=lambda e: -e.get("score", 0))
@@ -441,6 +443,7 @@ class Knowledge:
                 "doc": top["doc_title"],
                 "section": top.get("section", ""),
                 "quote": top["quote"],
+                "edition": top.get("edition", ""),
             })
         return {
             "ok": True,
@@ -479,7 +482,8 @@ class Knowledge:
             concept = self.by_term.get(term)
             if concept and concept.get("sources"):
                 s = concept["sources"][0]
-                out.append({"doc": s["doc_title"], "section": s.get("section", ""), "quote": s.get("quote", "")})
+                out.append({"doc": s["doc_title"], "section": s.get("section", ""),
+                            "quote": s.get("quote", ""), "edition": s.get("edition", "")})
                 break
         return out
 

@@ -39,6 +39,7 @@ class Document:
     path: str
     kind: str
     priority: int
+    edition: str = ""
     blocks: list[Block] = field(default_factory=list)
 
     @property
@@ -197,6 +198,7 @@ def load_document(spec: dict, base: Path | None = None) -> Document:
         path=str(path),
         kind=spec.get("kind", "other"),
         priority=int(spec.get("priority", 50)),
+        edition=str(spec.get("edition") or ""),
     )
     if not path.exists():
         raise FileNotFoundError(f"语料缺失：{path}")

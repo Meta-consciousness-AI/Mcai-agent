@@ -281,7 +281,9 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
         f'<div class="faq-item"><h3>{_esc(f.question)}</h3><p>{_esc(f.answer)}</p></div>' for f in faqs
     )
     quotes = "".join(
-        f'<blockquote>{_esc(s.quote)}<cite>{_esc(_doc_label(s.doc_title))} · {_esc(s.section or "正文")}</cite></blockquote>'
+        f'<blockquote>{_esc(s.quote)}<cite>{_esc(_doc_label(s.doc_title))} · {_esc(s.section or "正文")}'
+        + (f' · 版本：{_esc(s.edition)}' if getattr(s, "edition", "") else "")
+        + '</cite></blockquote>'
         for s in c.sources
     )
     variants = ""
@@ -299,12 +301,12 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
             groups.setdefault(item["doc_title"], []).append(item)
         parts = []
         for doc_title, items in groups.items():
-            quotes = "".join(
+            ev_quotes = "".join(
                 f'<blockquote>{_esc(i["quote"])}<cite>{"EN · " if i["lang"] == "en" else ""}'
                 f'{_esc(_doc_label(doc_title))} · {_esc(i["section"] or "正文")}</cite></blockquote>'
                 for i in items
             )
-            parts.append(f'<h3 class="doc-title">{_esc(doc_title)}</h3><div class="quotes">{quotes}</div>')
+            parts.append(f'<h3 class="doc-title">{_esc(doc_title)}</h3><div class="quotes">{ev_quotes}</div>')
         evidence_html = '<h2 class="sec">文献引证</h2>' + "".join(parts)
 
     alias_line = ""

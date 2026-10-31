@@ -32,6 +32,7 @@ class Source:
     char_start: int = -1
     char_end: int = -1
     origin: str = "corpus"
+    edition: str = ""
 
 
 @dataclass
@@ -301,6 +302,7 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
     hits.extend(_override_hits(corpus, overrides))
 
     grouped: dict[str, list[tuple[str, Block]]] = {}
+    doc_editions = {d.doc_id: d.edition for d in corpus.documents}
     for term, definition, block in hits:
         grouped.setdefault(term, []).append((definition, block))
 
@@ -343,6 +345,7 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
                     char_start=idx,
                     char_end=(idx + len(definition)) if idx >= 0 else -1,
                     origin=("curated" if block.location == "curated" else "corpus"),
+                    edition=doc_editions.get(block.doc_id, ""),
                 )
             )
 

@@ -76,6 +76,7 @@ def export(kb: KnowledgeBase, out_dir: str | Path) -> dict:
             "char_start": s.get("char_start", -1),
             "char_end": s.get("char_end", -1),
             "origin": s.get("origin", "corpus"),
+            "edition": s.get("edition", ""),
             "quote": s.get("quote", ""),
         }
         for c in kb.concepts

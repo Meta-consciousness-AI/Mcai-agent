@@ -355,7 +355,9 @@ def _concept_markdown(c: dict) -> str:
         lines.append(f"衍生自：{c['parent']}")
     if c.get("sources"):
         lines += ["", "## 定义来源"]
-        lines += [f"- {s['doc_title']}（{s.get('section', '')}）" for s in c["sources"]]
+        lines += [f"- {s['doc_title']}（{s.get('section', '')}）"
+                  + (f" · 版本：{s['edition']}" if s.get("edition") else "")
+                  for s in c["sources"]]
     if c.get("evidence"):
         lines += ["", "## 文献引证"]
         lines += [f"- 「{e['quote']}」——{e['doc_title']}" for e in c["evidence"][:3]]
