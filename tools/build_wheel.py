@@ -1,9 +1,17 @@
-import base64, hashlib, zipfile
+import base64, hashlib, shutil, zipfile
 from pathlib import Path
 
 import tomllib
 
 root = Path(".").resolve()
+
+# 打包前把当前知识库同步进包内默认工作区，避免 wheel 里是旧数据
+src_kb = root / "data" / "kb.json"
+dst_kb = root / "mcai" / "data" / "default" / "data" / "kb.json"
+if src_kb.exists():
+    dst_kb.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src_kb, dst_kb)
+
 meta = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]
 version = meta["version"]
 out = root / "dist_pkg" / f"mcai_knowledge-{version}-py3-none-any.whl"

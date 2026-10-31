@@ -345,7 +345,8 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
                     char_start=idx,
                     char_end=(idx + len(definition)) if idx >= 0 else -1,
                     origin=("curated" if block.location == "curated" else "corpus"),
-                    edition=doc_editions.get(block.doc_id, ""),
+                    edition=(doc_editions.get(block.doc_id, "")
+                             or ("人工裁定" if block.location == "curated" else "")),
                 )
             )
 
