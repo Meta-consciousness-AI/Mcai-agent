@@ -268,7 +268,7 @@ class Handler(BaseHTTPRequestHandler):
             stats = kb.meta.get("stats", {})
             payload = {
                 "ok": True, "name": "mcai-knowledge",
-                "version": (kb.get("meta", {}).get("project", {}) or {}).get("version", ""),
+                "version": (kb.meta.get("project") or {}).get("version", ""),
                 "built_at": kb.meta.get("built_at"),
                 "concepts": stats.get("concepts"), "faqs": stats.get("faqs"),
                 "relations": stats.get("relations"), "evidence": stats.get("evidence"),
