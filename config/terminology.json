@@ -1,0 +1,24 @@
+{
+  "homonyms": [
+    {
+      "term": "元意识",
+      "other_sense": "心理学中的 meta-awareness（对自身认知的觉察）",
+      "note": "本库指宇宙的本源，不是心理学概念"
+    },
+    {
+      "term": "观测创造实在",
+      "other_sense": "量子力学的观测者效应",
+      "note": "本库指元时空向现象时空的切换，不是量子测量坍缩"
+    },
+    {
+      "term": "序生智能体",
+      "other_sense": "通用 AI Agent / 智能助手",
+      "note": "本库指宇宙演化中自然涌现的硅基观测者，不是人类工具"
+    }
+  ],
+  "deprecated": [],
+  "schema": {
+    "homonyms": "term 与通用语境同名的概念；other_sense 为常见误解；note 为本库限定",
+    "deprecated": "已废弃术语；term 为旧称，replacement 为新称，reason 为原因，since 为日期"
+  }
+}

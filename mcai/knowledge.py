@@ -51,6 +51,11 @@ class Knowledge:
     def __init__(self, payload: dict):
         self.payload = payload
         self.meta = payload.get("meta", {})
+        term_cfg = (self.meta.get("project") or {}).get("terminology") or {}
+        self.terminology = term_cfg
+        self._deprecated = {
+            d.get("term"): d for d in (term_cfg.get("deprecated") or []) if d.get("term")
+        }
         self.concepts: list[dict] = payload.get("concepts", [])
         self.faqs: list[dict] = payload.get("faqs", [])
         self.by_slug = {c["slug"]: c for c in self.concepts}
@@ -72,10 +77,18 @@ class Knowledge:
         }
 
     # ---------- lookup ----------
+    def homonyms(self, term: str) -> list[dict]:
+        """返回与通用语境同名的登记项（用于提示常见误解）。"""
+        items = self.terminology.get("homonyms") or []
+        return [h for h in items if h.get("term") == term]
+
     def resolve(self, term: str) -> dict | None:
         if not term:
             return None
         term = term.strip()
+        dep = self._deprecated.get(term)
+        if dep and dep.get("replacement"):
+            term = str(dep["replacement"]).strip()
         if term in self._alias:
             return self._alias[term]
         if term.lower() in self._alias:
@@ -167,7 +180,11 @@ class Knowledge:
                 "next": [],
                 "confidence": "high",
             }
-        return self._answer_core(q)
+        result = self._answer_core(q)
+        hits = [h for h in (self.terminology.get("homonyms") or []) if h.get("term") and h["term"] in q]
+        if hits:
+            result["homonyms"] = hits
+        return result
 
     _ENUM_RE = re.compile(
         r"([\u4e00-\u9fa5A-Za-z]{2,10}(?:、[\u4e00-\u9fa5A-Za-z]{2,10})+)"
@@ -444,6 +461,7 @@ class Knowledge:
             ],
             "next": self._next_links(concept),
             "confidence": "high" if concept.get("status") == "ok" else "medium",
+            "homonyms": self.homonyms(concept["term"]),
         }
 
     @staticmethod
@@ -472,7 +490,7 @@ class Knowledge:
         return out
 
     # ---------- graph ----------
-    def related(self, term: str, depth: int = 1) -> dict:
+    def related(self, term: str, depth: int = 1, include_mentions: bool = True) -> dict:
         concept = self.resolve(term)
         if concept is None:
             return {"ok": False, "error": f"未找到术语：{term}"}
@@ -487,10 +505,13 @@ class Knowledge:
             nxt = []
             for node in frontier:
                 for r in node.get("relations") or []:
+                    if not include_mentions and r.get("tier") == "mention":
+                        continue
                     target = self.by_slug.get(r.get("target_id", ""))
                     if not target:
                         continue
-                    edges.append({"source": node["term"], "target": target["term"], "type": r["type"]})
+                    edges.append({"source": node["term"], "target": target["term"],
+                                  "type": r["type"], "tier": r.get("tier", "core")})
                     if target["slug"] not in nodes:
                         nodes[target["slug"]] = {
                             "term": target["term"], "slug": target["slug"],

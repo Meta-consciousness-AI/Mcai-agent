@@ -143,6 +143,11 @@ TOOLS = [
                     "default": 1,
                     "minimum": 1,
                     "maximum": 2
+                },
+                "include_mentions": {
+                    "type": "boolean",
+                    "description": "Include weak co-occurrence ('mention') edges. Default false returns only curated core/derived relations; set true to include mention edges.",
+                    "default": False
                 }
             },
             "required": [
@@ -219,10 +224,12 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
         concept = kb.resolve(str(args.get("term", "")))
         if not concept:
             return _error(f"未找到术语：{args.get('term', '')}")
-        return _text({k: concept.get(k) for k in (
+        payload = {k: concept.get(k) for k in (
             "id", "term", "en", "aliases", "category", "kind", "parent",
             "definition", "short_definition", "status", "sources", "evidence", "relations",
-        )})
+        )}
+        payload["homonyms"] = kb.homonyms(concept["term"])
+        return _text(payload)
     if name == "mcai_search":
         limit = int(args.get("limit", 8) or 8)
         return _text({"query": args.get("query", ""),
@@ -230,7 +237,9 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
                                            category=args.get("category"))})
     if name == "mcai_related":
         depth = int(args.get("depth", 1) or 1)
-        return _text(kb.related(str(args.get("term", "")), depth=depth))
+        include_mentions = bool(args.get("include_mentions", False))
+        return _text(kb.related(str(args.get("term", "")), depth=depth,
+                                include_mentions=include_mentions))
     if name == "mcai_list":
         return _text(kb.catalog(args.get("category")))
     return _error(f"未知工具：{name}")
