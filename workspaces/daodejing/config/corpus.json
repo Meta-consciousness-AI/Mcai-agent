@@ -13,14 +13,16 @@
       "path": "corpus/glossary.txt",
       "title": "道德经·核心术语",
       "kind": "glossary",
-      "priority": 100
+      "priority": 100,
+      "edition": "chinesebooks.github.io《道德经直译》原文"
     },
     {
       "id": "ddj-text",
       "path": "corpus/daodejing.txt",
       "title": "道德经·原文",
       "kind": "evidence",
-      "priority": 80
+      "priority": 80,
+      "edition": "chinesebooks.github.io《道德经直译》原文"
     }
   ],
   "keywords": [

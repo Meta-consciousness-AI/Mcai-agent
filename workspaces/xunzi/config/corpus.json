@@ -13,14 +13,16 @@
       "path": "corpus/glossary.txt",
       "title": "荀子·正名·核心术语",
       "kind": "glossary",
-      "priority": 100
+      "priority": 100,
+      "edition": "chinesebooks.github.io《荀子·正名》原文"
     },
     {
       "id": "xunzi-text",
       "path": "corpus/xunzi.txt",
       "title": "荀子·正名·原文",
       "kind": "evidence",
-      "priority": 80
+      "priority": 80,
+      "edition": "chinesebooks.github.io《荀子·正名》原文"
     }
   ],
   "keywords": [

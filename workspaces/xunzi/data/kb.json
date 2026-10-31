@@ -9,7 +9,7 @@
       "license": "Public Domain",
       "terminology": {}
     },
-    "built_at": "2026-10-31T14:01:32+08:00",
+    "built_at": "2026-10-31T20:14:23+08:00",
     "documents": [
       {
         "id": "xunzi-glossary",
@@ -84,6 +84,8 @@
       "en": "Emotion",
       "category": "人性论",
       "definition": "性之好、恶、喜、怒、哀、乐谓之情。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "性之好、恶、喜、怒、哀、乐谓之情。",
       "aliases": [],
       "tags": [],
@@ -103,7 +105,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 19,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -125,6 +128,8 @@
       "en": "Deliberation",
       "category": "人性论",
       "definition": "情然而心为之择谓之虑。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "情然而心为之择谓之虑。",
       "aliases": [],
       "tags": [],
@@ -146,7 +151,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -168,6 +174,8 @@
       "en": "Artifice",
       "category": "人性论",
       "definition": "心虑而能为之动谓之伪。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "心虑而能为之动谓之伪。",
       "aliases": [],
       "tags": [],
@@ -189,7 +197,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -203,6 +212,8 @@
       "en": "Nature",
       "category": "人性论",
       "definition": "生之所以然者谓之性。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "生之所以然者谓之性。",
       "aliases": [],
       "tags": [],
@@ -224,7 +235,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 12,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -246,6 +258,8 @@
       "en": "Knowing",
       "category": "认识论",
       "definition": "所以知之在人者谓之知。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "所以知之在人者谓之知。",
       "aliases": [],
       "tags": [],
@@ -267,7 +281,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -289,6 +304,8 @@
       "en": "Wisdom",
       "category": "认识论",
       "definition": "知有所合谓之智。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "知有所合谓之智。",
       "aliases": [],
       "tags": [],
@@ -310,7 +327,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 10,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -324,6 +342,8 @@
       "en": "Argumentation",
       "category": "语言哲学",
       "definition": "辨说也者，不异实名以喻动静之道也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "辨说也者，不异实名以喻动静之道也。",
       "aliases": [],
       "tags": [],
@@ -343,7 +363,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 20,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -385,6 +406,8 @@
       "en": "Statement",
       "category": "语言哲学",
       "definition": "辞也者，兼异实之名以论一意也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "辞也者，兼异实之名以论一意也。",
       "aliases": [],
       "tags": [],
@@ -404,7 +427,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 17,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -426,6 +450,8 @@
       "en": "Name",
       "category": "语言哲学",
       "definition": "名也者，所以期累实也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "名也者，所以期累实也。",
       "aliases": [],
       "tags": [],
@@ -447,7 +473,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -469,6 +496,8 @@
       "en": "Great Distinguishing Name",
       "category": "语言哲学",
       "definition": "鸟兽也者，大别名也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "鸟兽也者，大别名也。",
       "aliases": [],
       "tags": [],
@@ -490,7 +519,8 @@
           "priority": 60,
           "char_start": 4,
           "char_end": 14,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -512,6 +542,8 @@
       "en": "Great Common Name",
       "category": "语言哲学",
       "definition": "物也者，大共名也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "物也者，大共名也。",
       "aliases": [],
       "tags": [],
@@ -533,7 +565,8 @@
           "priority": 60,
           "char_start": 4,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],
@@ -555,6 +588,8 @@
       "en": "Conventional Naming",
       "category": "语言哲学",
       "definition": "约定俗成谓之宜。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "约定俗成谓之宜。",
       "aliases": [],
       "tags": [],
@@ -576,7 +611,8 @@
           "priority": 60,
           "char_start": 5,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《荀子·正名》原文"
         }
       ],
       "variants": [],

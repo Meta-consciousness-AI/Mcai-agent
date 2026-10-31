@@ -9,7 +9,7 @@
       "version": "0.1.0",
       "terminology": {}
     },
-    "built_at": "2026-10-31T13:44:42+08:00",
+    "built_at": "2026-10-31T20:14:22+08:00",
     "documents": [
       {
         "id": "sunzi-glossary",
@@ -87,6 +87,8 @@
       "en": "Nine Terrains",
       "category": "地形",
       "definition": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
       "aliases": [],
       "tags": [],
@@ -106,7 +108,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 39,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -147,6 +150,8 @@
       "en": "Espionage",
       "category": "情报",
       "definition": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
       "aliases": [],
       "tags": [],
@@ -166,7 +171,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 29,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -190,6 +196,8 @@
       "en": "Deception",
       "category": "战术",
       "definition": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
       "aliases": [],
       "tags": [],
@@ -209,7 +217,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 37,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -223,6 +232,8 @@
       "en": "Leveraging Momentum",
       "category": "战术",
       "definition": "故善战者，求之于势，不责于人，故能择人而任势。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "故善战者，求之于势，不责于人，故能择人而任势。",
       "aliases": [],
       "tags": [],
@@ -242,7 +253,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 26,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -256,6 +268,8 @@
       "en": "Extraordinary and Normal",
       "category": "战术",
       "definition": "三军之众，可使必受敌而无败者，奇正是也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "三军之众，可使必受敌而无败者，奇正是也。",
       "aliases": [],
       "tags": [],
@@ -275,7 +289,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 23,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -316,6 +331,8 @@
       "en": "Empty and Solid",
       "category": "战术",
       "definition": "兵之所加，如以碫投卵者，虚实是也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "兵之所加，如以碫投卵者，虚实是也。",
       "aliases": [],
       "tags": [],
@@ -335,7 +352,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 20,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -357,6 +375,8 @@
       "en": "Five Factors",
       "category": "战略",
       "definition": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "一曰道，二曰天，三曰地，四曰将，五曰法。",
       "aliases": [],
       "tags": [],
@@ -376,7 +396,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 23,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -400,6 +421,8 @@
       "en": "Victory First",
       "category": "战略",
       "definition": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "胜兵先胜而后求战，败兵先战而后求胜。",
       "aliases": [],
       "tags": [],
@@ -419,7 +442,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 21,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -451,6 +475,8 @@
       "en": "Temple Calculations",
       "category": "战略",
       "definition": "夫未战而庙算胜者，得算多也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "夫未战而庙算胜者，得算多也。",
       "aliases": [],
       "tags": [],
@@ -470,7 +496,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 17,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -492,6 +519,8 @@
       "en": "Complete Victory",
       "category": "战略",
       "definition": "不战而屈人之兵，善之善者也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "不战而屈人之兵，善之善者也。",
       "aliases": [],
       "tags": [],
@@ -511,7 +540,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 17,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -535,6 +565,8 @@
       "en": "Organization",
       "category": "组织与指挥",
       "definition": "凡治众如治寡，分数是也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "凡治众如治寡，分数是也。",
       "aliases": [],
       "tags": [],
@@ -554,7 +586,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 15,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -578,6 +611,8 @@
       "en": "Signals",
       "category": "组织与指挥",
       "definition": "斗众如斗寡，形名是也。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "斗众如斗寡，形名是也。",
       "aliases": [],
       "tags": [],
@@ -599,7 +634,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 14,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],
@@ -613,6 +649,8 @@
       "en": "Knowing Enemy and Self",
       "category": "认识论",
       "definition": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
+      "definition_type": "quote",
+      "editor_note": "",
       "short_definition": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
       "aliases": [],
       "tags": [],
@@ -632,7 +670,8 @@
           "priority": 60,
           "char_start": 5,
           "char_end": 39,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "据 dooshu/shu cn/219 原文自建"
         }
       ],
       "variants": [],

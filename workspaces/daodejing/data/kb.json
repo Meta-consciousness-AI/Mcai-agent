@@ -9,7 +9,7 @@
       "license": "Public Domain",
       "terminology": {}
     },
-    "built_at": "2026-10-31T14:14:28+08:00",
+    "built_at": "2026-10-31T20:14:23+08:00",
     "documents": [
       {
         "id": "ddj-glossary",
@@ -106,7 +106,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 16,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -153,7 +154,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 11,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -196,7 +198,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 20,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -258,7 +261,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 14,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -303,7 +307,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 13,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -366,7 +371,8 @@
           "priority": 60,
           "char_start": 3,
           "char_end": 15,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -413,7 +419,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 12,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -456,7 +463,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 16,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -499,7 +507,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 16,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],
@@ -536,7 +545,8 @@
           "priority": 60,
           "char_start": 2,
           "char_end": 11,
-          "origin": "corpus"
+          "origin": "corpus",
+          "edition": "chinesebooks.github.io《道德经直译》原文"
         }
       ],
       "variants": [],

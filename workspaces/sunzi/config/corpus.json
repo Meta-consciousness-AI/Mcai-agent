@@ -13,14 +13,16 @@
       "path": "corpus/glossary.txt",
       "title": "孙子兵法·核心术语",
       "kind": "glossary",
-      "priority": 100
+      "priority": 100,
+      "edition": "据 dooshu/shu cn/219 原文自建"
     },
     {
       "id": "sunzi-text",
       "path": "corpus/sunzi.txt",
       "title": "孙子兵法·原文",
       "kind": "evidence",
-      "priority": 80
+      "priority": 80,
+      "edition": "dooshu/shu cn/219.txt"
     }
   ],
   "keywords": [
