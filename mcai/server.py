@@ -19,7 +19,7 @@ from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from . import knowledge, pipeline, telemetry
+from . import knowledge, mcp_server, pipeline, telemetry
 
 MIME = {
     ".html": "text/html; charset=utf-8",
@@ -128,6 +128,22 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _send_mcp(self, data, status: int = HTTPStatus.OK) -> None:
+        if data is None:
+            self.send_response(HTTPStatus.ACCEPTED)
+            self.send_header("Content-Length", "0")
+            self._cors()
+            self.end_headers()
+            return
+        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self._cors()
+        self.end_headers()
+        self.wfile.write(body)
+
     def _send_file(self, path: Path) -> None:
         try:
             body = path.read_bytes()
@@ -171,6 +187,10 @@ class Handler(BaseHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         route = parsed.path
         params = urllib.parse.parse_qs(parsed.query)
+
+        if route == "/mcp":
+            self._deny(HTTPStatus.METHOD_NOT_ALLOWED, "MCP 端点只接受 POST（Streamable HTTP）")
+            return
 
         if route.startswith("/api"):
             if not self._rate_ok():
@@ -316,6 +336,26 @@ class Handler(BaseHTTPRequestHandler):
             return
         if route in LOCAL_ONLY and not is_local_ip(self.client_address[0]):
             self._deny(HTTPStatus.FORBIDDEN, "该接口仅允许本机访问")
+            return
+
+        if route == "/mcp":
+            try:
+                payload = json.loads(raw or b"{}")
+            except json.JSONDecodeError:
+                self._send_mcp({"jsonrpc": "2.0", "id": None,
+                                "error": {"code": -32700, "message": "Parse error"}},
+                               HTTPStatus.BAD_REQUEST)
+                return
+            kb = knowledge.load(self.root)
+            tele = telemetry.for_root(self.root)
+            batch = isinstance(payload, list)
+            items = payload if batch else [payload]
+            outputs = [mcp_server.handle(kb, item, tele) for item in items]
+            outputs = [x for x in outputs if x is not None]
+            if batch:
+                self._send_mcp(outputs if outputs else None)
+            else:
+                self._send_mcp(outputs[0] if outputs else None)
             return
 
         if route == "/api/v1/answer":

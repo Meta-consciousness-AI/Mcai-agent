@@ -284,6 +284,28 @@ mcai-mcp                # 或 mcai mcp；stdio + JSON-RPC 2.0
 
 本地源码运行也可以：`python run.py mcp`。
 
+#### 远程 MCP（Streamable HTTP）
+
+```bash
+mcai serve --host 0.0.0.0 --port 8787 --token <令牌>
+```
+
+客户端配置：
+
+```json
+{
+  "mcpServers": {
+    "mcai-knowledge": {
+      "type": "http",
+      "url": "https://<域名>/mcp",
+      "headers": {"Authorization": "Bearer <令牌>"}
+    }
+  }
+}
+```
+
+`/mcp` 接受 JSON-RPC 2.0（initialize / tools/list / tools/call / prompts/*），支持批量请求；GET 返回 405。鉴权与限流沿用服务端设置。
+
 提供 5 个工具与 64 个资源：
 
 | 工具 | 用途 |
