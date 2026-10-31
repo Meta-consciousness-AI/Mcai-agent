@@ -258,3 +258,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   规格：1 核 2G，最小实例 0、最大 5；端口 8080；令牌由环境变量 MCAI_TOKEN 注入。
   已验证：GET / 200、initialize 200、tools/list 5、tools/call 正常、无令牌 401。
   旧的失败服务 mcai-mcp 已删除；新增 deploy/push-gitee.ps1 与 推送Gitee.cmd（Gitee 令牌经剪贴板读取）。
+
+
+- **2026-10-31 13:3x｜P2 站点与数据集增强（已上线）**
+  站点：每页 canonical + OG 标签；新增 llms-full.txt（全部定义/出处/核心关系/问答）。
+  数据集：新增 relations.jsonl（270 条，core 18 / derived 6 / mention 246）。
+  线上验证：首页、概念页、FAQ 页 canonical 正确；llms-full 200；relations.jsonl 200。
