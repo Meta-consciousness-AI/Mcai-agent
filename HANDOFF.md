@@ -321,3 +321,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   PyPI 0.3.0（wheel 165 KB，包内 KB 含 edition/definition_type）；GitHub `184dcee`；MCP 注册表 0.3.0 已提交；Glama 已触发同步与构建（邮件已到）。
   打包脚本修正：构建 wheel 前把 data/kb.json 同步进 mcai/data/default，避免包内旧数据。
   人工裁定来源补 edition=「人工裁定」；测试 107 通过。
+
+
+- **2026-10-31 20:5x｜数据集 v1.1 发布（Zenodo）**
+  版本 DOI 10.5281/zenodo.23836789；文件 mcai-knowledge-dataset-v1.1.zip（9 个文件，含 relations.jsonl、provenance edition、README）。
+  概念 DOI 23789330 始终指向最新版。Views 15 含本人访问与爬虫，Downloads 0，不能当作外部采用证据。
