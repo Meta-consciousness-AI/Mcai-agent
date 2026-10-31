@@ -476,7 +476,11 @@ def _link_relations(concepts: list[Concept], curated: dict) -> None:
         if key in seen:
             return
         seen.add(key)
-        src.relations.append({"target": dst.term, "target_id": dst.id, "type": kind, "evidence": evidence})
+        tier = "mention" if kind == "提及" else ("derived" if kind == "衍生自" else "core")
+        src.relations.append({
+            "target": dst.term, "target_id": dst.id, "type": kind,
+            "tier": tier, "evidence": evidence,
+        })
 
     for src, dst, kind in curated.get("core_loop", []):
         if src in by_term and dst in by_term:

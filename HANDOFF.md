@@ -246,3 +246,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   P0-2 检索召回：归一化（全半角/繁简/标点/大小写）+ 错字容忍（difflib）；新增 6 条召回测试。
   P0-3 引用模式：HTTP `format=citations` 与 MCP `mcai_answer(format="citations")`，只返回出处。
   测试 90 条全通过。提交 bc3c44a / 560ff10。
+
+
+- **2026-10-31 08:0x｜0.2.8 发布完成**
+  PyPI / MCP 注册表 0.2.8；GitHub 4137e579；Glama 同步并构建成功（08:00）。
+  内容：出处精确化（55/55 核验）、检索归一化与错字容忍、`format=citations` 引用模式。
