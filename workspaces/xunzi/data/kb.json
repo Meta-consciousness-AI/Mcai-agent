@@ -1,0 +1,700 @@
+{
+  "meta": {
+    "project": {
+      "name": "荀子·正名（复现案例）",
+      "brand": "荀子正名",
+      "org": "公共领域 · 复现案例",
+      "version": "0.1.0",
+      "site_url": "http://127.0.0.1:8787",
+      "license": "Public Domain",
+      "terminology": {}
+    },
+    "built_at": "2026-10-31T14:01:32+08:00",
+    "documents": [
+      {
+        "id": "xunzi-glossary",
+        "title": "荀子·正名·核心术语",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\xunzi\\corpus\\glossary.txt",
+        "kind": "glossary",
+        "priority": 100,
+        "blocks": 13,
+        "sections": 0
+      },
+      {
+        "id": "xunzi-text",
+        "title": "荀子·正名·原文",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\xunzi\\corpus\\xunzi.txt",
+        "kind": "evidence",
+        "priority": 80,
+        "blocks": 76,
+        "sections": 0
+      }
+    ],
+    "stats": {
+      "concepts": 12,
+      "faqs": 5,
+      "relations": 9,
+      "evidence": 6,
+      "categories": {
+        "人性论": 4,
+        "认识论": 2,
+        "语言哲学": 6
+      },
+      "status": {
+        "ok": 3,
+        "thin": 9
+      },
+      "policy": {
+        "excluded_entities": [],
+        "answer": "",
+        "principle": ""
+      },
+      "concept_kind": {
+        "core": 12,
+        "derived": 0
+      },
+      "campaign_faqs": 0,
+      "disambiguation": {
+        "enabled": false,
+        "campaign": "",
+        "start": "",
+        "review_after": "",
+        "items": 0,
+        "note": ""
+      },
+      "by_kind": {
+        "glossary": 1,
+        "evidence": 1
+      },
+      "coverage": {
+        "expected": 12,
+        "covered": 12,
+        "missing": []
+      },
+      "documents": 2,
+      "blocks": 89,
+      "characters": 10166
+    }
+  },
+  "concepts": [
+    {
+      "id": "c-a90c24fd",
+      "term": "情",
+      "slug": "c-a90c24fd",
+      "en": "Emotion",
+      "category": "人性论",
+      "definition": "性之好、恶、喜、怒、哀、乐谓之情。",
+      "short_definition": "性之好、恶、喜、怒、哀、乐谓之情。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l3",
+          "quote": "性之好、恶、喜、怒、哀、乐谓之情。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 19,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "虑",
+          "target_id": "c-11625753",
+          "type": "选择",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-11625753",
+      "term": "虑",
+      "slug": "c-11625753",
+      "en": "Deliberation",
+      "category": "人性论",
+      "definition": "情然而心为之择谓之虑。",
+      "short_definition": "情然而心为之择谓之虑。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l4",
+          "quote": "情然而心为之择谓之虑。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "伪",
+          "target_id": "c-0c49c70a",
+          "type": "成行",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-0c49c70a",
+      "term": "伪",
+      "slug": "c-0c49c70a",
+      "en": "Artifice",
+      "category": "人性论",
+      "definition": "心虑而能为之动谓之伪。",
+      "short_definition": "心虑而能为之动谓之伪。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l5",
+          "quote": "心虑而能为之动谓之伪。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-2451516b",
+      "term": "性",
+      "slug": "c-2451516b",
+      "en": "Nature",
+      "category": "人性论",
+      "definition": "生之所以然者谓之性。",
+      "short_definition": "生之所以然者谓之性。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l2",
+          "quote": "生之所以然者谓之性。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 12,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "情",
+          "target_id": "c-a90c24fd",
+          "type": "发用",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-e46ce299",
+      "term": "知",
+      "slug": "c-e46ce299",
+      "en": "Knowing",
+      "category": "认识论",
+      "definition": "所以知之在人者谓之知。",
+      "short_definition": "所以知之在人者谓之知。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l6",
+          "quote": "所以知之在人者谓之知。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "智",
+          "target_id": "c-c49daac4",
+          "type": "合实",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-c49daac4",
+      "term": "智",
+      "slug": "c-c49daac4",
+      "en": "Wisdom",
+      "category": "认识论",
+      "definition": "知有所合谓之智。",
+      "short_definition": "知有所合谓之智。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l7",
+          "quote": "知有所合谓之智。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 10,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-ddb0810f",
+      "term": "辨说",
+      "slug": "c-ddb0810f",
+      "en": "Argumentation",
+      "category": "语言哲学",
+      "definition": "辨说也者，不异实名以喻动静之道也。",
+      "short_definition": "辨说也者，不异实名以喻动静之道也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l10",
+          "quote": "辨说也者，不异实名以喻动静之道也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 20,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l12",
+          "quote": "故民之化道也如神，辨说恶用矣哉！",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l12",
+          "quote": "故期命辨说也者，用之大文也，而王业之始也。",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l12",
+          "quote": "今圣王没，天下乱，奸言起，君子无埶以临之，无刑以禁之，故辨说也。",
+          "lang": "zh",
+          "score": 0
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-d5338117",
+      "term": "辞",
+      "slug": "c-d5338117",
+      "en": "Statement",
+      "category": "语言哲学",
+      "definition": "辞也者，兼异实之名以论一意也。",
+      "short_definition": "辞也者，兼异实之名以论一意也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l9",
+          "quote": "辞也者，兼异实之名以论一意也。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 17,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "辨说",
+          "target_id": "c-ddb0810f",
+          "type": "展开",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-4f8ca95e",
+      "term": "名",
+      "slug": "c-4f8ca95e",
+      "en": "Name",
+      "category": "语言哲学",
+      "definition": "名也者，所以期累实也。",
+      "short_definition": "名也者，所以期累实也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l8",
+          "quote": "名也者，所以期累实也。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "辞",
+          "target_id": "c-d5338117",
+          "type": "连属",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-d29c4b21",
+      "term": "大别名",
+      "slug": "c-d29c4b21",
+      "en": "Great Distinguishing Name",
+      "category": "语言哲学",
+      "definition": "鸟兽也者，大别名也。",
+      "short_definition": "鸟兽也者，大别名也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l13",
+          "quote": "鸟兽也者，大别名也。",
+          "priority": 60,
+          "char_start": 4,
+          "char_end": 14,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "名",
+          "target_id": "c-4f8ca95e",
+          "type": "别类",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-7b2d2612",
+      "term": "大共名",
+      "slug": "c-7b2d2612",
+      "en": "Great Common Name",
+      "category": "语言哲学",
+      "definition": "物也者，大共名也。",
+      "short_definition": "物也者，大共名也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l12",
+          "quote": "物也者，大共名也。",
+          "priority": 60,
+          "char_start": 4,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "名",
+          "target_id": "c-4f8ca95e",
+          "type": "总类",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-838078be",
+      "term": "约定俗成",
+      "slug": "c-838078be",
+      "en": "Conventional Naming",
+      "category": "语言哲学",
+      "definition": "约定俗成谓之宜。",
+      "short_definition": "约定俗成谓之宜。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "xunzi-glossary",
+          "doc_title": "荀子·正名·核心术语",
+          "section": "",
+          "location": "l11",
+          "quote": "约定俗成谓之宜。",
+          "priority": 60,
+          "char_start": 5,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l9",
+          "quote": "名无固宜，约之以命，约定俗成谓之宜，异于约则谓之不宜。",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l9",
+          "quote": "名无固实，约之以命实，约定俗成，谓之实名。",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "xunzi-text",
+          "doc_title": "荀子·正名·原文",
+          "section": "",
+          "location": "l26",
+          "quote": "事物名称没有本来就合适的，而是由人们共同约定来命名，约定俗成，这个名称就合适了，反之，这个名称就是不合适的了。",
+          "lang": "zh",
+          "score": 0
+        }
+      ],
+      "relations": [
+        {
+          "target": "名",
+          "target_id": "c-4f8ca95e",
+          "type": "依据",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-a853ca37",
+      "question": "什么是情？",
+      "short_answer": "性之好、恶、喜、怒、哀、乐谓之情。",
+      "answer": "性之好、恶、喜、怒、哀、乐谓之情。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-a90c24fd"
+      ],
+      "source_terms": [
+        "情"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-65228ca2",
+      "question": "什么是辨说？",
+      "short_answer": "辨说也者，不异实名以喻动静之道也。",
+      "answer": "辨说也者，不异实名以喻动静之道也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-ddb0810f"
+      ],
+      "source_terms": [
+        "辨说"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-7d1a74f2",
+      "question": "什么是辞？",
+      "short_answer": "辞也者，兼异实之名以论一意也。",
+      "answer": "辞也者，兼异实之名以论一意也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-d5338117"
+      ],
+      "source_terms": [
+        "辞"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-c1df29de",
+      "question": "如何理解辨说？",
+      "short_answer": "辨说也者，不异实名以喻动静之道也。",
+      "answer": "辨说也者，不异实名以喻动静之道也。《荀子·正名·原文》中进一步指出：「故民之化道也如神，辨说恶用矣哉！」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-ddb0810f"
+      ],
+      "source_terms": [
+        "辨说"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-7612ea41",
+      "question": "如何理解约定俗成？",
+      "short_answer": "约定俗成谓之宜。",
+      "answer": "约定俗成谓之宜。《荀子·正名·原文》中进一步指出：「名无固宜，约之以命，约定俗成谓之宜，异于约则谓之不宜。」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-838078be"
+      ],
+      "source_terms": [
+        "约定俗成"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

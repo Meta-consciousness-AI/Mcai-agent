@@ -1,0 +1,684 @@
+{
+  "meta": {
+    "project": {
+      "name": "道德经（复现案例）",
+      "brand": "道德经",
+      "org": "公共领域 · 复现案例",
+      "version": "0.1.0",
+      "site_url": "http://127.0.0.1:8787",
+      "license": "Public Domain",
+      "terminology": {}
+    },
+    "built_at": "2026-10-31T14:14:28+08:00",
+    "documents": [
+      {
+        "id": "ddj-glossary",
+        "title": "道德经·核心术语",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\daodejing\\corpus\\glossary.txt",
+        "kind": "glossary",
+        "priority": 100,
+        "blocks": 11,
+        "sections": 0
+      },
+      {
+        "id": "ddj-text",
+        "title": "道德经·原文",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\daodejing\\corpus\\daodejing.txt",
+        "kind": "evidence",
+        "priority": 80,
+        "blocks": 162,
+        "sections": 0
+      }
+    ],
+    "stats": {
+      "concepts": 10,
+      "faqs": 8,
+      "relations": 7,
+      "evidence": 7,
+      "categories": {
+        "境界论": 2,
+        "实践论": 3,
+        "德性论": 2,
+        "本体论": 3
+      },
+      "status": {
+        "ok": 6,
+        "thin": 4
+      },
+      "policy": {
+        "excluded_entities": [],
+        "answer": "",
+        "principle": ""
+      },
+      "concept_kind": {
+        "core": 10,
+        "derived": 0
+      },
+      "campaign_faqs": 0,
+      "disambiguation": {
+        "enabled": false,
+        "campaign": "",
+        "start": "",
+        "review_after": "",
+        "items": 0,
+        "note": ""
+      },
+      "by_kind": {
+        "glossary": 1,
+        "evidence": 1
+      },
+      "coverage": {
+        "expected": 10,
+        "covered": 10,
+        "missing": []
+      },
+      "documents": 2,
+      "blocks": 173,
+      "characters": 6822
+    }
+  },
+  "concepts": [
+    {
+      "id": "c-61005e65",
+      "term": "玄同",
+      "slug": "c-61005e65",
+      "en": "Mysterious Unity",
+      "category": "境界论",
+      "definition": "和其光，同其尘，是谓玄同。",
+      "definition_type": "editor",
+      "editor_note": "编者注：消解差别、与道合一。",
+      "short_definition": "和其光，同其尘，是谓玄同。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l10",
+          "quote": "和其光，同其尘，是谓玄同。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 16,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l112",
+          "quote": "塞其兑，闭其门，挫其锐，解其纷，和其光，同其尘，是谓玄同。",
+          "lang": "zh",
+          "score": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-ecc3b0ec",
+      "term": "朴",
+      "slug": "c-ecc3b0ec",
+      "en": "Uncarved Block",
+      "category": "境界论",
+      "definition": "见素抱扑，少私寡欲",
+      "definition_type": "editor",
+      "editor_note": "编者注：未雕饰的本真状态。",
+      "short_definition": "见素抱扑，少私寡欲",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l9",
+          "quote": "见素抱扑，少私寡欲",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 11,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "玄同",
+          "target_id": "c-61005e65",
+          "type": "境界",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-bcda6f79",
+      "term": "自然",
+      "slug": "c-bcda6f79",
+      "en": "Naturalness",
+      "category": "实践论",
+      "definition": "人法地，地法天，天法道，道法自然。",
+      "definition_type": "editor",
+      "editor_note": "编者注：自己如此，非外力使然。",
+      "short_definition": "人法地，地法天，天法道，道法自然。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l6",
+          "quote": "人法地，地法天，天法道，道法自然。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 20,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l34",
+          "quote": "悠兮其贵言，功成事遂，百姓皆谓我自然。",
+          "lang": "zh",
+          "score": 0
+        },
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l128",
+          "quote": "学不学，复众人之过，以辅万物之自然而不敢为。",
+          "lang": "zh",
+          "score": 0
+        }
+      ],
+      "relations": [
+        {
+          "target": "无为",
+          "target_id": "c-19a3ac2e",
+          "type": "实践",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-3d2eeee7",
+      "term": "反",
+      "slug": "c-3d2eeee7",
+      "en": "Return",
+      "category": "实践论",
+      "definition": "反者道之动，弱者道之用。",
+      "definition_type": "editor",
+      "editor_note": "编者注：循环往复、对立转化。",
+      "short_definition": "反者道之动，弱者道之用。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l8",
+          "quote": "反者道之动，弱者道之用。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 14,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "道",
+          "target_id": "c-b39cecc6",
+          "type": "运动",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-19a3ac2e",
+      "term": "无为",
+      "slug": "c-19a3ac2e",
+      "en": "Non-action",
+      "category": "实践论",
+      "definition": "道常无为，而无不为。",
+      "definition_type": "editor",
+      "editor_note": "编者注：不妄为，顺自然而行。",
+      "short_definition": "道常无为，而无不为。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l7",
+          "quote": "道常无为，而无不为。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 13,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l5",
+          "quote": "是以圣人处无为之事，行不言之教。",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l76",
+          "quote": "上德无为而无以为，下德为之而有以为。",
+          "lang": "zh",
+          "score": 3
+        },
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l86",
+          "quote": "我是已知无为之益，不言之教，天下希及之。",
+          "lang": "zh",
+          "score": 3
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-44a84944",
+      "term": "上善",
+      "slug": "c-44a84944",
+      "en": "Highest Good",
+      "category": "德性论",
+      "definition": "上善若水，水利万物而不争",
+      "definition_type": "editor",
+      "editor_note": "编者注：最高的善，像水一样利万物而不争。",
+      "short_definition": "上善若水，水利万物而不争",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l11",
+          "quote": "上善若水，水利万物而不争",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 15,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "ddj-text",
+          "doc_title": "道德经·原文",
+          "section": "",
+          "location": "l16",
+          "quote": "上善若水，水利万物而不争，处众人之所恶，故几于道。",
+          "lang": "zh",
+          "score": 3
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-27686b82",
+      "term": "德",
+      "slug": "c-27686b82",
+      "en": "De",
+      "category": "德性论",
+      "definition": "上德不德，是以有德。",
+      "definition_type": "editor",
+      "editor_note": "编者注：道在具体事物中的体现。",
+      "short_definition": "上德不德，是以有德。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l3",
+          "quote": "上德不德，是以有德。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 12,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "上善",
+          "target_id": "c-44a84944",
+          "type": "体现",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-d81bb206",
+      "term": "无",
+      "slug": "c-d81bb206",
+      "en": "Non-being",
+      "category": "本体论",
+      "definition": "无名天地之始，有名万物之母。",
+      "definition_type": "editor",
+      "editor_note": "编者注：未分化的本源状态。",
+      "short_definition": "无名天地之始，有名万物之母。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l4",
+          "quote": "无名天地之始，有名万物之母。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 16,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "有",
+          "target_id": "c-cc4ad2fd",
+          "type": "生成",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-cc4ad2fd",
+      "term": "有",
+      "slug": "c-cc4ad2fd",
+      "en": "Being",
+      "category": "本体论",
+      "definition": "无名天地之始，有名万物之母。",
+      "definition_type": "editor",
+      "editor_note": "编者注：万物得以生成的根据。",
+      "short_definition": "无名天地之始，有名万物之母。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l5",
+          "quote": "无名天地之始，有名万物之母。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 16,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-b39cecc6",
+      "term": "道",
+      "slug": "c-b39cecc6",
+      "en": "Dao",
+      "category": "本体论",
+      "definition": "道，可道，非常道。",
+      "definition_type": "editor",
+      "editor_note": "编者注：宇宙的本源与总规律，不可言说。",
+      "short_definition": "道，可道，非常道。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "ddj-glossary",
+          "doc_title": "道德经·核心术语",
+          "section": "",
+          "location": "l2",
+          "quote": "道，可道，非常道。",
+          "priority": 60,
+          "char_start": 2,
+          "char_end": 11,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "德",
+          "target_id": "c-27686b82",
+          "type": "显化",
+          "tier": "core",
+          "evidence": ""
+        },
+        {
+          "target": "自然",
+          "target_id": "c-bcda6f79",
+          "type": "法则",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-ad983a48",
+      "question": "什么是玄同？",
+      "short_answer": "和其光，同其尘，是谓玄同。",
+      "answer": "和其光，同其尘，是谓玄同。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-61005e65"
+      ],
+      "source_terms": [
+        "玄同"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-2dc7b97d",
+      "question": "什么是自然？",
+      "short_answer": "人法地，地法天，天法道，道法自然。",
+      "answer": "人法地，地法天，天法道，道法自然。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-bcda6f79"
+      ],
+      "source_terms": [
+        "自然"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-e18205c6",
+      "question": "什么是反？",
+      "short_answer": "反者道之动，弱者道之用。",
+      "answer": "反者道之动，弱者道之用。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-3d2eeee7"
+      ],
+      "source_terms": [
+        "反"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-8dafce74",
+      "question": "什么是上善？",
+      "short_answer": "上善若水，水利万物而不争",
+      "answer": "上善若水，水利万物而不争",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-44a84944"
+      ],
+      "source_terms": [
+        "上善"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-edb52bcf",
+      "question": "什么是无？",
+      "short_answer": "无名天地之始，有名万物之母。",
+      "answer": "无名天地之始，有名万物之母。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-d81bb206"
+      ],
+      "source_terms": [
+        "无"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-4d25fbd9",
+      "question": "什么是有？",
+      "short_answer": "无名天地之始，有名万物之母。",
+      "answer": "无名天地之始，有名万物之母。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-cc4ad2fd"
+      ],
+      "source_terms": [
+        "有"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-c9a8363d",
+      "question": "如何理解无为？",
+      "short_answer": "道常无为，而无不为。",
+      "answer": "道常无为，而无不为。《道德经·原文》中进一步指出：「是以圣人处无为之事，行不言之教。」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-19a3ac2e"
+      ],
+      "source_terms": [
+        "无为"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-d1cac6e1",
+      "question": "如何理解上善？",
+      "short_answer": "上善若水，水利万物而不争",
+      "answer": "上善若水，水利万物而不争",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-44a84944"
+      ],
+      "source_terms": [
+        "上善"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

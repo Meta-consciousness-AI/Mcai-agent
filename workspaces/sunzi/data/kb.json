@@ -1,0 +1,908 @@
+{
+  "meta": {
+    "project": {
+      "name": "孙子兵法（复现案例）",
+      "brand": "孙子兵法",
+      "site_url": "http://127.0.0.1:8787",
+      "license": "Public Domain",
+      "org": "公共领域 · 复现案例",
+      "version": "0.1.0",
+      "terminology": {}
+    },
+    "built_at": "2026-10-31T13:44:42+08:00",
+    "documents": [
+      {
+        "id": "sunzi-glossary",
+        "title": "孙子兵法·核心术语",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\sunzi\\corpus\\glossary.txt",
+        "kind": "glossary",
+        "priority": 100,
+        "blocks": 14,
+        "sections": 0
+      },
+      {
+        "id": "sunzi-text",
+        "title": "孙子兵法·原文",
+        "path": "C:\\Users\\HP\\Documents\\deepseek-harness\\default-workspace\\mca-agent\\workspaces\\sunzi\\corpus\\sunzi.txt",
+        "kind": "evidence",
+        "priority": 80,
+        "blocks": 102,
+        "sections": 0
+      }
+    ],
+    "stats": {
+      "concepts": 13,
+      "faqs": 17,
+      "relations": 6,
+      "evidence": 9,
+      "categories": {
+        "地形": 1,
+        "情报": 1,
+        "战术": 4,
+        "战略": 4,
+        "组织与指挥": 2,
+        "认识论": 1
+      },
+      "status": {
+        "ok": 12,
+        "thin": 1
+      },
+      "policy": {
+        "excluded_entities": [],
+        "answer": "",
+        "principle": ""
+      },
+      "concept_kind": {
+        "core": 13,
+        "derived": 0
+      },
+      "campaign_faqs": 0,
+      "disambiguation": {
+        "enabled": false,
+        "campaign": "",
+        "start": "",
+        "review_after": "",
+        "items": 0,
+        "note": ""
+      },
+      "by_kind": {
+        "glossary": 1,
+        "evidence": 1
+      },
+      "coverage": {
+        "expected": 13,
+        "covered": 13,
+        "missing": []
+      },
+      "documents": 2,
+      "blocks": 116,
+      "characters": 8509
+    }
+  },
+  "concepts": [
+    {
+      "id": "c-95f342e4",
+      "term": "九地",
+      "slug": "c-95f342e4",
+      "en": "Nine Terrains",
+      "category": "地形",
+      "definition": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "short_definition": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l10",
+          "quote": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 39,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l33",
+          "quote": "善守者藏于九地之下，善攻者动于九天之上④，故能自保而全胜也。",
+          "lang": "zh",
+          "score": 2
+        },
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l86",
+          "quote": "九地之变，屈伸之利，人情之理，不可不察也。",
+          "lang": "zh",
+          "score": 2
+        }
+      ],
+      "relations": [
+        {
+          "target": "虚实",
+          "target_id": "c-d902fd57",
+          "type": "情境",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-b4f9f231",
+      "term": "用间",
+      "slug": "c-b4f9f231",
+      "en": "Espionage",
+      "category": "情报",
+      "definition": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "short_definition": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l11",
+          "quote": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 29,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l100",
+          "quote": "非圣智不能用间，非仁义不能使间，非微妙不能得间之实。",
+          "lang": "zh",
+          "score": 2
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-4e990237",
+      "term": "诡道",
+      "slug": "c-4e990237",
+      "en": "Deception",
+      "category": "战术",
+      "definition": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+      "short_definition": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l3",
+          "quote": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 37,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-72948938",
+      "term": "任势",
+      "slug": "c-72948938",
+      "en": "Leveraging Momentum",
+      "category": "战术",
+      "definition": "故善战者，求之于势，不责于人，故能择人而任势。",
+      "short_definition": "故善战者，求之于势，不责于人，故能择人而任势。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l14",
+          "quote": "故善战者，求之于势，不责于人，故能择人而任势。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 26,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-55f997dc",
+      "term": "奇正",
+      "slug": "c-55f997dc",
+      "en": "Extraordinary and Normal",
+      "category": "战术",
+      "definition": "三军之众，可使必受敌而无败者，奇正是也。",
+      "short_definition": "三军之众，可使必受敌而无败者，奇正是也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l6",
+          "quote": "三军之众，可使必受敌而无败者，奇正是也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 23,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l38",
+          "quote": "战势不过奇正，奇正之变，不可胜穷也。",
+          "lang": "zh",
+          "score": 2
+        },
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l38",
+          "quote": "奇正相生，如循环之无端，孰能穷之哉？",
+          "lang": "zh",
+          "score": 2
+        }
+      ],
+      "relations": [
+        {
+          "target": "虚实",
+          "target_id": "c-d902fd57",
+          "type": "互补",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-d902fd57",
+      "term": "虚实",
+      "slug": "c-d902fd57",
+      "en": "Empty and Solid",
+      "category": "战术",
+      "definition": "兵之所加，如以碫投卵者，虚实是也。",
+      "short_definition": "兵之所加，如以碫投卵者，虚实是也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l7",
+          "quote": "兵之所加，如以碫投卵者，虚实是也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 20,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "任势",
+          "target_id": "c-72948938",
+          "type": "支撑",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-2ce30535",
+      "term": "五事",
+      "slug": "c-2ce30535",
+      "en": "Five Factors",
+      "category": "战略",
+      "definition": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "short_definition": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l2",
+          "quote": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 23,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l10",
+          "quote": "故经之以五事②，校之以计，而索其情③：一曰道，二曰天，三曰地，四曰将，五曰法。",
+          "lang": "zh",
+          "score": 3
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-cc4e8d60",
+      "term": "先胜",
+      "slug": "c-cc4e8d60",
+      "en": "Victory First",
+      "category": "战略",
+      "definition": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "short_definition": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l13",
+          "quote": "胜兵先胜而后求战，败兵先战而后求胜。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 21,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l34",
+          "quote": "是故胜兵先胜而后求战⑨，败兵先战而后求胜⑩。",
+          "lang": "zh",
+          "score": 2
+        }
+      ],
+      "relations": [
+        {
+          "target": "全胜",
+          "target_id": "c-a7af5ad5",
+          "type": "目标",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-d41a1924",
+      "term": "庙算",
+      "slug": "c-d41a1924",
+      "en": "Temple Calculations",
+      "category": "战略",
+      "definition": "夫未战而庙算胜者，得算多也。",
+      "short_definition": "夫未战而庙算胜者，得算多也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l4",
+          "quote": "夫未战而庙算胜者，得算多也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 17,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "先胜",
+          "target_id": "c-cc4e8d60",
+          "type": "前提",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "id": "c-a7af5ad5",
+      "term": "全胜",
+      "slug": "c-a7af5ad5",
+      "en": "Complete Victory",
+      "category": "战略",
+      "definition": "不战而屈人之兵，善之善者也。",
+      "short_definition": "不战而屈人之兵，善之善者也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l5",
+          "quote": "不战而屈人之兵，善之善者也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 17,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l33",
+          "quote": "善守者藏于九地之下，善攻者动于九天之上④，故能自保而全胜也。",
+          "lang": "zh",
+          "score": 0
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-b34422e6",
+      "term": "分数",
+      "slug": "c-b34422e6",
+      "en": "Organization",
+      "category": "组织与指挥",
+      "definition": "凡治众如治寡，分数是也。",
+      "short_definition": "凡治众如治寡，分数是也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l8",
+          "quote": "凡治众如治寡，分数是也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 15,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [
+        {
+          "doc_id": "sunzi-text",
+          "doc_title": "孙子兵法·原文",
+          "section": "",
+          "location": "l37",
+          "quote": "孙子曰：凡治众如治寡，分数是也①；",
+          "lang": "zh",
+          "score": 0
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c-803c1624",
+      "term": "形名",
+      "slug": "c-803c1624",
+      "en": "Signals",
+      "category": "组织与指挥",
+      "definition": "斗众如斗寡，形名是也。",
+      "short_definition": "斗众如斗寡，形名是也。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "thin",
+      "issues": [
+        "定义过短，可能不足以被 AI 直接引用"
+      ],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l9",
+          "quote": "斗众如斗寡，形名是也。",
+          "priority": 60,
+          "char_start": 3,
+          "char_end": 14,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": []
+    },
+    {
+      "id": "c-faf5c376",
+      "term": "知彼知己",
+      "slug": "c-faf5c376",
+      "en": "Knowing Enemy and Self",
+      "category": "认识论",
+      "definition": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
+      "short_definition": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
+      "aliases": [],
+      "tags": [],
+      "kind": "core",
+      "parent": "",
+      "parent_id": "",
+      "disambiguation": "",
+      "status": "ok",
+      "issues": [],
+      "sources": [
+        {
+          "doc_id": "sunzi-glossary",
+          "doc_title": "孙子兵法·核心术语",
+          "section": "",
+          "location": "l12",
+          "quote": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
+          "priority": 60,
+          "char_start": 5,
+          "char_end": 39,
+          "origin": "corpus"
+        }
+      ],
+      "variants": [],
+      "evidence": [],
+      "relations": [
+        {
+          "target": "用间",
+          "target_id": "c-b4f9f231",
+          "type": "依赖",
+          "tier": "core",
+          "evidence": ""
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-61a5ee4c",
+      "question": "什么是九地？",
+      "short_answer": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "answer": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-95f342e4"
+      ],
+      "source_terms": [
+        "九地"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-0628bcfc",
+      "question": "什么是用间？",
+      "short_answer": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "answer": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-b4f9f231"
+      ],
+      "source_terms": [
+        "用间"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-5b508316",
+      "question": "什么是诡道？",
+      "short_answer": "故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+      "answer": "兵者，诡道也。故能而示之不能，用而示之不用，近而示之远，远而示之近。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-4e990237"
+      ],
+      "source_terms": [
+        "诡道"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-8e9b7a63",
+      "question": "什么是任势？",
+      "short_answer": "故善战者，求之于势，不责于人，故能择人而任势。",
+      "answer": "故善战者，求之于势，不责于人，故能择人而任势。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-72948938"
+      ],
+      "source_terms": [
+        "任势"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-1235ee6f",
+      "question": "什么是奇正？",
+      "short_answer": "三军之众，可使必受敌而无败者，奇正是也。",
+      "answer": "三军之众，可使必受敌而无败者，奇正是也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-55f997dc"
+      ],
+      "source_terms": [
+        "奇正"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-0303805f",
+      "question": "什么是虚实？",
+      "short_answer": "兵之所加，如以碫投卵者，虚实是也。",
+      "answer": "兵之所加，如以碫投卵者，虚实是也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-d902fd57"
+      ],
+      "source_terms": [
+        "虚实"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-88e97b74",
+      "question": "什么是五事？",
+      "short_answer": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "answer": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-2ce30535"
+      ],
+      "source_terms": [
+        "五事"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-e571b419",
+      "question": "什么是先胜？",
+      "short_answer": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "answer": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-cc4e8d60"
+      ],
+      "source_terms": [
+        "先胜"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-3ecb6050",
+      "question": "什么是庙算？",
+      "short_answer": "夫未战而庙算胜者，得算多也。",
+      "answer": "夫未战而庙算胜者，得算多也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-d41a1924"
+      ],
+      "source_terms": [
+        "庙算"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-4ffc660b",
+      "question": "什么是全胜？",
+      "short_answer": "不战而屈人之兵，善之善者也。",
+      "answer": "不战而屈人之兵，善之善者也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-a7af5ad5"
+      ],
+      "source_terms": [
+        "全胜"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-6da9be35",
+      "question": "什么是分数？",
+      "short_answer": "凡治众如治寡，分数是也。",
+      "answer": "凡治众如治寡，分数是也。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-b34422e6"
+      ],
+      "source_terms": [
+        "分数"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-dae2381e",
+      "question": "什么是知彼知己？",
+      "short_answer": "知彼知己，百战不殆；",
+      "answer": "知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼不知己，每战必殆。",
+      "kind": "definition",
+      "campaign": false,
+      "related": [
+        "c-faf5c376"
+      ],
+      "source_terms": [
+        "知彼知己"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-03217901",
+      "question": "如何理解九地？",
+      "short_answer": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。",
+      "answer": "有散地，有轻地，有争地，有交地，有衢地，有重地，有圮地，有围地，有死地。《孙子兵法·原文》中进一步指出：「善守者藏于九地之下，善攻者动于九天之上④，故能自保而全胜也。」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-95f342e4"
+      ],
+      "source_terms": [
+        "九地"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "faq-ee71b3fe",
+      "question": "如何理解用间？",
+      "short_answer": "故用间有五：有因间，有内间，有反间，有死间，有生间。",
+      "answer": "故用间有五：有因间，有内间，有反间，有死间，有生间。《孙子兵法·原文》中进一步指出：「非圣智不能用间，非仁义不能使间，非微妙不能得间之实。」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-b4f9f231"
+      ],
+      "source_terms": [
+        "用间"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "faq-59a6b878",
+      "question": "如何理解奇正？",
+      "short_answer": "三军之众，可使必受敌而无败者，奇正是也。",
+      "answer": "三军之众，可使必受敌而无败者，奇正是也。《孙子兵法·原文》中进一步指出：「战势不过奇正，奇正之变，不可胜穷也。」",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-55f997dc"
+      ],
+      "source_terms": [
+        "奇正"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "faq-66deb90f",
+      "question": "如何理解五事？",
+      "short_answer": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "answer": "一曰道，二曰天，三曰地，四曰将，五曰法。",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-2ce30535"
+      ],
+      "source_terms": [
+        "五事"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-6771e496",
+      "question": "如何理解先胜？",
+      "short_answer": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "answer": "胜兵先胜而后求战，败兵先战而后求胜。",
+      "kind": "evidence",
+      "campaign": false,
+      "related": [
+        "c-cc4e8d60"
+      ],
+      "source_terms": [
+        "先胜"
+      ],
+      "confidence": "medium"
+    }
+  ]
+}
