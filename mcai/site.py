@@ -334,6 +334,7 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
   {alias_line}
   {parent_line}
   <p class="lead">{_esc(c.definition)}</p>
+  {('<p class="note">编者释义（非原文）：' + _esc(c.editor_note) + '</p>') if getattr(c, "editor_note", "") else ''}
   <h2 class="sec">定义来源</h2>
   <div class="quotes">{quotes}</div>
   {evidence_html}

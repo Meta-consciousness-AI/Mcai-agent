@@ -47,6 +47,8 @@ class Concept:
     term: str
     slug: str
     definition: str
+    definition_type: str = "quote"   # quote | editor
+    editor_note: str = ""            # 编者释义（非原文定义）
     category: str = "其他"
     en: str = ""
     aliases: list[str] = field(default_factory=list)

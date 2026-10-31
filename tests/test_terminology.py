@@ -57,5 +57,16 @@ class ConceptVersionLogTest(unittest.TestCase):
         self.assertIn("hash", first)
 
 
+class DefinitionLayeringTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.kb = load(ROOT)
+
+    def test_default_definition_type_is_quote(self):
+        for c in self.kb.concepts:
+            self.assertEqual(c.get("definition_type", "quote"), "quote")
+            self.assertFalse(c.get("editor_note", ""))
+
+
 if __name__ == "__main__":
     unittest.main()
