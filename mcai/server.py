@@ -192,6 +192,16 @@ class Handler(BaseHTTPRequestHandler):
             self._deny(HTTPStatus.METHOD_NOT_ALLOWED, "MCP 端点只接受 POST（Streamable HTTP）")
             return
 
+        if route in ("/", "/healthz") and not (Path(self.root) / "dist" / "index.html").exists():
+            self._send_json({
+                "ok": True,
+                "service": "mcai-knowledge",
+                "mode": "api-only",
+                "health": "/api/v1/health",
+                "mcp": "/mcp",
+            })
+            return
+
         if route.startswith("/api"):
             if not self._rate_ok():
                 self._deny(HTTPStatus.TOO_MANY_REQUESTS, "请求过于频繁，请稍后再试")
