@@ -302,3 +302,10 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   README 已补两条 DOI；V1.0 预印本记录保留（23801176）。
 
 - **2026-10-31 15:0x｜Gitee 令牌已吊销**：`mcai-deploy`（projects 权限、永不过期）已删除；日后推送 Gitee 需重新生成令牌（脚本从剪贴板读取）。
+
+
+- **2026-10-31 20:2x｜规范 V1.2（edition）实现完成**
+  Source/Document 增加 edition；四份语料配置回填（元意识、孙子、荀子、道德经）。
+  引用、MCP 词条、数据集 provenance、站点「定义来源」均显示版本；64/64 词条页带版本标注。
+  修复：站点证据区块复用 quotes 变量导致定义引文的版本被覆盖。
+  测试 107 通过；规范 V1.2 md/docx/pdf 已生成（8 页）。提交 16dcc8b、d07d2d5。发布待定。
