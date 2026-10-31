@@ -417,7 +417,17 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
           autopilot_interval: int = 0) -> None:
     root = Path(root).resolve()
     if not (root / "dist" / "index.html").exists():
-        pipeline.rebuild(root)
+        has_corpus = False
+        corpus_path = root / "config" / "corpus.json"
+        if corpus_path.exists():
+            try:
+                has_corpus = bool(json.loads(corpus_path.read_text(encoding="utf-8")).get("corpus"))
+            except (json.JSONDecodeError, OSError):
+                has_corpus = False
+        if has_corpus:
+            pipeline.rebuild(root)
+        else:
+            print("未发现静态站，且没有原始语料：仅提供 API 与 /mcp。")
 
     handler = type("BoundHandler", (Handler,), {
         "root": root,
