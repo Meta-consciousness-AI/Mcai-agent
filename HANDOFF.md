@@ -300,3 +300,5 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   规范 V1.1：DOI 10.5281/zenodo.23831131（新记录，PDF 8 页，Report，CC BY-NC-SA 4.0，语言 zho）。
   两份均已 API 核对：版本号、文件、许可、关键词、语言正确。
   README 已补两条 DOI；V1.0 预印本记录保留（23801176）。
+
+- **2026-10-31 15:0x｜Gitee 令牌已吊销**：`mcai-deploy`（projects 权限、永不过期）已删除；日后推送 Gitee 需重新生成令牌（脚本从剪贴板读取）。
