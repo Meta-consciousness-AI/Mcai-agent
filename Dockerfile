@@ -15,5 +15,5 @@ RUN pip install --no-cache-dir .
 
 EXPOSE 8080
 
-# HTTP + /mcp（Streamable HTTP）；令牌由 MCAI_TOKEN 注入
-CMD ["sh", "-c", "mcai serve --host 0.0.0.0 --port ${PORT:-8080} --token ${MCAI_TOKEN:-}"]
+# HTTP + /mcp（Streamable HTTP）；令牌由 MCAI_TOKEN 注入，为空时以空字符串传入
+CMD ["sh", "-c", "mcai serve --host 0.0.0.0 --port ${PORT:-8080} --token \"${MCAI_TOKEN:-}\""]
