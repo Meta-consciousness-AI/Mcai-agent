@@ -353,3 +353,7 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   新增 `GET /api/v1/usage`（需 Bearer 令牌），返回 mcp_calls、by_action、by_day、last_call；同时在 stdout 打 `[usage] mcp <tool>` 供云端日志统计。
   云托管部署 004，initialize 显示 0.3.2，usage 接口实测可用。
   限制：计数存在容器内 data/usage.jsonl，重建或缩容会归零；要长期留存需读云端日志或外部存储。
+
+
+- **2026-11-01 16:3x｜0.3.2 全渠道发布**
+  PyPI 0.3.2；GitHub 与 Gitee 均为 `0d9103e`；MCP 注册表 0.3.2；Glama 已重建；云托管部署 004（initialize=0.3.2，/api/v1/usage 可用）。
