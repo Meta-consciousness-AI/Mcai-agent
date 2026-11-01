@@ -315,6 +315,19 @@ class Handler(BaseHTTPRequestHandler):
                 payload = result
             self._tele(payload, "answer", q)
             return
+        if route == "/api/v1/usage":
+            st = telemetry.for_root(self.root).stats(days=30)
+            self._send_json({
+                "ok": True,
+                "total_calls": st["total"],
+                "mcp_calls": st["by_channel"].get("mcp", 0),
+                "business_calls": st["business"],
+                "by_action": st["by_action"],
+                "by_day": st["by_day"],
+                "last_call": st["last_call"],
+                "note": "计数来自容器内 data/usage.jsonl；重建或缩容后可能重置",
+            })
+            return
         if route == "/api/v1/stats":
             self._tele(telemetry.for_root(self.root).stats(), "stats")
             return
@@ -361,6 +374,10 @@ class Handler(BaseHTTPRequestHandler):
             tele = telemetry.for_root(self.root)
             batch = isinstance(payload, list)
             items = payload if batch else [payload]
+            for item in items:
+                if isinstance(item, dict) and item.get("method") == "tools/call":
+                    name = (item.get("params") or {}).get("name", "")
+                    print(f"[usage] mcp {name}", flush=True)
             outputs = [mcp_server.handle(kb, item, tele) for item in items]
             outputs = [x for x in outputs if x is not None]
             if batch:

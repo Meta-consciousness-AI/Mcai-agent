@@ -83,6 +83,17 @@ class McpHttpTest(unittest.TestCase):
             self._post({"jsonrpc": "2.0", "id": 6, "method": "ping"}, token="wrong")
         self.assertEqual(ctx.exception.code, 401)
 
+    def test_usage_endpoint(self):
+        self._post({"jsonrpc": "2.0", "id": 7, "method": "tools/call",
+                    "params": {"name": "mcai_list", "arguments": {}}})
+        req = urllib.request.Request(f"http://127.0.0.1:{self.port}/api/v1/usage",
+                                     headers={"Authorization": f"Bearer {TOKEN}"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        self.assertTrue(data["ok"])
+        self.assertGreaterEqual(data["mcp_calls"], 1)
+        self.assertIn("by_action", data)
+
 
 if __name__ == "__main__":
     unittest.main()
