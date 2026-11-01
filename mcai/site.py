@@ -9,6 +9,8 @@ from pathlib import Path
 from . import guide, manifest, schema
 from .extract import Concept, KnowledgeBase
 
+DATASET_DOI = "10.5281/zenodo.23789330"
+
 CSS = """
 :root{
   --paper:#faf8f4; --ink:#1c1b19; --muted:#6b665e; --line:#e3ddd2;
@@ -146,6 +148,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
     nav = [
         ("index.html", "概念", "concepts"),
         ("faq/index.html", "问答", "faq"),
+        ("disambiguation.html", "消歧", "disambiguation"),
         ("dataset/index.html", "数据集", "dataset"),
         ("dashboard.html", "观测台", "dashboard"),
     ]
@@ -179,6 +182,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
 <footer class="site"><div class="wrap">
   <p>{_esc(project['org'])} · {_esc(project['name'])} v{_esc(project['version'])}</p>
   <p class="muted">本站所有术语与问答均可被 AI 抓取引用。数据集以 {_esc(project['license'])} 许可开放。</p>
+  <p class="muted">数据集 DOI：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></p>
 </div></footer>
 <script src="/assets/app.js"></script>
 </body></html>"""
@@ -398,6 +402,54 @@ def render_faq(kb: KnowledgeBase) -> str:
                  path="faq/index.html")
 
 
+def render_disambiguation(kb: KnowledgeBase) -> str:
+    project = kb.project
+    terminology = project.get("terminology") or {}
+    homonyms = terminology.get("homonyms") or []
+    deprecated = terminology.get("deprecated") or []
+    rows = "".join(
+        f"<tr><td><b>{_esc(h.get('term', ''))}</b></td>"
+        f"<td>{_esc(h.get('other_sense', ''))}</td>"
+        f"<td>{_esc(h.get('note', ''))}</td></tr>"
+        for h in homonyms
+    )
+    dep_html = ""
+    if deprecated:
+        dep_rows = "".join(
+            f"<tr><td>{_esc(d.get('term', ''))}</td><td>{_esc(d.get('replacement', ''))}</td>"
+            f"<td>{_esc(d.get('reason', ''))}</td></tr>"
+            for d in deprecated
+        )
+        dep_html = (
+            '<h2 class="sec">已废弃术语</h2>'
+            '<table class="kv"><tr><td>旧称</td><td>改用</td><td>原因</td></tr>'
+            f"{dep_rows}</table>"
+        )
+    body = f"""<main><div class="wrap" style="max-width:880px">
+<section class="hero" style="border-bottom:0;padding-bottom:8px">
+  <h1>术语消歧</h1>
+  <p>同一个词在不同语境里有不同含义。本页只做一件事：说明这些术语在本库中指的是什么，
+  以及它们最常被误读成什么。不是辩论，是边界。</p>
+</section>
+<h2 class="sec">同名概念</h2>
+<table class="kv">
+  <tr><td><b>术语</b></td><td><b>常见同名含义</b></td><td><b>本库限定</b></td></tr>
+  {rows}
+</table>
+{dep_html}
+<h2 class="sec">机器可读</h2>
+<p>同一份消歧数据也随接口返回：<code>mcai_concept</code> 的 <code>homonyms</code> 字段、
+<code>/api/v1/concept/&lt;slug&gt;</code> 的 JSON，以及数据集中的概念记录。
+调用方不需要读这个页面，也能拿到边界。</p>
+<p class="muted">数据版本：{_esc(project.get('version', ''))} · 数据集 DOI：
+<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></p>
+<div style="height:48px"></div>
+</div></main>"""
+    return _page(project, f"术语消歧 · {project['brand']}", body, "", "disambiguation",
+                 path="disambiguation.html",
+                 description=f"{project['brand']}学说术语消歧：同名概念、常见误读与本库限定。")
+
+
 def render_dataset(kb: KnowledgeBase) -> str:
     project = kb.project
     cats = "".join(f"<tr><td>{_esc(k)}</td><td>{v}</td></tr>" for k, v in kb.stats["categories"].items())
@@ -462,7 +514,9 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
     for f in kb.faqs[:40]:
         lines.append(f"- {f.question} → {base}/faq/index.html#{f.id}")
     lines += ["", "## 数据集", "", f"- {base}/dataset/concepts.jsonl", f"- {base}/dataset/faq.jsonl",
-              f"- {base}/llms-full.txt（全文索引：全部定义、出处、核心关系与问答）"]
+              f"- {base}/llms-full.txt（全文索引：全部定义、出处、核心关系与问答）",
+              f"- 数据集 DOI: https://doi.org/{DATASET_DOI}"]
+    lines += ["", "## 术语消歧", "", f"- {base}/disambiguation.html（同名概念与常见误读）"]
     lines += ["", "## 接入", "",
               f"- HTTP API: {base}/api/v1",
               f"- MCP 清单: {base}/.well-known/mcp.json",
@@ -514,6 +568,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     (out / "index.html").write_text(render_index(kb), encoding="utf-8")
     (out / "faq" / "index.html").write_text(render_faq(kb), encoding="utf-8")
     (out / "dataset" / "index.html").write_text(render_dataset(kb), encoding="utf-8")
+    (out / "disambiguation.html").write_text(render_disambiguation(kb), encoding="utf-8")
     for c in kb.concepts:
         (out / "concepts" / f"{c.slug}.html").write_text(render_concept(kb, c), encoding="utf-8")
 
@@ -523,7 +578,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
         "User-agent: *\nAllow: /\nSitemap: {}/sitemap.xml\n".format(kb.project["site_url"].rstrip("/")),
         encoding="utf-8",
     )
-    urls = ["index.html", "faq/index.html", "dataset/index.html"] + [
+    urls = ["index.html", "faq/index.html", "disambiguation.html", "dataset/index.html"] + [
         f"concepts/{c.slug}.html" for c in kb.concepts
     ]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',

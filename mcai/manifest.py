@@ -10,6 +10,8 @@ from __future__ import annotations
 from .extract import KnowledgeBase
 from . import __version__ as _PKG_VERSION
 
+DATASET_DOI = "10.5281/zenodo.23789330"
+
 
 def _base(project: dict) -> str:
     return project["site_url"].rstrip("/")
@@ -52,6 +54,7 @@ def mcp_manifest(kb: KnowledgeBase, project: dict) -> dict:
             {"tool": "mcai_related", "arguments": {"term": "元意识", "depth": 1}},
         ],
         "license": project.get("license", ""),
+        "doi": DATASET_DOI,
         "publisher": project.get("org", ""),
     }
 
@@ -66,6 +69,7 @@ def agent_card(kb: KnowledgeBase, project: dict) -> dict:
         ),
         "url": base,
         "version": project.get("version") or _PKG_VERSION,
+        "doi": DATASET_DOI,
         "provider": {"organization": project.get("org", ""), "url": base},
         "capabilities": {"streaming": False, "pushNotifications": False, "stateTransitionHistory": False},
         "defaultInputModes": ["text/plain"],
@@ -111,6 +115,7 @@ def openapi(kb: KnowledgeBase, project: dict) -> dict:
             "title": f"{project['brand']}知识库 API",
             "version": project.get("version") or _PKG_VERSION,
             "description": f"术语、问答与概念关系查询。共 {kb.stats['concepts']} 个术语。",
+            "x-doi": DATASET_DOI,
         },
         "servers": [{"url": f"{base}/api/v1"}],
         "paths": {
