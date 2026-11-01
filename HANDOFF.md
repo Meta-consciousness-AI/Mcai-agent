@@ -347,3 +347,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-11-01 10:1x｜Gitee 与云托管已恢复并升级到 0.3.1**
   Gitee 重新推送至 `32211d0`；CloudBase 云托管重建（部署 003，正常），远程 MCP initialize 与 /api/v1/health 均为 0.3.1，5 个工具可用。
   注：GitHub 在 `866bf37`，缺最后一个 docs 提交 `32211d0`（不影响代码）。
+
+
+- **2026-11-01 16:2x｜远程 MCP 调用计数上线（0.3.2）**
+  新增 `GET /api/v1/usage`（需 Bearer 令牌），返回 mcp_calls、by_action、by_day、last_call；同时在 stdout 打 `[usage] mcp <tool>` 供云端日志统计。
+  云托管部署 004，initialize 显示 0.3.2，usage 接口实测可用。
+  限制：计数存在容器内 data/usage.jsonl，重建或缩容会归零；要长期留存需读云端日志或外部存储。
