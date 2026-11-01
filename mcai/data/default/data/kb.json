@@ -7,7 +7,7 @@
       "org": "元意识（重庆）人工智能科技有限公司",
       "site_url": "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com",
       "license": "CC BY-NC-SA 4.0",
-      "version": "0.1.0",
+      "version": "0.3.1",
       "terminology": {
         "homonyms": [
           {
@@ -33,7 +33,7 @@
         }
       }
     },
-    "built_at": "2026-10-31T20:25:41+08:00",
+    "built_at": "2026-11-01T09:05:48+08:00",
     "documents": [
       {
         "id": "minimal",
@@ -41,6 +41,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\3、元意识学说极简版.docx",
         "kind": "glossary",
         "priority": 100,
+        "edition": "元意识学说标准词表（内部，2026）",
         "blocks": 69,
         "sections": 5
       },
@@ -50,6 +51,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\4、《元意识》学说.docx",
         "kind": "evidence",
         "priority": 40,
+        "edition": "内部文档（2026）",
         "blocks": 111,
         "sections": 6
       },
@@ -59,6 +61,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\5、从外延性到序生：序生智能体视角下计算受限信息的理论重构假设.docx",
         "kind": "evidence",
         "priority": 45,
+        "edition": "内部文档（2026）",
         "blocks": 246,
         "sections": 54
       },
@@ -68,6 +71,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\6、序生智能体：一个正在进入文明底层操作系统的新学说.docx",
         "kind": "evidence",
         "priority": 45,
+        "edition": "内部文档（2026）",
         "blocks": 56,
         "sections": 22
       },
@@ -77,6 +81,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\7、序生智能体学说的社会形态学 — AI时代社会重构模拟实验.docx",
         "kind": "evidence",
         "priority": 45,
+        "edition": "内部文档（2026）",
         "blocks": 126,
         "sections": 23
       },
@@ -86,6 +91,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\8、AGI 时代的 MCAI ：MCAI 理论模型视域下主观经验数字化的本体建构、技术路径与文明命题.docx",
         "kind": "evidence",
         "priority": 45,
+        "edition": "内部文档（2026）",
         "blocks": 80,
         "sections": 20
       },
@@ -95,6 +101,7 @@
         "path": "E:\\th\\元意识\\元意识著作\\Meta-consciousness.docx",
         "kind": "evidence",
         "priority": 35,
+        "edition": "内部文档（2026）",
         "blocks": 102,
         "sections": 1
       },
@@ -104,6 +111,7 @@
         "path": "E:\\th\\元意识\\元意识运营\\2、知识资产通过AI分发实现数字永生的操作手册.docx",
         "kind": "playbook",
         "priority": 60,
+        "edition": "知识资产操作手册（内部，2026）",
         "blocks": 163,
         "sections": 48
       }
@@ -191,6 +199,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -291,6 +300,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -405,6 +415,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -484,6 +495,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -570,6 +582,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -677,6 +690,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -796,6 +810,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -868,6 +883,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -954,6 +970,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -1012,6 +1029,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -1091,6 +1109,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -1149,6 +1168,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -1290,6 +1310,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -1411,6 +1432,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -1490,6 +1512,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -1558,6 +1581,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -1679,6 +1703,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -1797,6 +1822,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -1899,6 +1925,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -2034,6 +2061,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -2162,6 +2190,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2266,6 +2295,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -2320,6 +2350,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2438,6 +2469,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2583,6 +2615,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2678,6 +2711,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2802,6 +2836,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -2867,6 +2902,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -2979,6 +3015,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3127,6 +3164,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3270,6 +3308,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3338,6 +3377,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3432,6 +3472,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3549,6 +3590,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3621,6 +3663,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3745,6 +3788,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -3872,6 +3916,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "progenerative",
@@ -3996,6 +4041,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4110,6 +4156,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4196,6 +4243,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4271,6 +4319,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -4329,6 +4378,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "sociology",
@@ -4450,6 +4500,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4518,6 +4569,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -4611,6 +4663,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4679,6 +4732,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4772,6 +4826,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -4830,6 +4885,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -4881,6 +4937,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -4935,6 +4992,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -5000,6 +5058,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5063,6 +5122,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "progenerative",
@@ -5180,6 +5240,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5234,6 +5295,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5309,6 +5371,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5393,6 +5456,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "book",
@@ -5538,6 +5602,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5615,6 +5680,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5678,6 +5744,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5739,6 +5806,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5793,6 +5861,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5854,6 +5923,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [
         {
           "doc_id": "mcaii",
@@ -5933,6 +6003,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
@@ -5977,6 +6048,7 @@
         }
       ],
       "variants": [],
+      "edition_variants": [],
       "evidence": [],
       "relations": [
         {
