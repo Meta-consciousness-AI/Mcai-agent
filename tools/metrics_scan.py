@@ -1,8 +1,9 @@
-"""定期指标扫描：PyPI 下载、GitHub 关注度。
+"""定期指标扫描：PyPI、GitHub、Zenodo、ModelScope。
 
 用法：python tools/metrics_scan.py
 结果追加到 data/metrics.jsonl，并打印摘要。
-Zenodo / Bing / Glama 需要登录或浏览器，由人工或 web_fetch 补查。
+注意：ModelScope 的 Downloads 是下载事件计数器（本人与抓取都会 +1），不能直接当作外部使用。
+Bing 收录需要浏览器或 web_fetch，另行补查。
 """
 
 import datetime as dt
@@ -14,6 +15,13 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "metrics.jsonl"
 PKG = "mcai-knowledge"
 REPO = "Meta-consciousness-AI/Mcai-agent"
+ZENODO_RECORDS = {
+    "dataset": 23789330,
+    "preprint": 23830600,
+    "spec_v11": 23831131,
+    "spec_v13": 23850554,
+}
+MODELSCOPE_DATASET = "Metaconsciousness/mcai-knowledge"
 
 
 def get_json(url: str, timeout: int = 25):
@@ -48,10 +56,31 @@ def github_stats():
     }
 
 
+def zenodo_stats():
+    out = {}
+    for name, rid in ZENODO_RECORDS.items():
+        d = get_json(f"https://zenodo.org/api/records/{rid}")
+        s = d.get("stats") or {}
+        out[f"zenodo_{name}_views"] = s.get("views")
+        out[f"zenodo_{name}_downloads"] = s.get("downloads")
+    out["zenodo_views_total"] = sum(v for k, v in out.items() if k.endswith("_views") and isinstance(v, int))
+    out["zenodo_downloads_total"] = sum(v for k, v in out.items() if k.endswith("_downloads") and isinstance(v, int))
+    return out
+
+
+def modelscope_stats():
+    d = get_json(f"https://modelscope.cn/api/v1/datasets/{MODELSCOPE_DATASET}")
+    data = d.get("Data") or {}
+    return {
+        "modelscope_downloads": data.get("Downloads"),
+        "modelscope_likes": data.get("Likes"),
+    }
+
+
 def main():
     ts = dt.datetime.now(dt.timezone.utc).astimezone().isoformat(timespec="seconds")
     row = {"ts": ts}
-    for fn in (pypi_stats, github_stats):
+    for fn in (pypi_stats, github_stats, zenodo_stats, modelscope_stats):
         try:
             row.update(fn())
         except Exception as e:  # 单点失败不影响整行
