@@ -49,6 +49,11 @@ def rebuild(root: str | Path) -> dict:
     _record_versions(root, kb)
     pages = site.build_site(kb, root / "dist")
     files = dataset.export(kb, root / "dist" / "dataset")
+    key_file = root / "data" / "indexnow-key.txt"
+    if key_file.exists():
+        key = key_file.read_text(encoding="utf-8").strip()
+        if key:
+            (root / "dist" / f"{key}.txt").write_text(key, encoding="utf-8")
     try:
         dashboard.render(root)
     except Exception:  # noqa: BLE001 - 看板失败不影响构建
