@@ -357,3 +357,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 
 - **2026-11-01 16:3x｜0.3.2 全渠道发布**
   PyPI 0.3.2；GitHub 与 Gitee 均为 `0d9103e`；MCP 注册表 0.3.2；Glama 已重建；云托管部署 004（initialize=0.3.2，/api/v1/usage 可用）。
+
+
+- **2026-11-01 16:5x｜内容惯例与构建者渠道**
+  决定：日后公众号/知乎每篇技术文章文末固定放 Coze 直达链接或二维码（零安装入口），形成惯例。
+  构建者渠道先试 PulseMCP，两周观察；Smithery 因要求 OAuth 暂不合适；PulseMCP 对脚本 403，需浏览器提交。
