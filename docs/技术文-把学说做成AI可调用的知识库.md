@@ -153,6 +153,7 @@ curl "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/api/
 
 ## 链接
 
+- 直接体验（无需安装）：https://www.coze.cn/store/agent/7702301472461242409?bot_id=true
 - GitHub：https://github.com/Meta-consciousness-AI/Mcai-agent
 - Gitee：https://gitee.com/Meta-consciousness-AI/Mcai-agent
 - 站点：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com
