@@ -381,3 +381,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   服务 mcai-mcp-public，地址 https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/mcp
   无令牌可 initialize 与 tools/call；/api/rebuild、/api/v1/stats、/api/v1/gaps 均返回 403；版本 0.3.2。
   README 已补公开实例配置；可用于百炼、魔搭 Streamable HTTP、Smithery 等不需要令牌的接入。
+
+
+- **2026-11-01 22:2x｜百炼接入公开 MCP**
+  百炼控制台 MCP 管理 → 接入已有 MCP 服务 → 安装方式 http，配置公开地址；服务 mcai-knowledge 已启用，`mcai_answer` 工具测试成功。
+  结论：百炼自定义 MCP 仅限本人账号内使用，没有第三方公开上架通道，不带来外部调用者；价值在于验证公开实例可用、可搭自有智能体。
