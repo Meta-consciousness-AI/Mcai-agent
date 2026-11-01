@@ -16,9 +16,17 @@ function Find-Git {
 }
 $git = Find-Git
 
-$token = (Get-Clipboard -Raw).Trim()
-if (-not $token) { throw "剪贴板为空：请先复制 Gitee 私人令牌" }
-if ($token.Length -lt 16) { throw "令牌长度异常，请确认复制的是完整令牌" }
+$token = ""
+try { $token = (Get-Clipboard -Raw).Trim() } catch { $token = "" }
+if (-not $token) {
+    Write-Host "剪贴板里没有令牌。" -ForegroundColor Yellow
+    $secure = Read-Host "请粘贴 Gitee 私人令牌后回车" -AsSecureString
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+    try { $token = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr) } finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+    $token = $token.Trim()
+}
+if (-not $token) { throw "没有拿到令牌" }
+if ($token.Length -lt 16) { throw "令牌长度异常，请确认粘贴的是完整令牌" }
 
 $remote = "https://oauth2:$token@gitee.com/$user/$repo.git"
 Write-Host "推送到 Gitee：$user/$repo ..." -ForegroundColor Cyan
