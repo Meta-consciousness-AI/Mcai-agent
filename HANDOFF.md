@@ -342,3 +342,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-11-01 09:5x｜0.3.1 全渠道发布完成**
   PyPI 0.3.1（含 edition_variants、health 版本修复）；GitHub `866bf37`；MCP 注册表 0.3.1；Glama 同步与构建完成（邮件确认）。
   规范 V1.3 同日发布：DOI 10.5281/zenodo.23850554。
+
+
+- **2026-11-01 10:1x｜Gitee 与云托管已恢复并升级到 0.3.1**
+  Gitee 重新推送至 `32211d0`；CloudBase 云托管重建（部署 003，正常），远程 MCP initialize 与 /api/v1/health 均为 0.3.1，5 个工具可用。
+  注：GitHub 在 `866bf37`，缺最后一个 docs 提交 `32211d0`（不影响代码）。
