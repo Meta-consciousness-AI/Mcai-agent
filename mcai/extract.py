@@ -55,6 +55,7 @@ class Concept:
     aliases: list[str] = field(default_factory=list)
     sources: list[Source] = field(default_factory=list)
     variants: list[Variant] = field(default_factory=list)
+    edition_variants: list[dict] = field(default_factory=list)
     relations: list[dict] = field(default_factory=list)
     evidence: list[dict] = field(default_factory=list)
     kind: str = "core"          # core | derived
@@ -105,6 +106,7 @@ class Concept:
             "issues": self.issues,
             "sources": [s.__dict__ for s in self.sources],
             "variants": [v.__dict__ for v in self.variants],
+            "edition_variants": self.edition_variants,
             "evidence": self.evidence,
             "relations": self.relations,
         }
@@ -350,7 +352,17 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
                 )
             )
 
+        canonical_edition = doc_editions.get(entries[0][1].doc_id, "") if entries else ""
         for definition, block in entries[1:]:
+            other_edition = doc_editions.get(block.doc_id, "")
+            if other_edition and canonical_edition and other_edition != canonical_edition:
+                concept.edition_variants.append({
+                    "edition": other_edition,
+                    "doc_title": block.doc_title,
+                    "definition": definition,
+                    "location": block.location,
+                })
+                continue
             sim = T.similarity(canonical_def, definition)
             shorter, longer = sorted((canonical_def, definition), key=len)
             # 一条是另一条的前缀/节选时不算冲突（常见于 Word 手动换行被截断）
@@ -394,6 +406,8 @@ def build(corpus: Corpus, curated: dict, overrides: dict | None = None,
         if concept.variants:
             concept.status = "conflict"
             concept.issues.append(f"存在 {len(concept.variants)} 个差异较大的定义版本，需人工裁定")
+        if concept.edition_variants:
+            concept.issues.append(f"存在 {len(concept.edition_variants)} 个不同版本的定义，已并存")
         if len(concept.definition) < 12:
             concept.status = "thin" if concept.status == "ok" else concept.status
             concept.issues.append("定义过短，可能不足以被 AI 直接引用")

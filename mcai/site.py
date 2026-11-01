@@ -297,6 +297,13 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
             for v in c.variants
         )
         variants = f'<h2 class="sec">其他表述（待裁定）</h2><div class="quotes">{items}</div>'
+    if c.edition_variants:
+        items = "".join(
+            f'<blockquote>{_esc(v.get("definition", ""))}<cite>版本：{_esc(v.get("edition", ""))}'
+            f' · {_esc(_doc_label(v.get("doc_title", "")))}</cite></blockquote>'
+            for v in c.edition_variants
+        )
+        variants += f'<h2 class="sec">其他版本（并存）</h2><div class="quotes">{items}</div>'
 
     evidence_html = ""
     if c.evidence:

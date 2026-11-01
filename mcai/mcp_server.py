@@ -227,7 +227,7 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
         payload = {k: concept.get(k) for k in (
             "id", "term", "en", "aliases", "category", "kind", "parent",
             "definition", "short_definition", "definition_type", "editor_note",
-            "status", "sources", "evidence", "relations",
+            "edition_variants", "status", "sources", "evidence", "relations",
         )}
         payload["homonyms"] = kb.homonyms(concept["term"])
         return _text(payload)
