@@ -326,3 +326,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-10-31 20:5x｜数据集 v1.1 发布（Zenodo）**
   版本 DOI 10.5281/zenodo.23836789；文件 mcai-knowledge-dataset-v1.1.zip（9 个文件，含 relations.jsonl、provenance edition、README）。
   概念 DOI 23789330 始终指向最新版。Views 15 含本人访问与爬虫，Downloads 0，不能当作外部采用证据。
+
+
+- **2026-11-01 09:1x｜规范 V1.3 发布（Zenodo）**
+  DOI 10.5281/zenodo.23850554，版本 1.3，PDF 9 页，CC BY-NC-SA 4.0；关键词新增「多版本」「edition variants」。
+  README 的 Spec DOI 已指向 1.3；V1.1/V1.2 记录保留。GitHub 推送与注册表因网络不通延后。
