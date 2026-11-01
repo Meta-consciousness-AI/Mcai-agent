@@ -362,3 +362,11 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-11-01 16:5x｜内容惯例与构建者渠道**
   决定：日后公众号/知乎每篇技术文章文末固定放 Coze 直达链接或二维码（零安装入口），形成惯例。
   构建者渠道先试 PulseMCP，两周观察；Smithery 因要求 OAuth 暂不合适；PulseMCP 对脚本 403，需浏览器提交。
+
+
+- **2026-11-01 18:0x｜国内渠道首轮投放**
+  掘金：https://juejin.cn/post/7702723478470377510
+  知乎：https://zhuanlan.zhihu.com/p/2100281795400962883
+  魔搭 MCP：描述、标签、托管类型（仅本地可用）已更新；3→4 浏览
+  Coze：开场白 + 4 个预置问题，已重新发布到扣子商店
+  V2EX 不可达、SegmentFault 短信收不到、腾讯云 MCP 广场关闭第三方上架；阿里云/火山待注册。
