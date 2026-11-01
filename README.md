@@ -296,10 +296,29 @@ mcai-mcp                # 或 mcai mcp；stdio + JSON-RPC 2.0
 mcai serve --host 0.0.0.0 --port 8787 --token <令牌>
 ```
 
-公共实例（需向维护者申请令牌）：
+公共只读实例（**无需令牌**，限流 60 次/分钟，仅读接口）：
+
+```
+https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/mcp
+```
+
+带令牌的完整实例（可写接口仅限本机）：
 
 ```
 https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
+```
+
+只读实例的客户端配置：
+
+```json
+{
+  "mcpServers": {
+    "mcai-knowledge": {
+      "type": "http",
+      "url": "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/mcp"
+    }
+  }
+}
 ```
 
 客户端配置：

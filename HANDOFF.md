@@ -375,3 +375,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-11-01 18:1x｜国内渠道升级为工作重点**
   定位为「可达性」而非推广；渠道分三层（Agent/MCP 平台、开发者社区、RAG 工具生态）；每月扫描新渠道，攒 2–3 个再集中注册。
   待办：阿里云百炼、火山引擎、博客园、开源中国、CSDN；持续观察魔搭与 Coze。
+
+
+- **2026-11-01 22:0x｜公开只读 MCP 实例上线**
+  服务 mcai-mcp-public，地址 https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/mcp
+  无令牌可 initialize 与 tools/call；/api/rebuild、/api/v1/stats、/api/v1/gaps 均返回 403；版本 0.3.2。
+  README 已补公开实例配置；可用于百炼、魔搭 Streamable HTTP、Smithery 等不需要令牌的接入。
