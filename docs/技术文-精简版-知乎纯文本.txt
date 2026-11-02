@@ -23,7 +23,7 @@ mcai-mcp
 
 MCP 客户端加 command: uvx --from mcai-knowledge mcai-knowledge；不想装也可以直接请求 HTTP 接口。
 
-坦白部分：目前 GitHub 0 Star、Zenodo 0 下载、Coze 智能体 0 使用，远程 MCP 只有我们自己的测试调用。公众号文章有几百阅读，但阅读不等于使用。我们判断问题不在需求，而在还没把东西放到会用它的人面前。
+坦白部分：这套东西才刚刚开始。GitHub 还没有 Star，Zenodo 的下载量、Coze 智能体的使用量、远程 MCP 的调用计数，也都还没什么量。我们认为，可能是还没把这套东西放到想用它的人面前。如果你对这个方向感兴趣，欢迎使用交流。
 
 - 零安装体验：https://www.coze.cn/store/agent/7702301472461242409?bot_id=true
 - 代码：https://gitee.com/Meta-consciousness-AI/Mcai-agent
