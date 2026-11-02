@@ -288,6 +288,8 @@ mcai-mcp                # 或 mcai mcp；stdio + JSON-RPC 2.0
 
 本地源码运行也可以：`python run.py mcp`。
 
+[![MCAI Knowledge Base MCP on mcprush](https://mcprush.com/badge/mcai-knowledge-base-mcp/score.svg)](https://mcprush.com/to/mcai-knowledge-base-mcp?ref=badge)
+
 #### 远程 MCP（Streamable HTTP）
 
 自托管：
