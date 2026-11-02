@@ -386,3 +386,9 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
 - **2026-11-01 22:2x｜百炼接入公开 MCP**
   百炼控制台 MCP 管理 → 接入已有 MCP 服务 → 安装方式 http，配置公开地址；服务 mcai-knowledge 已启用，`mcai_answer` 工具测试成功。
   结论：百炼自定义 MCP 仅限本人账号内使用，没有第三方公开上架通道，不带来外部调用者；价值在于验证公开实例可用、可搭自有智能体。
+
+
+- **2026-11-02 10:2x｜PhilArchive 重新提交（完整元数据）**
+  11-02 上午站内搜索与作者页均无记录，邮箱也无审核邮件；随后按 /edit 流程重新提交：
+  类型 Article、状态 Unpublished、作者 Hai Tan、语言中文、摘要完整、上传 v1.1 PDF、DOI 关联、分类 Philosophy of Computing and Information、6 个关键词。
+  页面提示：审核最多 1 个工作日。
