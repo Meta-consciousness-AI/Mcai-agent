@@ -392,3 +392,7 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   11-02 上午站内搜索与作者页均无记录，邮箱也无审核邮件；随后按 /edit 流程重新提交：
   类型 Article、状态 Unpublished、作者 Hai Tan、语言中文、摘要完整、上传 v1.1 PDF、DOI 关联、分类 Philosophy of Computing and Information、6 个关键词。
   页面提示：审核最多 1 个工作日。
+
+
+- **2026-11-02 12:2x｜文章分发更新**
+  微博头条文章重发（v2 定稿，Markdown 解析，链接可点）；知乎文章首段/尾段改为定稿文字，文末补到 5 条链接并修正标签错配；知乎阅读 19→32。
