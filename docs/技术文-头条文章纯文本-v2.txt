@@ -1,6 +1,6 @@
 起因
 
-我在维护一套叫 Meta-Consciousness Theory（元意识）的原创学说。它不是主流概念，模型遇到它时通常有三种反应：
+“Meta-Consciousness Theory”是一套新的原创学说，模型遇到它时通常有三种反应：
 
 1. 没听说过，按字面意思猜；
 2. 用同名概念替换，比如把它理解成心理学的 meta-awareness；
