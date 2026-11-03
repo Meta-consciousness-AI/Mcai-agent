@@ -38,3 +38,6 @@ tools/reg_versions.py
 tools/verify_pypi*.py
 tools/check_pypi.py
 site-publish/
+
+# 视频素材（可按脚本重建）
+video/**/*.png
