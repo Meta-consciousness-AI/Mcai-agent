@@ -4,6 +4,10 @@ from pathlib import Path
 ROOT = Path(r"C:\Users\HP\Documents\deepseek-harness\default-workspace\mca-agent\video")
 final_text = (ROOT / "口播稿（定稿）.txt").read_text(encoding="utf-8")
 paras = [p.strip() for p in re.split(r"\n\s*\n", final_text) if p.strip()]
+# 用法与搜索合并为一页，保持 14 页
+if len(paras) == 15:
+    paras[12] = paras[12] + " " + paras[13]
+    del paras[13]
 
 topics = [
     "开场：如何让 AI 答对原创术语",
@@ -18,8 +22,8 @@ topics = [
     "复现：三份经典 100%",
     "最新：0.3.2 / mcprush Grade A",
     "现状：用的人还不多",
-    "用法：pip 或 MCP 地址",
-    "搜索指引与结尾",
+    "用法与搜索指引",
+    "结尾",
 ]
 
 def secs(text: str) -> int:
