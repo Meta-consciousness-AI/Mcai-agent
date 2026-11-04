@@ -183,6 +183,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
   <p>{_esc(project['org'])} · {_esc(project['name'])} v{_esc(project['version'])}</p>
   <p class="muted">本站所有术语与问答均可被 AI 抓取引用。数据集以 {_esc(project['license'])} 许可开放。</p>
   <p class="muted">数据集 DOI：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></p>
+  <p class="muted">预印本 DOI：<a href="https://doi.org/10.5281/zenodo.23830600">10.5281/zenodo.23830600</a> · <a href="https://philarchive.org/rec/MCAKAO">PhilArchive 条目</a></p>
 </div></footer>
 <script src="/assets/app.js"></script>
 </body></html>"""
@@ -522,7 +523,9 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
         lines.append(f"- {f.question} → {base}/faq/index.html#{f.id}")
     lines += ["", "## 数据集", "", f"- {base}/dataset/concepts.jsonl", f"- {base}/dataset/faq.jsonl",
               f"- {base}/llms-full.txt（全文索引：全部定义、出处、核心关系与问答）",
-              f"- 数据集 DOI: https://doi.org/{DATASET_DOI}"]
+              f"- 数据集 DOI: https://doi.org/{DATASET_DOI}",
+              "- 预印本 DOI: https://doi.org/10.5281/zenodo.23830600",
+              "- PhilArchive: https://philarchive.org/rec/MCAKAO"]
     lines += ["", "## 术语消歧", "", f"- {base}/disambiguation.html（同名概念与常见误读）"]
     lines += ["", "## 接入", "",
               f"- HTTP API: {base}/api/v1",
