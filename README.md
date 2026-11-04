@@ -27,6 +27,7 @@
 - DOI：https://doi.org/10.5281/zenodo.23789330
 - 规范 V1.3：https://doi.org/10.5281/zenodo.23850554
 - 预印本 v1.1：https://doi.org/10.5281/zenodo.23830600
+- PhilArchive 条目：https://philarchive.org/rec/MCAKAO
 - Gitee 镜像：https://gitee.com/Meta-consciousness-AI/Mcai-agent
 
 ---
