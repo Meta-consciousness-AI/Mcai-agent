@@ -41,3 +41,6 @@ site-publish/
 
 # 视频素材（可按脚本重建）
 video/**/*.png
+
+# 站点打包，临时产物
+dist-site.zip
