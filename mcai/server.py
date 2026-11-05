@@ -10,6 +10,7 @@ from __future__ import annotations
 import hmac
 import json
 import mimetypes
+import re
 import threading
 import time
 import urllib.parse
@@ -37,6 +38,10 @@ MIME = {
 LOCAL_ONLY = ("/api/rebuild", "/api/v1/stats", "/api/v1/gaps")
 # 无需令牌即可访问（存活探针）
 PUBLIC_API = ("/api/v1/health",)
+# 站点正式地址：/r 跳转、分享链接都指向这里
+SITE_URL = "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com"
+# /r?src= 允许的来源标识
+SRC_PATTERN = re.compile(r"^[a-z0-9_-]{1,32}$")
 
 
 def is_local_ip(ip: str) -> bool:
@@ -200,6 +205,23 @@ class Handler(BaseHTTPRequestHandler):
                 "health": "/api/v1/health",
                 "mcp": "/mcp",
             })
+            return
+
+        if route == "/r":
+            if not self._rate_ok():
+                self._deny(HTTPStatus.TOO_MANY_REQUESTS, "请求过于频繁，请稍后再试")
+                return
+            src = (params.get("src", [""])[0] or "").strip().lower()
+            if not SRC_PATTERN.match(src):
+                src = "unknown"
+            telemetry.for_root(self.root).record(
+                "redirect", "visit", src, "", True,
+                detail={"client": self._client_label(), "ip": self.client_address[0]},
+            )
+            self.send_response(HTTPStatus.FOUND)
+            self.send_header("Location", f"{SITE_URL}/?from={urllib.parse.quote(src)}")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
             return
 
         if route.startswith("/api"):
