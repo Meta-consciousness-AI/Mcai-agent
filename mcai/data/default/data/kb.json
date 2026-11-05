@@ -7,7 +7,7 @@
       "org": "元意识（重庆）人工智能科技有限公司",
       "site_url": "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com",
       "license": "CC BY-NC-SA 4.0",
-      "version": "0.3.3",
+      "version": "0.3.4",
       "terminology": {
         "homonyms": [
           {
@@ -33,7 +33,7 @@
         }
       }
     },
-    "built_at": "2026-11-05T11:07:17+08:00",
+    "built_at": "2026-11-05T20:13:41+08:00",
     "documents": [
       {
         "id": "minimal",
