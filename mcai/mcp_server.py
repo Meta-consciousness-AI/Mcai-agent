@@ -12,7 +12,7 @@ from pathlib import Path
 from . import knowledge
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.3"}
+SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.4"}
 
 INSTRUCTIONS = (
     "Read-only knowledge base for the Meta-Consciousness Theory (元意识学说). "
