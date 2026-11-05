@@ -402,3 +402,8 @@ mcai restore backups\snapshot-xxxx.zip --to D:\mcai-bak   # 恢复到新目录
   横屏版（2:28）发布腾讯视频、爱奇艺；竖屏版（1:19）发布视频号、抖音、快手。
   内容渠道十个平台全部覆盖：公众号、知乎、掘金、微博、小红书、视频号、抖音、快手、腾讯视频、爱奇艺。
   链接记录在 docs/发现工作计划.md。
+
+
+- **2026-11-05｜MCP 工具描述优化**
+  initialize 新增 instructions（工具路由与边界说明）；mcai_answer 描述补充返回结构与 type=none 的回退建议；新增 tests/test_mcp_instructions.py 回归测试。
+  尚未发版，等待 0.3.3 一起发布。

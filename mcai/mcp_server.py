@@ -14,11 +14,23 @@ from . import knowledge
 PROTOCOL_VERSION = "2024-11-05"
 SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.2"}
 
+INSTRUCTIONS = (
+    "Read-only knowledge base for the Meta-Consciousness Theory (元意识学说). "
+    "Every definition is quoted from a source document; nothing is generated. "
+    "Routing: natural-language question -> mcai_answer; exact term -> mcai_concept; "
+    "uncertain spelling or partial name -> mcai_search; relations only -> mcai_related; "
+    "catalog or coverage -> mcai_list. "
+    "If mcai_answer returns type='none', call mcai_search before telling the user the term is unknown. "
+    "Use format='citations' when the caller needs to audit or quote sources. "
+    "Answer only from tool results; do not fill gaps with outside knowledge. "
+    "When a term has homonyms, state which sense this base defines."
+)
+
 TOOLS = [
     {
         "name": "mcai_answer",
         "title": "Answer doctrine questions",
-        "description": "Answer full-sentence questions about the Meta-Consciousness Theory, returning authoritative definitions, source quotations, and related concepts. Use when the user asks in natural language and does not need one specific entry, e.g. \"What is meta-consciousness?\", \"How are meta-recognition and meta-knowledge related?\", \"How does the progenerative agent explain AI emergence?\". Routing: for a known term and its full entry (aliases, sources, citations, relations) use mcai_concept; if unsure of the exact term use mcai_search; for a catalog use mcai_list; for relations only use mcai_related. Boundary: answers come only from this knowledge base; unlisted concepts return type=none. Do not extrapolate, complete, or introduce meanings outside the corpus.",
+        "description": "Answer full-sentence questions about the Meta-Consciousness Theory, returning authoritative definitions, source quotations, and related concepts. Use when the user asks in natural language and does not need one specific entry, e.g. \"What is meta-consciousness?\", \"How are meta-recognition and meta-knowledge related?\", \"How does the progenerative agent explain AI emergence?\". Returns JSON with question, type (concept / faq / none), answer and citations; type='none' means the base does not cover it, so call mcai_search before saying it is unknown. Routing: for a known term and its full entry (aliases, sources, citations, relations) use mcai_concept; if unsure of the exact term use mcai_search; for a catalog use mcai_list; for relations only use mcai_related. Boundary: answers come only from this knowledge base; unlisted concepts return type=none. Do not extrapolate, complete, or introduce meanings outside the corpus.",
         "annotations": {
             "readOnlyHint": True,
             "destructiveHint": False,
@@ -257,6 +269,7 @@ def handle(kb: knowledge.Knowledge, request: dict, tele=None) -> dict | None:
             "protocolVersion": PROTOCOL_VERSION,
             "capabilities": {"tools": {}, "resources": {}, "prompts": {}},
             "serverInfo": SERVER_INFO,
+            "instructions": INSTRUCTIONS,
         }}
     if method in ("notifications/initialized", "notifications/cancelled"):
         return None
