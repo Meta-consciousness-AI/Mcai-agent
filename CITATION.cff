@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this knowledge base or its code, please cite it as below."
+title: "MCAI Knowledge Base: structured knowledge assets for the Meta-Consciousness Theory"
+type: software
+authors:
+  - name: "元意识（重庆）人工智能科技有限公司"
+    alias: "Meta-consciousness AI"
+version: 0.3.4
+date-released: 2026-11-05
+license: MIT
+repository-code: "https://github.com/Meta-consciousness-AI/Mcai-agent"
+url: "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com"
+abstract: >-
+  A concept-level knowledge base for the Meta-Consciousness Theory:
+  64 term definitions, 122 curated Q&A pairs, 270 typed concept relations and
+  213 source quotations, each traceable to a document and a character range.
+  Published as a Python package, an MCP server, a static site and open datasets.
+keywords:
+  - knowledge base
+  - MCP
+  - terminology
+  - meta-consciousness
+  - question answering
+  - provenance
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23789330"
+    description: "Dataset concept DOI (always resolves to the latest version)"
+  - type: doi
+    value: "10.5281/zenodo.23836789"
+    description: "Dataset v1.1"
+  - type: doi
+    value: "10.5281/zenodo.23830600"
+    description: "Preprint v1.1"
+references:
+  - type: generic
+    title: "MCAI Knowledge Base dataset"
+    doi: "10.5281/zenodo.23789330"
