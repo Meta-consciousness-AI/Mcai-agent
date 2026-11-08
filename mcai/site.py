@@ -10,6 +10,8 @@ from . import guide, manifest, schema
 from .extract import Concept, KnowledgeBase
 
 DATASET_DOI = "10.5281/zenodo.23789330"
+# 页面计数：复用远程 /r 端点（跨域、不导航、不阻塞）
+TRACK_URL = "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/r"
 
 CSS = """
 :root{
@@ -186,6 +188,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
   <p class="muted">预印本 DOI：<a href="https://doi.org/10.5281/zenodo.23830600">10.5281/zenodo.23830600</a> · <a href="https://philarchive.org/rec/MCAKAO">PhilArchive 条目</a></p>
 </div></footer>
 <script src="/assets/app.js"></script>
+<script>try{{fetch("{TRACK_URL}?src=p-{path.replace('/', '-').replace('.html', '')}",{{mode:"no-cors",redirect:"manual",cache:"no-store"}}).catch(function(){{}})}}catch(e){{}}</script>
 </body></html>"""
 
 
