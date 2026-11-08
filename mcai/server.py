@@ -218,6 +218,8 @@ class Handler(BaseHTTPRequestHandler):
                 "redirect", "visit", src, "", True,
                 detail={"client": self._client_label(), "ip": self.client_address[0]},
             )
+            # 容器磁盘是临时的，计数同时写 stdout，供 CloudBase 日志监控统计
+            print(f"[pageview] src={src}", flush=True)
             self.send_response(HTTPStatus.FOUND)
             self.send_header("Location", f"{SITE_URL}/?from={urllib.parse.quote(src)}")
             self.send_header("Cache-Control", "no-store")
