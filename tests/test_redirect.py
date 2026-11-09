@@ -60,9 +60,17 @@ class RedirectTest(unittest.TestCase):
         self.assertIn("from=kuaishou", res.headers.get("Location", ""))
         self.assertTrue(any(call[0][:3] == ("redirect", "visit", "kuaishou") for call in self.recorder.calls))
 
+    def test_long_path_source_is_kept(self):
+        self.recorder.calls.clear()
+        src = "p-concepts-meta-consciousness-interpretation"
+        res = self._get("/r?src=" + src)
+        self.assertEqual(res.code, 302)
+        self.assertIn("from=" + src, res.headers.get("Location", ""))
+        self.assertTrue(any(call[0][:3] == ("redirect", "visit", src) for call in self.recorder.calls))
+
     def test_invalid_source_falls_back_to_unknown(self):
         self.recorder.calls.clear()
-        res = self._get("/r?src=" + "x" * 40)
+        res = self._get("/r?src=" + "x" * 80)
         self.assertEqual(res.code, 302)
         self.assertIn("from=unknown", res.headers.get("Location", ""))
         self.assertTrue(any(call[0][:3] == ("redirect", "visit", "unknown") for call in self.recorder.calls))

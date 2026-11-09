@@ -40,8 +40,8 @@ LOCAL_ONLY = ("/api/rebuild", "/api/v1/stats", "/api/v1/gaps")
 PUBLIC_API = ("/api/v1/health",)
 # 站点正式地址：/r 跳转、分享链接都指向这里
 SITE_URL = "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com"
-# /r?src= 允许的来源标识
-SRC_PATTERN = re.compile(r"^[a-z0-9_-]{1,32}$")
+# /r?src= 允许的来源标识（词条路径会超过 32，放宽到 64）
+SRC_PATTERN = re.compile(r"^[a-z0-9_-]{1,64}$")
 
 
 def is_local_ip(ip: str) -> bool:
