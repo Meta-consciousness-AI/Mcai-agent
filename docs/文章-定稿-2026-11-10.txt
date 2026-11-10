@@ -100,7 +100,7 @@ mcprush：已认领，Grade A；
 
 规范文档 DOI：10.5281/zenodo.23850554；
 
-PhilArchive 收录：philarchive.org/rec/MCAKAO；
+PhilArchive 收录：philarchive.org/rec/MCAKAO
 
 OpenAIRE 已索引。
 
@@ -217,8 +217,10 @@ GitHub：0 Star。
 安装：pip install mcai-knowledge
 
 远程 MCP：https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/mcp
+（Streamable HTTP 端点，只接受 POST；浏览器直接打开会提示错误，属正常现象，请用 MCP 客户端连接）
 
 数据集：https://doi.org/10.5281/zenodo.23789330
+（该 DOI 指向数据集 v1.1 记录；文中的 171 / 18 为四个记录合计）
 
 附二：参考实现（最小命令集）
 
@@ -236,7 +238,7 @@ mcai mcp --home <工作目录>
 
 64 术语 / 122 问答 / 270 关系：kb.json 条目统计；核验方式：数据集与仓库。
 
-Zenodo 171 / 18：截止 2026-11-10 公开统计；核验方式：Zenodo 记录页。
+Zenodo 171 / 18：截止 2026-11-10 公开统计；为数据集、预印本、规范 V1.1、V1.3 四个记录之和，单条记录页显示的数字只代表该条；核验方式：Zenodo 各记录页。
 
 真实业务调用 0：远程实例计数，仅健康检查；核验方式：服务计数接口。
 
