@@ -25,6 +25,7 @@ dependencies = [
 mcai = "mcai.cli:main"
 mcai-mcp = "mcai.mcp_server:main_entry"
 mcai-knowledge = "mcai.mcp_server:main_entry"
+mcai-verify = "mcai.verify:main"
 
 [tool.setuptools.packages.find]
 include = ["mcai*"]
