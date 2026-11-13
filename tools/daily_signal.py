@@ -16,6 +16,21 @@ ROOT = Path(__file__).resolve().parent.parent
 PUB = "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com"
 TOK = "https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com"
 TOKEN = "wmRJDHezXcON_8-JxRp4E8ex-wRuGZx1"
+
+
+TOKEN_FILE = r"E:\th\元意识\元意识资料\Mcai-Agent\mcai-knowledge\Zenodo令牌.txt"
+
+
+def zenodo_token():
+    import os
+    tok = os.environ.get("ZENODO_TOKEN", "").strip()
+    if tok:
+        return tok
+    try:
+        return Path(TOKEN_FILE).read_text(encoding="utf-8").strip()
+    except Exception:
+        return ""
+
 ZENODO = {
     "数据集": 23836789,
     "预印本": 23830600,
@@ -102,6 +117,15 @@ def check_github():
 
 
 def check_zenodo_one(name, rid):
+    tok = zenodo_token()
+    if tok:
+        try:
+            raw = fetch(f"https://zenodo.org/api/records/{rid}",
+                        headers={"User-Agent": "mcai-signal", "Authorization": "Bearer " + tok})
+            st = json.loads(raw).get("stats", {})
+            return f"Zenodo {name}：{st.get('views', '?')} 浏览 / {st.get('downloads', '?')} 下载", None
+        except Exception:
+            pass
     try:
         t = fetch(f"https://zenodo.org/records/{rid}")
         v = int((re.findall(r'"views":\s*(\d+)', t) or [0])[0])

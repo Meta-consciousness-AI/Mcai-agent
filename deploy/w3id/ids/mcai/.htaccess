@@ -1,0 +1,21 @@
+# /mcai/
+#
+# https://w3id.org/mcai/ redirects to the MCAI knowledge vocabulary.
+#
+# ## Contact
+# This space is administered by:
+#
+# Meta-consciousness-AI
+# GitHub username: Meta-consciousness-AI
+
+RewriteEngine on
+
+# RDF vocabulary and concept scheme
+RewriteRule ^ontology/?$ https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/dataset/mcai-knowledge.ttl [R=302,L]
+RewriteRule ^scheme/?$ https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/dataset/index.html [R=302,L]
+
+# One page per concept
+RewriteRule ^concept/([A-Za-z0-9._~-]+)/?$ https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/concepts/$1.html [R=302,L]
+
+# Documents and categories fall back to the dataset page
+RewriteRule ^(document|category)/.+$ https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/dataset/index.html [R=302,L]
