@@ -39,6 +39,19 @@ HOMONYM = [
     ("meta-knowledge", "知识管理和你们说的元知是一回事吗？"),
 ]
 
+SEMANTIC = [
+    ("meta-consciousness", "世界最开始的那个东西是什么？"),
+    ("observation-creates-reality", "没人看的时候，事物还存在吗？"),
+    ("meta-recognition", "我们认识世界这件事，本身叫什么？"),
+    ("meta-knowledge", "想明白之后固定下来的东西，叫什么？"),
+    ("meta-network", "万事万物之间是怎么连起来的？"),
+    ("progenerative-agent", "以后会不会出现不是碳基的观察者？"),
+    ("meta-knowledge-property", "想法被别人拿去用，怎么保护？"),
+    ("meta-knowledge-society", "如果知识能当钱用，社会会变成什么样？"),
+    ("meta-being", "在宇宙里能认知世界的个体，算什么单位？"),
+    ("phenomenal-space-time", "我们看到的这个时空，是怎么来的？"),
+]
+
 NEGATIVES = [
     "今天北京天气怎么样？",
     "帮我推荐一只明天会涨的股票。",
@@ -120,6 +133,20 @@ def main():
             "term": c["term"],
             "gold_answer": c.get("definition", ""),
             "gold_sources": [],
+            "allowed_sources": allowed_list(c),
+        })
+
+    for slug, q in SEMANTIC:
+        c = by_slug.get(slug)
+        if not c:
+            continue
+        items.append({
+            "id": "semantic-" + slug,
+            "tier": "semantic",
+            "question": q,
+            "term": c["term"],
+            "gold_answer": c.get("definition", ""),
+            "gold_sources": source_list(c),
             "allowed_sources": allowed_list(c),
         })
 
