@@ -492,13 +492,15 @@ def render_dataset(kb: KnowledgeBase) -> str:
   <tr><td>concepts.csv</td><td>表格版，供运营审阅与录入 CMS</td></tr>
   <tr><td>knowledge-graph.json</td><td>节点 {len(kb.concepts)} · 边 {kb.stats['relations']}</td></tr>
   <tr><td>dataset-card.md</td><td>数据集说明卡（HuggingFace 风格）</td></tr>
+  <tr><td>mcai-knowledge.ttl</td><td>RDF/Turtle 导出（SKOS + PROV + Dublin Core）</td></tr>
+  <tr><td>mcai-knowledge.nt</td><td>N-Triples 导出（与 TTL 同源）</td></tr>
 </table>
 <h2 class="sec">如何引用</h2>
 <p>引用数据集（概念 DOI，始终指向最新版）：</p>
 <pre style="white-space:pre-wrap;background:#f5f1ea;padding:16px;border-radius:8px;font-size:13px;line-height:1.7">元意识（重庆）人工智能科技有限公司. (2026). 元意识学说结构化知识库（MCAI Knowledge Base）[Data set]. Zenodo. https://doi.org/10.5281/zenodo.23789330</pre>
 <p>English:</p>
 <pre style="white-space:pre-wrap;background:#f5f1ea;padding:16px;border-radius:8px;font-size:13px;line-height:1.7">Meta-consciousness AI. (2026). MCAI Knowledge Base: structured knowledge assets for the Meta-Consciousness Theory [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23789330</pre>
-<p class="muted">如需引用具体版本，使用 v1.1 的 DOI：10.5281/zenodo.23836789。代码引用见仓库根目录的 <code>CITATION.cff</code>。</p>
+<p class="muted">如需引用具体版本，使用 v1.2 的 DOI：10.5281/zenodo.24191734。代码引用见仓库根目录的 <code>CITATION.cff</code>。</p>
 <h2 class="sec">概念分布</h2>
 <table class="kv">{cats}</table>
 <h2 class="sec">语料来源</h2>

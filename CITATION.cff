@@ -5,8 +5,8 @@ type: software
 authors:
   - name: "元意识（重庆）人工智能科技有限公司"
     alias: "Meta-consciousness AI"
-version: 0.3.4
-date-released: 2026-11-05
+version: 0.3.5
+date-released: 2026-11-13
 license: MIT
 repository-code: "https://github.com/Meta-consciousness-AI/Mcai-agent"
 url: "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com"
