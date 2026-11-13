@@ -426,6 +426,33 @@ def cmd_factory(args: argparse.Namespace) -> int:
     return 0 if not result["failed"] else 2
 
 
+def cmd_validate(args: argparse.Namespace) -> int:
+    from . import toolchain
+    result = toolchain.validate(_home(args))
+    return 0 if result["ok"] else 1
+
+
+def cmd_package(args: argparse.Namespace) -> int:
+    from . import toolchain
+    result = toolchain.package(_home(args))
+    print(f"✅ 数据集已打包：{result['path']}（v{result['version']}，{len(result['files'])} 个文件）")
+    return 0
+
+
+def cmd_all(args: argparse.Namespace) -> int:
+    from . import pipeline, toolchain
+    home = _home(args)
+    result = pipeline.rebuild(home)
+    print(f"构建：{result['concepts']} 概念 / {result['faqs']} 问答 / {result['relations']} 关系")
+    v = toolchain.validate(home)
+    if not v["ok"]:
+        print("\n校验未通过，停止打包。")
+        return 1
+    pkg = toolchain.package(home)
+    print(f"\n打包：{pkg['path']}（v{pkg['version']}，{len(pkg['files'])} 个文件）")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--home", default=None, help="工作区目录（默认：MCAI_HOME 或当前目录）")
@@ -541,6 +568,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_export = sub.add_parser("export", parents=[common], help="仅导出数据集")
     p_export.add_argument("--out", type=str, default="")
     p_export.set_defaults(func=cmd_export)
+
+    p_validate = sub.add_parser("validate", parents=[common], help="校验引文与质量（可进 CI）")
+    p_validate.set_defaults(func=cmd_validate)
+
+    p_package = sub.add_parser("package", parents=[common], help="导出并打包数据集 zip")
+    p_package.set_defaults(func=cmd_package)
+
+    p_all = sub.add_parser("all", parents=[common], help="一条命令：构建 → 校验 → 打包")
+    p_all.set_defaults(func=cmd_all)
 
     return parser
 
