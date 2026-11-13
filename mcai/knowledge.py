@@ -70,6 +70,8 @@ class Knowledge:
         for c in self.concepts:
             for a in c.get("aliases") or []:
                 self._alias.setdefault(a, c)
+        self.synonyms: list[tuple[str, str]] = []
+        self.cues: list[tuple[str, str]] = []
         self._faq_grams = [(f, _bigrams(f["question"])) for f in self.faqs]
         self._concept_grams = {
             c["slug"]: (_bigrams(_norm(c["term"])), _bigrams(_norm(c.get("definition", ""))))
@@ -183,6 +185,14 @@ class Knowledge:
         if best_len >= 5 and (best_len - second >= 2 or best_pos == 0):
             return best
         return None
+
+    def _synonym_variants(self, question: str) -> list[str]:
+        """按词表替换口语说法；只返回与原文不同的变体。"""
+        variants = []
+        for a, b in self.synonyms:
+            if a in question and b not in question:
+                variants.append(question.replace(a, b))
+        return variants
 
     # ---------- answering ----------
     def answer(self, question: str) -> dict:
@@ -309,6 +319,21 @@ class Knowledge:
         # 3) 退一步的问答相似度
         if best_faq is not None and best_score >= 0.34:
             return self._from_faq(best_faq, q, best_score)
+
+        # 3.4) 语义线索短语：口语说法直接定位
+        for phrase, slug in self.cues:
+            if phrase in q and slug in self.by_slug:
+                return self._from_concept(self.by_slug[slug], q)
+
+        # 3.5) 同义词改写：把口语说法换成库内表达后再试
+        for variant in self._synonym_variants(q):
+            concept = (self._alias.get(variant)
+                       or self._alias.get(self._strip_question(variant)))
+            if concept is not None:
+                return self._from_concept(concept, q)
+            by_syn = self._definition_hit(variant)
+            if by_syn is not None:
+                return self._from_concept(by_syn, q)
 
         # 4) 改写式提问：与某条定义原文共享足够长的片段
         by_def = self._definition_hit(q)
@@ -594,8 +619,42 @@ def load(root: str | Path) -> Knowledge:
         return cached[1]
     payload = json.loads(path.read_text(encoding="utf-8"))
     kb = Knowledge(payload)
+    kb.synonyms = _load_synonyms(Path(root))
+    kb.cues = _load_cues(Path(root))
     _cache[str(path)] = (mtime, kb)
     return kb
+
+
+def _load_cues(root: Path) -> list[tuple[str, str]]:
+    path = root / "config" / "semantic_cues.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    cues = []
+    for slug, phrases in (data.get("cues") or {}).items():
+        for phrase in phrases or []:
+            if phrase:
+                cues.append((str(phrase), slug))
+    cues.sort(key=lambda x: -len(x[0]))
+    return cues
+
+
+def _load_synonyms(root: Path) -> list[tuple[str, str]]:
+    path = root / "config" / "synonyms.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    pairs = []
+    for a, b in data.get("pairs", []):
+        if a and b:
+            pairs.append((str(a), str(b)))
+    return pairs
 
 
 def answer_markdown(result: dict) -> str:

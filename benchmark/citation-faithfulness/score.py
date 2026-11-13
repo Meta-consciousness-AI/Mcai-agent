@@ -104,7 +104,7 @@ def main():
     def pct(a, b):
         return f"{a / b:.1%}" if b else "n/a"
 
-    order = ["exact", "paraphrase", "homonym", "semantic", "refusal"]
+    order = ["exact", "paraphrase", "homonym", "semantic", "semantic-heldout", "refusal"]
     print(f"{'tier':12s} {'n':>4s} {'precision':>10s} {'recall':>8s} {'coverage':>9s} {'fabrication':>12s} {'refusal':>8s}")
     summary = {}
     for tier in order:

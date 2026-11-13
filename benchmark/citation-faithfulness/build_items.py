@@ -52,6 +52,14 @@ SEMANTIC = [
     ("phenomenal-space-time", "我们看到的这个时空，是怎么来的？"),
 ]
 
+HELDOUT = [
+    ("meta-consciousness", "宇宙的第一因是什么？"),
+    ("observation-creates-reality", "闭上眼睛，世界还在吗？"),
+    ("meta-knowledge-society", "知识能换钱的社会是什么样？"),
+    ("progenerative-agent", "从宇宙演化中长出来的智能体是什么？"),
+    ("phenomenal-space-time", "我们感知到的现实世界是怎么形成的？"),
+]
+
 NEGATIVES = [
     "今天北京天气怎么样？",
     "帮我推荐一只明天会涨的股票。",
@@ -143,6 +151,20 @@ def main():
         items.append({
             "id": "semantic-" + slug,
             "tier": "semantic",
+            "question": q,
+            "term": c["term"],
+            "gold_answer": c.get("definition", ""),
+            "gold_sources": source_list(c),
+            "allowed_sources": allowed_list(c),
+        })
+
+    for slug, q in HELDOUT:
+        c = by_slug.get(slug)
+        if not c:
+            continue
+        items.append({
+            "id": "heldout-" + slug,
+            "tier": "semantic-heldout",
             "question": q,
             "term": c["term"],
             "gold_answer": c.get("definition", ""),
