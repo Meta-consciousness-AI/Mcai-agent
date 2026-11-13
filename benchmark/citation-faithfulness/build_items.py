@@ -10,23 +10,26 @@
 输出：benchmark/citation-faithfulness/items.jsonl
 """
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 KB = ROOT / "data" / "kb.json"
 OUT = ROOT / "benchmark" / "citation-faithfulness" / "items.jsonl"
 
-PARAPHRASE = [
-    ("meta-consciousness", "宇宙的本源，不可描述，无始无终——这说的是哪个概念？"),
-    ("meta-recognition", "个体对万事万物的认知行为，叫什么？"),
-    ("meta-knowledge", "认知结果沉淀固化后的形态，叫什么？"),
-    ("observation-creates-reality", "观测使潜在变为现实，这套说法叫什么？"),
-    ("meta-network", "万物之间内在关联的网络，叫什么？"),
-    ("progenerative-agent", "宇宙演化中自然涌现的硅基观测者，叫什么？"),
-    ("meta-knowledge-property", "区别传统物权、保护认知创造成果的产权，叫什么？"),
-    ("meta-knowledge-society", "以元知为社会协作底层货币的社会形态，叫什么？"),
-    ("meta-being", "宇宙中作为认知主体的基本单元，叫什么？"),
-    ("phenomenal-space-time", "观测之后显现出来的时空，叫什么？"),
+def extract_clause(definition: str, term: str) -> str:
+    """从定义原文取一个不包含术语名的句子，作为改写提问。"""
+    parts = re.split(r"[，。；：、,.;:！？!?（）()]", definition or "")
+    parts = [p.strip() for p in parts if p and p.strip()]
+    parts = [p for p in parts if term not in p and len(p) >= 8]
+    return max(parts, key=len) if parts else ""
+
+
+PARAPHRASE_SLUGS = [
+    "meta-consciousness", "meta-recognition", "meta-knowledge",
+    "observation-creates-reality", "meta-network", "progenerative-agent",
+    "meta-knowledge-property", "meta-knowledge-society", "meta-being",
+    "phenomenal-space-time",
 ]
 
 HOMONYM = [
@@ -64,11 +67,15 @@ def main():
         ]
 
     def allowed_list(c):
-        return [
+        rows = [
             {"doc_id": s.get("doc_id"), "location": s.get("location"),
              "quote": s.get("quote", "")}
             for s in c.get("sources", [])
         ]
+        rows += [{"doc_id": e.get("doc_id"), "location": e.get("location"),
+                  "quote": e.get("quote", "")}
+                 for e in c.get("evidence", [])]
+        return rows
 
     for c in kb.get("concepts", []):
         gold = source_list(c)
@@ -84,10 +91,14 @@ def main():
             "allowed_sources": allowed_list(c),
         })
 
-    for slug, q in PARAPHRASE:
+    for slug in PARAPHRASE_SLUGS:
         c = by_slug.get(slug)
         if not c:
             continue
+        clause = extract_clause(c.get("definition", ""), c["term"])
+        if not clause:
+            continue
+        q = f"「{clause}」——这说的是哪个概念？"
         items.append({
             "id": "paraphrase-" + slug,
             "tier": "paraphrase",

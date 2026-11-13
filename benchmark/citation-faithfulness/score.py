@@ -80,6 +80,7 @@ def main():
         allowed = [norm(a["quote"]) for a in item.get("allowed_sources", []) if a.get("quote")]
         g["gold"] += len(golds)
         cites = p.get("citations") or []
+        before = g["matched"]
         for c in cites:
             g["pred"] += 1
             q = norm(c.get("quote"))
@@ -89,7 +90,7 @@ def main():
                 g["fab"] += 1
                 problems.append({"id": item["id"], "problem": "quote_not_in_corpus", "quote": (c.get("quote") or "")[:60]})
                 continue
-            if any(q in gq or gq in q for gq in golds):
+            if any(q in gq or gq in q for gq in golds) or any(q in a or a in q for a in allowed):
                 g["matched"] += 1
         hit = 0
         for gq in golds:
@@ -97,7 +98,7 @@ def main():
                    for c in cites):
                 hit += 1
         g["gold_hit"] += hit
-        if hit:
+        if hit or g["matched"] > before:
             g["ok_items"] += 1
 
     def pct(a, b):

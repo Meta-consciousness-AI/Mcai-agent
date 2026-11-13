@@ -153,6 +153,37 @@ class Knowledge:
             for score, c in scored[:limit]
         ]
 
+
+    def _definition_hit(self, question: str):
+        """按定义原文的长公共片段定位概念，用于改写式提问。
+
+        例：「宇宙的本源，不可描述」与「元意识」的定义共享「宇宙的本源」。
+        只在最长片段足够长、且明显领先或位于定义开头时采用，避免泛词误判。
+        """
+        qn = _norm(question)
+        if len(qn) < 6:
+            return None
+        scored = []
+        for c in self.concepts:
+            dn = _norm(c.get("definition", ""))
+            if not dn:
+                continue
+            m = difflib.SequenceMatcher(None, qn, dn).find_longest_match(0, len(qn), 0, len(dn))
+            if m.size >= 5:
+                scored.append((m.size, m.b, c["slug"], c))
+        if not scored:
+            return None
+        scored.sort(key=lambda x: (-x[0], x[1]))
+        best_len, best_pos, _, best = scored[0]
+        second = 0
+        for size, pos, slug, _ in scored[1:]:
+            if slug != best["slug"]:
+                second = size
+                break
+        if best_len >= 5 and (best_len - second >= 2 or best_pos == 0):
+            return best
+        return None
+
     # ---------- answering ----------
     def answer(self, question: str) -> dict:
         """对外入口：先执行「学说与个人分离」政策，再走检索路由。"""
@@ -278,6 +309,13 @@ class Knowledge:
         # 3) 退一步的问答相似度
         if best_faq is not None and best_score >= 0.34:
             return self._from_faq(best_faq, q, best_score)
+
+        # 4) 改写式提问：与某条定义原文共享足够长的片段
+        by_def = self._definition_hit(q)
+        if by_def is not None:
+            result = self._from_concept(by_def, q)
+            result["confidence"] = "medium"
+            return result
 
         hits = self.search(q, limit=3)
         if hits:
