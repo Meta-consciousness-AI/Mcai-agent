@@ -57,7 +57,7 @@ python benchmark/citation-faithfulness/score.py
 
 ## 五、已知局限
 
-0. paraphrase 题来自定义原文抽取，属于「抽取式改写」；semantic 层目前 0%，词表方案已验证不可泛化（详见 `docs/工作备忘包/语义改写.md`）；
+0. paraphrase 题来自定义原文抽取，属于「抽取式改写」；semantic 层目前 0%，词表方案已验证不可泛化（详见 `docs/工作备忘包/02-技术备忘/语义改写.md`）；
 
 1. exact 层偏简单，满分不代表真实能力；
 2. 评分只测「引用是否真实、是否命中标准出处」，不测答案是否优美；
