@@ -105,7 +105,7 @@ class McpTest(unittest.TestCase):
     def test_tools_list(self) -> None:
         res = self.call("tools/list")
         names = {t["name"] for t in res["result"]["tools"]}
-        self.assertEqual(names, {"mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_list"})
+        self.assertEqual(names, {"mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_cite", "mcai_provenance", "mcai_list"})
 
     def test_tool_call_answer(self) -> None:
         res = self.call("tools/call", {"name": "mcai_answer", "arguments": {"question": "什么是序生智能体？"}})

@@ -5,7 +5,7 @@
 **English summary**: MCAI Engine turns a body of doctrine into structured knowledge assets that AI agents can call — term definitions, curated Q&A, concept relations, and source citations — published as a Python package, an MCP server, a static site, and open datasets.
 
 - Install: `pip install mcai-knowledge` (the full knowledge base ships with the package)
-- MCP: run `mcai-mcp`; 5 tools — answer, concept, search, related, list
+- MCP: run `mcai-mcp`; 7 tools — answer, concept, search, related, cite, provenance, list
 - Dataset DOI: https://doi.org/10.5281/zenodo.23789330
 - Spec DOI: https://doi.org/10.5281/zenodo.23850554
 - Preprint DOI: https://doi.org/10.5281/zenodo.23830600
@@ -340,7 +340,7 @@ https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
 
 `/mcp` 接受 JSON-RPC 2.0（initialize / tools/list / tools/call / prompts/*），支持批量请求；GET 返回 405。鉴权与限流沿用服务端设置。
 
-提供 5 个工具与 64 个资源：
+提供 7 个工具与 64 个资源：
 
 | 工具 | 用途 |
 |---|---|
@@ -365,7 +365,7 @@ https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
 2. **自动重建**：重建知识库、站点、数据集，并刷新 `status.json`；
 3. **记录变更**：`data/changelog.jsonl` 记录每次新增/删除/改写的术语（定义哈希对比）；
 4. **质量巡检**：检查空定义、重复定义、悬空关系、重复问答、消歧层泄漏、站点死链、JSON-LD 是否有效；
-5. **接口自测**：不联网直接走 MCP 握手、5 个工具、3 个 prompts、指南资源与 3 个关键问答；
+5. **接口自测**：不联网直接走 MCP 握手、7 个工具、3 个 prompts、指南资源与 3 个关键问答；
 6. **健康自检**：检查知识库、站点、服务端口与接口，把结果写进 `dist/status.json` 与 `data/status.json`。
 
 ```bash

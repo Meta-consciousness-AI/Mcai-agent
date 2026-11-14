@@ -113,7 +113,7 @@ class ManifestTest(unittest.TestCase):
 
     def test_well_known_files(self) -> None:
         mcp = json.loads((self.work / "dist" / ".well-known" / "mcp.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(mcp["tools"]), 5)
+        self.assertEqual(len(mcp["tools"]), 7)
         self.assertEqual(mcp["transport"]["type"], "stdio")
         agent = json.loads((self.work / "dist" / ".well-known" / "agent.json").read_text(encoding="utf-8"))
         self.assertTrue(agent["skills"])

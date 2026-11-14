@@ -21,7 +21,7 @@ class McpInstructionsTest(unittest.TestCase):
         result = self._call("initialize")["result"]
         self.assertIn("instructions", result)
         text = result["instructions"]
-        for tool in ("mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_list"):
+        for tool in ("mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_cite", "mcai_provenance", "mcai_list"):
             self.assertIn(tool, text)
         self.assertIn("type='none'", text)
 
@@ -29,7 +29,7 @@ class McpInstructionsTest(unittest.TestCase):
         tools = self._call("tools/list")["result"]["tools"]
         self.assertEqual(
             [t["name"] for t in tools],
-            ["mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_list"],
+            ["mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_cite", "mcai_provenance", "mcai_list"],
         )
         for tool in tools:
             self.assertIn("Routing", tool["description"], tool["name"])

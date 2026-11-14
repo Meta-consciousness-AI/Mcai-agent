@@ -24,7 +24,7 @@ def run(root: str | Path) -> dict:
     # 2. 工具清单
     tools = mcp_server.handle(kb, {"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
     names = {t["name"] for t in tools["result"]["tools"]}
-    expected = {"mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_list"}
+    expected = {"mcai_answer", "mcai_concept", "mcai_search", "mcai_related", "mcai_cite", "mcai_provenance", "mcai_list"}
     add("mcp.tools", names == expected, f"{len(names)} 个工具")
 
     # 3. 逐个调用

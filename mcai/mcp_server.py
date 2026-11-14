@@ -19,7 +19,7 @@ INSTRUCTIONS = (
     "Every definition is quoted from a source document; nothing is generated. "
     "Routing: natural-language question -> mcai_answer; exact term -> mcai_concept; "
     "uncertain spelling or partial name -> mcai_search; relations only -> mcai_related; "
-    "catalog or coverage -> mcai_list. "
+    "catalog or coverage -> mcai_list; citations only -> mcai_cite; full provenance chain -> mcai_provenance. "
     "If mcai_answer returns type='none', call mcai_search before telling the user the term is unknown. "
     "Use format='citations' when the caller needs to audit or quote sources. "
     "Answer only from tool results; do not fill gaps with outside knowledge. "
@@ -169,6 +169,57 @@ TOOLS = [
         }
     },
     {
+        "name": "mcai_cite",
+        "title": "Get source citations",
+        "description": "Return only the source citations for a term: document, section, exact quotation, character range and edition. Use when the caller needs to audit, quote or display sources without the full entry. Routing: full entry -> mcai_concept; provenance chain across documents and editions -> mcai_provenance; definitions with citations -> mcai_answer. Boundary: returns recorded sources only; never invents a citation.",
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False
+        },
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "term": {
+                    "type": "string",
+                    "description": "Exact term name, alias, or slug."
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of citations to return (default 5).",
+                    "default": 5,
+                    "minimum": 1,
+                    "maximum": 50
+                }
+            },
+            "required": ["term"],
+            "additionalProperties": False
+        }
+    },
+    {
+        "name": "mcai_provenance",
+        "title": "Get provenance chain",
+        "description": "Return the full provenance chain for a term: definition type, source documents with section, location, character range and edition, supporting evidence quotations, and relation evidence. Use when the caller must verify where a definition comes from, or compare editions. Routing: citations only -> mcai_cite; full entry -> mcai_concept. Boundary: returns recorded provenance only; fields absent in the knowledge base are omitted, not inferred.",
+        "annotations": {
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False
+        },
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "term": {
+                    "type": "string",
+                    "description": "Exact term name, alias, or slug."
+                }
+            },
+            "required": ["term"],
+            "additionalProperties": False
+        }
+    },
+    {
         "name": "mcai_list",
         "title": "List all terms",
         "description": "List all terms in the knowledge base, optionally filtered by category, to show coverage or let the user choose from a catalog. Use when the user asks \"What concepts does this theory have?\" or \"What do you cover?\". Routing: keyword lookup -> mcai_search; full entry -> mcai_concept. Boundary: returns term names and categories only, not full definitions.",
@@ -253,6 +304,19 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
         include_mentions = bool(args.get("include_mentions", False))
         return _text(kb.related(str(args.get("term", "")), depth=depth,
                                 include_mentions=include_mentions))
+    if name == "mcai_cite":
+        payload = kb.citations(str(args.get("term", "")),
+                               limit=int(args.get("limit", 5) or 5))
+        if payload is None:
+            return _error(f"未找到术语：{args.get('term', '')}")
+        return _text(payload)
+
+    if name == "mcai_provenance":
+        payload = kb.provenance(str(args.get("term", "")))
+        if payload is None:
+            return _error(f"未找到术语：{args.get('term', '')}")
+        return _text(payload)
+
     if name == "mcai_list":
         return _text(kb.catalog(args.get("category")))
     return _error(f"未知工具：{name}")

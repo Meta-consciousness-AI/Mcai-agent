@@ -358,6 +358,28 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/api/v1/gaps":
             self._tele({"gaps": telemetry.for_root(self.root).gaps()}, "gaps")
             return
+        if route == "/api/v1/cite":
+            term = first("term")
+            try:
+                limit = int(first("limit", "5"))
+            except ValueError:
+                limit = 5
+            payload = kb.citations(term, limit=limit)
+            if payload is None:
+                self._tele({"ok": False, "error": f"未找到术语：{term}"}, "cite", term,
+                           status=HTTPStatus.NOT_FOUND)
+                return
+            self._tele(payload, "cite", term)
+            return
+        if route == "/api/v1/provenance":
+            term = first("term")
+            payload = kb.provenance(term)
+            if payload is None:
+                self._tele({"ok": False, "error": f"未找到术语：{term}"}, "provenance", term,
+                           status=HTTPStatus.NOT_FOUND)
+                return
+            self._tele(payload, "provenance", term)
+            return
         if route == "/api/v1/related":
             try:
                 depth = int(first("depth", "1"))

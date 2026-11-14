@@ -184,6 +184,76 @@ class Knowledge:
             return best
         return None
 
+
+    # ---------- citations / provenance ----------
+    def citations(self, term: str, limit: int = 5) -> dict | None:
+        concept = self.resolve(term)
+        if not concept:
+            return None
+        rows = [
+            {
+                "doc": s.get("doc_title", ""),
+                "section": s.get("section", ""),
+                "location": s.get("location", ""),
+                "quote": s.get("quote", ""),
+                "char_start": s.get("char_start"),
+                "char_end": s.get("char_end"),
+                "edition": s.get("edition", ""),
+            }
+            for s in (concept.get("sources") or [])
+        ]
+        return {"term": concept["term"], "count": len(rows), "citations": rows[:limit]}
+
+    def provenance(self, term: str) -> dict | None:
+        concept = self.resolve(term)
+        if not concept:
+            return None
+        sources = [
+            {
+                "doc": s.get("doc_title", ""),
+                "section": s.get("section", ""),
+                "location": s.get("location", ""),
+                "quote": s.get("quote", ""),
+                "char_start": s.get("char_start"),
+                "char_end": s.get("char_end"),
+                "edition": s.get("edition", ""),
+                "origin": s.get("origin", ""),
+            }
+            for s in (concept.get("sources") or [])
+        ]
+        evidence = [
+            {
+                "doc": e.get("doc_title", ""),
+                "section": e.get("section", ""),
+                "location": e.get("location", ""),
+                "quote": e.get("quote", ""),
+                "score": e.get("score"),
+            }
+            for e in (concept.get("evidence") or [])
+        ]
+        relations = [
+            {
+                "target": r.get("target", ""),
+                "type": r.get("type", ""),
+                "tier": r.get("tier", ""),
+                "evidence": r.get("evidence", ""),
+            }
+            for r in (concept.get("relations") or [])
+        ]
+        documents = []
+        for s in sources:
+            if s["doc"] and s["doc"] not in documents:
+                documents.append(s["doc"])
+        return {
+            "term": concept["term"],
+            "definition_type": concept.get("definition_type", ""),
+            "edition_variants": concept.get("edition_variants") or [],
+            "documents": documents,
+            "sources": sources,
+            "evidence": evidence,
+            "relations": relations,
+        }
+
     # ---------- answering ----------
     def answer(self, question: str) -> dict:
         """对外入口：先执行「学说与个人分离」政策，再走检索路由。"""

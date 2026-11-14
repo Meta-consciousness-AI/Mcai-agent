@@ -44,7 +44,7 @@ def mcp_manifest(kb: KnowledgeBase, project: dict) -> dict:
         "http": {
             "base": f"{base}/api/v1",
             "endpoints": ["health", "catalog", "search", "concept/<slug>", "answer", "answer/batch",
-                           "related"],
+                           "related", "cite", "provenance"],
             "localOnly": ["stats", "gaps"],
             "auth": "none (local) / Bearer token (public)",
         },
@@ -52,6 +52,8 @@ def mcp_manifest(kb: KnowledgeBase, project: dict) -> dict:
             {"tool": "mcai_answer", "arguments": {"question": "什么是元意识？"}},
             {"tool": "mcai_search", "arguments": {"query": "序生", "limit": 5}},
             {"tool": "mcai_related", "arguments": {"term": "元意识", "depth": 1}},
+            {"tool": "mcai_cite", "arguments": {"term": "元意识", "limit": 3}},
+            {"tool": "mcai_provenance", "arguments": {"term": "元意识"}},
         ],
         "license": project.get("license", ""),
         "doi": DATASET_DOI,
@@ -92,6 +94,18 @@ def agent_card(kb: KnowledgeBase, project: dict) -> dict:
                 "name": "概念关系",
                 "description": "返回概念的关系子图，用于解释结构。",
                 "examples": ["元意识和元态能量是什么关系？"],
+            },
+            {
+                "id": "mcai_cite",
+                "name": "引文出处",
+                "description": "只返回术语的原文出处，便于审计与引用。",
+                "examples": ["给我元意识的原文出处"],
+            },
+            {
+                "id": "mcai_provenance",
+                "name": "溯源链",
+                "description": "返回术语的完整溯源：文档、章节、字符区间、版本与关联证据。",
+                "examples": ["元意识的定义出自哪里，哪个版本？"],
             },
         ],
         "endpoints": {

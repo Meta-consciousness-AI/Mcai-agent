@@ -50,7 +50,7 @@ class McpHttpTest(unittest.TestCase):
     def test_tools_list(self):
         status, data = self._post({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
         self.assertEqual(status, 200)
-        self.assertEqual(len(data["result"]["tools"]), 5)
+        self.assertEqual(len(data["result"]["tools"]), 7)
 
     def test_tool_call_citations(self):
         status, data = self._post({
