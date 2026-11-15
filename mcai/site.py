@@ -203,11 +203,15 @@ def render_index(kb: KnowledgeBase) -> str:
         chips += f'<button class="chip" data-cat="derived">衍生术语（{derived_count}）</button>'
     cards = []
     order_map = {name: i for i, name in enumerate(ordering.CATEGORY_ORDER)}
+    front_count = len(ordering.FRONT_TERMS)
     def _card_key(item):
         idx, c = item
         if c.kind == "derived":
-            return (99, ordering.term_rank(c.term), idx)
-        return (order_map.get(c.category, 50), ordering.term_rank(c.term), idx)
+            return (2, 99, ordering.term_rank(c.term), idx)
+        fr = ordering.front_rank(c.term)
+        if fr < front_count:
+            return (0, fr, 0, idx)
+        return (1, order_map.get(c.category, 50), ordering.term_rank(c.term), idx)
 
     for _, c in sorted(enumerate(kb.concepts), key=_card_key):
         badge = ""
