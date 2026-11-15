@@ -11,6 +11,7 @@ import re
 import unicodedata
 from pathlib import Path
 
+from .ordering import category_rank, term_rank
 from .text import clean, normalize
 
 
@@ -647,6 +648,7 @@ class Knowledge:
             for c in self.concepts
             if not category or c["category"] == category
         ]
+        items.sort(key=lambda i: (category_rank(i["category"]), term_rank(i["term"])))
         return {"count": len(items), "categories": self.meta.get("stats", {}).get("categories", {}), "items": items}
 
 
