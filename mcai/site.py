@@ -6,7 +6,7 @@ import json
 import shutil
 from pathlib import Path
 
-from . import guide, manifest, schema
+from . import guide, manifest, ordering, schema
 from .extract import Concept, KnowledgeBase
 
 DATASET_DOI = "10.5281/zenodo.23789330"
@@ -194,7 +194,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
 
 def render_index(kb: KnowledgeBase) -> str:
     project = kb.project
-    cats = list(kb.stats["categories"].items())
+    cats = ordering.ordered_categories(kb.stats["categories"])
     chips = '<button class="chip active" data-cat="all">全部</button>' + "".join(
         f'<button class="chip" data-cat="{_esc(c)}">{_esc(c)}</button>' for c, _ in cats
     )
@@ -202,7 +202,14 @@ def render_index(kb: KnowledgeBase) -> str:
     if derived_count:
         chips += f'<button class="chip" data-cat="derived">衍生术语（{derived_count}）</button>'
     cards = []
-    for c in kb.concepts:
+    order_map = {name: i for i, name in enumerate(ordering.CATEGORY_ORDER)}
+    def _card_key(item):
+        idx, c = item
+        if c.kind == "derived":
+            return (99, ordering.term_rank(c.term), idx)
+        return (order_map.get(c.category, 50), ordering.term_rank(c.term), idx)
+
+    for _, c in sorted(enumerate(kb.concepts), key=_card_key):
         badge = ""
         if c.kind == "derived":
             badge = '<span class="badge">衍生</span>'

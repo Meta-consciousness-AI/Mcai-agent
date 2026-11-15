@@ -768,6 +768,10 @@ def _stats(concepts: list[Concept], faqs: list[Faq], curated: dict, corpus: Corp
         by_category[c.category] = by_category.get(c.category, 0) + 1
         by_status[c.status] = by_status.get(c.status, 0) + 1
         concept_kind[c.kind] = concept_kind.get(c.kind, 0) + 1
+    from .ordering import CATEGORY_ORDER
+    by_category = {k: by_category[k] for k in CATEGORY_ORDER if k in by_category} | {
+        k: v for k, v in by_category.items() if k not in CATEGORY_ORDER
+    }
 
     expected = [t for members in curated.get("categories", {}).values() for t in members]
     missing = [t for t in expected if t not in {c.term for c in concepts}]
