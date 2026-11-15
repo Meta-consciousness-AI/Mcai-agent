@@ -7,7 +7,7 @@
       "org": "元意识（重庆）人工智能科技有限公司",
       "site_url": "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com",
       "license": "CC BY-NC-SA 4.0",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "terminology": {
         "homonyms": [
           {
@@ -33,7 +33,7 @@
         }
       }
     },
-    "built_at": "2026-11-14T12:27:22+08:00",
+    "built_at": "2026-11-15T09:22:41+08:00",
     "documents": [
       {
         "id": "minimal",
@@ -122,10 +122,10 @@
       "relations": 270,
       "evidence": 207,
       "categories": {
-        "元子社会": 15,
-        "元意识体系": 21,
         "序生体系": 16,
-        "本体论模型": 12
+        "本体论模型": 12,
+        "元意识体系": 21,
+        "元子社会": 15
       },
       "status": {
         "ok": 64
