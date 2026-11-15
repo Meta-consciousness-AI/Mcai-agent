@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PUB = "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com"
 TOK = "https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com"
 TOKEN = "wmRJDHezXcON_8-JxRp4E8ex-wRuGZx1"
+SIGNALS = ROOT / "data" / "signals.jsonl"
 
 
 TOKEN_FILE = r"E:\th\元意识\元意识资料\Mcai-Agent\mcai-knowledge\Zenodo令牌.txt"
@@ -135,6 +136,52 @@ def check_zenodo_one(name, rid):
         return f"Zenodo {name}：查询失败（{type(e).__name__}）", None
 
 
+
+
+def _last_total(instance: str) -> int:
+    """读本地历史，取该实例最近一次的 total；没有返回 0。"""
+    if not SIGNALS.exists():
+        return 0
+    last = 0
+    for line in SIGNALS.read_text(encoding="utf-8").splitlines():
+        try:
+            row = json.loads(line)
+        except Exception:
+            continue
+        if row.get("instance") == instance:
+            last = max(last, int(row.get("total", 0)))
+    return last
+
+
+def record_usage():
+    """把两个实例的调用计数追加到 data/signals.jsonl，防止部署清零丢失。"""
+    import time
+    rows = []
+    for name, base in (("public", PUB), ("gitee", TOK)):
+        try:
+            d = json.loads(fetch(base + "/api/v1/usage", {"Authorization": "Bearer " + TOKEN}))
+        except Exception:
+            continue
+        total = int(d.get("total_calls", 0))
+        prev = _last_total(name)
+        rows.append({
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "instance": name,
+            "total": total,
+            "business": int(d.get("business_calls", 0)),
+            "by_action": d.get("by_action") or {},
+            "reset": total < prev,
+        })
+    if not rows:
+        print("计数快照：两个实例都没读到")
+        return
+    SIGNALS.parent.mkdir(parents=True, exist_ok=True)
+    with SIGNALS.open("a", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    print(f"计数快照：已写入 {len(rows)} 条 -> {SIGNALS.relative_to(ROOT)}")
+
+
 def main():
     lv = local_version()
     print(f"本地版本：{lv}")
@@ -163,6 +210,8 @@ def main():
             print(line, flush=True)
             if chg:
                 changed.append(chg)
+
+    record_usage()
 
     print("-" * 40)
     if changed:
