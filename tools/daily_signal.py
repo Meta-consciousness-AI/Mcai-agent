@@ -33,13 +33,13 @@ TOKEN = "wmRJDHezXcON_8-JxRp4E8ex-wRuGZx1"
 SIGNALS = ROOT / "data" / "signals.jsonl"
 CACHE = ROOT / "data" / "signal_last.json"
 
-TOKEN_FILE = r"E:\th\元意识\元意识资料\Mcai-Agent\mcai-knowledge\Zenodo令牌.txt"
+TOKEN_FILE = r"E:\th\元意识\元意识运营\Mcai-Agent\mcai-knowledge\Zenodo令牌.txt"
 
+# 每个概念只取一条代表记录：Zenodo 的 stats 按 concept 聚合，取多个版本会重复计数
 ZENODO = {
-    "数据集": 23836789,
+    "数据集": 24191734,
     "预印本": 23830600,
-    "规范V1.1": 23831131,
-    "规范V1.3": 23850554,
+    "规范": 23850554,
 }
 
 RETRY_CODES = {403, 429, 500, 502, 503, 504}
@@ -198,17 +198,21 @@ def check_github():
 
 
 def check_zenodo_one(name, rid):
+    tok = zenodo_token()
+    hdr = {"Authorization": "Bearer " + tok} if tok else None
     try:
-        raw = fetch(f"https://zenodo.org/api/records/{rid}", timeout=30, tries=3, backoff=2.0)
+        raw = fetch(f"https://zenodo.org/api/records/{rid}", hdr, timeout=30, tries=2, backoff=3.0)
         d = json.loads(raw)
         st = d.get("stats") or {}
         v, dl = st.get("views"), st.get("downloads")
         if v is None or dl is None:
             raise ValueError("stats missing")
-        return f"Zenodo {name}：{v} 浏览 / {dl} 下载", True, f"{v}/{dl}"
+        uv, ud = st.get("unique_views"), st.get("unique_downloads")
+        extra = f"（独立 {uv}/{ud}）" if uv is not None and ud is not None else ""
+        return f"Zenodo {name}：{v} 浏览 / {dl} 下载{extra}", True, f"{v}/{dl}"
     except Exception as e1:
         try:
-            t = fetch(f"https://zenodo.org/records/{rid}", timeout=30, tries=2, backoff=2.0)
+            t = fetch(f"https://zenodo.org/records/{rid}", timeout=30, tries=1, backoff=2.0)
             v = int((re.findall(r'"views":\s*(\d+)', t) or [0])[0])
             d = int((re.findall(r'"downloads":\s*(\d+)', t) or [0])[0])
             return f"Zenodo {name}：{v} 浏览 / {d} 下载", True, f"{v}/{d}"
@@ -301,13 +305,16 @@ def main(argv=None):
             if "变为" in line or "≠" in line:
                 changed.append(line)
 
-    # Zenodo 串行，避免限流
+    # Zenodo 串行，避免限流；一旦遇到限流就停止本轮剩余项
     zitems = [(n, r) for n, r in ZENODO.items() if not args.only or args.only in f"zenodo{n}"]
     for i, (n, r) in enumerate(zitems):
         name, line = run(f"Zenodo {n}", lambda n=n, r=r: check_zenodo_one(n, r))
         print(line, flush=True)
+        if "限流" in line:
+            print("Zenodo 触发限流，本轮跳过其余记录", flush=True)
+            break
         if i < len(zitems) - 1:
-            time.sleep(1.2)
+            time.sleep(2.0)
 
     if not args.no_cache:
         save_cache(cache)
