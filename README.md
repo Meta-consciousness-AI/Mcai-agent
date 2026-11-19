@@ -672,4 +672,4 @@ python -m unittest discover -s tests -v
 > 英文说明：英文名为机器翻译，非作者学术翻译，仅供参考。
 > English note: English names are machine translations, not the author's academic translations, for reference only.
 
-> 元意识学说的术语与定义均为开放表述，属于理论模型，可以不断修改、迭代、进化。
+> 本知识库中的术语与定义，是元意识学说（Meta-Consciousness Theory）的理论模型表述，是一个会序生的模型。此后，它们会在人类与 AI 的共同参与下，以「序生」的方式不断修订、迭代与演化。
