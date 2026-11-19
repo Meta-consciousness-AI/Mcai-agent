@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from .extract import KnowledgeBase
-from .i18n import EN_NOTE
+from .i18n import EN_NOTE_EN, EN_NOTE_ZH
 
 SYSTEM_PROMPT = (
     "你是「元意识学说」的知识助手。回答时严格使用学说自身的术语体系："
@@ -31,7 +31,8 @@ def export(kb: KnowledgeBase, out_dir: str | Path) -> dict:
             "term": c.term,
             "slug": c.slug,
             "en": c.en,
-            "en_note": (EN_NOTE if c.en else ""),
+            "en_note": (EN_NOTE_EN if c.en else ""),
+            "en_note_zh": (EN_NOTE_ZH if c.en else ""),
             "aliases": c.aliases,
             "category": c.category,
             "kind": c.kind,

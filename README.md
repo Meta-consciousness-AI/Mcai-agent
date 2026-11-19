@@ -669,4 +669,5 @@ python -m unittest discover -s tests -v
 
 商业使用需另行授权。
 
-> 英文说明：本仓库中的英文名为机器翻译，非作者学术翻译，仅供参考。
+> 英文说明：英文名为机器翻译，非作者学术翻译，仅供参考。
+> English note: English names are machine translations, not the author's academic translations, for reference only.

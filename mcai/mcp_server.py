@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 from . import knowledge
-from .i18n import EN_NOTE
+from .i18n import EN_NOTE_EN, EN_NOTE_ZH
 
 PROTOCOL_VERSION = "2024-11-05"
 SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.9"}
@@ -294,7 +294,8 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
             "edition_variants", "status", "sources", "evidence", "relations",
         )}
         if concept.get("en"):
-            payload["en_note"] = EN_NOTE
+            payload["en_note"] = EN_NOTE_EN
+            payload["en_note_zh"] = EN_NOTE_ZH
         payload["homonyms"] = kb.homonyms(concept["term"])
         return _text(payload)
     if name == "mcai_search":
@@ -427,7 +428,7 @@ def handle(kb: knowledge.Knowledge, request: dict, tele=None) -> dict | None:
 def _concept_markdown(c: dict) -> str:
     lines = [f"# {c['term']}", ""]
     if c.get("en"):
-        lines.append(f"*{c['en']}*（{EN_NOTE}）")
+        lines.append(f"*{c['en']}*（{EN_NOTE_EN}）")
     if c.get("aliases"):
         lines.append(f"别名：{'、'.join(c['aliases'])}")
     lines += ["", c["definition"], "", f"分类：{c['category']}"]
