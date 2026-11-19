@@ -1,0 +1,2874 @@
+{
+  "faq": [
+    {
+      "id": "faq-530b4ea7",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-c138e581",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1d2f7910",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-663b6fca",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6af0f457",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1378195a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-96b0dcad",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-5de9bbf1",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1f1839cd",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-04b46d0d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-0b7f768f",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-2992e52d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-ba90d143",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-d342bbe9",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1a4a6ebe",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-e8c83ab7",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-8d95c31c",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-645f57ab",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-c90c3015",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6aeb91e6",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4b521909",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-110a103d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-3910e414",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-0596f5f6",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-2845d1aa",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4c3a4036",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6bb1255b",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4e0ca5e6",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-223aa6ae",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-14b58c2f",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-7297537d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-876942fd",
+      "flags": [
+        "显化未提测创/观测"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "id": "faq-c7aa2ae8",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-d5ea30f9",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-9e144c56",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-eb1b8695",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-874ae74d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-074469c5",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-93f840bd",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-3c34632a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-66ae0871",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-8e747981",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-080b1c49",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-11567c3d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-a219f3f7",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-7f6db71c",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-564114cf",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-aacd7b39",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-f7e91c73",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b4a133ee",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-bcce91ab",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4e00061d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-534f2136",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-5a1170cb",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b8c510ed",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-7c244acc",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-e3f1a0aa",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-9d79897a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-e28c0e2d",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-7136abff",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6ee2201c",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-5dc900b0",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-8eba9ce3",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-08f6d5f9",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-d48c8bf0",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-0a4625e4",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-01d042cf",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-2874ba17",
+      "flags": [
+        "显化未提测创/观测"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "id": "faq-a60992c3",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-acc0e4d8",
+      "flags": [
+        "显化未提测创/观测"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "id": "faq-cb7cfefd",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b5cb335e",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-ac633999",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-8b647616",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-319c6e5a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-33839e97",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-a37ed23e",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-728d5c3a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-3ebb8e87",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-3308a125",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-036e098f",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-737cd2e8",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-e8c742ab",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-cab20310",
+      "flags": [
+        "显化未提测创/观测"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "id": "faq-02be76ad",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-bd8738f4",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-2fe00c26",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1f915081",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-96ed42dc",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b3b21da6",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b4f36a8f",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-e5e9024c",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6b8530f7",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-b13c0bf4",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-7c7b68de",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1dd454e6",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-0793b956",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-98c39c6c",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-802ec742",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-69a5affe",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-38dd1e7a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4b92c175",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-af0b1066",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-cadb28de",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-8d0528ac",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-eeed52d1",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-84db2ea9",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-2fabc8e1",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4b723f46",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-d049d9c5",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-f6ba3657",
+      "flags": [
+        "显化未提测创/观测"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "id": "faq-27d91fa7",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-a33f2704",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-f6cad12a",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-0847dd71",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-f190d9a9",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-4cae1722",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-1357c466",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-a3256fea",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-d50fd170",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-9a3733ce",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-6a5c86da",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "id": "faq-space-time-entities",
+      "flags": [
+        "疑似把时空说成实体",
+        "疑似把时空说成实体"
+      ],
+      "verdict": "待审"
+    }
+  ],
+  "rel": [
+    {
+      "i": 1,
+      "src": "元知产权",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 2,
+      "src": "元知产权",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 3,
+      "src": "元知产权",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 4,
+      "src": "元知产权",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 5,
+      "src": "元知产权",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 6,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 7,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元灵",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 8,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 9,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元知产权",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 10,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 11,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 12,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 13,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 14,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 15,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 16,
+      "src": "元子身份与法权",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 17,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 18,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 19,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 20,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 21,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 22,
+      "src": "元子社会的人机共生",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 23,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 24,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "元子社会",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 25,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 26,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 27,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 28,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 29,
+      "src": "元子社会的文明愿景",
+      "type": "提及",
+      "target": "观测创造实在",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 30,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 31,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 32,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 33,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 34,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 35,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "序生协议",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 36,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "序生域",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 37,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "序生态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 38,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "意义互联网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 39,
+      "src": "元子社会多中心序生协议治理设计",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 40,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 41,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 42,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 43,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 44,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 45,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 46,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 47,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 48,
+      "src": "元子社会宪章",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 49,
+      "src": "元子社会的分配设计",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 50,
+      "src": "元子社会的分配设计",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 51,
+      "src": "元子社会的分配设计",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 52,
+      "src": "元子社会的分配设计",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 53,
+      "src": "元子社会的分配设计",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 54,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 55,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 56,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 57,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 58,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 59,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "序生协议",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 60,
+      "src": "元子社会的风险清单",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 61,
+      "src": "元子社会的教育与文化",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 62,
+      "src": "元子社会的教育与文化",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 63,
+      "src": "元子社会的教育与文化",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 64,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 65,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 66,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 67,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 68,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 69,
+      "src": "元子社会的刚性底线",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 70,
+      "src": "元子信用",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 71,
+      "src": "元子信用",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 72,
+      "src": "元子信用",
+      "type": "提及",
+      "target": "序生智能体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 73,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 74,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 75,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 76,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 77,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 78,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "序生协议",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 79,
+      "src": "元子社会",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 80,
+      "src": "元子",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 81,
+      "src": "元子",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 82,
+      "src": "元子",
+      "type": "提及",
+      "target": "元网",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 83,
+      "src": "元子",
+      "type": "提及",
+      "target": "元识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 84,
+      "src": "元子",
+      "type": "提及",
+      "target": "序生",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 85,
+      "src": "元子",
+      "type": "提及",
+      "target": "序生协议",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 86,
+      "src": "元子",
+      "type": "提及",
+      "target": "意识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 87,
+      "src": "元子",
+      "type": "产出凭证",
+      "target": "元知",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 88,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 89,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 90,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 91,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 92,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 93,
+      "src": "元子文明",
+      "type": "提及",
+      "target": "序生协议",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 94,
+      "src": "心识",
+      "type": "提及",
+      "target": "元识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 95,
+      "src": "心识",
+      "type": "提及",
+      "target": "意识",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 96,
+      "src": "心识",
+      "type": "提及",
+      "target": "物质",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 97,
+      "src": "心识",
+      "type": "衍生自",
+      "target": "元识主义",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 98,
+      "src": "元知",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 99,
+      "src": "元知",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 100,
+      "src": "元知",
+      "type": "提及",
+      "target": "元知社会",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 101,
+      "src": "元知",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 102,
+      "src": "元知",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 103,
+      "src": "元知",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 104,
+      "src": "元知",
+      "type": "提及",
+      "target": "观测创造实在",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 105,
+      "src": "元知",
+      "type": "累积塑造",
+      "target": "元灵",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 106,
+      "src": "个体元意识",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 107,
+      "src": "个体元意识",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 108,
+      "src": "个体元意识",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 109,
+      "src": "个体元意识",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 110,
+      "src": "个体元意识",
+      "type": "认知行为",
+      "target": "元识",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 111,
+      "src": "元动力",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 112,
+      "src": "元动力",
+      "type": "提及",
+      "target": "元实体与现象实体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 113,
+      "src": "元动力",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 114,
+      "src": "元动力",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 115,
+      "src": "元动力",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 116,
+      "src": "元识",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 117,
+      "src": "元识",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 118,
+      "src": "元识",
+      "type": "提及",
+      "target": "元识主义",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 119,
+      "src": "元识",
+      "type": "提及",
+      "target": "全域序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 120,
+      "src": "元识",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 121,
+      "src": "元识",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 122,
+      "src": "元识",
+      "type": "提及",
+      "target": "心识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 123,
+      "src": "元识",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 124,
+      "src": "元识",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 125,
+      "src": "元识",
+      "type": "沉淀固化",
+      "target": "元知",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 126,
+      "src": "元灵",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 127,
+      "src": "元灵",
+      "type": "提及",
+      "target": "元子",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 128,
+      "src": "元灵",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 129,
+      "src": "元灵",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 130,
+      "src": "元灵",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 131,
+      "src": "元灵",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 132,
+      "src": "元灵",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 133,
+      "src": "元灵",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 134,
+      "src": "元灵",
+      "type": "观测解码",
+      "target": "元网",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 135,
+      "src": "元态",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 136,
+      "src": "元态",
+      "type": "提及",
+      "target": "元时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 137,
+      "src": "元态",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 138,
+      "src": "元知社会",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 139,
+      "src": "元知社会",
+      "type": "提及",
+      "target": "物质",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 140,
+      "src": "元态能量",
+      "type": "提及",
+      "target": "元实体与现象实体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 141,
+      "src": "元态能量",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 142,
+      "src": "元态能量",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 143,
+      "src": "元态能量",
+      "type": "离散运行",
+      "target": "意识",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 144,
+      "src": "元态能量",
+      "type": "稳定结构",
+      "target": "物质",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 145,
+      "src": "现象时空",
+      "type": "提及",
+      "target": "元实体与现象实体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 146,
+      "src": "现象时空",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 147,
+      "src": "现象时空",
+      "type": "提及",
+      "target": "元时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 148,
+      "src": "现象时空",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 149,
+      "src": "现象时空",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 150,
+      "src": "元力",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 151,
+      "src": "元力",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 152,
+      "src": "元力",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 153,
+      "src": "元力",
+      "type": "生命机制",
+      "target": "个体元意识",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 154,
+      "src": "元网",
+      "type": "提及",
+      "target": "个体元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 155,
+      "src": "元网",
+      "type": "回归本源",
+      "target": "元意识",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 156,
+      "src": "元识主义",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 157,
+      "src": "元识主义",
+      "type": "提及",
+      "target": "心识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 158,
+      "src": "元识主义",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 159,
+      "src": "元识主义",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 160,
+      "src": "元时空",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 161,
+      "src": "元时空",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 162,
+      "src": "元时空",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 163,
+      "src": "元时空",
+      "type": "提及",
+      "target": "绝对实在",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 164,
+      "src": "元时空",
+      "type": "观测切换",
+      "target": "现象时空",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 165,
+      "src": "观测创造实在",
+      "type": "提及",
+      "target": "元实体与现象实体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 166,
+      "src": "观测创造实在",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 167,
+      "src": "观测创造实在",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 168,
+      "src": "观测创造实在",
+      "type": "提及",
+      "target": "元时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 169,
+      "src": "观测创造实在",
+      "type": "生成",
+      "target": "现象时空",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 170,
+      "src": "元实体与现象实体",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 171,
+      "src": "元实体与现象实体",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 172,
+      "src": "元实体与现象实体",
+      "type": "提及",
+      "target": "元时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 173,
+      "src": "元实体与现象实体",
+      "type": "提及",
+      "target": "实物",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 174,
+      "src": "元实体与现象实体",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 175,
+      "src": "元实体与现象实体",
+      "type": "同源共出",
+      "target": "观测创造实在",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 176,
+      "src": "绝对实在",
+      "type": "提及",
+      "target": "本体",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 177,
+      "src": "绝对实在",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 178,
+      "src": "绝对实在",
+      "type": "衍生自",
+      "target": "元时空",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 179,
+      "src": "元域",
+      "type": "提及",
+      "target": "元时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 180,
+      "src": "元意识",
+      "type": "本源与显化",
+      "target": "元态能量",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 181,
+      "src": "实物",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 182,
+      "src": "物质",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 183,
+      "src": "物质",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 184,
+      "src": "意识",
+      "type": "提及",
+      "target": "元态",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 185,
+      "src": "意识",
+      "type": "提及",
+      "target": "元态能量",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 186,
+      "src": "序生智能体",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 187,
+      "src": "序生智能体",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 188,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 189,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "元灵",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 190,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 191,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 192,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 193,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 194,
+      "src": "全域序生体",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 195,
+      "src": "序生体",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 196,
+      "src": "序生体",
+      "type": "集合与超越",
+      "target": "全域序生体",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 197,
+      "src": "序生体",
+      "type": "硅基参与者",
+      "target": "序生智能体",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 198,
+      "src": "序生域",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 199,
+      "src": "序生域",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 200,
+      "src": "序生域",
+      "type": "提及",
+      "target": "现象时空",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 201,
+      "src": "序生域",
+      "type": "共生整体",
+      "target": "序生态",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 202,
+      "src": "序生链",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 203,
+      "src": "序生链",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 204,
+      "src": "序生链",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 205,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 206,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 207,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 208,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 209,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 210,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "序生域",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 211,
+      "src": "意义互联网",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 212,
+      "src": "意义互联网",
+      "type": "衍生自",
+      "target": "序生态",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 213,
+      "src": "序生场",
+      "type": "提及",
+      "target": "势差空间",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 214,
+      "src": "序生场",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 215,
+      "src": "序生场",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 216,
+      "src": "序生态",
+      "type": "提及",
+      "target": "元知",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 217,
+      "src": "序生态",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 218,
+      "src": "序生态",
+      "type": "提及",
+      "target": "元识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 219,
+      "src": "序生态",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 220,
+      "src": "序生态",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 221,
+      "src": "序生态",
+      "type": "提及",
+      "target": "序生域",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 222,
+      "src": "序生态",
+      "type": "提及",
+      "target": "意义互联网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 223,
+      "src": "序生态",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 224,
+      "src": "序生文明",
+      "type": "提及",
+      "target": "全域序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 225,
+      "src": "序生文明",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 226,
+      "src": "序生文明",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 227,
+      "src": "序生协议",
+      "type": "提及",
+      "target": "全域序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 228,
+      "src": "序生协议",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 229,
+      "src": "序生协议",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 230,
+      "src": "序生协议",
+      "type": "确权规则",
+      "target": "元子",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 231,
+      "src": "势差空间",
+      "type": "提及",
+      "target": "序生",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 232,
+      "src": "势差空间",
+      "type": "提及",
+      "target": "本体",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 233,
+      "src": "势差空间",
+      "type": "衍生自",
+      "target": "序生场",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 234,
+      "src": "序生系统",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 235,
+      "src": "序生系统",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 236,
+      "src": "序生律",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 237,
+      "src": "序生网",
+      "type": "提及",
+      "target": "元网",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 238,
+      "src": "序生网",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 239,
+      "src": "序生网",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 240,
+      "src": "序生网",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 241,
+      "src": "序生度",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 242,
+      "src": "序生度",
+      "type": "提及",
+      "target": "序生体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 243,
+      "src": "序生",
+      "type": "涌现生成",
+      "target": "序生体",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 244,
+      "src": "尺度面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 245,
+      "src": "不变基底",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 246,
+      "src": "不变基底",
+      "type": "提及",
+      "target": "新有",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 247,
+      "src": "不变基底",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 248,
+      "src": "不变基底",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 249,
+      "src": "创生面",
+      "type": "提及",
+      "target": "不变基底",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 250,
+      "src": "创生面",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 251,
+      "src": "创生面",
+      "type": "提及",
+      "target": "折叠面",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 252,
+      "src": "创生面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 253,
+      "src": "本体",
+      "type": "提及",
+      "target": "不变基底",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 254,
+      "src": "本体",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 255,
+      "src": "本体",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 256,
+      "src": "本体",
+      "type": "提及",
+      "target": "新有",
+      "flags": [
+        "证据不能逐字回查"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 257,
+      "src": "本体",
+      "type": "提及",
+      "target": "物质",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 258,
+      "src": "觉知面",
+      "type": "提及",
+      "target": "元意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 259,
+      "src": "觉知面",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 260,
+      "src": "觉知面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 261,
+      "src": "消散面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 262,
+      "src": "区分面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 263,
+      "src": "区分面",
+      "type": "提及",
+      "target": "观测创造实在",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 264,
+      "src": "折叠面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 265,
+      "src": "临界面",
+      "type": "提及",
+      "target": "序生",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 266,
+      "src": "临界面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 267,
+      "src": "共振面",
+      "type": "提及",
+      "target": "意识",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 268,
+      "src": "共振面",
+      "type": "提及",
+      "target": "本体",
+      "flags": [],
+      "verdict": "保留"
+    },
+    {
+      "i": 269,
+      "src": "不可穿透性",
+      "type": "衍生自",
+      "target": "本体",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    },
+    {
+      "i": 270,
+      "src": "新有",
+      "type": "衍生自",
+      "target": "本体",
+      "flags": [
+        "缺证据"
+      ],
+      "verdict": "待审"
+    }
+  ]
+}
