@@ -19,3 +19,4 @@ CATEGORY_EN = {
 }
 
 DEFINITION_NOTE = "定义以中文为准，英文术语名为机译，仅供参考"
+DEFINITION_NOTE_EN = "Definitions are authoritative in Chinese; English term names are machine translations, for reference only."
