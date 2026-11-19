@@ -13,10 +13,6 @@ COPY pyproject.toml README.md LICENSE LICENSE-CONTENT ./
 COPY mcai ./mcai
 RUN pip install --no-cache-dir .
 
-# 显式放入知识库，避免镜像内回退到旧数据
-COPY config/corpus.json ./workspace/config/corpus.json
-COPY data/kb.json ./workspace/data/kb.json
-ENV MCAI_HOME=/app/workspace
 
 EXPOSE 8080
 
