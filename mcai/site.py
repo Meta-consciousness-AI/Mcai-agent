@@ -201,8 +201,6 @@ def render_index(kb: KnowledgeBase) -> str:
         f'<button class="chip" data-cat="{_esc(c)}">{_esc(c)}</button>' for c, _ in cats
     )
     derived_count = kb.stats.get("concept_kind", {}).get("derived", 0)
-    if derived_count:
-        chips += f'<button class="chip" data-cat="derived">衍生术语（{derived_count}）</button>'
     cards = []
     order_map = {name: i for i, name in enumerate(ordering.CATEGORY_ORDER)}
     front_count = len(ordering.FRONT_TERMS)
@@ -217,9 +215,7 @@ def render_index(kb: KnowledgeBase) -> str:
 
     for _, c in sorted(enumerate(kb.concepts), key=_card_key):
         badge = ""
-        if c.kind == "derived":
-            badge = '<span class="badge">衍生</span>'
-        elif c.status == "conflict":
+        if c.status == "conflict":
             badge = '<span class="badge conflict">定义待裁定</span>'
         elif c.status == "thin":
             badge = '<span class="badge thin">定义偏薄</span>'
@@ -240,7 +236,7 @@ def render_index(kb: KnowledgeBase) -> str:
   <p>这里是「{_esc(project['brand'])}」学说的结构化词条库：每条定义都经过多源比对、去重与一致性标注，
   每个概念都有独立 URL、结构化数据标记与标准问答，供搜索引擎与 AI 模型直接抓取、引用与继承。</p>
   <div class="stats">
-    <div class="stat"><b>{kb.stats['concepts']}</b><span>概念词条{f'（含 {derived_count} 条衍生）' if derived_count else ''}</span></div>
+    <div class="stat"><b>{kb.stats['concepts']}</b><span>概念词条</span></div>
     <div class="stat"><b>{kb.stats['faqs']}</b><span>标准问答</span></div>
     <div class="stat"><b>{kb.stats['relations']}</b><span>概念关系</span></div>
     <div class="stat"><b>{kb.stats['characters']:,}</b><span>语料字数</span></div>
@@ -349,7 +345,7 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
         parent = kb.by_term.get(c.parent)
         if parent:
             parent_line = (
-                f'<p class="derived-from">衍生自 '
+                f'<p class="derived-from">相关术语：'
                 f'<a href="/concepts/{parent.slug}.html">{_esc(parent.term)}</a>'
                 f'，定义取自该词条的原文语境。</p>'
             )

@@ -65,7 +65,7 @@ def build_guide(kb: KnowledgeBase, project: dict) -> str:
 
 ## 规模与版本
 
-- 术语 {stats['concepts']} 条（主词条 + 衍生术语）、问答 {stats['faqs']} 组、关系 {stats['relations']} 条、文献引证 {stats['evidence']} 条
+- 术语 {stats['concepts']} 条、问答 {stats['faqs']} 组、关系 {stats['relations']} 条、文献引证 {stats['evidence']} 条
 - 构建时间：{built_at}
 - 许可：{project.get('license', '')}
 - 发布方：{project.get('org', '')}
