@@ -68,6 +68,8 @@ class Knowledge:
             self._alias[c["slug"]] = c
             if c.get("en"):
                 self._alias[c["en"].lower()] = c
+            for a in c.get("hidden_aliases") or []:
+                self._alias[a.lower()] = c
         for c in self.concepts:
             for a in c.get("aliases") or []:
                 self._alias.setdefault(a, c)
@@ -111,7 +113,7 @@ class Knowledge:
                 continue
             term = _norm(c["term"])
             en = _norm(c.get("en") or "")
-            aliases = [_norm(a) for a in (c.get("aliases") or []) if a]
+            aliases = [_norm(a) for a in (c.get("aliases") or []) + (c.get("hidden_aliases") or []) if a]
             score = 0.0
             if qn == term:
                 score += 100
