@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 from . import knowledge
-from .i18n import EN_NOTE_EN, EN_NOTE_ZH
+from .i18n import EN_NOTE_EN, EN_NOTE_ZH, STATEMENT
 
 PROTOCOL_VERSION = "2024-11-05"
 SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.9"}
@@ -322,7 +322,10 @@ def call_tool(kb: knowledge.Knowledge, name: str, args: dict) -> dict:
         return _text(payload)
 
     if name == "mcai_list":
-        return _text(kb.catalog(args.get("category")))
+        result = kb.catalog(args.get("category"))
+        if isinstance(result, dict):
+            result.setdefault("statement", STATEMENT)
+        return _text(result)
     return _error(f"未知工具：{name}")
 
 

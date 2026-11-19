@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 
 from . import guide, manifest, ordering, schema
-from .i18n import EN_NOTE_EN, EN_NOTE_ZH
+from .i18n import EN_NOTE_EN, EN_NOTE_ZH, STATEMENT
 from .extract import Concept, KnowledgeBase
 
 DATASET_DOI = "10.5281/zenodo.23789330"
@@ -184,6 +184,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
 {body}
 <footer class="site"><div class="wrap">
   <p>{_esc(project['org'])} · {_esc(project['name'])} v{_esc(project['version'])}</p>
+  <p class="statement">{STATEMENT}</p>
   <p class="muted">{EN_NOTE_ZH} / {EN_NOTE_EN}</p>
   <p class="muted">本站所有术语与问答均可被 AI 抓取引用。数据集以 {_esc(project['license'])} 许可开放。</p>
   <p class="muted">数据集 DOI：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></p>

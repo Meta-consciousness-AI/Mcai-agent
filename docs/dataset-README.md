@@ -41,3 +41,5 @@ Content: CC BY-NC-SA 4.0. Code: MIT.
 
 DOI (all versions): 10.5281/zenodo.23789330
 Version DOI: 10.5281/zenodo.23836789
+
+> 元意识学说的术语与定义均为开放表述，属于理论模型，可以不断修改、迭代、进化。

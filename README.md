@@ -671,3 +671,5 @@ python -m unittest discover -s tests -v
 
 > 英文说明：英文名为机器翻译，非作者学术翻译，仅供参考。
 > English note: English names are machine translations, not the author's academic translations, for reference only.
+
+> 元意识学说的术语与定义均为开放表述，属于理论模型，可以不断修改、迭代、进化。

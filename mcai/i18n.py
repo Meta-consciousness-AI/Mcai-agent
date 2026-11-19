@@ -20,3 +20,5 @@ CATEGORY_EN = {
 
 DEFINITION_NOTE = "定义以中文为准，英文术语名为机译，仅供参考"
 DEFINITION_NOTE_EN = "Definitions are authoritative in Chinese; English term names are machine translations, for reference only."
+
+STATEMENT = "元意识学说的术语与定义均为开放表述，属于理论模型，可以不断修改、迭代、进化。"
