@@ -1,5 +1,8 @@
 # MCAI Knowledge Base — dataset v1.2
 
+> 英文说明：本数据集中的英文名为机器翻译，非作者学术翻译，仅供英文语境读者理解参考。
+> English note: English names are machine translations, not the author's academic translations, for reference only.
+
 Structured knowledge assets for the Meta-Consciousness Theory (元意识学说):
 64 term definitions, 122 curated Q&A pairs, 270 typed relations, and 213 source
 quotations. Every definition is linked to a document, a section, a character range,

@@ -668,3 +668,5 @@ python -m unittest discover -s tests -v
 - **知识内容**（语料原文、词条定义、标准问答、概念关系、引文、生成的数据集与站点内容）：**CC BY-NC-SA 4.0**，见 [LICENSE-CONTENT](LICENSE-CONTENT)。
 
 商业使用需另行授权。
+
+> 英文说明：本仓库中的英文名为机器翻译，非作者学术翻译，仅供参考。

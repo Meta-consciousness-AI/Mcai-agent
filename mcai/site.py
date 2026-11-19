@@ -7,6 +7,7 @@ import shutil
 from pathlib import Path
 
 from . import guide, manifest, ordering, schema
+from .i18n import EN_NOTE
 from .extract import Concept, KnowledgeBase
 
 DATASET_DOI = "10.5281/zenodo.23789330"
@@ -228,7 +229,7 @@ def render_index(kb: KnowledgeBase) -> str:
   <span class="cat">{_esc(c.category)}</span>
   <h3>{_esc(c.term)}</h3>
   <p>{_esc(c.short_definition)}</p>
-  <span class="meta">{_esc(c.en or '')} {badge}</span>
+  <span class="meta">{_esc(c.en or '')}{f' · {EN_NOTE}' if c.en else ''} {badge}</span>
 </a>"""
         )
 
@@ -337,7 +338,8 @@ def render_concept(kb: KnowledgeBase, c: Concept) -> str:
 
     alias_line = ""
     if c.aliases or c.en:
-        alias_line = f'<div class="en">{_esc(c.en)}' + (
+        note = f'<span class="en-note">（{EN_NOTE}）</span>' if c.en else ''
+        alias_line = f'<div class="en">{_esc(c.en)}{note}' + (
             f' · 又称 {_esc("、".join(c.aliases))}' if c.aliases else ""
         ) + "</div>"
 
@@ -568,7 +570,7 @@ def render_llms_full(kb: KnowledgeBase) -> str:
         "",
     ]
     for c in kb.concepts:
-        head = f"## {c.term}" + (f"（{c.en}）" if c.en else "")
+        head = f"## {c.term}" + (f"（{c.en}，{EN_NOTE}）" if c.en else "")
         lines += [head, ""]
         if c.aliases:
             lines += ["别名：" + "、".join(c.aliases), ""]
