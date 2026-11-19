@@ -1,6 +1,7 @@
 .git
 .gitignore
-data
+data/*
+!data/kb.json
 dist
 dist_pkg
 backups
