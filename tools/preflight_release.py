@@ -71,7 +71,16 @@ def main() -> int:
     if not tracked:
         errors.append("包内知识库未被 git 跟踪：mcai/data/default/data/kb.json")
 
-    # 4. 当前分支与远程提示
+    # 4. 静态站点是否已按当前版本重建
+    index = ROOT / "dist" / "index.html"
+    if not index.exists():
+        warnings.append("dist/index.html 不存在：发布前需运行 tools/build_site_from_kb.py")
+    else:
+        html = index.read_text(encoding="utf-8", errors="replace")
+        if f"v{version}" not in html:
+            warnings.append(f"dist/index.html 未包含 v{version}：站点可能未重建")
+
+    # 5. 当前分支与远程提示
     branch = git("rev-parse", "--abbrev-ref", "HEAD")
     print("当前分支：", branch)
     if branch != "main":
