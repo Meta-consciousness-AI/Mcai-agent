@@ -76,3 +76,11 @@
 - 冷启动较慢，默认超时 90 秒；
 - 安装脚本：`deploy/install-doubao-remote-skill.ps1`（支持 -DryRun / -Remove）；
 - 待办：装进豆包实测，确认手机端/桌面端都能调用。
+
+### 扣子商店（2026-11-20）
+
+- 已发布公开智能体「元意识学说助手」；
+- 链接：https://www.coze.cn/store/agent/7702301472461242409?bot_id=true
+- 插件：MCAI 元意识学说知识库（mcaiAnswer / mcaiSearch）；
+- 无痕窗口可打开，对话正常；
+- 触达范围：扣子用户，不含豆包用户。
