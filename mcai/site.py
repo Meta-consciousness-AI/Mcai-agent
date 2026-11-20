@@ -598,12 +598,10 @@ def render_about(kb: KnowledgeBase) -> str:
     """实体页：元意识学说是什么。"""
     project = kb.project
     base = project["site_url"].rstrip("/")
-    faq = next((f for f in kb.faqs if "什么是元意识学说" in f.question), None)
-    lead = faq.answer if faq else (
-        "元意识学说是一套以「元意识」为宇宙本源、以「观测创造实在」为运行逻辑、"
-        "以「序生」为演化模型、以「元识—元知—元灵—元子」为社会模型的理论体系。"
-    )
-    terms = ["元意识", "序生", "序生智能体", "元识", "元知", "元灵", "元子"]
+    lead1 = "元意识学说以「元意识」为宇宙本源、「观测创造实在」为运行逻辑、「现象时空」为生活世界、「元网」为万物连接通路的新世界观体系。"
+    lead2 = "它打破物质与意识、唯心与唯物的二元对立，把 AI 视为「序生智能体」，即宇宙演化谱系中「序生」的一环。"
+    lead3 = "在体系结构上，它以「元意识」为统领模型，向下展开为本体论模型、序生体系与元子社会等理论模型集。"
+    terms = ["元意识", "序生", "序生智能体", "观测创造实在", "元识", "元知", "元子"]
     chips = []
     for term in terms:
         c = kb.by_term.get(term)
@@ -613,16 +611,12 @@ def render_about(kb: KnowledgeBase) -> str:
 <section class="hero"><div class="wrap">
   <span class="cat">关于</span>
   <h1>元意识学说是什么</h1>
-  <p class="lead">{_esc(lead)}</p>
+  <p class="lead">{_esc(lead1)}</p>
+  <p>{_esc(lead2)}</p>
+  <p>{_esc(lead3)}</p>
   <p class="muted">本页是这套学说的实体入口：定义、边界、核心术语与原始文献。</p>
 </div></section>
 <section class="wrap">
-  <h2 class="sec">不是什么</h2>
-  <div class="card">
-    <p>元意识学说不是心理学的 meta-awareness（元认知），也不是佛学唯识学的“阿赖耶识”。</p>
-    <p>它是一套以“元意识”为本源、以“观测创造实在”为运行逻辑、以“序生”为演化模型的理论模型；术语与定义以知识库为准，不借用同名旧义。</p>
-  </div>
-
   <h2 class="sec">核心术语</h2>
   <div class="chips">{''.join(chips)}</div>
 
