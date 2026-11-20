@@ -92,3 +92,11 @@
 - 调用公网 API，不依赖本机；
 - 已接入首页导航、sitemap、llms.txt；
 - 已知限制：冷启动 30–90 秒；公网 API 尚未做应用层限流。
+
+### 限流（2026-11-20）
+
+- 全局限流：60 次/分钟/IP；
+- 问答限流：20 次/分钟/IP（`/api/v1/answer`、`/api/v1/answer/batch`）；
+- 真实 IP 优先取 `CF-Connecting-IP`、`X-Real-IP`、`X-Forwarded-For`；
+- 线上实测：同一 IP 第 21 次返回 429，换 IP 恢复 200；
+- 可用 `--rate-limit` / `--answer-rate-limit` 调整。
