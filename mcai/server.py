@@ -78,6 +78,7 @@ class Handler(BaseHTTPRequestHandler):
     root: Path
     token: str = ""
     limiter: RateLimiter = RateLimiter(60)
+    answer_limiter: RateLimiter = RateLimiter(20)
     cors_origin: str = "*"
     lock = threading.Lock()
     access_lock = threading.Lock()
@@ -167,8 +168,21 @@ class Handler(BaseHTTPRequestHandler):
         self._send_json({"ok": False, "error": message}, status)
 
     # ---------- 鉴权 / 限流 ----------
+    def _client_ip(self) -> str:
+        """取真实客户端 IP；容器在网关后，优先用代理头。"""
+        for header in ("CF-Connecting-IP", "X-Real-IP", "X-Forwarded-For"):
+            value = self.headers.get(header)
+            if value:
+                first = value.split(",")[0].strip()
+                if first:
+                    return first
+        return self.client_address[0]
+
     def _rate_ok(self) -> bool:
-        return self.limiter.allow(self.client_address[0])
+        return self.limiter.allow(self._client_ip())
+
+    def _answer_rate_ok(self) -> bool:
+        return self.answer_limiter.allow(self._client_ip())
 
     def _authorized(self, route: str) -> bool:
         if not self.token:
@@ -401,6 +415,9 @@ class Handler(BaseHTTPRequestHandler):
         if not self._rate_ok():
             self._deny(HTTPStatus.TOO_MANY_REQUESTS, "请求过于频繁，请稍后再试")
             return
+        if route in ("/api/v1/answer", "/api/v1/answer/batch") and not self._answer_rate_ok():
+            self._deny(HTTPStatus.TOO_MANY_REQUESTS, "问答请求过于频繁，请稍后再试")
+            return
         if not self._authorized(route):
             self._deny(HTTPStatus.UNAUTHORIZED, "缺少或无效的 Bearer 令牌")
             return
@@ -487,8 +504,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
-          token: str = "", rate_limit: int = 60, cors_origin: str = "*",
-          autopilot_interval: int = 0) -> None:
+          token: str = "", rate_limit: int = 60, answer_rate_limit: int = 20,
+          cors_origin: str = "*", autopilot_interval: int = 0) -> None:
     root = Path(root).resolve()
     if not (root / "dist" / "index.html").exists():
         has_corpus = False
@@ -507,6 +524,7 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
         "root": root,
         "token": token or "",
         "limiter": RateLimiter(rate_limit),
+        "answer_limiter": RateLimiter(answer_rate_limit),
         "cors_origin": cors_origin,
     })
 
@@ -519,7 +537,7 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
 
     display = "127.0.0.1" if host in ("0.0.0.0", "::") else host
     print(f"元意识知识资产引擎已启动：http://{display}:{port}")
-    print(f"  监听：{host}:{port} · 限流：{rate_limit} 次/分钟 · "
+    print(f"  监听：{host}:{port} · 限流：{rate_limit} 次/分钟（问答 {answer_rate_limit} 次/分钟） · "
           f"鉴权：{'Bearer 令牌' if token else '关闭（仅建议本机使用）'}")
     print("  本机专属接口：/api/rebuild、/api/v1/stats、/api/v1/gaps")
     if host not in ("127.0.0.1", "::1", "localhost") and not token:

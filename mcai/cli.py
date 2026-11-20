@@ -54,6 +54,7 @@ def _serve(args: argparse.Namespace) -> int:
     from .server import serve
     token = (getattr(args, "token", "") or os.environ.get("MCAI_TOKEN", "")).strip()
     serve(_home(args), args.port, host=args.host, token=token, rate_limit=args.rate_limit,
+          answer_rate_limit=getattr(args, "answer_rate_limit", 20),
           autopilot_interval=getattr(args, "autopilot", 0))
     return 0
 
@@ -476,6 +477,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_serve.add_argument("--host", default="127.0.0.1", help="监听地址；对外暴露用 0.0.0.0")
     p_serve.add_argument("--token", default="", help="Bearer 令牌；也可用环境变量 MCAI_TOKEN")
     p_serve.add_argument("--rate-limit", type=int, default=60, help="每 IP 每分钟请求上限")
+    p_serve.add_argument("--answer-rate-limit", type=int, default=20, help="每 IP 每分钟问答请求上限")
     p_serve.add_argument("--autopilot", type=int, default=0, metavar="秒",
                          help="在服务内启用自动驾驶：每 N 秒检查语料并自检（0=关闭）")
     p_serve.set_defaults(func=cmd_serve)
@@ -485,6 +487,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_api.add_argument("--host", default="127.0.0.1")
     p_api.add_argument("--token", default="")
     p_api.add_argument("--rate-limit", type=int, default=60)
+    p_api.add_argument("--answer-rate-limit", type=int, default=20)
     p_api.add_argument("--autopilot", type=int, default=0, metavar="秒")
     p_api.set_defaults(func=cmd_api)
 

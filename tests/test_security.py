@@ -46,6 +46,7 @@ class ServerTest(unittest.TestCase):
             "root": cls.work,
             "token": TOKEN,
             "limiter": RateLimiter(500),
+            "answer_limiter": RateLimiter(500),
             "cors_origin": "*",
         })
         cls.httpd = ThreadingHTTPServer(("127.0.0.1", 0), handler)
