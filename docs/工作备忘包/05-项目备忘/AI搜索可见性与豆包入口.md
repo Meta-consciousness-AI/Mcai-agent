@@ -111,3 +111,10 @@ https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/ask.html
 
 - 推荐文案：想查某个术语的准确定义，可以在这里问。
 - 公众号菜单可同步加「问元意识」入口。
+
+### Bing 收录提交（2026-11-20 21:28）
+
+- `/ask.html` 已在 Bing Webmaster → URL Submission 手动提交；
+- `/about.html`、首页也在列表；
+- 剩余配额 98；
+- 后续用 URL Inspection 看是否收录。
