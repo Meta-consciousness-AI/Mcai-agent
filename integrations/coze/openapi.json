@@ -1,0 +1,107 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MCAI 元意识学说知识库",
+    "version": "1.0.0",
+    "description": "查询元意识学说的术语定义、标准问答与原文出处。所有回答均来自结构化知识库，不生成、不改写术语。"
+  },
+  "servers": [
+    {
+      "url": "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/api/v1"
+    }
+  ],
+  "paths": {
+    "/answer": {
+      "post": {
+        "operationId": "mcaiAnswer",
+        "summary": "回答元意识学说问题",
+        "description": "输入一个自然语言问题，返回知识库中的标准答案、上下文和出处。适合回答「什么是元识」「元识和元知有什么区别」这类问题。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["question"],
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "用户的完整问题，例如：什么是元识？"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "查询结果",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {"type": "boolean", "description": "是否成功"},
+                    "type": {"type": "string", "description": "concept / faq / relation / multi / none / policy"},
+                    "question": {"type": "string", "description": "原问题"},
+                    "answer": {"type": "string", "description": "标准答案"},
+                    "context": {"type": "string", "description": "定义、出处、相关概念的拼接上下文"},
+                    "citations": {
+                      "type": "array",
+                      "description": "出处列表",
+                      "items": {"type": "object"}
+                    },
+                    "confidence": {"type": "string", "description": "high / medium / low"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "operationId": "mcaiSearch",
+        "summary": "检索元意识学说术语",
+        "description": "按关键词检索术语，返回术语名、slug、分类和摘要。用于确认用户说的是哪个术语。",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "关键词，建议 2–20 字，例如：序生、元识"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {"type": "integer", "default": 5},
+            "description": "返回数量，1–30"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "检索结果",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {"type": "boolean"},
+                    "count": {"type": "integer"},
+                    "results": {
+                      "type": "array",
+                      "items": {"type": "object"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
