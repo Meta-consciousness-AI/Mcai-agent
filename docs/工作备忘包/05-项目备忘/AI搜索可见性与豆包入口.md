@@ -100,3 +100,14 @@
 - 真实 IP 优先取 `CF-Connecting-IP`、`X-Real-IP`、`X-Forwarded-For`；
 - 线上实测：同一 IP 第 21 次返回 429，换 IP 恢复 200；
 - 可用 `--rate-limit` / `--answer-rate-limit` 调整。
+
+## 七、下次发文章时
+
+- 在公众号文章、视频简介、文章末尾加公开问答页链接：
+
+```
+https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/ask.html
+```
+
+- 推荐文案：想查某个术语的准确定义，可以在这里问。
+- 公众号菜单可同步加「问元意识」入口。
