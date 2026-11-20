@@ -13,7 +13,9 @@ from . import knowledge
 from .i18n import EN_NOTE_EN, EN_NOTE_ZH, STATEMENT
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "mcai-knowledge", "version": "0.3.9"}
+from . import __version__
+
+SERVER_INFO = {"name": "mcai-knowledge", "version": __version__}
 
 INSTRUCTIONS = (
     "Read-only knowledge base for the Meta-Consciousness Theory (元意识学说). "
