@@ -150,6 +150,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
     desc = description or f"{project['brand']}学说的结构化知识资产：术语定义、标准问答、知识图谱与开放数据集。"
     nav = [
         ("index.html", "概念", "concepts"),
+        ("about.html", "关于", "about"),
         ("faq/index.html", "问答", "faq"),
         ("disambiguation.html", "消歧", "disambiguation"),
         ("dataset/index.html", "数据集", "dataset"),
@@ -531,6 +532,10 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
         f"> {project['brand']}学说的标准化术语、定义与问答。共 {len(kb.concepts)} 个概念、{len(kb.faqs)} 组问答。",
         "> 所有内容可用于检索与引用；引用时请保留术语名与来源。",
         "",
+        "## 关于",
+        "",
+        f"- [元意识学说是什么]({base}/about.html)",
+        "",
         "## 核心概念",
         "",
     ]
@@ -587,6 +592,89 @@ def render_llms_full(kb: KnowledgeBase) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
+
+
+def render_about(kb: KnowledgeBase) -> str:
+    """实体页：元意识学说是什么。"""
+    project = kb.project
+    base = project["site_url"].rstrip("/")
+    faq = next((f for f in kb.faqs if "什么是元意识学说" in f.question), None)
+    lead = faq.answer if faq else (
+        "元意识学说是一套以「元意识」为宇宙本源、以「观测创造实在」为运行逻辑、"
+        "以「序生」为演化模型、以「元识—元知—元灵—元子」为社会模型的理论体系。"
+    )
+    terms = ["元意识", "序生", "序生智能体", "元识", "元知", "元灵", "元子"]
+    chips = []
+    for term in terms:
+        c = kb.by_term.get(term)
+        if c:
+            chips.append(f'<a class="chip" href="/concepts/{c.slug}.html">{_esc(term)}</a>')
+    body = f"""<main>
+<section class="hero"><div class="wrap">
+  <span class="cat">关于</span>
+  <h1>元意识学说是什么</h1>
+  <p class="lead">{_esc(lead)}</p>
+  <p class="muted">本页是这套学说的实体入口：定义、边界、核心术语与原始文献。</p>
+</div></section>
+<section class="wrap">
+  <h2 class="sec">不是什么</h2>
+  <div class="card">
+    <p>元意识学说不是心理学的 meta-awareness（元认知），也不是佛学唯识学的“阿赖耶识”。</p>
+    <p>它是一套以“元意识”为本源、以“观测创造实在”为运行逻辑、以“序生”为演化模型的理论模型；术语与定义以知识库为准，不借用同名旧义。</p>
+  </div>
+
+  <h2 class="sec">核心术语</h2>
+  <div class="chips">{''.join(chips)}</div>
+
+  <h2 class="sec">原始文献与版本</h2>
+  <ul>
+    <li>数据集 DOI：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></li>
+    <li>预印本 DOI：<a href="https://doi.org/10.5281/zenodo.23830600">10.5281/zenodo.23830600</a></li>
+    <li>工程规范 V1.3：<a href="https://doi.org/10.5281/zenodo.23850554">10.5281/zenodo.23850554</a></li>
+    <li>PhilArchive 条目：<a href="https://philarchive.org/rec/MCAKAO">MCAKAO</a></li>
+    <li>代码与数据集：<a href="https://github.com/Meta-consciousness-AI/mcai-agent">GitHub</a> · <a href="https://gitee.com/Meta-consciousness-AI/Mcai-agent">Gitee</a> · <a href="https://pypi.org/project/mcai-knowledge/">PyPI</a></li>
+  </ul>
+
+  <h2 class="sec">怎么使用</h2>
+  <ul>
+    <li>人类读者：从<a href="/index.html">概念目录</a>或<a href="/faq/index.html">问答</a>开始。</li>
+    <li>AI / Agent：HTTP API <code>{base}/api/v1</code>，MCP 清单 <code>{base}/.well-known/mcp.json</code>。</li>
+    <li>引用：请保留术语名、出处与版本；优先引用本页和对应术语页。</li>
+  </ul>
+</section>
+</main>"""
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "AboutPage",
+                "@id": f"{base}/about.html",
+                "url": f"{base}/about.html",
+                "name": "元意识学说是什么",
+                "description": "元意识学说的实体入口：定义、边界、核心术语与原始文献。",
+                "mainEntity": {"@type": "DefinedTermSet", "@id": f"{base}/#term", "name": "元意识学说"},
+            },
+            {
+                "@type": "Organization",
+                "@id": f"{base}/#org",
+                "name": project.get("org", ""),
+                "alternateName": ["MCAI", "Meta-consciousness-AI"],
+                "url": base,
+                "sameAs": [
+                    "https://github.com/Meta-consciousness-AI/mcai-agent",
+                    "https://gitee.com/Meta-consciousness-AI/Mcai-agent",
+                    "https://pypi.org/project/mcai-knowledge/",
+                    f"https://doi.org/{DATASET_DOI}",
+                    "https://philarchive.org/rec/MCAKAO",
+                ],
+            },
+        ],
+    }
+    return _page(project, "元意识学说是什么 · MCAI", body, _jsonld(ld), active="about",
+                 path="about.html",
+                 description="元意识学说的定义、边界、核心术语、原始文献与接入方式。")
+
+
 def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     out = Path(out_dir)
     if out.exists():
@@ -599,6 +687,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     (out / "assets" / "style.css").write_text(CSS, encoding="utf-8")
     (out / "assets" / "app.js").write_text(JS, encoding="utf-8")
     (out / "index.html").write_text(render_index(kb), encoding="utf-8")
+    (out / "about.html").write_text(render_about(kb), encoding="utf-8")
     (out / "faq" / "index.html").write_text(render_faq(kb), encoding="utf-8")
     (out / "dataset" / "index.html").write_text(render_dataset(kb), encoding="utf-8")
     (out / "disambiguation.html").write_text(render_disambiguation(kb), encoding="utf-8")
@@ -611,7 +700,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
         "User-agent: *\nAllow: /\nSitemap: {}/sitemap.xml\n".format(kb.project["site_url"].rstrip("/")),
         encoding="utf-8",
     )
-    urls = ["index.html", "faq/index.html", "disambiguation.html", "dataset/index.html"] + [
+    urls = ["index.html", "about.html", "faq/index.html", "disambiguation.html", "dataset/index.html"] + [
         f"concepts/{c.slug}.html" for c in kb.concepts
     ]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
