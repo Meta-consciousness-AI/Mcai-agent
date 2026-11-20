@@ -14,6 +14,7 @@ from .extract import Concept, KnowledgeBase
 DATASET_DOI = "10.5281/zenodo.23789330"
 # 页面计数：复用远程 /r 端点（跨域、不导航、不阻塞）
 TRACK_URL = "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/r"
+PUBLIC_API_BASE = "https://mcai-mcp-public-338698-11-1316838521.sh.run.tcloudbase.com/api/v1"
 
 CSS = """
 :root{
@@ -681,7 +682,7 @@ def render_ask(kb: KnowledgeBase) -> str:
     """公开问答页：调用公网 API，无需安装。"""
     project = kb.project
     base = project["site_url"].rstrip("/")
-    body = ASK_TEMPLATE.replace("__API_BASE__", base + "/api/v1")
+    body = ASK_TEMPLATE.replace("__API_BASE__", PUBLIC_API_BASE)
     return _page(project, "问元意识学说 · MCAI", body, active="ask", path="ask.html",
                  description="向元意识学说知识库提问，答案附原文出处。无需安装，无需登录。")
 
