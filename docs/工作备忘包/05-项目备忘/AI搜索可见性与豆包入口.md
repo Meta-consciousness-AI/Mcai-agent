@@ -84,3 +84,11 @@
 - 插件：MCAI 元意识学说知识库（mcaiAnswer / mcaiSearch）；
 - 无痕窗口可打开，对话正常；
 - 触达范围：扣子用户，不含豆包用户。
+
+### 公开问答页（2026-11-20）
+
+- 链接：https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com/ask.html
+- 手机实测可用，回答带出处；
+- 调用公网 API，不依赖本机；
+- 已接入首页导航、sitemap、llms.txt；
+- 已知限制：冷启动 30–90 秒；公网 API 尚未做应用层限流。
