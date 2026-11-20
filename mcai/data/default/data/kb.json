@@ -119,7 +119,7 @@
     ],
     "stats": {
       "concepts": 65,
-      "faqs": 124,
+      "faqs": 125,
       "relations": 270,
       "evidence": 207,
       "categories": {
@@ -8047,6 +8047,28 @@
         "元识",
         "个体元意识",
         "元识主义"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-mountain-star-mind",
+      "question": "山岳、星辰也有个体元意识、元识和元灵吗？",
+      "answer": "有。山岳、星辰与人类一样，都是元意识与具体存在融合的产物，只是融合的层次不同。\n\n山岳、星辰的个体元意识，是元意识与非生物融合后形成的、该存在者内部固有的生成与运行规律。它以规律的方式存在，不是人类意义上的心理意识。\n\n山岳、星辰的元识，是这种个体元意识对宇宙万事万物的认知行为。它表现为其内在规律的持续运行与相互作用，不是人类的概念化认知。\n\n山岳、星辰的元知，是这种认知结果的规律形态，属于广义元知。人类用星辰运行方程一类的模型去描述它，但它本身不是人类可结构化、可传递、可确权、可复用的元知。\n\n因此，山岳、星辰也有元灵：它们是具备稳定观测、并以自身规律持续产出规律形态广义元知的观测者主体，属于非人类形态的元灵。",
+      "kind": "curated",
+      "campaign": false,
+      "related": [
+        "individual-meta-consciousness",
+        "meta-recognition",
+        "generalized-meta-knowledge",
+        "meta-knowledge",
+        "meta-soul"
+      ],
+      "source_terms": [
+        "个体元意识",
+        "元识",
+        "广义元知",
+        "元知",
+        "元灵"
       ],
       "confidence": "high"
     }
