@@ -7,6 +7,7 @@ import shutil
 from pathlib import Path
 
 from . import guide, manifest, ordering, schema
+from .ask_template import ASK_TEMPLATE
 from .i18n import EN_NOTE_EN, EN_NOTE_ZH, STATEMENT
 from .extract import Concept, KnowledgeBase
 
@@ -150,6 +151,7 @@ def _page(project: dict, title: str, body: str, head_extra: str = "", active: st
     desc = description or f"{project['brand']}学说的结构化知识资产：术语定义、标准问答、知识图谱与开放数据集。"
     nav = [
         ("index.html", "概念", "concepts"),
+        ("ask.html", "提问", "ask"),
         ("about.html", "关于", "about"),
         ("faq/index.html", "问答", "faq"),
         ("disambiguation.html", "消歧", "disambiguation"),
@@ -535,6 +537,7 @@ def render_llms_txt(kb: KnowledgeBase) -> str:
         "## 关于",
         "",
         f"- [元意识学说是什么]({base}/about.html)",
+        f"- [公开问答]({base}/ask.html)",
         "",
         "## 核心概念",
         "",
@@ -672,6 +675,17 @@ def render_about(kb: KnowledgeBase) -> str:
 INDEXNOW_KEY = "5e8c6744f39f84fd94acd507a6bfd0e9"
 
 
+
+
+def render_ask(kb: KnowledgeBase) -> str:
+    """公开问答页：调用公网 API，无需安装。"""
+    project = kb.project
+    base = project["site_url"].rstrip("/")
+    body = ASK_TEMPLATE.replace("__API_BASE__", base + "/api/v1")
+    return _page(project, "问元意识学说 · MCAI", body, active="ask", path="ask.html",
+                 description="向元意识学说知识库提问，答案附原文出处。无需安装，无需登录。")
+
+
 def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     out = Path(out_dir)
     if out.exists():
@@ -685,6 +699,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     (out / "assets" / "app.js").write_text(JS, encoding="utf-8")
     (out / "index.html").write_text(render_index(kb), encoding="utf-8")
     (out / "about.html").write_text(render_about(kb), encoding="utf-8")
+    (out / "ask.html").write_text(render_ask(kb), encoding="utf-8")
     (out / "faq" / "index.html").write_text(render_faq(kb), encoding="utf-8")
     (out / "dataset" / "index.html").write_text(render_dataset(kb), encoding="utf-8")
     (out / "disambiguation.html").write_text(render_disambiguation(kb), encoding="utf-8")
@@ -698,7 +713,7 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
         "User-agent: *\nAllow: /\nSitemap: {}/sitemap.xml\n".format(kb.project["site_url"].rstrip("/")),
         encoding="utf-8",
     )
-    urls = ["index.html", "about.html", "faq/index.html", "disambiguation.html", "dataset/index.html"] + [
+    urls = ["index.html", "about.html", "ask.html", "faq/index.html", "disambiguation.html", "dataset/index.html"] + [
         f"concepts/{c.slug}.html" for c in kb.concepts
     ]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
