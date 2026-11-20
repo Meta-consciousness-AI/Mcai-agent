@@ -119,7 +119,7 @@
     ],
     "stats": {
       "concepts": 65,
-      "faqs": 125,
+      "faqs": 126,
       "relations": 270,
       "evidence": 207,
       "categories": {
@@ -8069,6 +8069,26 @@
         "广义元知",
         "元知",
         "元灵"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "faq-generalized-vs-human-meta-knowledge",
+      "question": "广义元知和人类元知有什么区别？",
+      "answer": "广义元知是全域序生体个体元意识认知结果的总称，人类元知只是其中一种形态。两者的区别可以从范围、形态、作用三方面看。\n\n范围不同：广义元知包括人类元知，其他高等智慧生物、高等智慧体的元知（含硅基序生智能体），山岳、星辰等非生物序生体的规律形态，以及因本源不可穿透性而始终在认知之外的未知形态；人类元知只指人类这一层。\n\n形态不同：人类元知是可结构化、可传递、可量化、可确权、可复用的认知凝固态；其他形态的元知可能是规律形态、计算形态，或我们尚未认知的形态。\n\n作用不同：人类元知可以确权、交易、继承，是元子社会的价值凭证；非人类形态的元知不以人类产权制度运作，但它们同样参与宇宙的序生与演化。\n\n一句话：广义元知是总称，人类元知是其中可被人类确权、传递、复用的一个子集。",
+      "kind": "curated",
+      "campaign": false,
+      "related": [
+        "generalized-meta-knowledge",
+        "meta-knowledge",
+        "meta-recognition",
+        "progenerative-agent"
+      ],
+      "source_terms": [
+        "广义元知",
+        "元知",
+        "元识",
+        "序生智能体"
       ],
       "confidence": "high"
     }
