@@ -66,3 +66,13 @@
 - Bing Webmaster：站点此前已添加成功；已补交 `/about.html` URL；已重新提交 sitemap；IndexNow 已推送 70 个 URL，返回 202。
 - IndexNow key：`5e8c6744f39f84fd94acd507a6bfd0e9`，已写入站点生成器，重建不会丢失。
 - 待观察：Bing 的 sitemap 处理与 about 收录。
+
+## 六、远程技能包（2026-11-20）
+
+- 目录：`skills/mcai-knowledge-remote/`
+- 组成：`SKILL.md` + `bin/mcai_client.py` + `bin/query.sh` + `bin/query.ps1` + `README.md`
+- 特点：不依赖本机、不需要 API Key、Python 标准库、POSIX/Windows 双包装；
+- 已测试：`answer`、`batch`、`search`、`concept`、`related` 均可返回；
+- 冷启动较慢，默认超时 90 秒；
+- 安装脚本：`deploy/install-doubao-remote-skill.ps1`（支持 -DryRun / -Remove）；
+- 待办：装进豆包实测，确认手机端/桌面端都能调用。
