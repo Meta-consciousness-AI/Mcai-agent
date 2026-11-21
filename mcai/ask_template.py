@@ -174,7 +174,7 @@ ASK_TEMPLATE = r"""<main class="ask-page">
       var timer = setTimeout(function () { controller.abort(); }, 95000);
       var resp = await fetch(API + "/answer", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-MCAI-Client": "ask-page" },
         body: JSON.stringify({ question: q }),
         signal: controller.signal
       });

@@ -20,6 +20,7 @@ if [ "$#" -ge 2 ] && [ "$1" = "answer" ] && command -v curl >/dev/null 2>&1 && c
     | curl -sS -m 90 -X POST "$BASE/answer" \
         -H 'Content-Type: application/json; charset=utf-8' \
         -H 'User-Agent: mcai-remote-skill/1.0' \
+        -H 'X-MCAI-Client: remote-skill' \
         --data-binary @-
   exit 0
 fi

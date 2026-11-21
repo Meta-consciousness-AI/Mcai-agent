@@ -363,7 +363,7 @@ def handle(kb: knowledge.Knowledge, request: dict, tele=None) -> dict | None:
                         rtype = json.loads(result["content"][0]["text"]).get("type", "")
                     except (json.JSONDecodeError, KeyError, IndexError):
                         rtype = ""
-                tele.record("mcp", name, query, rtype, ok=not result.get("isError", False))
+                tele.record("mcp", name, query, rtype, ok=not result.get("isError", False), detail={"client": "mcp"})
             return {"jsonrpc": "2.0", "id": req_id, "result": result}
         except Exception as exc:  # noqa: BLE001
             return {"jsonrpc": "2.0", "id": req_id,

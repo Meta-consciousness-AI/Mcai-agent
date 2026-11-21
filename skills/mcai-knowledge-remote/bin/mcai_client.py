@@ -36,7 +36,7 @@ UA = "mcai-remote-skill/1.0"
 def _request(path: str, payload: dict | None = None):
     url = BASE + path
     data = None
-    headers = {"User-Agent": UA, "Accept": "application/json"}
+    headers = {"User-Agent": UA, "Accept": "application/json", "X-MCAI-Client": "remote-skill"}
     if payload is not None:
         data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         headers["Content-Type"] = "application/json; charset=utf-8"

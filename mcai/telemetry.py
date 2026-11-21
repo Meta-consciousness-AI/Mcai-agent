@@ -38,6 +38,7 @@ class Telemetry:
         }
         if detail:
             entry["detail"] = detail
+        entry["source"] = self._source(entry)
         with _lock:
             with self.path.open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps(entry, ensure_ascii=False) + "\n")
@@ -97,8 +98,11 @@ class Telemetry:
             self._client_kind(r) for r in rows if r.get("action") in BUSINESS_ACTIONS
         )
 
+        by_source = Counter(self._source(r) for r in rows if r.get("action") in BUSINESS_ACTIONS)
+
         return {
             "total": len(rows),
+            "by_source": dict(by_source),
             "by_client_kind": dict(kind_business),
             "answers": len(answers),
             "business": sum(1 for r in rows if r.get("action") in BUSINESS_ACTIONS),
@@ -118,17 +122,50 @@ class Telemetry:
 
     @staticmethod
     def _client_kind(row: dict) -> str:
-        """按客户端标识区分：自检脚本 / 命令行 / 浏览器 / MCP / 其他。"""
+        """兼容旧统计口径：self / skill / shell / browser / mcp / other。"""
         if row.get("channel") == "mcp":
             return "mcp"
-        ua = ((row.get("detail") or {}).get("client") or "").lower()
-        if "mcai-skill" in ua:
+        client = ((row.get("detail") or {}).get("client") or "").lower()
+        if "remote-skill" in client or "mcai-skill" in client:
             return "skill"
-        if "python-urllib" in ua or "mcai-doctor" in ua:
+        if "python-urllib" in client or "mcai-doctor" in client:
             return "self"
-        if "powershell" in ua or ua.startswith("curl/"):
+        if "powershell" in client or client.startswith("curl/"):
             return "shell"
-        if "mozilla" in ua:
+        if "mozilla" in client or "ask-page" in client:
+            return "browser"
+        if "coze" in client:
+            return "coze"
+        return "other"
+
+    @staticmethod
+    def _source(row: dict) -> str:
+        """把客户端标识归一为可统计的来源。
+
+        约定：
+        - ask-page：公开问答页
+        - remote-skill：远程技能包
+        - coze：扣子插件
+        - mcp：MCP 调用
+        - self：自检脚本
+        - cli：curl / PowerShell
+        - browser：普通浏览器
+        - other：未识别
+        """
+        client = ((row.get("detail") or {}).get("client") or "").lower()
+        if "ask-page" in client:
+            return "ask-page"
+        if "remote-skill" in client or "mcai-skill" in client:
+            return "remote-skill"
+        if "coze" in client:
+            return "coze"
+        if row.get("channel") == "mcp" or client.startswith("mcp"):
+            return "mcp"
+        if "python-urllib" in client or "mcai-doctor" in client:
+            return "self"
+        if "powershell" in client or client.startswith("curl/"):
+            return "cli"
+        if "mozilla" in client:
             return "browser"
         return "other"
 
