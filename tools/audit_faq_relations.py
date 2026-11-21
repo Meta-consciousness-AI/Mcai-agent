@@ -68,6 +68,12 @@ def flags_for_faq(f, terms):
     return flags
 
 
+def evidence_matches(evidence: str, blocks: list[str]) -> bool:
+    """证据可以是多段原文，用空行分隔；每段都必须逐字回查。"""
+    parts = [p.strip() for p in (evidence or "").split("\n\n") if p.strip()]
+    return bool(parts) and all(any(p in b for b in blocks) for p in parts)
+
+
 def flags_for_rel(src, r, terms, blocks):
     flags = []
     target = r.get("target", "")
@@ -77,7 +83,7 @@ def flags_for_rel(src, r, terms, blocks):
         flags.append("自指关系")
     if not (r.get("evidence") or "").strip():
         flags.append("缺证据")
-    elif not any(r["evidence"] in b for b in blocks):
+    elif not evidence_matches(r["evidence"], blocks):
         flags.append("证据不能逐字回查")
     typ, tier = r.get("type"), r.get("tier")
     if typ == "提及" and tier in ("core", "derived"):
