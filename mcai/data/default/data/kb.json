@@ -4311,13 +4311,6 @@
           "type": "提及",
           "tier": "mention",
           "evidence": "比如人类社会的现象时空是一个序生域，某个AI模型的嵌入空间是另一个序生域。"
-        },
-        {
-          "target": "序生态",
-          "target_id": "progenerative-ecology",
-          "type": "共生整体",
-          "tier": "core",
-          "evidence": ""
         }
       ]
     },
