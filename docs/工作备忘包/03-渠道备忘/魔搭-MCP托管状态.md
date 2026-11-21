@@ -61,3 +61,32 @@
 ## 变更记录
 
 - 2026-11-21：建立，纠正「已部署」误判。
+
+## 七、2026-11-21 追加：根因与最终决定
+
+### 根因
+
+- 校验失败的直接原因：PyPI 0.4.1 的 wheel 里只有 `mcai`、`mcai-mcp` 两个命令，没有 `mcai-knowledge`；
+- 魔搭按包名执行 `mcai-knowledge`，所以启动失败；
+- 把配置改成 `uvx --from mcai-knowledge==0.4.1 mcai-mcp` 后，三项校验全部通过，徽标变为 Hosted。
+
+### 但托管仍未真正可用
+
+- 平台生成的 Remote URL 是 `https://mcp.api-inference.modelscope.net/mcp`，没有专属 ID，实测 404；
+- `operational_urls` 仍为空；
+- 继续部署要绑定阿里云账号，并授予 `AliyunRAMFullAccess` 管理员权限；
+- 魔搭托管的底层是阿里云函数计算（FC），免费资源也是 FC 免费额度，超出按量计费。
+
+### 决定
+
+- 不授予阿里云 RAM 管理员权限；
+- 不接受按量计费；
+- 魔搭托管停止；
+- 旧条目保留 Local；新条目去留待定（建议删除）；
+- 远程 MCP 继续使用我们自己的 CloudBase 端点。
+
+### 教训
+
+1. 命令名要核对构建产物里的 `entry_points.txt`，不能只看 `pyproject.toml`；
+2. 校验通过 ≠ 平台有资源部署；
+3. 托管底层若绑定云账号高权限，要先评估风险，不因“免费”就授权。
