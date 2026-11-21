@@ -4485,13 +4485,6 @@
           "type": "提及",
           "tier": "mention",
           "evidence": "序生态：特定序生域内，多种序生体通过元网互联、通过元识互动、通过元知交换形成的共生整体"
-        },
-        {
-          "target": "序生态",
-          "target_id": "progenerative-ecology",
-          "type": "衍生自",
-          "tier": "derived",
-          "evidence": ""
         }
       ]
     },
@@ -4655,6 +4648,14 @@
           "type": "提及",
           "tier": "mention",
           "evidence": "是“意义互联网”的本体论基础。"
+        },
+        {
+          "target": "意义互联网",
+          "target_id": "internet-of-meaning",
+          "type": "显化",
+          "tier": "derived",
+          "evidence": "序生态：特定序生域内，多种序生体通过元网互联、通过元识互动、通过元知交换形成的共生整体。是“意义互联网”的本体论基础。",
+          "note": "意义互联网是序生态的本体论表述/显化，不是独立实体。"
         }
       ]
     },
