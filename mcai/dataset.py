@@ -85,6 +85,27 @@ def export(kb: KnowledgeBase, out_dir: str | Path) -> dict:
         for c in kb.concepts
         for s in (_src(x) for x in c.sources)
     ]
+    cp = getattr(kb, "copyright", None) or {}
+    if cp:
+        provenance_rows.append({
+            "term": "元意识学说",
+            "slug": "meta-consciousness-theory",
+            "doc_id": "copyright",
+            "doc_title": "作品登记证书",
+            "section": "",
+            "location": "",
+            "char_start": -1,
+            "char_end": -1,
+            "origin": "certificate",
+            "edition": cp.get("certificate", ""),
+            "quote": f"登记号：{cp.get('registration_no', '')}",
+            "registered_at": cp.get("registered_at", ""),
+            "created_at": cp.get("created_at", ""),
+            "first_published_at": cp.get("first_published_at", ""),
+            "registration_no": cp.get("registration_no", ""),
+            "authority": cp.get("authority", ""),
+            "work": cp.get("work", ""),
+        })
     _write_jsonl(out / "provenance.jsonl", provenance_rows)
 
     relation_rows = [

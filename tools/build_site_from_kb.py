@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from mcai import site  # noqa: E402
+from mcai import dataset, site  # noqa: E402
 from mcai.extract import Concept, Faq, KnowledgeBase, Source  # noqa: E402
 
 
@@ -57,9 +57,12 @@ def main() -> int:
         documents=meta.get("documents", []),
         stats=meta.get("stats", {}),
         built_at=meta.get("built_at", ""),
+        copyright=meta.get("copyright"),
     )
     info = site.build_site(kb, ROOT / "dist")
     from mcai import dashboard
+
+    dataset.export(kb, ROOT / "dist" / "dataset")
 
     dashboard.render(ROOT)
     print(json.dumps(info, ensure_ascii=False, indent=2))

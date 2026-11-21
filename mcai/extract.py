@@ -149,6 +149,7 @@ class KnowledgeBase:
     documents: list[dict]
     stats: dict
     built_at: str
+    copyright: dict | None = None
 
     @property
     def by_term(self) -> dict[str, Concept]:
@@ -161,6 +162,7 @@ class KnowledgeBase:
                 "built_at": self.built_at,
                 "documents": self.documents,
                 "stats": self.stats,
+                "copyright": self.copyright or {},
             },
             "concepts": [c.to_dict() for c in self.concepts],
             "faqs": [f.to_dict() for f in self.faqs],
