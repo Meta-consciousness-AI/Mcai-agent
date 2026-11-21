@@ -4868,13 +4868,6 @@
           "note": "势差空间是序生场的本体论表述，不是序生本身。"
         },
         {
-          "target": "本体",
-          "target_id": "noumenon",
-          "type": "提及",
-          "tier": "mention",
-          "evidence": "序生场的本体论表述：秩序从混沌中涌现的势差空间。"
-        },
-        {
           "target": "序生场",
           "target_id": "progenerative-field",
           "type": "衍生自",
