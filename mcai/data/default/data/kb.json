@@ -120,7 +120,7 @@
     "stats": {
       "concepts": 65,
       "faqs": 126,
-      "relations": 270,
+      "relations": 273,
       "evidence": 207,
       "categories": {
         "序生体系": 16,
@@ -129,7 +129,7 @@
         "元子社会": 15
       },
       "status": {
-        "ok": 64
+        "ok": 65
       },
       "policy": {
         "excluded_entities": [
