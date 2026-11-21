@@ -55,6 +55,8 @@ Tag: py3-none-any
 entry = """[console_scripts]
 mcai = mcai.cli:main
 mcai-mcp = mcai.mcp_server:main_entry
+mcai-knowledge = mcai.mcp_server:main_entry
+mcai-verify = mcai.verify:main
 """
 dist = f"mcai_knowledge-{version}.dist-info"
 entries = files + license_files + [
