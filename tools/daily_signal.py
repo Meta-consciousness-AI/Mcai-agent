@@ -145,6 +145,9 @@ def check_mcp_health(name, base):
 def check_usage(name, base, hdr):
     try:
         d = json.loads(fetch(base + "/api/v1/usage", hdr, timeout=90, tries=3))
+        src = d.get("by_source") or {}
+        if src:
+            return f"调用 {name}：{src}", True, None
         by = d.get("by_action") or {}
         biz = {k: v for k, v in by.items() if k != "health"}
         if biz:
@@ -249,6 +252,7 @@ def record_usage():
             "instance": name,
             "total": total,
             "business": int(d.get("business_calls", 0)),
+            "by_source": d.get("by_source") or {},
             "by_action": d.get("by_action") or {},
             "reset": total < prev,
         })
@@ -302,7 +306,8 @@ def main(argv=None):
         for fut in as_completed(futures):
             name, line = fut.result()
             print(line, flush=True)
-            if "变为" in line or "≠" in line:
+            if ("变为" in line or "≠" in line
+                    or (line.startswith("调用") and "无业务调用" not in line and "失败" not in line)):
                 changed.append(line)
 
     # Zenodo 串行，避免限流；一旦遇到限流就停止本轮剩余项

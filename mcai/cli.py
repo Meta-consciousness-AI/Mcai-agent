@@ -311,6 +311,9 @@ def cmd_stats(args: argparse.Namespace) -> int:
     print(f"来源：本机 {origin.get('local', 0)} · 外部 {origin.get('external', 0)} · 未标记 {origin.get('unknown', 0)}")
     kinds = s.get("by_client_kind") or {}
     print(f"客户端：自检 {kinds.get('self', 0)} · 命令行 {kinds.get('shell', 0)} · 浏览器 {kinds.get('browser', 0)} · MCP {kinds.get('mcp', 0)}")
+    sources = s.get("by_source") or {}
+    if sources:
+        print("来源标识：" + " · ".join(f"{k} {v}" for k, v in sorted(sources.items(), key=lambda kv: -kv[1])))
     print(f"渠道：{s['by_channel']}")
     print(f"类型：{s['by_type']}")
     print("最近 14 天：")
