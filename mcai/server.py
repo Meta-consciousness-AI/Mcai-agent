@@ -354,12 +354,18 @@ class Handler(BaseHTTPRequestHandler):
             self._tele(payload, "answer", q)
             return
         if route == "/api/v1/usage":
-            st = telemetry.for_root(self.root).stats(days=30)
+            try:
+                days = max(1, min(int(first("days", "30")), 365))
+            except ValueError:
+                days = 30
+            st = telemetry.for_root(self.root).stats(days=days)
             self._send_json({
                 "ok": True,
                 "total_calls": st["total"],
                 "mcp_calls": st["by_channel"].get("mcp", 0),
                 "business_calls": st["business"],
+                "by_source": st["by_source"],
+                "by_client_kind": st["by_client_kind"],
                 "by_action": st["by_action"],
                 "by_day": st["by_day"],
                 "last_call": st["last_call"],
