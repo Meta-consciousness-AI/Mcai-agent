@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -20,6 +21,14 @@ from mcai.extract import Concept, Faq, KnowledgeBase, Source  # noqa: E402
 def main() -> int:
     payload = json.loads((ROOT / "data" / "kb.json").read_text(encoding="utf-8"))
     meta = payload["meta"]
+    meta.setdefault("stats", {})
+    meta["stats"]["concepts"] = len(payload["concepts"])
+    meta["stats"]["faqs"] = len(payload["faqs"])
+    meta["stats"]["relations"] = sum(len(c.get("relations") or []) for c in payload["concepts"])
+    meta["built_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
+    (ROOT / "data" / "kb.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    import shutil
+    shutil.copyfile(ROOT / "data" / "kb.json", ROOT / "mcai" / "data" / "default" / "data" / "kb.json")
 
     concepts = []
     for c in payload["concepts"]:

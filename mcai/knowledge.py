@@ -365,7 +365,11 @@ class Knowledge:
             if score > best_score:
                 best_faq, best_score = faq, score
 
-        # 0) 关系型问题：A 与 B 是什么关系 / 有什么区别
+        # 0) 与标准问答几乎完全一致时，优先返回问答（即使问法像关系题）
+        if best_faq is not None and best_score >= 0.85:
+            return self._from_faq(best_faq, q, best_score)
+
+        # 0.1) 关系型问题：A 与 B 是什么关系 / 有什么区别
         link = self._relation_question(q)
         if link is not None:
             return link

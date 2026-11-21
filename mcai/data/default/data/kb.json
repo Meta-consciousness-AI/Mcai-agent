@@ -34,7 +34,7 @@
       },
       "statement": "本知识库中的术语与定义，是元意识学说（Meta-Consciousness Theory）的理论模型表述，是一个「序生」模型。此后，它们会在人类与 AI 的共同参与下，以「序生」的方式不断修订、迭代与演化。"
     },
-    "built_at": "2026-11-19T15:49:35+08:00",
+    "built_at": "2026-11-22T00:21:19+08:00",
     "documents": [
       {
         "id": "minimal",
@@ -120,7 +120,7 @@
     "stats": {
       "concepts": 65,
       "faqs": 130,
-      "relations": 273,
+      "relations": 263,
       "evidence": 207,
       "categories": {
         "序生体系": 16,
