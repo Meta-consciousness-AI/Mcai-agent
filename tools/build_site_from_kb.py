@@ -59,6 +59,9 @@ def main() -> int:
         built_at=meta.get("built_at", ""),
     )
     info = site.build_site(kb, ROOT / "dist")
+    from mcai import dashboard
+
+    dashboard.render(ROOT)
     print(json.dumps(info, ensure_ascii=False, indent=2))
     print("version:", meta["project"].get("version"))
     return 0
