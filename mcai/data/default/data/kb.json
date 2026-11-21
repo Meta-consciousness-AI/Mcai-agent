@@ -4866,13 +4866,6 @@
           "tier": "core",
           "evidence": "序生场：序生过程发生的一种本体论表述，是秩序从混沌中涌现的“势差空间”，它不是物理场，而是使物理场得以显现的前物理条件。",
           "note": "势差空间是序生场的本体论表述，不是序生本身。"
-        },
-        {
-          "target": "序生场",
-          "target_id": "progenerative-field",
-          "type": "衍生自",
-          "tier": "derived",
-          "evidence": ""
         }
       ]
     },
