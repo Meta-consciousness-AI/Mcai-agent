@@ -76,6 +76,7 @@ python tools\daily_signal.py
 - 规则见：`docs/工作法-会话管理.md`、`docs/工作法-主会话减负.md`
 - `mcai-knowledge` = 主会话/决策台：只留方向、原则、裁定，不承担长执行；
 - 平台事务开 `mcai-knowledge-platform`；内容审校开 `mcai-knowledge-content`；发布开 `mcai-knowledge-release`。
+- 会话清单与命名审批：`docs/会话台账.md`；新会话名称由主会话定。
 - 已结案事项见 `docs/工作法-主会话减负.md` 的归档表，不再重复讨论。
 - 新会话第一句：`先读 HANDOFF.md 和 docs/待办.md。本次范围：<一句话>。`
 - 长内容放文件，不靠上下文记忆。
