@@ -7,7 +7,7 @@
       "org": "元意识（重庆）人工智能科技有限公司",
       "site_url": "https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com",
       "license": "CC BY-NC-SA 4.0",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "terminology": {
         "homonyms": [
           {
@@ -34,7 +34,7 @@
       },
       "statement": "本知识库中的术语与定义，是元意识学说（Meta-Consciousness Theory）的理论模型表述，是一个「序生」模型。此后，它们会在人类与 AI 的共同参与下，以「序生」的方式不断修订、迭代与演化。"
     },
-    "built_at": "2026-11-22T00:21:19+08:00",
+    "built_at": "2026-11-22T10:14:50+08:00",
     "documents": [
       {
         "id": "minimal",
