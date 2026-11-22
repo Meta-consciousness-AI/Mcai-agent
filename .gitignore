@@ -44,3 +44,6 @@ video/**/*.png
 
 # 站点打包，临时产物
 dist-site.zip
+
+# 浏览器临时配置（Edge 独立 profile 残骸，可再生，不入库）
+.edge-tmp/
