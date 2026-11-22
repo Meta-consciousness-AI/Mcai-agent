@@ -161,6 +161,8 @@ mcai-mcp --home demo
 | `version mismatch` | server.json 与 PyPI 版本不一致 | 改版本号后重新生成 |
 | `package not found` | PyPI 上还没有对应版本 | 先发 PyPI，再上注册表 |
 | `401/403` | 未登录或登录过期 | `mcp-publisher login github` 重新登录 |
+| `login failed: error requesting device code ... dial tcp ...:443` | 本机到 `github.com` 被墙，或 DNS 落到被封 IP（如 `57.155.223.240`） | 先测 `api.github.com` 是否通；再用本地 CONNECT 隧道把 `github.com` 固定到实测可达 IP（`20.247.166.64` / `140.82.112.3` 曾通），设 `HTTPS_PROXY` 后重新 `login`，发布完关隧道 |
+| 浏览器停在 2FA 页 | GitHub 账号开了两步验证 | 填验证器 6 位动态码（不是设备码）；没验证器点 More options 用恢复码。通过后才到 Authorize 页 |
 
 ---
 
