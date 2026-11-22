@@ -1,6 +1,6 @@
 # HANDOFF
 
-> 更新时间：2026-11-22 13:12
+> 更新时间：2026-11-22 15:23
 > 用途：跨会话交接。新会话先读本页，再读对应明细。
 > 原则：会话可以换，状态不能丢；长内容放文件，不靠上下文记忆。
 > 新会话必读：本页 → `docs/待办.md` → `docs/工作原则.md` → `docs/工作法-会话管理.md`。
@@ -28,10 +28,10 @@
 **Git 卫生（2026-11-22 13:24）。**
 
 - 已提交：`deploy/install-doubao-remote-skill.ps1`（豆包安装改用其已识别的 `mca-knowledge` 名，覆盖前先备份）、`mcai/data/default/data/kb.json`（与 `data/kb.json` 逐字节一致，仅 `built_at` 时间戳）；提交 `ace3fca`；
-- Gitee 推送：**已完成**（2026-11-22 13:43 核对，由用户手动推 `bd4d970..a89a773` main → master）；回查 `refs/heads/master` = `a89a773`，与本地 HEAD 一致，0 领先 / 0 落后；
-- 本机自动推送仍不可用：schannel `SEC_E_NO_CREDENTIALS`、openssl 后端取不到凭据、剪贴板无令牌；`deploy/push-gitee.ps1` 已改为 `main:master` 且去掉 `--force`（2026-11-22 修正，非快进会被 Git 拒绝，不覆盖远端历史）；
+- Gitee 推送：**已完成**（2026-11-22 15:23 核对，由用户手动推 `ac69598..b4931ce` main → master，纯快进、无 force）；回查 `refs/heads/master` = `b4931ce` = 本地 HEAD，0 领先 / 0 落后；此前 13:43 记录的 `a89a773` 已过期（`ac69598` 之后又累积 6 个文档提交）；
+- 本机自动推送仍不可用：DSH 沙箱内 `git ls-remote gitee` 直接报 schannel `SEC_E_NO_CREDENTIALS`（2026-11-22 15:15 实测，令牌写进 URL 也绕不过 TLS 层）；**结论：Gitee 推送只能由用户在自有 PowerShell 窗口执行**，用户窗口内认证正常（15:23 一次成功）；`deploy/push-gitee.ps1` 已改为 `main:master` 且去掉 `--force`（非快进会被 Git 拒绝，不覆盖远端历史）；
 - 仍未提交：`.edge-tmp/`（Edge 临时配置 14 个文件）、`assets/`（图标 5 个），均未跟踪、未入 `.gitignore`，未提交；
-- 远端其他：GitHub `origin/main` = `ed246c5`（2026-11-16，落后本地 247 个提交，当时不可达，未推）。
+- 远端其他：GitHub `origin/main` = `ed246c5`（2026-11-16，落后本地 258 个提交，未推）。
 
 ## 二、当前内容状态
 
