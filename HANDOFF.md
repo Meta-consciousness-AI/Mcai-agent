@@ -72,7 +72,7 @@ python tools\daily_signal.py
 
 ## 八、会话策略
 
-- 同一阶段留在同一会话；
-- 阶段结束，更新本页，开新会话；
-- 新会话第一句：`先读 HANDOFF.md`；
+- 规则见：`docs/工作法-会话管理.md`
+- 当前建议：`mcai-knowledge` 保留为主/归档；平台事务开 `mcai-knowledge-platform`；内容审校开 `mcai-knowledge-content`。
+- 新会话第一句：`先读 HANDOFF.md 和 docs/待办.md。本次范围：<一句话>。`
 - 长内容放文件，不靠上下文记忆。
