@@ -32,7 +32,7 @@
 - 本机自动推送仍不可用：DSH 沙箱内 `git ls-remote gitee` 直接报 schannel `SEC_E_NO_CREDENTIALS`（2026-11-22 15:15 实测，令牌写进 URL 也绕不过 TLS 层）；**结论：Gitee 推送只能由用户在自有 PowerShell 窗口执行**，用户窗口内认证正常（15:23 一次成功）；`deploy/push-gitee.ps1` 已改为 `main:master` 且去掉 `--force`（非快进会被 Git 拒绝，不覆盖远端历史）；
 - 已收口（2026-11-22 15:32）：`.edge-tmp/`（Edge 临时 profile 残骸）已加入 `.gitignore`，**目录保留未删**；`assets/` 5 个**临时平台图标**就地入库，另加 `assets/README.md` 说明「2026-11-21 应急上传、待重设计」；P07 仍暂缓、主标仍用文字标 `MCAI·元`；
 - 远端其他：GitHub **已于 2026-11-22 16:06 补推**，`origin/main` = `4d99871`（推前停在 `58ab5b4` / 11-20，一次补 111 个提交，快进无 force）；**教训**：本机 `refs/remotes/origin/main` 只是上次 fetch 的快照（当时显示 `ed246c5` / 11-16，比真实远端落后两版），判断领先数必须以 `git ls-remote <remote> refs/heads/<branch>` 为准；push 成功后跟踪引用会同步到新 HEAD。
-- GitHub 提示仓库已改名：真实地址 `https://github.com/Meta-consciousness-AI/Mcai-agent.git`（大写 M），本机 origin 仍写 `mcai-agent`，靠 301 重定向可用；是否改 `git remote set-url` 待定。
+- 远端地址已归一（2026-11-22 16:09）：GitHub 实名为 `Mcai-agent`（大写 M），`origin` 已由 `mcai-agent` 改为 `https://github.com/Meta-consciousness-AI/Mcai-agent.git`，与 `gitee` 端点大小写一致；不再走 301 重定向。
 
 ## 二、当前内容状态
 
