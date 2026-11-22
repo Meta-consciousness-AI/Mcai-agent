@@ -27,9 +27,10 @@
 **Git 卫生（2026-11-22 13:24）。**
 
 - 已提交：`deploy/install-doubao-remote-skill.ps1`（豆包安装改用其已识别的 `mca-knowledge` 名，覆盖前先备份）、`mcai/data/default/data/kb.json`（与 `data/kb.json` 逐字节一致，仅 `built_at` 时间戳）；提交 `ace3fca`；
-- Gitee 推送：**未完成**，本机无可用凭证（`deploy/push-gitee.ps1` 走剪贴板私人令牌，当前剪贴板无令牌）；
+- Gitee 推送：**已完成**（2026-11-22 13:43 核对，由用户手动推 `bd4d970..a89a773` main → master）；回查 `refs/heads/master` = `a89a773`，与本地 HEAD 一致，0 领先 / 0 落后；
+- 本机自动推送仍不可用：schannel `SEC_E_NO_CREDENTIALS`、openssl 后端取不到凭据、剪贴板无令牌；`deploy/push-gitee.ps1` 已改为 `main:master` 且去掉 `--force`（2026-11-22 修正，非快进会被 Git 拒绝，不覆盖远端历史）；
 - 仍未提交：`.edge-tmp/`（Edge 临时配置 14 个文件）、`assets/`（图标 5 个），均未跟踪、未入 `.gitignore`，未提交；
-- 远端落后：Gitee `master` = `bd4d970`（落后本地 12 个提交）；GitHub `origin/main` = `ed246c5`（2026-11-16，落后 247，当时不可达）。
+- 远端其他：GitHub `origin/main` = `ed246c5`（2026-11-16，落后本地 247 个提交，当时不可达，未推）。
 
 ## 二、当前内容状态
 

@@ -1,5 +1,7 @@
-﻿# 把当前仓库强制推送到 Gitee（使用剪贴板里的私人令牌）
+﻿# 把当前仓库推送到 Gitee 的 master 分支（使用剪贴板里的私人令牌）
 # 用法：双击 推送Gitee.cmd
+# 注意：不加 --force。Gitee 只用 master，且不允许覆盖远端历史；
+#       非快进会被 Git 拒绝，需先查明分叉原因。
 $ErrorActionPreference = "Stop"
 
 $root = Split-Path $PSScriptRoot -Parent
@@ -32,13 +34,13 @@ $remote = "https://oauth2:$token@gitee.com/$user/$repo.git"
 Write-Host "推送到 Gitee：$user/$repo ..." -ForegroundColor Cyan
 $prev = $ErrorActionPreference
 $ErrorActionPreference = "Continue"
-& $git -C $root push --force $remote main
+& $git -C $root push $remote "main:master"
 $code = $LASTEXITCODE
 $ErrorActionPreference = $prev
 
-if ($code -ne 0) { throw "推送失败（令牌权限或仓库地址有误）" }
+if ($code -ne 0) { throw "推送失败（令牌权限、仓库地址有误，或非快进被拒；本脚本不 force，不会覆盖远端历史）" }
 
 Write-Host ""
 Write-Host "✅ 已推送到 Gitee" -ForegroundColor Green
 Write-Host "仓库：https://gitee.com/$user/$repo"
-Write-Host "下一步：在云托管里用「公开仓库」填这个地址，分支 main。"
+Write-Host "下一步：在云托管里用「公开仓库」填这个地址，分支 master。"
