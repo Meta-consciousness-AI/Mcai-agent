@@ -22,7 +22,8 @@
 
 **备份：已完成（2026-11-22 10:58）。**
 
-- `C:\Users\HP\OneDrive\文档\mca-agent-backup-2026-11-22.zip`，约 40 MB / 606 文件。
+- 项目：`C:\Users\HP\OneDrive\文档\mca-agent-backup-2026-11-22.zip`，约 40 MB / 606 文件；
+- DSH 会话：`C:\Users\HP\OneDrive\文档\dsh-sessions-backup-2026-11-22.zip`，约 63 MB / 23 个会话文件。
 
 **Git 卫生（2026-11-22 13:24）。**
 
