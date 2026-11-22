@@ -683,7 +683,29 @@ def render_ask(kb: KnowledgeBase) -> str:
     """公开问答页：调用公网 API，无需安装。"""
     project = kb.project
     base = project["site_url"].rstrip("/")
-    body = ASK_TEMPLATE.replace("__API_BASE__", PUBLIC_API_BASE)
+    picks = [
+        "faq-meta-network-consciousness",
+        "faq-meta-soul-return",
+        "faq-meta-knowledge-soul-civilization",
+        "faq-copyright-registration",
+        "faq-c7aa2ae8",
+        "faq-0b7f768f",
+    ]
+    by_id = {f.id: f for f in kb.faqs}
+    items = []
+    for fid in picks:
+        f = by_id.get(fid)
+        if not f:
+            continue
+        text = (f.answer or "").strip().split("\n\n")[0]
+        if len(text) > 220:
+            text = text[:217].rstrip() + "…"
+        items.append(
+            f'<details><summary>{_esc(f.question)}</summary>'
+            f'<p>{_esc(text)}</p>'
+            f'<a href="/faq/index.html#{fid}">查看完整问答 →</a></details>'
+        )
+    body = ASK_TEMPLATE.replace("__API_BASE__", PUBLIC_API_BASE).replace("__ASK_FAQ__", "".join(items))
     return _page(project, "问元意识学说 · MCAI", body, active="ask", path="ask.html",
                  description="向元意识学说知识库提问，答案附原文出处。无需安装，无需登录。")
 

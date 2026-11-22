@@ -110,8 +110,11 @@ def check_site(dist: Path) -> list[dict]:
         for href in doc.xpath("//a/@href"):
             if not href.startswith("/") or href.startswith("//"):
                 continue
-            target = dist / href.lstrip("/")
-            if href.endswith("/"):
+            path = href.split("#", 1)[0].split("?", 1)[0]
+            if not path:
+                continue
+            target = dist / path.lstrip("/")
+            if path.endswith("/"):
                 target = target / "index.html"
             if not target.exists() and href not in missing_targets:
                 missing_targets.add(href)

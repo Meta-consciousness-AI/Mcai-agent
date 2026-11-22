@@ -39,6 +39,12 @@ ASK_TEMPLATE = r"""<main class="ask-page">
 
   <p class="muted ask-note">答案来自元意识学说知识库；引用请保留术语名与出处。知识库未涉及的问题，不会编造。</p>
 </section>
+
+<section class="wrap ask-faq-static">
+  <h2>常见问题</h2>
+  <p class="muted">以下答案来自知识库，可直接阅读；要追问，用上面的输入框。</p>
+  <div class="faq-mini">__ASK_FAQ__</div>
+</section>
 </main>
 
 <style>
@@ -71,6 +77,14 @@ ASK_TEMPLATE = r"""<main class="ask-page">
 .ask-share{margin-top:16px}
 .ask-share button{border:1px solid var(--line,#dcd7cd);background:#fff;border-radius:10px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}
 .ask-note{margin-top:18px;font-size:12px}
+.ask-faq-static{max-width:860px;margin:34px auto 0}
+.ask-faq-static h2{font-size:24px;margin:0 0 6px}
+.faq-mini{display:grid;gap:10px;margin-top:14px}
+.faq-mini details{background:#fff;border:1px solid var(--line,#e6e2da);border-radius:12px;padding:12px 14px}
+.faq-mini summary{cursor:pointer;font-weight:600;line-height:1.6}
+.faq-mini p{margin:10px 0 6px;line-height:1.75;color:#3b4150}
+.faq-mini a{font-size:13px;color:#2f5bd7;text-decoration:none}
+.faq-mini a:hover{text-decoration:underline}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:640px){.ask-panel{padding:16px;border-radius:16px;margin-top:14px}.ask-actions{align-items:stretch;flex-direction:column}.ask-actions button{width:100%}}
 </style>
