@@ -627,6 +627,7 @@ def render_about(kb: KnowledgeBase) -> str:
   <h2 class="sec">原始文献与版本</h2>
   <ul>
     <li>数据集 DOI：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a></li>
+    <li>著作权登记：2024-08-28，渝作登字-2024-A-00522224（创作完成 / 首次发表：2024-03-18）</li>
     <li>预印本 DOI：<a href="https://doi.org/10.5281/zenodo.23830600">10.5281/zenodo.23830600</a></li>
     <li>工程规范 V1.3：<a href="https://doi.org/10.5281/zenodo.23850554">10.5281/zenodo.23850554</a></li>
     <li>PhilArchive 条目：<a href="https://philarchive.org/rec/MCAKAO">MCAKAO</a></li>
