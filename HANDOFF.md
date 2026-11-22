@@ -24,6 +24,13 @@
 
 - `C:\Users\HP\OneDrive\文档\mca-agent-backup-2026-11-22.zip`，约 40 MB / 606 文件。
 
+**Git 卫生（2026-11-22 13:24）。**
+
+- 已提交：`deploy/install-doubao-remote-skill.ps1`（豆包安装改用其已识别的 `mca-knowledge` 名，覆盖前先备份）、`mcai/data/default/data/kb.json`（与 `data/kb.json` 逐字节一致，仅 `built_at` 时间戳）；提交 `ace3fca`；
+- Gitee 推送：**未完成**，本机无可用凭证（`deploy/push-gitee.ps1` 走剪贴板私人令牌，当前剪贴板无令牌）；
+- 仍未提交：`.edge-tmp/`（Edge 临时配置 14 个文件）、`assets/`（图标 5 个），均未跟踪、未入 `.gitignore`，未提交；
+- 远端落后：Gitee `master` = `bd4d970`（落后本地 12 个提交）；GitHub `origin/main` = `ed246c5`（2026-11-16，落后 247，当时不可达）。
+
 ## 二、当前内容状态
 
 | 项 | 数量 |
