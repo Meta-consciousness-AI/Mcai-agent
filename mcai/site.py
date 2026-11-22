@@ -489,6 +489,7 @@ def render_dataset(kb: KnowledgeBase) -> str:
   <h1>结构化数据集</h1>
   <p>把学说转成模型可直接训练、检索、继承的数据产品。以下文件随知识库一并生成，
   每次重建都会更新。</p>
+  <p class="muted">作者、日期、版本以 Zenodo 元数据为准：<a href="https://doi.org/{DATASET_DOI}">10.5281/zenodo.23789330</a>。</p>
   <p><a class="btn" href="/dataset/concepts.jsonl" download>下载 concepts.jsonl</a>
      <a class="btn ghost" href="/dataset/faq.jsonl" download>下载 faq.jsonl</a>
      <a class="btn ghost" href="/dataset/relations.jsonl" download>概念关系</a>
