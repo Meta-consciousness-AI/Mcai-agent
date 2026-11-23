@@ -644,10 +644,10 @@ def _attach_evidence(concepts: list[Concept], corpus: Corpus, curated: dict,
             candidates.sort(key=lambda item: -item[0])
             picked = [item for _, item in candidates[:per_doc]]
             concept.evidence.extend(picked)
-            count += len(picked)
         zh = sorted([e for e in concept.evidence if e["lang"] == "zh"], key=lambda e: -e["score"])
         en = sorted([e for e in concept.evidence if e["lang"] == "en"], key=lambda e: -e["score"])
         concept.evidence = zh[: max(0, total - min(len(en), 2))] + en[:2]
+        count += len(concept.evidence)
     return count
 
 
