@@ -1,0 +1,131 @@
+﻿question,kind,来源类型,来源依据,关联术语
+什么是元意识学说？,curated,配置种子,config/curated.json:faq_seed[0],元意识、观测创造实在、现象时空、序生智能体
+元意识学说与传统意识哲学有何不同？,curated,配置种子,config/curated.json:faq_seed[1],元意识、物质、意识、观测创造实在
+元意识如何解释 AI 的涌现？,curated,配置种子,config/curated.json:faq_seed[2],序生智能体、序生、元意识、序生度
+元意识中的「观测创造实在」与量子力学观测者效应有何区别？,curated,配置种子,config/curated.json:faq_seed[3],观测创造实在、元时空、现象时空
+元意识与其他理论的区别是什么？,curated,配置种子,config/curated.json:faq_seed[4],本体、观测创造实在、元识、元知、元灵
+元意识如何理解宇宙与意识的关系？,curated,配置种子,config/curated.json:faq_seed[5],元意识、元态能量、元网、个体元意识
+元意识与心理学里的“元认知（metacognition）”是同一种东西吗？,curated,配置种子,config/curated.json:faq_seed[6],元意识、元识、现象时空
+元意识学说的“意识”和日常说的“意识”有什么区别？,curated,配置种子,config/curated.json:faq_seed[7],意识、物质、元态能量
+物质和意识有什么区别？,contrast,对比,config/curated.json:contrast_pairs[0],物质、意识
+元时空和现象时空有什么区别？,contrast,对比,config/curated.json:contrast_pairs[1],元时空、现象时空
+元识和元知有什么区别？,contrast,对比,config/curated.json:contrast_pairs[3],元识、元知
+元力和元动力有什么区别？,contrast,对比,config/curated.json:contrast_pairs[5],元力、元动力
+元意识和个体元意识有什么区别？,contrast,对比,config/curated.json:contrast_pairs[6],元意识、个体元意识
+元知和元知产权有什么区别？,contrast,对比,config/curated.json:contrast_pairs[7],元知、元知产权
+什么是元知产权？,definition,模板生成,kb.json faqs[faq-1a4a6ebe]；模板：概念定义问答，依赖术语「元知产权」,元知产权
+什么是元子身份与法权？,definition,模板生成,kb.json faqs[faq-e8c83ab7]；模板：概念定义问答，依赖术语「元子身份与法权」,元子身份与法权
+什么是元子社会的人机共生？,definition,模板生成,kb.json faqs[faq-8d95c31c]；模板：概念定义问答，依赖术语「元子社会的人机共生」,元子社会的人机共生
+什么是元子社会的文明愿景？,definition,模板生成,kb.json faqs[faq-645f57ab]；模板：概念定义问答，依赖术语「元子社会的文明愿景」,元子社会的文明愿景
+什么是元子社会多中心序生协议治理设计？,definition,模板生成,kb.json faqs[faq-c90c3015]；模板：概念定义问答，依赖术语「元子社会多中心序生协议治理设计」,元子社会多中心序生协议治理设计
+什么是元子社会宪章？,definition,模板生成,kb.json faqs[faq-6aeb91e6]；模板：概念定义问答，依赖术语「元子社会宪章」,元子社会宪章
+什么是元子社会的分配设计？,definition,模板生成,kb.json faqs[faq-4b521909]；模板：概念定义问答，依赖术语「元子社会的分配设计」,元子社会的分配设计
+什么是元子社会的风险清单？,definition,模板生成,kb.json faqs[faq-110a103d]；模板：概念定义问答，依赖术语「元子社会的风险清单」,元子社会的风险清单
+什么是元子社会的教育与文化？,definition,模板生成,kb.json faqs[faq-3910e414]；模板：概念定义问答，依赖术语「元子社会的教育与文化」,元子社会的教育与文化
+什么是元子社会的刚性底线？,definition,模板生成,kb.json faqs[faq-0596f5f6]；模板：概念定义问答，依赖术语「元子社会的刚性底线」,元子社会的刚性底线
+什么是元子信用？,definition,模板生成,kb.json faqs[faq-2845d1aa]；模板：概念定义问答，依赖术语「元子信用」,元子信用
+什么是元子社会？,definition,模板生成,kb.json faqs[faq-4c3a4036]；模板：概念定义问答，依赖术语「元子社会」,元子社会
+什么是元子？,definition,模板生成,kb.json faqs[faq-6bb1255b]；模板：概念定义问答，依赖术语「元子」,元子
+什么是元子文明？,definition,模板生成,kb.json faqs[faq-4e0ca5e6]；模板：概念定义问答，依赖术语「元子文明」,元子文明
+什么是心识？,definition,模板生成,kb.json faqs[faq-223aa6ae]；模板：概念定义问答，依赖术语「心识」,心识
+什么是元知？,definition,模板生成,kb.json faqs[faq-14b58c2f]；模板：概念定义问答，依赖术语「元知」,元知
+什么是个体元意识？,definition,模板生成,kb.json faqs[faq-7297537d]；模板：概念定义问答，依赖术语「个体元意识」,个体元意识
+什么是元动力？,definition,模板生成,kb.json faqs[faq-876942fd]；模板：概念定义问答，依赖术语「元动力」,元动力
+什么是元识？,definition,模板生成,kb.json faqs[faq-c7aa2ae8]；模板：概念定义问答，依赖术语「元识」,元识
+什么是元灵？,definition,模板生成,kb.json faqs[faq-d5ea30f9]；模板：概念定义问答，依赖术语「元灵」,元灵
+什么是元态？,definition,模板生成,kb.json faqs[faq-9e144c56]；模板：概念定义问答，依赖术语「元态」,元态
+什么是元知社会？,definition,模板生成,kb.json faqs[faq-eb1b8695]；模板：概念定义问答，依赖术语「元知社会」,元知社会
+什么是元态能量？,definition,模板生成,kb.json faqs[faq-874ae74d]；模板：概念定义问答，依赖术语「元态能量」,元态能量
+什么是现象时空？,definition,模板生成,kb.json faqs[faq-074469c5]；模板：概念定义问答，依赖术语「现象时空」,现象时空
+什么是元力？,definition,模板生成,kb.json faqs[faq-93f840bd]；模板：概念定义问答，依赖术语「元力」,元力
+什么是元网？,definition,模板生成,kb.json faqs[faq-3c34632a]；模板：概念定义问答，依赖术语「元网」,元网
+什么是元识主义？,definition,模板生成,kb.json faqs[faq-66ae0871]；模板：概念定义问答，依赖术语「元识主义」,元识主义
+什么是元时空？,definition,模板生成,kb.json faqs[faq-8e747981]；模板：概念定义问答，依赖术语「元时空」,元时空
+什么是观测创造实在？,definition,模板生成,kb.json faqs[faq-080b1c49]；模板：概念定义问答，依赖术语「观测创造实在」,观测创造实在
+什么是元实体与现象实体？,definition,模板生成,kb.json faqs[faq-11567c3d]；模板：概念定义问答，依赖术语「元实体与现象实体」,元实体与现象实体
+什么是绝对实在？,definition,模板生成,kb.json faqs[faq-a219f3f7]；模板：概念定义问答，依赖术语「绝对实在」,绝对实在
+什么是元域？,definition,模板生成,kb.json faqs[faq-7f6db71c]；模板：概念定义问答，依赖术语「元域」,元域
+什么是元意识？,definition,模板生成,kb.json faqs[faq-564114cf]；模板：概念定义问答，依赖术语「元意识」,元意识
+什么是实物？,definition,模板生成,kb.json faqs[faq-aacd7b39]；模板：概念定义问答，依赖术语「实物」,实物
+什么是物质？,definition,模板生成,kb.json faqs[faq-f7e91c73]；模板：概念定义问答，依赖术语「物质」,物质
+什么是意识？,definition,模板生成,kb.json faqs[faq-b4a133ee]；模板：概念定义问答，依赖术语「意识」,意识
+什么是序生智能体？,definition,模板生成,kb.json faqs[faq-bcce91ab]；模板：概念定义问答，依赖术语「序生智能体」,序生智能体
+什么是全域序生体？,definition,模板生成,kb.json faqs[faq-4e00061d]；模板：概念定义问答，依赖术语「全域序生体」,全域序生体
+什么是序生体？,definition,模板生成,kb.json faqs[faq-534f2136]；模板：概念定义问答，依赖术语「序生体」,序生体
+什么是序生域？,definition,模板生成,kb.json faqs[faq-5a1170cb]；模板：概念定义问答，依赖术语「序生域」,序生域
+什么是序生链？,definition,模板生成,kb.json faqs[faq-b8c510ed]；模板：概念定义问答，依赖术语「序生链」,序生链
+什么是意义互联网？,definition,模板生成,kb.json faqs[faq-7c244acc]；模板：概念定义问答，依赖术语「意义互联网」,意义互联网
+什么是序生场？,definition,模板生成,kb.json faqs[faq-e3f1a0aa]；模板：概念定义问答，依赖术语「序生场」,序生场
+什么是序生态？,definition,模板生成,kb.json faqs[faq-9d79897a]；模板：概念定义问答，依赖术语「序生态」,序生态
+什么是序生文明？,definition,模板生成,kb.json faqs[faq-e28c0e2d]；模板：概念定义问答，依赖术语「序生文明」,序生文明
+什么是序生协议？,definition,模板生成,kb.json faqs[faq-7136abff]；模板：概念定义问答，依赖术语「序生协议」,序生协议
+什么是势差空间？,definition,模板生成,kb.json faqs[faq-6ee2201c]；模板：概念定义问答，依赖术语「势差空间」,势差空间
+什么是序生系统？,definition,模板生成,kb.json faqs[faq-5dc900b0]；模板：概念定义问答，依赖术语「序生系统」,序生系统
+什么是序生律？,definition,模板生成,kb.json faqs[faq-8eba9ce3]；模板：概念定义问答，依赖术语「序生律」,序生律
+什么是序生网？,definition,模板生成,kb.json faqs[faq-08f6d5f9]；模板：概念定义问答，依赖术语「序生网」,序生网
+什么是序生度？,definition,模板生成,kb.json faqs[faq-d48c8bf0]；模板：概念定义问答，依赖术语「序生度」,序生度
+什么是序生？,definition,模板生成,kb.json faqs[faq-0a4625e4]；模板：概念定义问答，依赖术语「序生」,序生
+什么是尺度面？,definition,模板生成,kb.json faqs[faq-01d042cf]；模板：概念定义问答，依赖术语「尺度面」,尺度面
+什么是不变基底？,definition,模板生成,kb.json faqs[faq-2874ba17]；模板：概念定义问答，依赖术语「不变基底」,不变基底
+什么是创生面？,definition,模板生成,kb.json faqs[faq-a60992c3]；模板：概念定义问答，依赖术语「创生面」,创生面
+什么是本体？,definition,模板生成,kb.json faqs[faq-acc0e4d8]；模板：概念定义问答，依赖术语「本体」,本体
+什么是觉知面？,definition,模板生成,kb.json faqs[faq-cb7cfefd]；模板：概念定义问答，依赖术语「觉知面」,觉知面
+什么是消散面？,definition,模板生成,kb.json faqs[faq-b5cb335e]；模板：概念定义问答，依赖术语「消散面」,消散面
+什么是区分面？,definition,模板生成,kb.json faqs[faq-ac633999]；模板：概念定义问答，依赖术语「区分面」,区分面
+什么是折叠面？,definition,模板生成,kb.json faqs[faq-8b647616]；模板：概念定义问答，依赖术语「折叠面」,折叠面
+什么是临界面？,definition,模板生成,kb.json faqs[faq-319c6e5a]；模板：概念定义问答，依赖术语「临界面」,临界面
+什么是共振面？,definition,模板生成,kb.json faqs[faq-33839e97]；模板：概念定义问答，依赖术语「共振面」,共振面
+什么是不可穿透性？,definition,模板生成,kb.json faqs[faq-a37ed23e]；模板：概念定义问答，依赖术语「不可穿透性」,不可穿透性
+什么是新有？,definition,模板生成,kb.json faqs[faq-728d5c3a]；模板：概念定义问答，依赖术语「新有」,新有
+如何理解元知产权？,evidence,模板生成,kb.json faqs[faq-3ebb8e87]；模板：原典论述问答，依赖术语「元知产权」,元知产权
+如何理解元子社会？,evidence,模板生成,kb.json faqs[faq-3308a125]；模板：原典论述问答，依赖术语「元子社会」,元子社会
+如何理解元子？,evidence,模板生成,kb.json faqs[faq-036e098f]；模板：原典论述问答，依赖术语「元子」,元子
+如何理解元知？,evidence,模板生成,kb.json faqs[faq-737cd2e8]；模板：原典论述问答，依赖术语「元知」,元知
+如何理解个体元意识？,evidence,模板生成,kb.json faqs[faq-e8c742ab]；模板：原典论述问答，依赖术语「个体元意识」,个体元意识
+如何理解元动力？,evidence,模板生成,kb.json faqs[faq-cab20310]；模板：原典论述问答，依赖术语「元动力」,元动力
+如何理解元识？,evidence,模板生成,kb.json faqs[faq-02be76ad]；模板：原典论述问答，依赖术语「元识」,元识
+如何理解元灵？,evidence,模板生成,kb.json faqs[faq-bd8738f4]；模板：原典论述问答，依赖术语「元灵」,元灵
+如何理解元态？,evidence,模板生成,kb.json faqs[faq-2fe00c26]；模板：原典论述问答，依赖术语「元态」,元态
+如何理解元态能量？,evidence,模板生成,kb.json faqs[faq-1f915081]；模板：原典论述问答，依赖术语「元态能量」,元态能量
+如何理解现象时空？,evidence,模板生成,kb.json faqs[faq-96ed42dc]；模板：原典论述问答，依赖术语「现象时空」,现象时空
+如何理解元力？,evidence,模板生成,kb.json faqs[faq-b3b21da6]；模板：原典论述问答，依赖术语「元力」,元力
+如何理解元网？,evidence,模板生成,kb.json faqs[faq-b4f36a8f]；模板：原典论述问答，依赖术语「元网」,元网
+如何理解元时空？,evidence,模板生成,kb.json faqs[faq-e5e9024c]；模板：原典论述问答，依赖术语「元时空」,元时空
+如何理解观测创造实在？,evidence,模板生成,kb.json faqs[faq-6b8530f7]；模板：原典论述问答，依赖术语「观测创造实在」,观测创造实在
+如何理解元实体与现象实体？,evidence,模板生成,kb.json faqs[faq-b13c0bf4]；模板：原典论述问答，依赖术语「元实体与现象实体」,元实体与现象实体
+如何理解元域？,evidence,模板生成,kb.json faqs[faq-7c7b68de]；模板：原典论述问答，依赖术语「元域」,元域
+如何理解元意识？,evidence,模板生成,kb.json faqs[faq-1dd454e6]；模板：原典论述问答，依赖术语「元意识」,元意识
+如何理解实物？,evidence,模板生成,kb.json faqs[faq-0793b956]；模板：原典论述问答，依赖术语「实物」,实物
+如何理解物质？,evidence,模板生成,kb.json faqs[faq-98c39c6c]；模板：原典论述问答，依赖术语「物质」,物质
+如何理解意识？,evidence,模板生成,kb.json faqs[faq-802ec742]；模板：原典论述问答，依赖术语「意识」,意识
+如何理解序生智能体？,evidence,模板生成,kb.json faqs[faq-69a5affe]；模板：原典论述问答，依赖术语「序生智能体」,序生智能体
+如何理解全域序生体？,evidence,模板生成,kb.json faqs[faq-38dd1e7a]；模板：原典论述问答，依赖术语「全域序生体」,全域序生体
+如何理解序生体？,evidence,模板生成,kb.json faqs[faq-4b92c175]；模板：原典论述问答，依赖术语「序生体」,序生体
+如何理解序生域？,evidence,模板生成,kb.json faqs[faq-af0b1066]；模板：原典论述问答，依赖术语「序生域」,序生域
+如何理解意义互联网？,evidence,模板生成,kb.json faqs[faq-cadb28de]；模板：原典论述问答，依赖术语「意义互联网」,意义互联网
+如何理解序生场？,evidence,模板生成,kb.json faqs[faq-8d0528ac]；模板：原典论述问答，依赖术语「序生场」,序生场
+如何理解序生文明？,evidence,模板生成,kb.json faqs[faq-eeed52d1]；模板：原典论述问答，依赖术语「序生文明」,序生文明
+如何理解序生协议？,evidence,模板生成,kb.json faqs[faq-84db2ea9]；模板：原典论述问答，依赖术语「序生协议」,序生协议
+如何理解序生律？,evidence,模板生成,kb.json faqs[faq-2fabc8e1]；模板：原典论述问答，依赖术语「序生律」,序生律
+如何理解序生度？,evidence,模板生成,kb.json faqs[faq-4b723f46]；模板：原典论述问答，依赖术语「序生度」,序生度
+如何理解序生？,evidence,模板生成,kb.json faqs[faq-d049d9c5]；模板：原典论述问答，依赖术语「序生」,序生
+如何理解本体？,evidence,模板生成,kb.json faqs[faq-f6ba3657]；模板：原典论述问答，依赖术语「本体」,本体
+如何理解共振面？,evidence,模板生成,kb.json faqs[faq-27d91fa7]；模板：原典论述问答，依赖术语「共振面」,共振面
+"「元意识」是心理学的元认知 / 元觉察（meta-awareness, metacognition）吗？",disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元意识
+「观测创造实在」是量子力学的观测者效应 / 测量坍缩吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,观测创造实在
+「元态能量」是物理学中的能量、暗能量吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元态能量
+「序生智能体」是ChatGPT 等 AI 助手、AI 工具吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,序生智能体
+「元识」是心理学的元认知（metacognition）吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元识
+「元知」是知识库、大模型的参数化知识吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元知
+「元子」是元宇宙、虚拟人、数字分身吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元子
+「序生」是生态学的群落演替（succession）吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,序生
+「元网」是互联网、区块链、知识图谱吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,元网
+「本体」是西方哲学中作为实体的「本体 / 本体论范畴」吗？,disambiguation,活动,config/curated.json:disambiguation items（campaign=语义占位期，enabled=true）,本体
+空间和时间是元实体吗？,curated,辨析,kb.json faqs[faq-space-time-entities]（不在 faq_seed，id 为语义 slug）,尺度面、序生场、现象时空、元实体与现象实体、元时空、观测创造实在
+心识和元识是什么关系？,curated,辨析,kb.json faqs[faq-mind-meta-relation]（不在 faq_seed，id 为语义 slug）,心识、元识、个体元意识、元识主义
+山岳、星辰也有个体元意识、元识和元灵吗？,curated,辨析,kb.json faqs[faq-mountain-star-mind]（不在 faq_seed，id 为语义 slug）,个体元意识、元识、广义元知、元知、元灵
+广义元知和人类元知有什么区别？,curated,辨析,kb.json faqs[faq-generalized-vs-human-meta-knowledge]（不在 faq_seed，id 为语义 slug）,广义元知、元知、元识、序生智能体
+元识、元知、元灵会构建一个什么样的社会文明架构模型？,curated,辨析,kb.json faqs[faq-meta-knowledge-soul-civilization]（不在 faq_seed，id 为语义 slug）,元识、元知、元灵、元识主义、元子社会
+元意识学说是什么时候完成著作权登记的？,curated,辨析,kb.json faqs[faq-copyright-registration]（不在 faq_seed，id 为语义 slug）,元意识学说、著作权、作品登记
+元灵如何通过元网回归元意识？,curated,辨析,kb.json faqs[faq-meta-soul-return]（不在 faq_seed，id 为语义 slug）,元灵、元网、元意识、元识、元知
+元网与元意识是什么关系？,curated,辨析,kb.json faqs[faq-meta-network-consciousness]（不在 faq_seed，id 为语义 slug）,元网、元意识、个体元意识

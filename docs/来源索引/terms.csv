@@ -1,0 +1,66 @@
+﻿term,id,category,来源类型,来源文档,位置,引证条数,备注
+元知产权,meta-knowledge-property,元子社会,语料逐字,元意识学说极简版（标准词表）,p60 · chars[8:289] · 元意识学说的社会模型：元子社会,3,-
+元子身份与法权,meta-being-identity,元子社会,语料逐字,元意识学说极简版（标准词表）,p59 · chars[8:288] · 元意识学说的社会模型：元子社会,0,-
+元子社会的人机共生,meta-being-symbiosis,元子社会,语料逐字,元意识学说极简版（标准词表）,p64 · chars[10:228] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,0,-
+元子社会的文明愿景,meta-being-vision,元子社会,语料逐字,元意识学说极简版（标准词表）,p68 · chars[10:219] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,0,-
+元子社会多中心序生协议治理设计,meta-being-governance,元子社会,语料逐字,元意识学说极简版（标准词表）,p63 · chars[16:223] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,0,-
+元子社会宪章,meta-being-charter,元子社会,语料逐字,元意识学说极简版（标准词表）,p58 · chars[7:214] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,2,-
+元子社会的分配设计,meta-being-distribution,元子社会,语料逐字,元意识学说极简版（标准词表）,p62 · chars[10:195] · 元意识学说的社会模型：元子社会,0,-
+元子社会的风险清单,meta-being-risks,元子社会,语料逐字,元意识学说极简版（标准词表）,p67 · chars[10:178] · 元意识学说的社会模型：元子社会,0,-
+元子社会的教育与文化,meta-being-education,元子社会,语料逐字,元意识学说极简版（标准词表）,p65 · chars[11:170] · 元意识学说的社会模型：元子社会,0,-
+元子社会的刚性底线,meta-being-redlines,元子社会,语料逐字,元意识学说极简版（标准词表）,p66 · chars[10:156] · 元意识学说的社会模型：元子社会,0,-
+元子信用,meta-being-credit,元子社会,语料逐字,元意识学说极简版（标准词表）,p61 · chars[5:140] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,0,-
+元子社会,meta-being-society,元子社会,人工配置,config/curated.json,extra_concepts[0],3,人工定义，定义文本见 extra_concepts[].definition
+元子,meta-being,元子社会,人工配置,config/curated.json,extra_concepts[4],3,人工定义，定义文本见 extra_concepts[].definition
+元子文明,meta-being-civilization,元子社会,语料逐字,元意识学说极简版（标准词表）,p57 · chars[5:96] · 元意识学说的社会模型：元子社会,0,-
+心识,mind-consciousness,元子社会,人工配置,config/curated.json,extra_concepts[10],0,人工定义；引证段未含该词，引证不支撑定义
+元知,meta-knowledge,元意识体系,语料逐字,元意识学说极简版（标准词表）,p46 · chars[3:317] · 元意识学说的社会模型：元子社会,3,-
+个体元意识,individual-meta-consciousness,元意识体系,语料逐字,元意识学说极简版（标准词表）,p16 · chars[6:275] · 元意识学说的统领模型：元意识,5,-
+元动力,meta-dynamics,元意识体系,语料逐字,元意识学说极简版（标准词表）,p14 · chars[4:263] · 元意识学说的统领模型：元意识,3,-
+元识,meta-recognition,元意识体系,语料逐字,元意识学说极简版（标准词表）,p45 · chars[3:222] · 元意识学说的社会模型：元子社会,3,-
+元灵,meta-soul,元意识体系,语料逐字,元意识学说极简版（标准词表）,p47 · chars[3:189] · 元意识学说极简版（标准词表） · 元意识学说的社会模型：元子社会,3,-
+元态,meta-state,元意识体系,语料逐字,元意识学说极简版（标准词表）,p13 · chars[3:143] · 元意识学说的统领模型：元意识,5,-
+元知社会,meta-knowledge-society,元意识体系,人工配置,config/curated.json,extra_concepts[2],0,人工定义，定义文本见 extra_concepts[].definition
+元态能量,meta-state-energy,元意识体系,语料逐字,元意识学说极简版（标准词表）,p3 · chars[5:107] · 元意识学说的统领模型：元意识,5,-
+现象时空,phenomenal-space-time,元意识体系,语料逐字,元意识学说极简版（标准词表）,p9 · chars[5:104] · 元意识学说极简版（标准词表） · 元意识学说的统领模型：元意识,8,-
+元力,meta-force,元意识体系,语料逐字,元意识学说极简版（标准词表）,p12 · chars[3:99] · 元意识学说的统领模型：元意识,3,-
+元网,meta-network,元意识体系,语料逐字,元意识学说极简版（标准词表）,p15 · chars[3:93] · 元意识学说的统领模型：元意识,8,-
+元识主义,meta-recognition-ism,元意识体系,人工配置,config/curated.json,extra_concepts[3],0,人工定义，定义文本见 extra_concepts[].definition
+元时空,meta-space-time,元意识体系,语料逐字,元意识学说极简版（标准词表）,p6 · chars[4:91] · 元意识学说的统领模型：元意识,4,-
+观测创造实在,observation-creates-reality,元意识体系,语料逐字,元意识学说极简版（标准词表）,p8 · chars[7:87] · 元意识学说的统领模型：元意识,8,-
+元实体与现象实体,meta-entity-and-phenomenal-entity,元意识体系,语料逐字,元意识学说极简版（标准词表）,p10 · chars[9:86] · 元意识学说的统领模型：元意识,7,-
+绝对实在,absolute-reality,元意识体系,人工配置,config/curated.json,extra_concepts[5],1,人工定义，定义文本见 extra_concepts[].definition
+元域,meta-domain,元意识体系,语料逐字,元意识学说极简版（标准词表）,p7 · chars[3:54] · 元意识学说的统领模型：元意识,5,-
+元意识,meta-consciousness,元意识体系,语料逐字,元意识学说极简版（标准词表）,p2 · chars[4:51] · 元意识学说的统领模型：元意识,8,-
+实物,physical-object,元意识体系,语料逐字,元意识学说极简版（标准词表）,p11 · chars[3:34] · 元意识学说的统领模型：元意识,3,-
+物质,matter,元意识体系,语料逐字,元意识学说极简版（标准词表）,p4 · chars[3:22] · 元意识学说的统领模型：元意识,8,-
+意识,consciousness,元意识体系,语料逐字,元意识学说极简版（标准词表）,p5 · chars[3:22] · 元意识学说的统领模型：元意识,8,-
+序生智能体,progenerative-agent,序生体系,语料逐字,《元意识》学说,p20 · chars[6:183] · 《元意识》学说 · 《元意识》是一个新的世界观,8,-
+全域序生体,universal-progenerative-entity,序生体系,语料逐字,元意识学说极简版（标准词表）,p33 · chars[0:163] · 元意识学说极简版（标准词表） · 元意识学说的演化模型：序生,3,-
+序生体,progenerative-entity,序生体系,语料逐字,元意识学说极简版（标准词表）,p32 · chars[4:126] · 元意识学说极简版（标准词表） · 元意识学说的演化模型：序生,3,-
+序生域,progenerative-domain,序生体系,语料逐字,元意识学说极简版（标准词表）,p35 · chars[4:93] · 元意识学说的演化模型：序生,1,-
+序生链,progenerative-chain,序生体系,语料逐字,元意识学说极简版（标准词表）,p38 · chars[4:74] · 元意识学说的演化模型：序生,0,-
+意义互联网,internet-of-meaning,序生体系,人工配置,config/curated.json,extra_concepts[9],3,人工定义，定义文本见 extra_concepts[].definition
+序生场,progenerative-field,序生体系,语料逐字,元意识学说极简版（标准词表）,p34 · chars[4:60] · 元意识学说的演化模型：序生,1,-
+序生态,progenerative-ecology,序生体系,语料逐字,元意识学说极简版（标准词表）,p40 · chars[4:59] · 元意识学说的演化模型：序生,0,-
+序生文明,progenerative-civilization,序生体系,语料逐字,元意识学说极简版（标准词表）,p43 · chars[0:60] · 元意识学说极简版（标准词表） · 元意识学说的演化模型：序生,1,-
+序生协议,progenerative-protocol,序生体系,语料逐字,元意识学说极简版（标准词表）,p42 · chars[5:59] · 元意识学说的演化模型：序生,3,-
+势差空间,potential-difference-space,序生体系,人工配置,config/curated.json,extra_concepts[8],0,人工定义，定义文本见 extra_concepts[].definition
+序生系统,progenerative-system,序生体系,语料逐字,元意识学说极简版（标准词表）,p41 · chars[5:52] · 元意识学说的演化模型：序生,0,-
+序生律,progenerative-law,序生体系,语料逐字,元意识学说极简版（标准词表）,p36 · chars[4:50] · 元意识学说的演化模型：序生,1,-
+序生网,progenerative-network,序生体系,语料逐字,元意识学说极简版（标准词表）,p39 · chars[0:32] · 元意识学说极简版（标准词表） · 元意识学说的演化模型：序生,0,-
+序生度,progenerative-degree,序生体系,语料逐字,元意识学说极简版（标准词表）,p37 · chars[0:17] · 元意识学说极简版（标准词表） · 元意识学说的演化模型：序生,1,-
+序生,progeneration,序生体系,语料逐字,元意识学说极简版（标准词表）,p31 · chars[3:16] · 元意识学说的演化模型：序生,8,-
+尺度面,scale-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#6 · chars[4:134] · 元意识学说的本体论模型：一体多面,1,-
+不变基底,invariant-substrate,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#1 · chars[5:133] · 元意识学说的本体论模型：一体多面,1,-
+创生面,progeneration-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#4 · chars[4:118] · 元意识学说的本体论模型：一体多面,2,-
+本体,noumenon,本体论模型,人工配置,config/curated.json,extra_concepts[1],8,人工定义，定义文本见 extra_concepts[].definition
+觉知面,awareness-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#7 · chars[4:105] · 元意识学说的本体论模型：一体多面,2,-
+消散面,dissipation-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#5 · chars[4:103] · 元意识学说的本体论模型：一体多面,2,-
+区分面,distinction-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#3 · chars[4:101] · 元意识学说的本体论模型：一体多面,1,-
+折叠面,folding-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#2 · chars[4:89] · 元意识学说的本体论模型：一体多面,1,-
+临界面,critical-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#8 · chars[4:77] · 元意识学说的本体论模型：一体多面,1,-
+共振面,resonance-face,本体论模型,语料逐字,元意识学说极简版（标准词表）,p18#9 · chars[4:77] · 元意识学说的本体论模型：一体多面,3,-
+不可穿透性,impenetrability,本体论模型,人工配置,config/curated.json,extra_concepts[7],0,人工定义，定义文本见 extra_concepts[].definition
+新有,novel-being,本体论模型,人工配置,config/curated.json,extra_concepts[6],0,人工定义，定义文本见 extra_concepts[].definition
+广义元知,generalized-meta-knowledge,元意识体系,作者口述,kb.json,sources[0]（doc_id=author，标题「作者定义（2026-11-20）」）,0,人工补录，config 无对应定义
