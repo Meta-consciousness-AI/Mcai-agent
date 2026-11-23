@@ -83,6 +83,8 @@
 
 ## 七、常用命令
 
+> **⚠ 禁用重建（2026-11-23 起，直到 T13 解决）**：不要运行 `mcai build` / `python -m mcai build`，也不要让 autopilot 触发自动重建——现行语料重建会得到 59 概念 / 113 问答 / 240 关系，覆盖现有 65/130/263。原因见 `docs/工作备忘包/02-技术备忘/生成链与语料不一致.md`。校验与测试可照常跑。
+
 ```powershell
 python -m mcai validate
 python -m unittest discover -s tests
