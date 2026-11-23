@@ -15,6 +15,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "metrics.jsonl"
 PKG = "mcai-knowledge"
 REPO = "Meta-consciousness-AI/Mcai-agent"
+# 注意：/api/records/<id> 返回的 stats 是「概念级」（同一 concept 跨版本合计），
+# 不是单版本数字。spec_v11 与 spec_v13 同属概念 23831130，因此下方合计会把规范
+# 算两遍（约 +155 浏览 / +11 下载）。历史曲线口径未变，暂不改动；对外引用请用去重值。
 ZENODO_RECORDS = {
     "dataset": 23789330,
     "preprint": 23830600,
