@@ -28,7 +28,7 @@
 **Git 卫生（2026-11-22 13:24）。**
 
 - 已提交：`deploy/install-doubao-remote-skill.ps1`（豆包安装改用其已识别的 `mca-knowledge` 名，覆盖前先备份）、`mcai/data/default/data/kb.json`（与 `data/kb.json` 逐字节一致，仅 `built_at` 时间戳）；提交 `ace3fca`；
-- Gitee 推送：**已完成**（2026-11-22 15:23 核对，由用户手动推 `ac69598..b4931ce` main → master，纯快进、无 force）；回查 `refs/heads/master` = `b4931ce` = 本地 HEAD，0 领先 / 0 落后；此前 13:43 记录的 `a89a773` 已过期（`ac69598` 之后又累积 6 个文档提交）；
+- Gitee 推送：**已完成**（2026-11-23 10:32 核对，由用户手动推 `b4931ce..f7b2ea3` main → master，纯快进、无 force；`refs/heads/master` = `f7b2ea3` = 本地 HEAD，0 领先 / 0 落后）。此前 11-22 15:23 推的是 `ac69598..b4931ce`；
 - 本机自动推送仍不可用：DSH 沙箱内 `git ls-remote gitee` 直接报 schannel `SEC_E_NO_CREDENTIALS`（2026-11-22 15:15 实测，令牌写进 URL 也绕不过 TLS 层）；**结论：Gitee 推送只能由用户在自有 PowerShell 窗口执行**，用户窗口内认证正常（15:23 一次成功）；`deploy/push-gitee.ps1` 已改为 `main:master` 且去掉 `--force`（非快进会被 Git 拒绝，不覆盖远端历史）；
 - 已收口（2026-11-22 16:15）：`.edge-tmp/`（Edge 临时 profile 残骸）已加入 `.gitignore`，并按用户判断**整目录删除**（6 KB，可重建）；`assets/` 5 个**临时平台图标**就地入库，另加 `assets/README.md` 说明「2026-11-21 应急上传、待重设计」；P07 仍暂缓、主标仍用文字标 `MCAI·元`；
 - 远端其他：GitHub **已于 2026-11-22 16:06 补推**，`origin/main` = `4d99871`（推前停在 `58ab5b4` / 11-20，一次补 111 个提交，快进无 force）；**教训**：本机 `refs/remotes/origin/main` 只是上次 fetch 的快照（当时显示 `ed246c5` / 11-16，比真实远端落后两版），判断领先数必须以 `git ls-remote <remote> refs/heads/<branch>` 为准；push 成功后跟踪引用会同步到新 HEAD。
@@ -106,7 +106,7 @@ python tools\daily_signal.py
 
 ## 九、2026-11-22 主会话（`0001`）当日交接摘要
 
-- **远端**：Gitee = `b4931ce` 时手动推过一次，此后本地又累积 15 个文档提交未推；GitHub 已补推到 `4d99871` 之后仍继续累积。**下次推送前先 `git ls-remote <remote> refs/heads/<branch>` 取真值**，不要看 `git status`（本地跟踪引用只是快照）。
+- **远端**：Gitee 已于 2026-11-23 10:32 推至 `f7b2ea3`（= 当时本地 HEAD，0 领先 / 0 落后）；GitHub 于 11-22 补推至 `4d99871`，之后又有文档提交需再推。**推送前先 `git ls-remote <remote> refs/heads/<branch>` 取真值**，不要看 `git status`（本地跟踪引用只是快照）。
 - **治理**：会话命名统一为编号制；执行会话量化分流（50/60/70/80 阈值）已定；派活方式定为「`0001` 写执行指令 → 用户转交」；触发条件只是参考、启动前须综合研判。
 - **台账**：`0002` 已核实存在（最后活跃 11-22 13:13，4 轮/90 步）；`0003`/`0004` 尚未创建。
 - **登记待办**：`序生度` 短答重复词、8 条 curated 缺短答 → 见 N08 备忘第五节，等到全文审校轮再改。
