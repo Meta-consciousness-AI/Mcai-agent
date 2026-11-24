@@ -86,6 +86,10 @@ python -m mcai validate
 python -m unittest discover -s tests
 python tools\build_site_from_kb.py
 python tools\daily_signal.py
+
+# 推送（本机 DNS 把 github.com 解析到被封 IP 57.155.223.240，直连必失败）
+powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -CheckOnly   # 只诊断，报告哪个 IP 能握手
+powershell -ExecutionPolicy Bypass -File deploy\push-gitee.ps1              # Gitee 一直能直连
 ```
 
 ## 八、会话策略
