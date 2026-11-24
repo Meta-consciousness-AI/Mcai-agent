@@ -664,8 +664,10 @@ _cache: dict[str, tuple[float, Knowledge]] = {}
 def load(root: str | Path) -> Knowledge:
     path = Path(root) / "data" / "kb.json"
     if not path.exists():
-        from . import pipeline
-        pipeline.rebuild(root)
+        raise FileNotFoundError(
+            f"未找到知识库 {path}。知识库是唯一权威源，不会被隐式重建；"
+            "如确需从语料生成，请显式运行 `mcai build --rebuild-from-corpus`。"
+        )
     mtime = path.stat().st_mtime
     cached = _cache.get(str(path))
     if cached and cached[0] == mtime:

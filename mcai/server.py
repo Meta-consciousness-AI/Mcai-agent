@@ -514,17 +514,13 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
           cors_origin: str = "*", autopilot_interval: int = 0) -> None:
     root = Path(root).resolve()
     if not (root / "dist" / "index.html").exists():
-        has_corpus = False
-        corpus_path = root / "config" / "corpus.json"
-        if corpus_path.exists():
+        if (root / "data" / "kb.json").exists():
             try:
-                has_corpus = bool(json.loads(corpus_path.read_text(encoding="utf-8")).get("corpus"))
-            except (json.JSONDecodeError, OSError):
-                has_corpus = False
-        if has_corpus:
-            pipeline.rebuild(root)
+                pipeline.rebuild(root)  # 只从知识库生成站点，不写 kb.json
+            except Exception as exc:  # noqa: BLE001 - 站点生成失败不影响 API
+                print(f"站点生成失败（API 仍可用）：{type(exc).__name__}: {exc}")
         else:
-            print("未发现静态站，且没有原始语料：仅提供 API 与 /mcp。")
+            print("未发现静态站，也没有知识库：仅提供 API 与 /mcp（无 kb 时无法回答）。")
 
     handler = type("BoundHandler", (Handler,), {
         "root": root,

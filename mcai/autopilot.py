@@ -129,17 +129,35 @@ class Autopilot:
         rebuilt = False
         error = ""
         result = {}
+        drift: dict = {}
 
-        needs_build = (fingerprint != state.get("fingerprint")) or not (self.data / "kb.json").exists()
-        if needs_build:
+        kb_file = self.data / "kb.json"
+        if not kb_file.exists():
+            # 首次引导：还没有知识库可被覆盖，允许从语料建立
             try:
+                result = pipeline.rebuild(self.root, from_corpus=True)
+                rebuilt = True
+            except Exception as exc:  # noqa: BLE001
+                error = f"{type(exc).__name__}: {exc}"
+        elif fingerprint != state.get("fingerprint"):
+            # 语料有变：只做差异检测 + 产物重建，绝不覆盖知识库
+            try:
+                shadow = pipeline.peek_from_corpus(self.root)
+                shadow_snap = {
+                    c.term: hashlib.md5(c.definition.encode("utf-8")).hexdigest()
+                    for c in shadow.concepts
+                }
+                drift = self._diff(before, shadow_snap)
                 result = pipeline.rebuild(self.root)
                 rebuilt = True
             except Exception as exc:  # noqa: BLE001
                 error = f"{type(exc).__name__}: {exc}"
 
         after = self._snapshot()
-        diff = self._diff(before, after) if rebuilt else {"added": [], "removed": [], "changed": []}
+        if drift:
+            diff = drift
+        else:
+            diff = self._diff(before, after) if rebuilt else {"added": [], "removed": [], "changed": []}
 
         started_server = self._start_server()
         server_ok = self._server_healthy()
@@ -171,6 +189,7 @@ class Autopilot:
             "checked_at": now,
             "built_at": result.get("built_at") or kb.get("built_at"),
             "rebuilt": rebuilt,
+            "corpus_drift": {"applied": False, **drift} if drift else {},
             "started_server": started_server,
             "server_ok": server_ok,
             "concepts": kb.get("concepts"),

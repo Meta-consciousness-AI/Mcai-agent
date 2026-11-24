@@ -1,81 +1,28 @@
 # -*- coding: utf-8 -*-
 """从现有 data/kb.json 直接生成静态站点，不重新抽取语料。
 
-用途：术语审校后只更新了 kb，不想因为 mcai build 重新抽取而覆盖修订。
+用途：术语审校后只更新了 kb，不想因为重新抽取而覆盖修订。
+等价于 `mcai build`（默认模式）：只写 dist/ 与数据集，不改 kb.json。
 用法：python tools/build_site_from_kb.py
 """
 from __future__ import annotations
 
-import json
 import sys
-from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from mcai import dataset, site  # noqa: E402
-from mcai.extract import Concept, Faq, KnowledgeBase, Source  # noqa: E402
+from mcai import pipeline  # noqa: E402
 
 
 def main() -> int:
-    payload = json.loads((ROOT / "data" / "kb.json").read_text(encoding="utf-8"))
-    meta = payload["meta"]
-    meta.setdefault("stats", {})
-    meta["stats"]["concepts"] = len(payload["concepts"])
-    meta["stats"]["faqs"] = len(payload["faqs"])
-    meta["stats"]["relations"] = sum(len(c.get("relations") or []) for c in payload["concepts"])
-    meta["built_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
-    (ROOT / "data" / "kb.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    import shutil
-    shutil.copyfile(ROOT / "data" / "kb.json", ROOT / "mcai" / "data" / "default" / "data" / "kb.json")
-
-    concepts = []
-    for c in payload["concepts"]:
-        data = dict(c)
-        data.pop("id", None)
-        data.pop("hidden_aliases", None)
-        data.pop("short_definition", None)
-        data["sources"] = [
-            Source(
-                doc_id=s.get("doc_id", ""),
-                doc_title=s.get("doc_title", ""),
-                section=s.get("section", ""),
-                location=s.get("location", ""),
-                quote=s.get("quote", ""),
-                priority=int(s.get("priority", 60) or 60),
-                char_start=int(s.get("char_start", -1) if s.get("char_start") is not None else -1),
-                char_end=int(s.get("char_end", -1) if s.get("char_end") is not None else -1),
-                origin=s.get("origin", "corpus"),
-                edition=s.get("edition", ""),
-            )
-            for s in c.get("sources", [])
-        ]
-        concepts.append(Concept(**data))
-
-    faqs = []
-    for f in payload["faqs"]:
-        data = dict(f)
-        data.pop("short_answer", None)
-        faqs.append(Faq(**data))
-
-    kb = KnowledgeBase(
-        project=meta["project"],
-        concepts=concepts,
-        faqs=faqs,
-        documents=meta.get("documents", []),
-        stats=meta.get("stats", {}),
-        built_at=meta.get("built_at", ""),
-        copyright=meta.get("copyright"),
-    )
-    info = site.build_site(kb, ROOT / "dist")
-    from mcai import dashboard
-
-    dataset.export(kb, ROOT / "dist" / "dataset")
-
-    dashboard.render(ROOT)
-    print(json.dumps(info, ensure_ascii=False, indent=2))
-    print("version:", meta["project"].get("version"))
+    result = pipeline.rebuild(ROOT, from_corpus=False)
+    print(f"pages: {result['pages']}")
+    print(f"out: {ROOT / 'dist'}")
+    meta = pipeline.load_kb(ROOT).get("meta") or {}
+    print("version:", (meta.get("project") or {}).get("version"))
+    print("kb source: data/kb.json（未改写）")
     return 0
 
 

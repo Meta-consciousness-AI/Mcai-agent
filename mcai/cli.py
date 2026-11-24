@@ -36,8 +36,14 @@ def cmd_init(args: argparse.Namespace) -> int:
 
 def cmd_build(args: argparse.Namespace) -> int:
     home = _home(args)
-    result = pipeline.rebuild(home)
-    print(f"✅ 构建完成：{result['concepts']} 个概念 / {result['faqs']} 组问答 / "
+    from_corpus = bool(getattr(args, "rebuild_from_corpus", False))
+    try:
+        result = pipeline.rebuild(home, from_corpus=from_corpus)
+    except FileNotFoundError as exc:
+        print(f"❌ {exc}")
+        return 1
+    mode = "（从语料重建，已覆盖知识库）" if result.get("source") == "corpus" else "（知识库未改动）"
+    print(f"✅ 构建完成{mode}：{result['concepts']} 个概念 / {result['faqs']} 组问答 / "
           f"{result['relations']} 条关系 / {result['pages']} 个页面")
     if result["conflicts"]:
         print("⚠️  定义冲突待裁定：" + "、".join(result["conflicts"]))
@@ -47,6 +53,37 @@ def cmd_build(args: argparse.Namespace) -> int:
     if args.serve:
         from .server import serve
         serve(home, args.port)
+    return 0
+
+
+def cmd_change(args: argparse.Namespace) -> int:
+    from . import changes
+    home = _home(args)
+    try:
+        entry = changes.apply(
+            home,
+            kind=args.kind,
+            action=args.action,
+            key=args.key,
+            field=args.field,
+            value=args.value,
+            reason=args.reason,
+            basis=args.basis,
+            category=args.category,
+            en=args.en,
+            dry_run=bool(args.dry_run),
+        )
+    except changes.ChangeError as exc:
+        print(f"❌ {exc}")
+        return 2
+    tag = "预览（未落盘）" if args.dry_run else f"已记录 → {entry.get('log', changes.log_path(home))}"
+    print(f"✅ {args.kind} {args.action}：{args.key}")
+    print(f"   {tag}")
+    print("   计数：" + " / ".join(f"{k} {v}" for k, v in entry["counts_after"].items()))
+    if entry["counts_before"] != entry["counts_after"]:
+        print("   变化：" + " / ".join(
+            f"{k} {entry['counts_before'][k]}→{v}" for k, v in entry["counts_after"].items()
+            if entry["counts_before"].get(k) != v))
     return 0
 
 
@@ -470,10 +507,32 @@ def build_parser() -> argparse.ArgumentParser:
     p_init.add_argument("--force", action="store_true", help="覆盖已有配置")
     p_init.set_defaults(func=cmd_init)
 
-    p_build = sub.add_parser("build", parents=[common], help="从语料重建知识库与站点")
+    p_build = sub.add_parser("build", parents=[common],
+                             help="从知识库生成站点/数据集（不写 kb.json）")
     p_build.add_argument("--serve", action="store_true", help="构建后启动本地服务")
     p_build.add_argument("--port", type=int, default=8787)
+    p_build.add_argument("--rebuild-from-corpus", action="store_true",
+                         help="显式从语料重新抽取并覆盖知识库（危险；默认不写 kb.json）")
     p_build.set_defaults(func=cmd_build)
+
+    p_change = sub.add_parser("change", parents=[common],
+                              help="修改知识库并留痕（数量减少必须给理由）")
+    p_change.add_argument("--kind", required=True, choices=["term", "faq", "relation"],
+                          help="对象：术语 / 问答 / 关系")
+    p_change.add_argument("--action", required=True, choices=["add", "update", "delete"],
+                          help="动作：增 / 改 / 删")
+    p_change.add_argument("--key", required=True,
+                          help="术语名、问答问题，或「源术语->目标术语」")
+    p_change.add_argument("--field", default=None,
+                          help="update 时的字段（术语 definition/short_definition/category/en；"
+                               "问答 answer/question/short_answer/confidence；关系 type）")
+    p_change.add_argument("--value", default=None, help="新内容（add/update 必填）")
+    p_change.add_argument("--reason", default="", help="变更理由（数量减少时必填）")
+    p_change.add_argument("--basis", default="", help="依据：文稿名/章节，或「作者口述」（必填）")
+    p_change.add_argument("--category", default="", help="新增术语时的分类")
+    p_change.add_argument("--en", default="", help="新增术语时的英文名")
+    p_change.add_argument("--dry-run", action="store_true", help="只校验并打印记录，不落盘")
+    p_change.set_defaults(func=cmd_change)
 
     p_serve = sub.add_parser("serve", parents=[common], help="启动本地 Web 应用与 HTTP API")
     p_serve.add_argument("--port", type=int, default=8787)
