@@ -77,11 +77,18 @@ function Test-Tls([string]$ip) {
 function Get-RemoteSha {
     $prev = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    $out = & $git -C $root ls-remote $remote "refs/heads/$branch" 2>$null
+    $out = & $git -C $root ls-remote $remote "refs/heads/$branch" 2>&1
     $code = $LASTEXITCODE
     $ErrorActionPreference = $prev
-    if ($code -ne 0 -or -not $out) { return $null }
-    return ("$out".Trim() -split "\s+")[0]
+    if ($code -ne 0) {
+        # 不吞错：把 git 的原话打出来，否则只能看到「取不到」这种无用结论
+        Write-Host "  git ls-remote 失败，原始输出：" -ForegroundColor DarkYellow
+        ($out | Select-Object -First 6) | ForEach-Object { Write-Host "    $_" -ForegroundColor DarkYellow }
+        return $null
+    }
+    $sha = ("$out" -split "`n" | Where-Object { $_ -match "^[0-9a-f]{40}\s" } | Select-Object -First 1)
+    if (-not $sha) { return $null }
+    return ($sha.Trim() -split "\s+")[0]
 }
 
 function Invoke-Push {
@@ -172,6 +179,11 @@ try {
     $pinned = $true
     ipconfig /flushdns | Out-Null
     Write-Host "已把 github.com 固定到 $useIp" -ForegroundColor Cyan
+
+    $resolved = (Resolve-DnsName github.com -Type A -ErrorAction SilentlyContinue |
+                 Where-Object { $_.IPAddress } | Select-Object -ExpandProperty IPAddress) -join ", "
+    Write-Host "  解析结果：$resolved" -ForegroundColor Gray
+    Write-Host "  git：$git ($(& $git --version))" -ForegroundColor Gray
 
     $remoteSha = Get-RemoteSha
     if ($null -eq $remoteSha) { throw "固定 IP 后仍取不到远端分支，放弃" }
