@@ -533,7 +533,7 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
     try:
         httpd = ThreadingHTTPServer((host, port), handler)
     except OSError as exc:
-        print(f"❌ 无法监听 {host}:{port} —— {exc}")
+        print(f"[FAIL] 无法监听 {host}:{port} —— {exc}")
         print("   端口可能被占用，换一个：mcai serve --port 8788")
         return
 
@@ -543,7 +543,7 @@ def serve(root: str | Path, port: int = 8787, host: str = "127.0.0.1",
           f"鉴权：{'Bearer 令牌' if token else '关闭（仅建议本机使用）'}")
     print("  本机专属接口：/api/rebuild、/api/v1/stats、/api/v1/gaps")
     if host not in ("127.0.0.1", "::1", "localhost") and not token:
-        print("⚠️  正在对外监听但没有设置令牌，任何能访问该端口的人都能查询。")
+        print("[WARN] 正在对外监听但没有设置令牌，任何能访问该端口的人都能查询。")
         print("   建议：mcai serve --host 0.0.0.0 --token <你的令牌>")
     if autopilot_interval > 0:
         from .autopilot import Autopilot

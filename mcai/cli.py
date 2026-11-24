@@ -22,7 +22,7 @@ def _home(args: argparse.Namespace) -> Path:
 
 def cmd_init(args: argparse.Namespace) -> int:
     result = workspace.init_workspace(args.path or ".", force=args.force)
-    print(f"✅ 工作区已初始化：{result['root']}")
+    print(f"[OK] 工作区已初始化：{result['root']}")
     for path in result["created"]:
         print(f"  + {path}")
     for path in result["skipped"]:
@@ -40,16 +40,16 @@ def cmd_build(args: argparse.Namespace) -> int:
     try:
         result = pipeline.rebuild(home, from_corpus=from_corpus)
     except FileNotFoundError as exc:
-        print(f"❌ {exc}")
+        print(f"[FAIL] {exc}")
         return 1
     mode = "（从语料重建，已覆盖知识库）" if result.get("source") == "corpus" else "（知识库未改动）"
-    print(f"✅ 构建完成{mode}：{result['concepts']} 个概念 / {result['faqs']} 组问答 / "
+    print(f"[OK] 构建完成{mode}：{result['concepts']} 个概念 / {result['faqs']} 组问答 / "
           f"{result['relations']} 条关系 / {result['pages']} 个页面")
     if result["conflicts"]:
-        print("⚠️  定义冲突待裁定：" + "、".join(result["conflicts"]))
+        print("[WARN] 定义冲突待裁定：" + "、".join(result["conflicts"]))
     if result["coverage_missing"]:
-        print("⚠️  词表覆盖缺失：" + "、".join(result["coverage_missing"]))
-    print(f"📄 站点：{home / 'dist' / 'index.html'}")
+        print("[WARN] 词表覆盖缺失：" + "、".join(result["coverage_missing"]))
+    print(f"[SITE] 站点：{home / 'dist' / 'index.html'}")
     if args.serve:
         from .server import serve
         serve(home, args.port)
@@ -74,10 +74,10 @@ def cmd_change(args: argparse.Namespace) -> int:
             dry_run=bool(args.dry_run),
         )
     except changes.ChangeError as exc:
-        print(f"❌ {exc}")
+        print(f"[FAIL] {exc}")
         return 2
     tag = "预览（未落盘）" if args.dry_run else f"已记录 → {entry.get('log', changes.log_path(home))}"
-    print(f"✅ {args.kind} {args.action}：{args.key}")
+    print(f"[OK] {args.kind} {args.action}：{args.key}")
     print(f"   {tag}")
     print("   计数：" + " / ".join(f"{k} {v}" for k, v in entry["counts_after"].items()))
     if entry["counts_before"] != entry["counts_after"]:
@@ -116,7 +116,7 @@ def cmd_autopilot(args: argparse.Namespace) -> int:
     if args.once:
         outcome = pilot.run_once()
         s = outcome["status"]
-        print(f"{'✅' if s['ok'] else '❌'} 检查完成 · 重建={outcome['rebuilt']} · "
+        print(f"{'[OK]' if s['ok'] else '[FAIL]'} 检查完成 · 重建={outcome['rebuilt']} · "
               f"{s['concepts']} 概念 / {s['faqs']} 问答 · 服务={'在线' if s['server_ok'] else '离线'}")
         if s["error"]:
             print(f"   错误：{s['error']}")
@@ -136,10 +136,10 @@ def cmd_quality(args: argparse.Namespace) -> int:
     from . import quality
     result = quality.inspect(_home(args))
     counts = result["counts"]
-    print(f"质量巡检：{'✅ 通过' if result['ok'] else '❌ 有问题'} "
+    print(f"质量巡检：{'[OK] 通过' if result['ok'] else '[FAIL] 有问题'} "
           f"（错误 {counts['error']} · 警告 {counts['warn']} · 提示 {counts['info']}）")
     for issue in (result["errors"] + result["warnings"])[:20]:
-        mark = "❌" if issue["level"] == "error" else "⚠️"
+        mark = "[FAIL]" if issue["level"] == "error" else "[WARN]"
         print(f"  {mark} [{issue['code']}] {issue['detail']}")
     return 0 if result["ok"] else 1
 
@@ -147,11 +147,11 @@ def cmd_quality(args: argparse.Namespace) -> int:
 def cmd_selftest(args: argparse.Namespace) -> int:
     from . import selftest
     result = selftest.run(_home(args))
-    mark = "✅" if result["ok"] else "❌"
+    mark = "[OK]" if result["ok"] else "[FAIL]"
     print(f"接口自测：{mark} {result['passed']}/{result['total']} 通过")
     for c in result["checks"]:
         if not c["ok"]:
-            print(f"  ❌ {c['name']} {c['detail']}")
+            print(f"  [FAIL] {c['name']} {c['detail']}")
     return 0 if result["ok"] else 1
 
 
@@ -160,7 +160,7 @@ def cmd_snapshot(args: argparse.Namespace) -> int:
     result = snapshot.create(_home(args), note=args.note, keep=args.keep,
                              with_corpus=not args.no_corpus)
     m = result["manifest"]
-    print(f"✅ 快照已生成：{result['archive']}")
+    print(f"[OK] 快照已生成：{result['archive']}")
     print(f"   {m['files']} 个文件 · 原始 {m['bytes'] / 1024:.0f} KB · 压缩 {m['archive_bytes'] / 1024:.0f} KB")
     if m.get("kb"):
         kb = m["kb"]
@@ -190,13 +190,13 @@ def cmd_restore(args: argparse.Namespace) -> int:
     from . import snapshot
     check = snapshot.verify(args.archive)
     if not check.get("ok"):
-        print(f"❌ 快照损坏或不存在：{check.get('error') or check.get('broken')}")
+        print(f"[FAIL] 快照损坏或不存在：{check.get('error') or check.get('broken')}")
         return 1
     result = snapshot.restore(args.archive, args.to, force=args.force)
     if not result.get("ok"):
-        print(f"❌ {result.get('error')}")
+        print(f"[FAIL] {result.get('error')}")
         return 1
-    print(f"✅ 已恢复到：{result['target']}（{result['files']} 个条目）")
+    print(f"[OK] 已恢复到：{result['target']}（{result['files']} 个条目）")
     print("   检查后可用：mcai build --home <该目录>，再 mcai serve --home <该目录>")
     return 0
 
@@ -204,7 +204,7 @@ def cmd_restore(args: argparse.Namespace) -> int:
 def cmd_dashboard(args: argparse.Namespace) -> int:
     from . import dashboard
     path = dashboard.render(_home(args))
-    print(f"✅ 观测台已生成：{path}")
+    print(f"[OK] 观测台已生成：{path}")
     return 0
 
 
@@ -215,7 +215,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         return 1
     status = json.loads(path.read_text(encoding="utf-8"))
     print(f"检查时间：{status.get('checked_at')}")
-    print(f"健康：{'✅' if status.get('ok') else '❌'}")
+    print(f"健康：{'[OK]' if status.get('ok') else '[FAIL]'}")
     print(f"概念 {status.get('concepts')} · 问答 {status.get('faqs')} · 关系 {status.get('relations')}")
     print(f"服务：{'在线' if status.get('server_ok') else '离线'}"
           f"（本轮启动：{'是' if status.get('started_server') else '否'}）")
@@ -223,9 +223,9 @@ def cmd_status(args: argparse.Namespace) -> int:
     q = status.get("quality") or {}
     t = status.get("selftest") or {}
     if q:
-        print(f"质量巡检：{'✅' if q.get('ok') else '❌'} 错误 {q.get('errors', 0)} · 警告 {q.get('warnings', 0)}")
+        print(f"质量巡检：{'[OK]' if q.get('ok') else '[FAIL]'} 错误 {q.get('errors', 0)} · 警告 {q.get('warnings', 0)}")
     if t:
-        print(f"接口自测：{'✅' if t.get('ok') else '❌'} {t.get('passed', 0)}/{t.get('total', 0)}")
+        print(f"接口自测：{'[OK]' if t.get('ok') else '[FAIL]'} {t.get('passed', 0)}/{t.get('total', 0)}")
     if status.get("error"):
         print(f"错误：{status['error']}")
     return 0 if status.get("ok") else 1
@@ -247,14 +247,14 @@ def cmd_set_url(args: argparse.Namespace) -> int:
     try:
         info = set_site_url(home, args.url)
     except ValueError as exc:
-        print(f"❌ {exc}")
+        print(f"[FAIL] {exc}")
         return 1
     print(f"站点地址：{info['old'] or '（未设置）'} → {info['new']}")
     if args.no_build:
         print("已跳过重建（--no-build）")
         return 0
     result = pipeline.rebuild(home)
-    print(f"✅ 已重建：{result['concepts']} 概念 / {result['faqs']} 问答 / {result['pages']} 页面")
+    print(f"[OK] 已重建：{result['concepts']} 概念 / {result['faqs']} 问答 / {result['pages']} 页面")
     manifest = home / "dist" / ".well-known" / "mcp.json"
     if manifest.exists():
         base = json.loads(manifest.read_text(encoding="utf-8")).get("http", {}).get("base", "")
@@ -270,12 +270,12 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     print(f"体检目标：{args.url}\n")
     failed = 0
     for c in checks:
-        mark = "✅" if c["ok"] else "❌"
+        mark = "[OK]" if c["ok"] else "[FAIL]"
         print(f"{mark} {c['name']:<10} {c['detail']}")
         if not c["ok"]:
             failed += 1
             if c.get("hint"):
-                print(f"   ↳ {c['hint']}")
+                print(f"   -> {c['hint']}")
     print()
     if failed:
         print(f"共 {failed} 项未通过。")
@@ -390,11 +390,11 @@ def cmd_probe(args: argparse.Namespace) -> int:
     kb = knowledge.load(home)
     llm = LLM(home / "config" / "llm.json")
     if not llm.available:
-        print("❌ 未找到 API 密钥：请检查 config/llm.json 的 key_path，或设置 DEEPSEEK_API_KEY")
+        print("[FAIL] 未找到 API 密钥：请检查 config/llm.json 的 key_path，或设置 DEEPSEEK_API_KEY")
         return 1
     questions = probe.build_questions(kb, limit=args.limit)
     if not questions:
-        print("❌ 没有生成出题目，请检查知识库")
+        print("[FAIL] 没有生成出题目，请检查知识库")
         return 1
     print(f"抽检 {len(questions)} 道题 × 2 种条件（baseline / grounded）…")
 
@@ -427,27 +427,27 @@ def cmd_factory(args: argparse.Namespace) -> int:
         for name in names:
             c = kb.resolve(name)
             if not c:
-                print(f"⚠️  未找到术语：{name}")
+                print(f"[WARN] 未找到术语：{name}")
                 continue
             concepts.append(c)
     else:
         order = ["元意识", "观测创造实在", "序生智能体"]
         concepts = [kb.by_term[t] for t in order if t in kb.by_term][: args.top]
     if not concepts:
-        print("❌ 没有可用的概念")
+        print("[FAIL] 没有可用的概念")
         return 1
 
     formats = list(factory.FORMATS) if args.formats == "all" else [
         f.strip() for f in args.formats.split(",") if f.strip() in factory.FORMATS
     ]
     if not formats:
-        print("❌ 未知的格式，可选：" + "、".join(factory.FORMATS))
+        print("[FAIL] 未知的格式，可选：" + "、".join(factory.FORMATS))
         return 1
 
     llm = LLM(home / "config" / "llm.json")
     offline = args.offline or not llm.available
     if offline and not args.offline:
-        print("⚠️  未找到 API 密钥，自动切换到离线模板模式")
+        print("[WARN] 未找到 API 密钥，自动切换到离线模板模式")
 
     print(f"生成 {len(concepts)} 个概念 × {len(formats)} 种格式 → {home / 'content'}")
 
@@ -476,7 +476,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
 def cmd_package(args: argparse.Namespace) -> int:
     from . import toolchain
     result = toolchain.package(_home(args))
-    print(f"✅ 数据集已打包：{result['path']}（v{result['version']}，{len(result['files'])} 个文件）")
+    print(f"[OK] 数据集已打包：{result['path']}（v{result['version']}，{len(result['files'])} 个文件）")
     return 0
 
 
@@ -646,7 +646,23 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _safe_stdio() -> None:
+    """控制台编码兜底：编码不变，只放宽错误处理。
+
+    Windows 默认控制台是 GBK；写入编码表外的字符（emoji、部分符号）会抛
+    UnicodeEncodeError，命令以 1 退出，看起来像构建失败。这里把 stdout/stderr
+    的 errors 改成 replace：能编码的照常输出，编码不了的显示为 ?，不再中断。
+    注意：不改 encoding，避免在 GBK 控制台上把中文写成乱码；管道与重定向同样适用。
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError, OSError):
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _safe_stdio()
     parser = build_parser()
     args = parser.parse_args(argv)
     if not getattr(args, "func", None):

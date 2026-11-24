@@ -29,7 +29,7 @@ def validate(home: Path) -> dict:
     print(render_text(report))
     q = quality.inspect(home)
     counts = q["counts"]
-    print(f"\n质量巡检：{'✅ 通过' if q['ok'] else '❌ 有问题'}"
+    print(f"\n质量巡检：{'[OK] 通过' if q['ok'] else '[FAIL] 有问题'}"
           f"（错误 {counts['error']} · 警告 {counts['warn']}）")
     return {"verify": report, "quality": q, "ok": report["ok"] and q["ok"]}
 

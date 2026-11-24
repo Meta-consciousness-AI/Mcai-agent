@@ -120,7 +120,7 @@ def _sync_package_copy(root: Path, kb) -> bool:
 
 def _warn_overwrite(root: Path) -> None:
     print("=" * 64, file=sys.stderr)
-    print("⚠️  正在从语料重建知识库（--rebuild-from-corpus）", file=sys.stderr)
+    print("[WARN] 正在从语料重建知识库（--rebuild-from-corpus）", file=sys.stderr)
     print(f"    将覆盖：{kb_path(root)}", file=sys.stderr)
     print("    并覆盖包内副本：mcai/data/default/data/kb.json（如存在）", file=sys.stderr)
     print("    手改过的定义/问答/关系会被语料抽取结果替换，且不留痕。", file=sys.stderr)
