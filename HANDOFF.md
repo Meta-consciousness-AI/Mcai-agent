@@ -121,7 +121,7 @@ python tools\daily_signal.py
 - **README 数字（11-25）**：132 行 207→164、344 行→66、381 行 `concepts: 65, faqs: 130`、501 行→130；PyPI 0.4.3 页面仍是旧数字，需发新版才更新。
 - **备份（11-24 完成）**：项目 zip `mca-agent-backup-2026-11-24.zip`（56.3 MB / 4600 项）在 `F:`（U 盘 KINGSTON）与 `D:`（本机另一盘）；语料 10 份 + 说明在 `F:\mca-agent-corpus`、`D:\mca-agent-corpus`。**OneDrive 已确认不可用**（同步端点被封，T16 第十节）。
 - **Zenodo（11-24 实测）**：去重 429 浏览 / 31 下载；增长在衰减、不可归因，见 `docs/指标记录.md`。
-- **推送**：Gitee **已于 2026-11-25 00:45 推至 `8eb8a27`**（`630ef7f..8eb8a27`，17 个提交 / 79 个对象，用户自有窗口执行）；GitHub **仍停在 `46f45a0`**，16 个提交未推成——**不是认证问题，是本机到 `github.com:443` 连不上**（`Failed to connect to github.com:443 after 21083 ms`、`Empty reply from server`）。沙箱内 TLS 一律 `SEC_E_NO_CREDENTIALS`，只能由用户窗口推；处理办法按第三节第 10 条（实测可达 IP 固定 / 换解析）。**此处不写剩余条数**，以 `git ls-remote` 现场取值为准。
+- **推送（2026-11-25 00:52 完成）**：Gitee 与 GitHub **均已在 `58e374d`**（GitHub `46f45a0..58e374d`、81 对象；Gitee `8eb8a27..58e374d`、5 对象），用户自有窗口执行。**GitHub 断点已定位**：`github.com:443` 被 TLS 层重置（`Recv failure: Connection was reset` / `Empty reply from server`），六个候选 IP 实测只有 `20.233.83.145` 能完成握手返回 200；按第三节第 10 条临时在 hosts 固定该 IP 后推出，**推完须撤销该行**。沙箱内 TLS 一律 `SEC_E_NO_CREDENTIALS`，此类推送只能由用户窗口执行。
 - **回归基线**：`python -m mcai validate` 通过；`python -m unittest discover -s tests` 144 项 OK；kb 两份副本 sha256 均为 `E48C362B1BA222789024FBAE11E447BC1A401D5BE2FEA15608F8FDE6C615F2B4`。
 - **未决**：8 条人工添加关系是否回写 `core_loop`；glama 停在 0.3.9（GitHub 无 v0.4.2/v0.4.3 Release）；Bing 编入待复查；mcprush 简介数字陈旧。
 - 明细回执：`docs/执行回执/2026-11-24-*.md`（来源索引、关系来源更正、说明文件更正、README 数字、不覆盖与留痕、CLI 编码、危险路径保护）。
