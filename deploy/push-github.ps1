@@ -13,16 +13,22 @@
 #     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -CheckOnly
 #   指定候选 IP：
 #     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -IpList 1.2.3.4,5.6.7.8
+#   强制走固定 IP 路径（跳过直连；只用于验证这条分支）：
+#     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin
+#   只验证固定 IP 分支的筛选结果、不改 hosts 也不推送（普通窗口即可）：
+#     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin -CheckOnly
 #
 # 约束：
 #   1. 不加 --force。非快进会被 Git 拒绝，遇到就停下查分叉原因；
 #   2. hosts 用「备份→改→还原」而不是「删那一行」，保证不误伤文件里其他条目；
 #   3. 还原放在 finally，push 失败或抛异常也会还原；
-#   4. 本文件必须存成 UTF-8 带 BOM，否则 Windows PowerShell 5.1 按 GBK 读、中文注释变乱码、报「缺少引号」。
+#   4. 本文件必须存成 UTF-8 带 BOM，否则 Windows PowerShell 5.1 按 GBK 读、中文注释变乱码、报「缺少引号」；
+#   5. push 被掐断（Recv failure: Connection was reset）时自动重试 1 次、间隔 3 秒；两次都失败才抛错。
 
 [CmdletBinding()]
 param(
     [switch]$CheckOnly,
+    [switch]$ForcePin,
     [string[]]$IpList
 )
 
@@ -101,10 +107,18 @@ function Invoke-Push {
     Write-Host "推送到 $remote（$branch）..." -ForegroundColor Cyan
     $prev = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    & $git -C $root push $remote $branch
-    $code = $LASTEXITCODE
+    $ok = $false
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        if ($attempt -gt 1) {
+            Write-Host "  第 1 次推送失败，3 秒后重试（第 2/2 次）..." -ForegroundColor DarkYellow
+            Start-Sleep -Seconds 3
+        }
+        & $git -C $root push $remote $branch
+        $code = $LASTEXITCODE
+        if ($code -eq 0) { $ok = $true; break }
+    }
     $ErrorActionPreference = $prev
-    if ($code -ne 0) {
+    if (-not $ok) {
         throw "推送失败（凭据问题，或非快进被拒；本脚本不 force，不会覆盖远端历史）"
     }
 }
@@ -136,9 +150,15 @@ if (-not $CheckOnly -and -not (Test-Elevated)) {
     exit 2
 }
 
-# ---------- 1. 直连能不能用 ----------
-Write-Host "试直连 ..." -ForegroundColor Gray
-$remoteSha = Get-RemoteSha
+# ---------- 1. 直连能不能用（-ForcePin 时整段跳过） ----------
+$remoteSha = $null
+if ($ForcePin) {
+    Write-Host "（-ForcePin）跳过直连，直接走固定 IP 路径。" -ForegroundColor Yellow
+}
+else {
+    Write-Host "试直连 ..." -ForegroundColor Gray
+    $remoteSha = Get-RemoteSha
+}
 
 if ($remoteSha) {
     Write-Host "直连可用，远端在 $($remoteSha.Substring(0,7))" -ForegroundColor Green
@@ -160,7 +180,12 @@ if ($remoteSha) {
 }
 
 # ---------- 2. 直连不通：先筛出此刻能握手的 IP ----------
-Write-Host "直连不通，开始筛候选 IP 的 TLS ..." -ForegroundColor Yellow
+if ($ForcePin) {
+    Write-Host "（-ForcePin）开始筛候选 IP 的 TLS ..." -ForegroundColor Yellow
+}
+else {
+    Write-Host "直连不通，开始筛候选 IP 的 TLS ..." -ForegroundColor Yellow
+}
 $good = @()
 foreach ($ip in $candidates) {
     if (Test-Tls $ip) {
