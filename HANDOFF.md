@@ -95,7 +95,7 @@ python tools\daily_signal.py
 - 交接最小内容四行：改了哪些文件与提交 / 还剩什么 / 下一步交给谁 / 停止条件。
 - `mcai-knowledge-0000`：历史主会话，永久保留，只做低频战略与重大决策，不归档、不执行；
 - `mcai-knowledge-0001`：当前主会话，日常重大决策与方向；
-- `mcai-knowledge-0002`：平台专项，paused，Bing 11-25 复查；
+- `mcai-knowledge-0002`：执行主渠道（见上），当前唯一挂起题是 Bing 11-25 复查；状态记 `paused`，按本体系定义是「**等外部信号**」（见 `docs/工作法-会话管理.md`），**不是停用**，随时可派活；
 - `0003` 起为新专项，四位固定，永不复用；
 - 会话清单与命名审批：`docs/会话台账.md`。
 - 已结案事项见 `docs/工作法-主会话减负.md` 的归档表，不再重复讨论。
@@ -121,7 +121,7 @@ python tools\daily_signal.py
 - **README 数字（11-25）**：132 行 207→164、344 行→66、381 行 `concepts: 65, faqs: 130`、501 行→130；PyPI 0.4.3 页面仍是旧数字，需发新版才更新。
 - **备份（11-24 完成）**：项目 zip `mca-agent-backup-2026-11-24.zip`（56.3 MB / 4600 项）在 `F:`（U 盘 KINGSTON）与 `D:`（本机另一盘）；语料 10 份 + 说明在 `F:\mca-agent-corpus`、`D:\mca-agent-corpus`。**OneDrive 已确认不可用**（同步端点被封，T16 第十节）。
 - **Zenodo（11-24 实测）**：去重 429 浏览 / 31 下载；增长在衰减、不可归因，见 `docs/指标记录.md`。
-- **推送（待办）**：Gitee 与 GitHub 均落后本机约 14 个提交，下次一起推。
+- **推送（待办）**：Gitee 与 GitHub 均落后本机，条数以 `git ls-remote <remote> refs/heads/<branch>` 现场取值为准（本机沙箱 TLS 不通，须在用户窗口跑）。**此处不写数字**，写了必过期。
 - **回归基线**：`python -m mcai validate` 通过；`python -m unittest discover -s tests` 144 项 OK；kb 两份副本 sha256 均为 `E48C362B1BA222789024FBAE11E447BC1A401D5BE2FEA15608F8FDE6C615F2B4`。
 - **未决**：8 条人工添加关系是否回写 `core_loop`；glama 停在 0.3.9（GitHub 无 v0.4.2/v0.4.3 Release）；Bing 编入待复查；mcprush 简介数字陈旧。
 - 明细回执：`docs/执行回执/2026-11-24-*.md`（来源索引、关系来源更正、说明文件更正、README 数字、不覆盖与留痕、CLI 编码、危险路径保护）。
