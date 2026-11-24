@@ -129,7 +129,7 @@ Windows 上也可以直接双击 `start.bat`（开发模式）或 `install.ps1`�
 ## 当前构建结果
 
 ```
-概念 65（59 主词条 + 6 衍生术语）· 标准问答 130 · 概念关系 263 · 文献引证 207
+概念 65（59 主词条 + 6 衍生术语）· 标准问答 130 · 概念关系 263 · 文献引证 164
 语料 8 份 / 953 段 / 115,247 字
 1 份标准词表（元意识学说极简版）提供全部定义，6 份主著作作为「引证源」只贡献论述原句，
 1 份操作手册作为方法论语境。
@@ -340,7 +340,7 @@ https://mcai-mcp-gitee-338698-11-1316838521.sh.run.tcloudbase.com/mcp
 
 `/mcp` 接受 JSON-RPC 2.0（initialize / tools/list / tools/call / prompts/*），支持批量请求；GET 返回 405。鉴权与限流沿用服务端设置。
 
-提供 7 个工具与 64 个资源：
+提供 7 个工具与 66 个资源：
 
 | 工具 | 用途 |
 |---|---|
@@ -378,7 +378,7 @@ mcai status                     # 查看最近一次自检结果
 状态文件是给机器看的，任何本地 Agent 都可以先读它判断是否健康：
 
 ```json
-{"ok": true, "checked_at": "...", "concepts": 64, "faqs": 122,
+{"ok": true, "checked_at": "...", "concepts": 65, "faqs": 130,
  "server_ok": true, "rebuilt": false, "error": "",
  "quality": {"ok": true, "errors": 0, "warnings": 0},
  "selftest": {"ok": true, "passed": 12, "total": 12}}
@@ -498,7 +498,7 @@ python run.py gaps       # 没答上来的问题，直接作为下一轮补词�
   `disambiguatingDescription`（不污染 `description`）；
 - **一键撤除**：把 `campaign.enabled` 改为 `false` 重建，10 条消歧问答与页面区块整体消失。
 
-实测开关效果：开启时 122 组问答，关闭后 112 组，定义内容不变。
+实测开关效果：开启时 130 组问答，关闭后 120 组，定义内容不变。
 
 ```bash
 python run.py disambig    # 查看当前阶段状态与覆盖术语
