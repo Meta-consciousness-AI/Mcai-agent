@@ -1,6 +1,8 @@
 """命令行入口。
 
-所有命令都支持 --home 指定工作区；未指定时按 MCAI_HOME → 当前目录 → 源码目录 的顺序解析。
+所有命令都支持 --home 指定工作区。显式给出的 --home / MCAI_HOME 必须是工作区
+（含 config/corpus.json），否则直接报错，绝不静默回落到别的目录；未指定时按
+「当前目录 → 包内默认工作区 → 源码目录」顺序探测。
 """
 from __future__ import annotations
 
@@ -38,7 +40,11 @@ def cmd_build(args: argparse.Namespace) -> int:
     home = _home(args)
     from_corpus = bool(getattr(args, "rebuild_from_corpus", False))
     try:
-        result = pipeline.rebuild(home, from_corpus=from_corpus)
+        result = pipeline.rebuild(home, from_corpus=from_corpus,
+                                  allow_shrink=bool(getattr(args, "confirm_shrink", False)))
+    except pipeline.ShrinkError as exc:
+        print(f"[FAIL] {exc}", file=sys.stderr)
+        return 3
     except FileNotFoundError as exc:
         print(f"[FAIL] {exc}")
         return 1
@@ -513,6 +519,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_build.add_argument("--port", type=int, default=8787)
     p_build.add_argument("--rebuild-from-corpus", action="store_true",
                          help="显式从语料重新抽取并覆盖知识库（危险；默认不写 kb.json）")
+    p_build.add_argument("--confirm-shrink", action="store_true",
+                         help="确认允许重建后条数减少（会先快照现有 kb 到 data/backups/）")
     p_build.set_defaults(func=cmd_build)
 
     p_change = sub.add_parser("change", parents=[common],
@@ -668,7 +676,11 @@ def main(argv: list[str] | None = None) -> int:
     if not getattr(args, "func", None):
         parser.print_help()
         return 0
-    return args.func(args)
+    try:
+        return args.func(args)
+    except workspace.HomeError as exc:
+        print(f"[FAIL] {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

@@ -475,5 +475,12 @@ def main(root: str | Path) -> None:
 
 def main_entry() -> None:
     """控制台入口（mcai-mcp）：按 MCAI_HOME / 当前目录解析工作区。"""
-    from .workspace import resolve_home
-    main(resolve_home(None))
+    import sys
+
+    from .workspace import HomeError, resolve_home
+    try:
+        root = resolve_home(None)
+    except HomeError as exc:
+        print(f"[FAIL] {exc}", file=sys.stderr)
+        raise SystemExit(1) from exc
+    main(root)

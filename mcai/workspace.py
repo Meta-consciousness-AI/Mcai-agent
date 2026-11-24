@@ -56,20 +56,41 @@ mcai gaps                  # 未命中的问题（人工补词输入）
 """
 
 
+class HomeError(Exception):
+    """工作区路径无效：显式指定的目录不存在或不是工作区。绝不静默回落。"""
+
+
+_WORKSPACE_HINT = (
+    "期望的工作区结构：config/corpus.json（必需，用于定位语料与配置）、"
+    "data/kb.json（知识库）、corpus/（原始语料）。"
+    "若只想在别的目录执行，请先 `mcai init <目录>` 建工作区。"
+)
+
+
 def resolve_home(explicit: str | None = None) -> Path:
-    candidates: list[Path] = []
-    if explicit:
-        candidates.append(Path(explicit).expanduser())
-    env = os.environ.get("MCAI_HOME")
-    if env:
-        candidates.append(Path(env).expanduser())
-    candidates.append(Path.cwd())
-    candidates.append(Path(__file__).resolve().parent / "data" / "default")
-    candidates.append(DEV_ROOT)
-    for cand in candidates:
+    """解析工作区根目录。
+
+    显式给出的 --home 或 MCAI_HOME 必须存在且含 config/corpus.json，否则抛 HomeError；
+    只有完全没指名时，才按「当前目录 → 包内默认工作区 → 开发根目录」依次探测。
+    这样危险命令（如 --rebuild-from-corpus）不会因为路径写错而落到别的仓库。
+    """
+    given = explicit or os.environ.get("MCAI_HOME")
+    if given:
+        cand = Path(given).expanduser()
+        if not cand.exists():
+            raise HomeError(f"目录不存在：{cand}。{_WORKSPACE_HINT}")
+        if not (cand / "config" / "corpus.json").exists():
+            raise HomeError(
+                f"{cand} 不是工作区（缺少 config/corpus.json）。{_WORKSPACE_HINT}"
+            )
+        return cand.resolve()
+
+    for cand in (Path.cwd(),
+                 Path(__file__).resolve().parent / "data" / "default",
+                 DEV_ROOT):
         if (cand / "config" / "corpus.json").exists():
             return cand.resolve()
-    return Path.cwd().resolve()
+    raise HomeError(f"当前目录不是工作区（缺少 config/corpus.json）。{_WORKSPACE_HINT}")
 
 
 def init_workspace(target: str | Path, force: bool = False) -> dict:

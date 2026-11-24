@@ -13,6 +13,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 from . import dashboard, dataset, site
@@ -182,16 +183,91 @@ def _result(kb, pages: int, files: list, *, source: str) -> dict:
     }
 
 
-def rebuild(root: str | Path, *, from_corpus: bool = False) -> dict:
+def _kb_counts(root: Path) -> dict | None:
+    """现有知识库的三项计数；没有 kb 时返回 None（首次构建）。"""
+    path = kb_path(root)
+    if not path.exists():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    concepts = payload.get("concepts") or []
+    return {
+        "terms": len(concepts),
+        "faqs": len(payload.get("faqs") or []),
+        "relations": sum(len(c.get("relations") or []) for c in concepts),
+    }
+
+
+def _kb_counts_of(kb) -> dict:
+    return {
+        "terms": len(kb.concepts),
+        "faqs": len(kb.faqs),
+        "relations": sum(len(c.relations or []) for c in kb.concepts),
+    }
+
+
+class ShrinkError(Exception):
+    """从语料重建会让知识库变少，且未显式确认。"""
+
+    def __init__(self, message: str, diff: dict):
+        super().__init__(message)
+        self.diff = diff
+
+
+def _shrink_diff(old: dict, new: dict) -> dict:
+    labels = (("terms", "术语"), ("faqs", "问答"), ("relations", "关系"))
+    return {label: (old[k], new[k]) for k, label in labels if new[k] < old[k]}
+
+
+def snapshot_kb(root: str | Path, note: str = "") -> Path:
+    """把现有 data/kb.json 复制到 data/backups/ 下带时间戳的文件；保留最近 20 份。"""
+    root = Path(root).resolve()
+    src = kb_path(root)
+    if not src.exists():
+        raise FileNotFoundError(f"没有可快照的知识库：{src}")
+    out_dir = root / "data" / "backups"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now().astimezone().strftime("%Y%m%d-%H%M%S")
+    target = out_dir / f"kb-{ts}.json"
+    target.write_bytes(src.read_bytes())
+    if note:
+        (out_dir / f"kb-{ts}.note.txt").write_text(note, encoding="utf-8")
+    for stale in sorted(out_dir.glob("kb-*.json"))[:-20]:
+        stale.unlink(missing_ok=True)
+    return target
+
+
+def rebuild(root: str | Path, *, from_corpus: bool = False, allow_shrink: bool = False) -> dict:
     """构建产物。
 
     from_corpus=False（默认）：只从 data/kb.json 生成站点/数据集，不写知识库。
-    from_corpus=True：从语料重建并覆盖知识库（显式开关，运行前有警告）。
+    from_corpus=True：从语料重建并覆盖知识库。覆盖前会：
+      1. 在内存里先算出结果，与现有 kb 比条数；任一项减少就抛 ShrinkError（除非 allow_shrink）；
+      2. 现有 kb 存在时先快照到 data/backups/；
+      3. 打印醒目警告后才写入。
     """
     root = Path(root).resolve()
     if from_corpus:
+        kb_new = build_from_corpus(root, write=False)
+        old = _kb_counts(root)
+        if old:
+            diff = _shrink_diff(old, _kb_counts_of(kb_new))
+            if diff:
+                summary = "、".join(f"{k} {a}→{b}" for k, (a, b) in diff.items())
+                if not allow_shrink:
+                    raise ShrinkError(
+                        f"拒绝覆盖：从语料重建会让知识库变少（{summary}）。"
+                        "如确认要覆盖，请加 --confirm-shrink 重跑；本次未写入任何文件。",
+                        diff,
+                    )
+                print(f"[WARN] 已确认覆盖（{summary}），将先快照再写入。", file=sys.stderr)
         _warn_overwrite(root)
-        kb = build_from_corpus(root, write=True)
+        if old:
+            snap = snapshot_kb(root, note=f"--rebuild-from-corpus at {kb_new.built_at}")
+            print(f"[WARN] 现有知识库已快照：{snap}", file=sys.stderr)
+        kb_new.save(kb_path(root))
+        _record_versions(root, kb_new)
+        _sync_package_copy(root, kb_new)
+        kb = kb_new
         source = "corpus"
     else:
         kb = load_kb_object(root)
