@@ -201,9 +201,23 @@ try {
         Add-Pin $ip
         $pinned = $true
 
-        $resolved = (Resolve-DnsName github.com -Type A -ErrorAction SilentlyContinue |
-                     Where-Object { $_.IPAddress } | Select-Object -ExpandProperty IPAddress) -join ", "
-        Write-Host "  解析：$resolved" -ForegroundColor Gray
+        # 等解析真正生效再连：hosts 改完不是立刻生效的（2026-11-25 实测第一轮仍解析到旧 IP，
+        # 白等一次 21 秒超时，靠第 2 次重试才成）。这里先确认解析已指向该 IP。
+        $resolved = ""
+        for ($w = 1; $w -le 6; $w++) {
+            $resolved = (Resolve-DnsName github.com -Type A -ErrorAction SilentlyContinue |
+                         Where-Object { $_.IPAddress } | Select-Object -ExpandProperty IPAddress) -join ", "
+            if ($resolved -match [regex]::Escape($ip)) { break }
+            Write-Host "  解析尚未生效（$resolved），等待 ..." -ForegroundColor DarkGray
+            ipconfig /flushdns | Out-Null
+            Start-Sleep -Milliseconds 800
+        }
+        if ($resolved -match [regex]::Escape($ip)) {
+            Write-Host "  解析已指向 $ip" -ForegroundColor Gray
+        }
+        else {
+            Write-Host "  解析仍为 $resolved，先试一次（可能仍会失败）" -ForegroundColor DarkYellow
+        }
 
         # 同一个 IP 最多试 $maxTries 轮：握手成功不等于连上，可能是瞬时的
         $remoteSha = $null
