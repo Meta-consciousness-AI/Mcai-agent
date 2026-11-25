@@ -144,8 +144,19 @@ function Invoke-Push {
 }
 
 function Add-Pin([string]$ip) {
-    Add-Content -LiteralPath $hostsPath -Value "$ip github.com" -Encoding ASCII
+    # hosts 的末行可能没有换行符（2026-11-25 实测：822 字节、末字节 0x74，即
+    # `#\t::1             localhost` 后直接结束）。此时 Add-Content 会把新行拼到末行尾部，
+    # 变成 `#\t::1             localhost20.233.83.145 github.com`——整行是注释，
+    # git 和判据都读不到，等于没固定。所以先补换行，写完再回读确认。
+    $bytes = [System.IO.File]::ReadAllBytes($hostsPath)
+    $endsWithNewline = ($bytes.Length -gt 0 -and $bytes[$bytes.Length - 1] -eq 0x0A)
+    $line = "$ip github.com"
+    if ($bytes.Length -gt 0 -and -not $endsWithNewline) { $line = "`r`n" + $line }
+    [System.IO.File]::AppendAllText($hostsPath, $line + "`r`n", [System.Text.Encoding]::ASCII)
     ipconfig /flushdns | Out-Null
+    if (-not (Test-HostsPin $ip)) {
+        throw "hosts 已追加但回读不到 `"$ip github.com`" 这一行，固定未生效（$hostsPath）"
+    }
 }
 
 function Undo-Pin([string]$backup) {
@@ -243,8 +254,9 @@ try {
     foreach ($ip in $good) {
         Write-Host ""
         Write-Host "尝试 $ip ..." -ForegroundColor Cyan
-        Add-Pin $ip
+        # 先把「可能已经动过 hosts」置真，再写：写一半抛错时，finally 才不会误报「未改动」。
         $touched = $true
+        Add-Pin $ip
 
         # 确认「固定已生效」再连。判据见 Test-HostsPin / Test-GithubTcp 上方的说明：
         # 不再拿 DNS 客户端的答案当证据，只认 hosts 文件里的那一行 + 一次真实 443 连接。
@@ -268,7 +280,7 @@ try {
             Write-Host "  解析已指向 $ip（hosts 已写入，443 可连）" -ForegroundColor Gray
         }
         elseif ($hasLine) {
-            Write-Host "  hosts 已写入 $ip，但连接未能确认（443 未通），先试一次（可能仍会失败）" -ForegroundColor DarkYellow
+            Write-Host "  hosts 已写入 $ip，但 443 在 2.5 秒内未连上（可能是链路慢，不一定是解析失败），先试一次（可能仍会失败）" -ForegroundColor DarkYellow
         }
         else {
             Write-Host "  hosts 里未读到 $ip 这一行，先试一次（可能仍会失败）" -ForegroundColor DarkYellow
