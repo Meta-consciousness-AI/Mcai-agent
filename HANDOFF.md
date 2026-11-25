@@ -90,6 +90,7 @@ python tools\daily_signal.py
 # 推送（本机 DNS 把 github.com 解析到被封 IP 57.155.223.240，直连必失败）
 powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -CheckOnly   # 只诊断，报告哪个 IP 能握手
 powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin   # 跳过直连、强制走固定 IP（2026-11-25 09:42 真实跑通）
+powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin -Tag v0.4.4   # 只推一个标签（同一套筛 IP/还原流程；复核比 tag 对象 sha）
 powershell -ExecutionPolicy Bypass -File deploy\push-gitee.ps1              # Gitee 一直能直连（脚本读剪贴板令牌，注意先看 docs/工作原则.md「凭据不靠剪贴板传递」）
 
 # Gitee 不走脚本时（令牌在凭据库，不在 C 盘）：
