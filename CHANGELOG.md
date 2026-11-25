@@ -1,5 +1,13 @@
 # 变更记录
 
+## 0.4.4 — 2026-11-25
+
+- `mcai build` 默认不再覆盖 `data/kb.json`；`--rebuild-from-corpus` 覆盖前比对条数，减少即拒绝（`--confirm-shrink` 可确认），写前自动快照到 `data/backups/`；
+- 新增 `mcai change`（`--kind term|faq|relation`、`--action add|update|delete`、`--reason`、`--basis`），改动同时追加 `docs/变更记录/kb.jsonl`；数量减少缺 `--reason` 直接拒绝；
+- 显式 `--home` / `MCAI_HOME` 指向非工作区时报错退出，不再回落当前目录；
+- CLI 输出符号改 ASCII，GBK 控制台不再 traceback；
+- README 数字修正（引证 207→164 等）。
+
 ## 0.3.0 — 2026-10-31
 
 - 概念新增 `definition_type`（`quote` / `editor`）与 `editor_note`，支持无定义句文本的定义分层；
