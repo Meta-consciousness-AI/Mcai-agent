@@ -1,4 +1,4 @@
-﻿# 推送到 GitHub 的 main 分支。
+﻿# 推送到 GitHub 的 main 分支，或用 -Tag 只推一个标签。
 #
 # 为什么需要这个脚本：本机 DNS 常态把 github.com 解析到被封 IP（57.155.223.240），
 # 直连基本必失败（Connection was reset / Empty reply from server）。
@@ -17,18 +17,23 @@
 #     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin
 #   只验证固定 IP 分支的筛选结果、不改 hosts 也不推送（普通窗口即可）：
 #     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin -CheckOnly
+#   只推一个标签（走完全相同的筛 IP / 固定 / 还原流程，不做 push --tags）：
+#     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -Tag v0.4.4
+#     powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin -Tag v0.4.4
 #
 # 约束：
 #   1. 不加 --force。非快进会被 Git 拒绝，遇到就停下查分叉原因；
 #   2. hosts 用「备份→改→还原」而不是「删那一行」，保证不误伤文件里其他条目；
 #   3. 还原放在 finally，push 失败或抛异常也会还原；
 #   4. 本文件必须存成 UTF-8 带 BOM，否则 Windows PowerShell 5.1 按 GBK 读、中文注释变乱码、报「缺少引号」；
-#   5. push 被掐断（Recv failure: Connection was reset）时自动重试 1 次、间隔 3 秒；两次都失败才抛错。
+#   5. push 被掐断（Recv failure: Connection was reset）时自动重试 1 次、间隔 3 秒；两次都失败才抛错；
+#   6. -Tag 只推指定的一个标签，绝不 push --tags；复核比的是标签对象的 sha，不是 HEAD。
 
 [CmdletBinding()]
 param(
     [switch]$CheckOnly,
     [switch]$ForcePin,
+    [string]$Tag,
     [string[]]$IpList
 )
 
@@ -39,6 +44,18 @@ $remote    = "origin"
 $branch    = "main"
 $hostsPath = Join-Path $env:WINDIR "System32\drivers\etc\hosts"
 $maxTries  = 3
+
+# 推分支还是推标签：只换「推哪个 ref、查哪个 ref、跟谁的 sha 比」，流程其余部分完全共用
+if ($Tag) {
+    $refSpec    = "refs/tags/$Tag"
+    $refRemote  = "refs/tags/$Tag"
+    $whatToPush = "标签 $Tag"
+}
+else {
+    $refSpec    = $branch
+    $refRemote  = "refs/heads/$branch"
+    $whatToPush = "分支 $branch"
+}
 
 # 候选 IP：2026-11-25 实测过的 GitHub 边缘地址，顺序只是偏好，脚本会自己挑能握手的
 $candidates = if ($IpList) { $IpList } else { @(
@@ -106,11 +123,11 @@ function Test-GithubTcp {
     finally { try { $client.Close() } catch { } }
 }
 
-# 取远端分支 sha；失败时把 git 原话打出来，不吞错
+# 取远端 ref 的 sha（分支或标签，由 $refRemote 决定）；失败时把 git 原话打出来，不吞错
 function Get-RemoteSha {
     $prev = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
-    $out = & $git -C $root ls-remote $remote "refs/heads/$branch" 2>&1
+    $out = & $git -C $root ls-remote $remote $refRemote 2>&1
     $code = $LASTEXITCODE
     $ErrorActionPreference = $prev
     if ($code -ne 0) {
@@ -123,8 +140,23 @@ function Get-RemoteSha {
     return ($line.Trim() -split "\s+")[0]
 }
 
+# 取本地标签对象的 sha。附注标签的 refs/tags/<name> 指向 tag 对象（不是 commit），
+# 所以推标签后要比对 tag 对象 sha；拿 HEAD 去比永远不相等。
+function Get-LocalTagSha([string]$name) {
+    if (-not $name) { return $null }
+    $prev = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $out = & $git -C $root rev-parse --verify "refs/tags/$name" 2>&1
+    $code = $LASTEXITCODE
+    $ErrorActionPreference = $prev
+    if ($code -ne 0) { return $null }
+    $line = ("$out" -split "`n" | Where-Object { $_ -match "^[0-9a-f]{40}$" } | Select-Object -First 1)
+    if (-not $line) { return $null }
+    return $line.Trim()
+}
+
 function Invoke-Push {
-    Write-Host "推送到 $remote（$branch）..." -ForegroundColor Cyan
+    Write-Host "推送 $whatToPush 到 $remote ..." -ForegroundColor Cyan
     $prev = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
     $ok = $false
@@ -133,7 +165,7 @@ function Invoke-Push {
             Write-Host "  第 1 次推送失败，3 秒后重试（第 2/2 次）..." -ForegroundColor DarkYellow
             Start-Sleep -Seconds 3
         }
-        & $git -C $root push $remote $branch
+        & $git -C $root push $remote $refSpec
         $code = $LASTEXITCODE
         if ($code -eq 0) { $ok = $true; break }
     }
@@ -167,10 +199,22 @@ function Undo-Pin([string]$backup) {
 $git  = Find-Git
 $curl = Find-Curl
 $localSha = (& $git -C $root rev-parse HEAD).Trim()
-$short = $localSha.Substring(0, 7)
 
-Write-Host "本机 HEAD：$short" -ForegroundColor Gray
-Write-Host "远端：$remote/refs/heads/$branch" -ForegroundColor Gray
+if ($Tag) {
+    $targetSha = Get-LocalTagSha $Tag
+    if (-not $targetSha) {
+        throw "本地没有标签 $Tag。先建标签（git tag -a $Tag -m `"…`"）再推。"
+    }
+    $targetLabel = "本机标签 $Tag"
+}
+else {
+    $targetSha   = $localSha
+    $targetLabel = "本机 HEAD"
+}
+$short = $targetSha.Substring(0, 7)
+
+Write-Host "$targetLabel：$short" -ForegroundColor Gray
+Write-Host "远端：$remote/$refRemote" -ForegroundColor Gray
 
 # ---------- 0. 权限前置检查（改 hosts 必需），-CheckOnly 不检查 ----------
 if (-not $CheckOnly -and -not (Test-Elevated)) {
@@ -193,8 +237,8 @@ else {
 
 if ($remoteSha) {
     Write-Host "直连可用，远端在 $($remoteSha.Substring(0,7))" -ForegroundColor Green
-    if ($remoteSha -eq $localSha) {
-        Write-Host "远端已与本机一致，无需推送。" -ForegroundColor Green
+    if ($remoteSha -eq $targetSha) {
+        Write-Host "远端已与本地一致，无需推送。" -ForegroundColor Green
         exit 0
     }
     if ($CheckOnly) {
@@ -203,11 +247,11 @@ if ($remoteSha) {
     }
     Invoke-Push
     $after = Get-RemoteSha
-    if ($after -eq $localSha) {
+    if ($after -eq $targetSha) {
         Write-Host "已推送，远端 = $($after.Substring(0,7))" -ForegroundColor Green
         exit 0
     }
-    throw "推送后复核不一致：远端 $after，本机 $localSha"
+    throw "推送后复核不一致：远端 $after，$targetLabel $targetSha"
 }
 
 # ---------- 2. 直连不通：先筛出此刻能握手的 IP ----------
@@ -303,16 +347,16 @@ try {
         }
 
         Write-Host "  远端在 $($remoteSha.Substring(0,7))" -ForegroundColor Gray
-        if ($remoteSha -eq $localSha) {
-            Write-Host "远端已与本机一致，无需推送。" -ForegroundColor Green
+        if ($remoteSha -eq $targetSha) {
+            Write-Host "远端已与本地一致，无需推送。" -ForegroundColor Green
             $done = $true
             break
         }
 
         Invoke-Push
         $after = Get-RemoteSha
-        if ($after -ne $localSha) {
-            throw "推送后复核不一致：远端 $after，本机 $localSha"
+        if ($after -ne $targetSha) {
+            throw "推送后复核不一致：远端 $after，$targetLabel $targetSha"
         }
         Write-Host "已推送，远端 = $($after.Substring(0,7))" -ForegroundColor Green
         $done = $true
@@ -348,5 +392,8 @@ finally {
 }
 
 Write-Host ""
-Write-Host "完成：$remote/refs/heads/$branch = $short" -ForegroundColor Green
+Write-Host "完成：$remote/$refRemote = $short（$whatToPush）" -ForegroundColor Green
+if ($Tag) {
+    Write-Host "注意：只推送了这一个标签，没有创建 GitHub Release（Release 在网页里手工发）。" -ForegroundColor Gray
+}
 Write-Host "GitHub：https://github.com/Meta-consciousness-AI/Mcai-agent" -ForegroundColor Gray
