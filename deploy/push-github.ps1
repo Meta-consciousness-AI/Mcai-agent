@@ -86,6 +86,26 @@ function Test-Tls([string]$ip) {
     return ($code -eq 0 -and "$out".Trim() -eq "200")
 }
 
+# 判断「hosts 固定是否真的生效」。不能用 Resolve-DnsName——它取的是 DNS 客户端的答案，
+# 不读 hosts 里刚写进去的那一行（2026-11-25 09:42 实跑就是被它误导：固定 20.233.83.145，
+# 它却连报六轮 20.247.166.64，白等约 5 秒后靠兜底才成功）。改用两条硬证据：
+#   ① 从 hosts 文件里读回 `<ip> github.com` 这一行；
+#   ② 对 github.com:443 做一次真实 TCP 连接（连接会走 hosts）。
+function Test-HostsPin([string]$ip) {
+    $pattern = '^\s*' + [regex]::Escape($ip) + '\s+github\.com(\s|$)'
+    return (@(Select-String -LiteralPath $hostsPath -Pattern $pattern -ErrorAction SilentlyContinue).Count -gt 0)
+}
+
+function Test-GithubTcp {
+    $client = New-Object System.Net.Sockets.TcpClient
+    try {
+        $task = $client.ConnectAsync("github.com", 443)
+        return ($task.Wait(2500) -and $client.Connected)
+    }
+    catch { return $false }
+    finally { try { $client.Close() } catch { } }
+}
+
 # 取远端分支 sha；失败时把 git 原话打出来，不吞错
 function Get-RemoteSha {
     $prev = $ErrorActionPreference
@@ -217,31 +237,41 @@ $backup = "$hostsPath.bak-$stamp"
 Copy-Item -LiteralPath $hostsPath -Destination $backup -Force
 Write-Host "hosts 已备份：$backup" -ForegroundColor Gray
 
-$pinned = $false
-$done   = $false
+$touched = $false
+$done    = $false
 try {
     foreach ($ip in $good) {
         Write-Host ""
         Write-Host "尝试 $ip ..." -ForegroundColor Cyan
         Add-Pin $ip
-        $pinned = $true
+        $touched = $true
 
-        # 等解析真正生效再连：hosts 改完不是立刻生效的（2026-11-25 实测第一轮仍解析到旧 IP，
-        # 白等一次 21 秒超时，靠第 2 次重试才成）。这里先确认解析已指向该 IP。
-        $resolved = ""
+        # 确认「固定已生效」再连。判据见 Test-HostsPin / Test-GithubTcp 上方的说明：
+        # 不再拿 DNS 客户端的答案当证据，只认 hosts 文件里的那一行 + 一次真实 443 连接。
+        $hasLine = $false
+        $tcpOk   = $false
         for ($w = 1; $w -le 6; $w++) {
-            $resolved = (Resolve-DnsName github.com -Type A -ErrorAction SilentlyContinue |
-                         Where-Object { $_.IPAddress } | Select-Object -ExpandProperty IPAddress) -join ", "
-            if ($resolved -match [regex]::Escape($ip)) { break }
-            Write-Host "  解析尚未生效（$resolved），等待 ..." -ForegroundColor DarkGray
+            $hasLine = Test-HostsPin $ip
+            $tcpOk   = $false
+            if ($hasLine) { $tcpOk = Test-GithubTcp }
+            if ($hasLine -and $tcpOk) { break }
+            if ($hasLine) {
+                Write-Host "  hosts 已写入 $ip，但连接未能确认，等待 ..." -ForegroundColor DarkGray
+            }
+            else {
+                Write-Host "  hosts 里还没读到 $ip github.com，等待 ..." -ForegroundColor DarkGray
+            }
             ipconfig /flushdns | Out-Null
             Start-Sleep -Milliseconds 800
         }
-        if ($resolved -match [regex]::Escape($ip)) {
-            Write-Host "  解析已指向 $ip" -ForegroundColor Gray
+        if ($hasLine -and $tcpOk) {
+            Write-Host "  解析已指向 $ip（hosts 已写入，443 可连）" -ForegroundColor Gray
+        }
+        elseif ($hasLine) {
+            Write-Host "  hosts 已写入 $ip，但连接未能确认（443 未通），先试一次（可能仍会失败）" -ForegroundColor DarkYellow
         }
         else {
-            Write-Host "  解析仍为 $resolved，先试一次（可能仍会失败）" -ForegroundColor DarkYellow
+            Write-Host "  hosts 里未读到 $ip 这一行，先试一次（可能仍会失败）" -ForegroundColor DarkYellow
         }
 
         # 同一个 IP 最多试 $maxTries 轮：握手成功不等于连上，可能是瞬时的
@@ -257,7 +287,6 @@ try {
         if (-not $remoteSha) {
             Write-Host "  该 IP 连不上，换下一个" -ForegroundColor DarkYellow
             Undo-Pin $backup
-            $pinned = $false
             continue
         }
 
@@ -283,8 +312,19 @@ try {
     }
 }
 finally {
-    if ($pinned) {
-        Undo-Pin $backup
+    # 三种状态各说各的：没动过 / 改过已还原 / 还原失败（失败要响亮，不吞异常）
+    if (-not $touched) {
+        Write-Host "hosts 未改动。" -ForegroundColor Gray
+    }
+    else {
+        try {
+            Undo-Pin $backup
+        }
+        catch {
+            Write-Host "⚠ hosts 还原失败：$($_.Exception.Message)" -ForegroundColor Red
+            Write-Host "  请手工还原：copy `"$backup`" `"$hostsPath`"" -ForegroundColor Red
+            throw
+        }
         $left = Get-Content -LiteralPath $hostsPath -Raw
         if ($left -match [regex]::Escape("github.com")) {
             Write-Host "⚠ hosts 还原后仍含 github.com 映射，请手工检查 $hostsPath" -ForegroundColor Red
@@ -292,9 +332,6 @@ finally {
         else {
             Write-Host "hosts 已还原（备份 $backup 可删）" -ForegroundColor Green
         }
-    }
-    else {
-        Write-Host "hosts 未改动。" -ForegroundColor Gray
     }
 }
 
