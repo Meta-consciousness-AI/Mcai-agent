@@ -90,7 +90,7 @@ python tools\daily_signal.py
 # 推送（本机 DNS 把 github.com 解析到被封 IP 57.155.223.240，直连必失败）
 powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -CheckOnly   # 只诊断，报告哪个 IP 能握手
 powershell -ExecutionPolicy Bypass -File deploy\push-github.ps1 -ForcePin   # 跳过直连、强制走固定 IP（2026-11-25 09:42 真实跑通）
-powershell -ExecutionPolicy Bypass -File deploy\push-gitee.ps1              # Gitee 一直能直连
+powershell -ExecutionPolicy Bypass -File deploy\push-gitee.ps1              # Gitee 一直能直连（脚本读剪贴板令牌，注意先看 docs/工作原则.md「凭据不靠剪贴板传递」）
 ```
 
 ## 八、会话策略
@@ -126,8 +126,8 @@ powershell -ExecutionPolicy Bypass -File deploy\push-gitee.ps1              # Gi
 - **README 数字（11-25）**：132 行 207→164、344 行→66、381 行 `concepts: 65, faqs: 130`、501 行→130；PyPI 0.4.3 页面仍是旧数字，需发新版才更新。
 - **备份（11-24 完成）**：项目 zip `mca-agent-backup-2026-11-24.zip`（56.3 MB / 4600 项）在 `F:`（U 盘 KINGSTON）与 `D:`（本机另一盘）；语料 10 份 + 说明在 `F:\mca-agent-corpus`、`D:\mca-agent-corpus`。**OneDrive 已确认不可用**（同步端点被封，T16 第十节）。
 - **Zenodo（11-24 实测）**：去重 429 浏览 / 31 下载；增长在衰减、不可归因，见 `docs/指标记录.md`。
-- **推送（2026-11-25 01:30，当时两端均为 `e2f6c13`；09:42 起 GitHub 已到 `f93f36b`）**：**GitHub 的真实断点是两段，不是一段**：① 本机 DNS 常态把 `github.com` 解析到被封 IP `57.155.223.240`，直连 `ls-remote` 常被重置；② **即使直连 `ls-remote` 能通，`git push` 也可能被掐断（`Recv failure: Connection was reset`），重试一次即成功**——2026-11-25 01:28 实测如此。当 DNS 与抖动同时发作时，可用的是 `deploy/push-github.ps1`（筛出此刻能握手的 IP → 逐个固定并真连 → 每个重试 3 次 → `finally` 还原 hosts）。另有两个已知事实：能握手的 IP 是浮动的（同一小时内两次筛选结果不同）；hosts 改完解析要过几秒才生效。沙箱内 TLS 一律 `SEC_E_NO_CREDENTIALS`，这类推送只能由用户窗口执行；`hosts.bak-*` 备份留在 `C:\Windows\System32\drivers\etc\`，可删。
-- **真实 `-ForcePin` 验证（2026-11-25 09:42，管理员窗口，通过；缺的证据已补齐）**：`deploy\push-github.ps1 -ForcePin` 真跑一次——8 个候选筛出 4 个可握手（`20.233.83.145` / `140.82.112.3` / `140.82.121.3` / `4.237.22.38`）→ `hosts 已备份` → 推送 `e2f6c13..f93f36b` → `hosts 已还原`。**本机与 GitHub 同为 `f93f36b`（本机随后又加文档提交 `2d07185`，未推）；Gitee 远端仍停在 `e2f6c13`，待补推——领先数一律以 `git ls-remote` 为准。** 顺带暴露一处脚本缺陷：第 233 行用 `Resolve-DnsName github.com -Type A` 判「解析已指向固定 IP」，该命令取 DNS 客户端答案、**不读 hosts 刚写的那一行**（实跑报 `20.247.166.64`，不在候选列表里），六轮空转后靠兜底「先试一次」才成功——**pin 有效、验证方法无效**，每次白等约 5 秒；归 `0002`，不急，详见 `docs/待办.md` 与执行回执 §七。
+- **推送（2026-11-25 01:30，当时两端均为 `e2f6c13`；10:05 两端均为 `b3868e3`）**：**GitHub 的真实断点是两段，不是一段**：① 本机 DNS 常态把 `github.com` 解析到被封 IP `57.155.223.240`，直连 `ls-remote` 常被重置；② **即使直连 `ls-remote` 能通，`git push` 也可能被掐断（`Recv failure: Connection was reset`），重试一次即成功**——2026-11-25 01:28 实测如此。当 DNS 与抖动同时发作时，可用的是 `deploy/push-github.ps1`（筛出此刻能握手的 IP → 逐个固定并真连 → 每个重试 3 次 → `finally` 还原 hosts）。另有两个已知事实：能握手的 IP 是浮动的（同一小时内两次筛选结果不同）；hosts 改完解析要过几秒才生效。沙箱内 TLS 一律 `SEC_E_NO_CREDENTIALS`，这类推送只能由用户窗口执行；`hosts.bak-*` 备份留在 `C:\Windows\System32\drivers\etc\`，可删。
+- **真实 `-ForcePin` 验证（2026-11-25 09:42，管理员窗口，通过；缺的证据已补齐）**：`deploy\push-github.ps1 -ForcePin` 真跑一次——8 个候选筛出 4 个可握手（`20.233.83.145` / `140.82.112.3` / `140.82.121.3` / `4.237.22.38`）→ `hosts 已备份` → 推送 `e2f6c13..f93f36b` → `hosts 已还原`。**2026-11-25 10:05 两端已齐：GitHub 与 Gitee 均为 `b3868e3`**（GitHub 经 `-ForcePin` 推 `f93f36b..b3868e3`；Gitee 经令牌文件推 `e2f6c13..b3868e3`）。Gitee 侧改用令牌文件 `C:\Users\HP\gitee-token.txt`（32 位，仓库外）——剪贴板要同时承担「复制令牌」和「粘命令」两件事，必然互相覆盖，连败三次才定位，详见 `docs/工作原则.md`「凭据不靠剪贴板传递」。领先数一律以 `git ls-remote` 为准。 顺带暴露一处脚本缺陷：第 233 行用 `Resolve-DnsName github.com -Type A` 判「解析已指向固定 IP」，该命令取 DNS 客户端答案、**不读 hosts 刚写的那一行**（实跑报 `20.247.166.64`，不在候选列表里），六轮空转后靠兜底「先试一次」才成功——**pin 有效、验证方法无效**，每次白等约 5 秒；归 `0002`，不急，详见 `docs/待办.md` 与执行回执 §七。
 - **回归基线**：`python -m mcai validate` 通过；`python -m unittest discover -s tests` 144 项 OK；kb 两份副本 sha256 均为 `E48C362B1BA222789024FBAE11E447BC1A401D5BE2FEA15608F8FDE6C615F2B4`。
 - **未决**：8 条人工添加关系是否回写 `core_loop`；glama 停在 0.3.9（GitHub 无 v0.4.2/v0.4.3 Release）；Bing 编入待复查；mcprush 简介数字陈旧。
 - 明细回执：`docs/执行回执/2026-11-24-*.md`（来源索引、关系来源更正、说明文件更正、README 数字、不覆盖与留痕、CLI 编码、危险路径保护）。
