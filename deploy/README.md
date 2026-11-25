@@ -77,6 +77,26 @@ mcai doctor --url https://kb.example.com --token <令牌>
 
 ---
 
+## 静态站点发布（CloudBase，线上站点）
+
+线上站点：<https://mcai-knowledge-d7gtizltz910e2269-1316838521.tcloudbaseapp.com>，托管在腾讯云 CloudBase 静态托管。
+
+**没有部署脚本**：本机没有 `tcb` / `cloudbase` CLI，更新靠控制台手工上传。顺序是固定的：
+
+1. **构建**：`mcai build`（或 `python tools/build_site_from_kb.py`），生成 `dist/`；
+2. **补 key 文件**：`python tools/submit_indexnow.py --write-key`，生成 `dist/<key>.txt`；
+3. **上传**：腾讯云控制台 → CloudBase → 静态托管 → 把 `dist/` 的内容传到站点根目录；
+4. **提交 IndexNow**：`python tools/submit_indexnow.py`。**必须在第 3 步之后**——Bing 抓不到
+   `https://<host>/<key>.txt` 就会回 403。
+
+注意：`dist/` 在 `.gitignore` 里，重建会清空，**每次重建都必须重跑第 2 步**，否则 key 文件丢失、
+IndexNow 提交会被拒。
+
+`deploy/publish-site.ps1` 已废弃（旧目标是 GitHub Pages 仓库，2026-11-25 实测 404，没有站点），
+现在不带 `-DryRun` 运行会直接 `exit 1`；根目录的 `发布官网-已废弃.cmd.bak` 同样停用。
+
+---
+
 ## 上线检查清单
 
 - [ ] `mcai build` 通过，`mcai report` 无冲突
