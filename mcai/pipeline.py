@@ -156,11 +156,10 @@ def peek_from_corpus(root: str | Path) -> KnowledgeBase:
 def _write_artifacts(root: Path, kb) -> tuple[int, list]:
     pages = site.build_site(kb, root / "dist")
     files = dataset.export(kb, root / "dist" / "dataset")
-    key_file = root / "data" / "indexnow-key.txt"
-    if key_file.exists():
-        key = key_file.read_text(encoding="utf-8").strip()
-        if key:
-            (root / "dist" / f"{key}.txt").write_text(key, encoding="utf-8")
+    # IndexNow 的 key 只有两个入口：config/indexnow.json（取值）与
+    # tools/submit_indexnow.py --write-key（写 dist/<key>.txt）。
+    # 旧版这里会读 data/indexnow-key.txt 再写一份 dist/<key>.txt——那段已删：
+    # 残留的旧 key 文件会让构建悄悄产出一个过期 key，IndexNow 校验直接 403。
     try:
         dashboard.render(root)
     except Exception:  # noqa: BLE001 - 看板失败不影响构建

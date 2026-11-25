@@ -64,7 +64,7 @@
 
 - 百度站长：无法添加 `*.tcloudbaseapp.com` 站点，提示「该主域可添加站点数量超过限制」；账号内无旧站点可删，判断为共享主域配额限制。百度路径暂缓，等自有域名。
 - Bing Webmaster：站点此前已添加成功；已补交 `/about.html` URL；已重新提交 sitemap；IndexNow 已推送 70 个 URL，返回 202。
-- IndexNow key：`5e8c6744f39f84fd94acd507a6bfd0e9`，已写入站点生成器，重建不会丢失。
+- IndexNow key：~~`5e8c6744f39f84fd94acd507a6bfd0e9`，已写入站点生成器，重建不会丢失~~ ——**2026-11-25 更正**：旧 key 已退役。现在 key 唯一来源是 `config/indexnow.json`（`b673e5fc…09be`），唯一写入口是 `python tools/submit_indexnow.py --write-key`；构建不再产出任何 key 文件，**重建后必须重跑 `--write-key`**，否则 keyLocation 404、IndexNow 回 403。
 - 待观察：Bing 的 sitemap 处理与 about 收录。
 
 ## 六、远程技能包（2026-11-20）

@@ -675,11 +675,6 @@ def render_about(kb: KnowledgeBase) -> str:
                  description="元意识学说的定义、边界、核心术语、原始文献与接入方式。")
 
 
-INDEXNOW_KEY = "5e8c6744f39f84fd94acd507a6bfd0e9"
-
-
-
-
 def render_ask(kb: KnowledgeBase) -> str:
     """公开问答页：调用公网 API，无需安装。"""
     project = kb.project
@@ -731,7 +726,6 @@ def build_site(kb: KnowledgeBase, out_dir: str | Path) -> dict:
     for c in kb.concepts:
         (out / "concepts" / f"{c.slug}.html").write_text(render_concept(kb, c), encoding="utf-8")
 
-    (out / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
     (out / "llms.txt").write_text(render_llms_txt(kb), encoding="utf-8")
     (out / "llms-full.txt").write_text(render_llms_full(kb), encoding="utf-8")
     (out / "robots.txt").write_text(
